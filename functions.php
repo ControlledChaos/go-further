@@ -80,8 +80,8 @@ require get_theme_file_path( '/includes/config.php' );
 require_once GFT_PATH . 'includes/autoloader.php';
 
 // Theme setup.
-$gft_core_setup   = new Core\Setup;
-$gft_core_assets  = new Core\Assets;
+$gft_core_setup  = new Core\Setup;
+$gft_core_assets = new Core\Assets;
 
 // Frontend classes.
 if ( ! is_admin() ) {
