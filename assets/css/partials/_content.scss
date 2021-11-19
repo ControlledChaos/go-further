@@ -1,0 +1,16 @@
+///
+/// Main content styles
+///
+
+.post__thumbnail {
+	max-height: unset;
+	padding-bottom: 35%;
+	padding-bottom: var( --go-featured-image--height, 35% );
+
+	&:after,
+	img {
+		top: -50% !important;
+		right: auto !important;
+		bottom: auto !important;
+	}
+}

@@ -1,0 +1,22 @@
+/*
+Theme Name: Go Further
+Template: go
+Theme URI: https://github.com/ControlledChaos/go-further
+Author: Controlled Chaos Design
+Author URI: https://github.com/ControlledChaos
+Description: A child theme of GoDaddy's Go theme.
+Requires at least: WordPress 4.9.6
+Tested up to: 5.8
+Requires PHP: 5.4
+Version: 1.0.0
+Text Domain: go-further
+Tags: block-styles, custom-colors, custom-logo, custom-menu, e-commerce, editor-style, one-column, theme-options, threaded-comments, translation-ready, wide-blocks
+ */
+
+/**
+ * This theme enqueues a minified stylesheet compiled from SASS (.scss) files.
+ *
+ * This stylesheet only contains the above theme header that is necessary for theme activation.
+ *
+ * DO NOT delete this stylesheet!
+ */
