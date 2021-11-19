@@ -85,5 +85,6 @@ $gft_core_assets = new Core\Assets;
 
 // Frontend classes.
 if ( ! is_admin() ) {
+	$gft_tags   = new Front\Template_Tags;
 	$gft_assets = new Front\Assets;
 }
