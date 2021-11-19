@@ -1,3 +1,10 @@
 ///
 /// Main content styles
 ///
+
+.post__title {
+	font-size: calc(
+		var( --go--font-size ) * 0.7 * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio )
+	);
+	font-size: var(--go--type-scale-6);
+}
