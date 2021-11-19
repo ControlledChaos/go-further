@@ -67,7 +67,7 @@ class Template_Tags {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return mixed Markup for the page title
+	 * @return mixed Returns the markup for the page title
 	 */
 	public function page_title() {
 
