@@ -3,7 +3,7 @@
  * Frontend template tags
  *
  * Call new instance of this class in header files.
- * Use of the `$fct_tags` variable is recommended
+ * Use of the `$gft_tags` variable is recommended
  * to instantiate, where the prefix matches the
  * rest of this theme's prefixes.
  *
