@@ -88,3 +88,4 @@ if ( ! is_admin() ) {
 	$gft_tags   = new Front\Template_Tags;
 	$gft_assets = new Front\Assets;
 }
+$gft_tmpls  = new Front\Theme_Templates;
