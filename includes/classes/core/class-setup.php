@@ -51,59 +51,6 @@ class Setup {
 		// Load domain for translation.
 		load_theme_textdomain( 'go-further' );
 
-		// Browser title tag support.
-		add_theme_support( 'title-tag' );
-
-		// Core block visual styles.
-		add_theme_support( 'wp-block-styles' );
-
-		// Background color & image support.
-		add_theme_support( 'custom-background' );
-
-		// Responsive embedded content.
-		add_theme_support( 'responsive-embeds' );
-
-		// RSS feed links support.
-		add_theme_support( 'automatic-feed-links' );
-
-		// HTML 5 tags support.
-		add_theme_support( 'html5', [
-			'comment-list',
-			'comment-form',
-			'search-form',
-			'gallery',
-			'caption',
-			'style',
-			'script'
-		 ] );
-
-		 // Refresh widgets.
-		 add_theme_support( 'customize-selective-refresh-widgets' );
-
-		// Featured image support.
-		add_theme_support( 'post-thumbnails' );
-
-		// Add logo support.
-		add_theme_support( 'custom-logo', apply_filters( 'gft_custom_logo', [
-			'width'       => 160,
-			'height'      => 160,
-			'flex-width'  => true,
-			'flex-height' => true
-		] ) );
-
-		 // Set content width.
-		if ( ! isset( $content_width ) ) {
-			$content_width = apply_filters( 'gft_content_width', 1280 );
-		}
-
-		// Embed sizes.
-		$embed = apply_filters( 'gft_embed_size', [
-			'embed_size_w' => 1280,
-			'embed_size_h' => 720
-		] );
-		update_option( 'embed_size_w', $embed['embed_size_w'] );
-		update_option( 'embed_size_h', $embed['embed_size_h'] );
-
 		// Add stylesheet for the content editor.
 		$assets = new Assets;
 		add_editor_style( 'assets/css/editor' . $assets->suffix() . '.css', [ 'gft-admin' ], '', 'screen' );
