@@ -8,8 +8,7 @@
  * @subpackage Functions
  * @since      1.0.0
  *
- * @link       https://github.com/ControlledChaos/go-further
- * @license    http://www.gnu.org/licenses/gpl-3.0.html
+ * @link https://github.com/ControlledChaos/go-further
  */
 
 namespace GoFurther;
