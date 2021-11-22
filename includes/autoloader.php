@@ -64,6 +64,9 @@ define( 'GFT_CLASSES', [
 	GFT_CLASS_NS . '\Core\Assets' => GFT_CLASS['core'] . 'assets.php',
 	GFT_CLASS_NS . '\Core\Setup'  => GFT_CLASS['core'] . 'setup.php',
 
+	// Customizer classes.
+	GFT_CLASS_NS . '\Customize\Customizer'  => GFT_CLASS['customize'] . 'customizer.php',
+
 	// Frontend classes.
 	GFT_CLASS_NS . '\Front\Template_Tags'   => GFT_CLASS['front'] . 'template-tags.php',
 	GFT_CLASS_NS . '\Front\Theme_Templates' => GFT_CLASS['front'] . 'theme-templates.php',

@@ -83,6 +83,11 @@ require_once GFT_PATH . 'includes/autoloader.php';
 $gft_core_setup  = new Core\Setup;
 $gft_core_assets = new Core\Assets;
 
+// Customizer classes.
+if ( is_customize_preview() ) {
+	$gft_customize = new Customize\Customizer;
+}
+
 // Frontend classes.
 if ( ! is_admin() ) {
 	$gft_tags   = new Front\Template_Tags;
