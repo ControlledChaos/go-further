@@ -83,6 +83,9 @@ require_once GFT_PATH . 'includes/autoloader.php';
 $gft_core_setup  = new Core\Setup;
 $gft_core_assets = new Core\Assets;
 
+// Media classes.
+$gft_images = new Media\Images;
+
 // Customizer classes.
 if ( is_customize_preview() ) {
 	$gft_customize = new Customize\Customizer;
