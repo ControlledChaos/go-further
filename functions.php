@@ -43,13 +43,17 @@ require_once get_theme_file_path( '/includes/classes/core/class-php-version.php'
  * @since  1.0.0
  * @return void
  */
-if ( ! Core\php()->version() && ! is_admin() ) {
+if ( ! Core\php()->version() ) {
 
-	// Get the conditional message.
-	$die = Core\php()->frontend_message();
+	// Put up an admin notice.
+	if ( is_admin() ) {
+		Core\php()->add_php_admin_notice();
+		return;
 
-	// Print the die message.
-	die( $die );
+	// Disable the theme's front end.
+	} else {
+		die( Core\php()->frontend_message() );
+	}
 }
 
 /**

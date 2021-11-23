@@ -91,6 +91,48 @@ final class PHP_Version {
 	}
 
 	/**
+	 * Admin header notice
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string Returns the markup of the admin notice.
+	 */
+	public function php_admin_notice() {
+
+		// Get theme data.
+		$get_theme   = wp_get_theme();
+		$child_name  = $get_theme->get( 'Name' );
+		$get_parent  = wp_get_theme( get_template() );
+		$parent_name = $get_parent->get( 'Name' );
+
+		if ( current_user_can( 'switch_themes' ) ) {
+			$notice = sprintf(
+				__( '<p>The <strong><em>%s</em></strong> child theme has been disabled because the minimum PHP version of <strong>%s</strong> has not been met. Go to the <a href="%s">%s</a> to activate the <strong><em>%s</em></strong> parent theme or another theme.</p>', 'go-further' ),
+				$child_name,
+				$this->minimum(),
+				esc_attr( esc_url( self_admin_url( 'themes.php' ) ) ),
+				__( 'themes page', 'go-further' ),
+				$parent_name
+			);
+
+		} else {
+			$notice = sprintf(
+				__( '<p>The active theme has been disabled because the minimum PHP version of <strong>%s</strong> has not been met.</p>', 'go-further' ),
+				$this->minimum(),
+			);
+		}
+
+		printf(
+			'<div id="plugin-php-notice" class="notice notice-error is-dismissible">%s</div>',
+			$notice
+		);
+	}
+
+	public function add_php_admin_notice() {
+		add_action( 'admin_notices', [ $this, 'php_admin_notice' ] );
+	}
+
+	/**
 	 * Frontend message
 	 *
 	 * Conditional message displayed on the front end if
@@ -101,6 +143,12 @@ final class PHP_Version {
 	 * @return string Returns the markup of the message.
 	 */
 	public function frontend_message() {
+
+		// Get theme data.
+		$get_theme   = wp_get_theme();
+		$child_name  = $get_theme->get( 'Name' );
+		$get_parent  = wp_get_theme( get_template() );
+		$parent_name = $get_parent->get( 'Name' );
 
 		/**
 		 * Constant: Templates directory
@@ -139,10 +187,12 @@ final class PHP_Version {
 			);
 
 			$html .= sprintf(
-				__( '<p>The active theme has been disabled because the minimum PHP version of <strong>%s</strong> has not been met. Go to the <a href="%s">%s</a> to activate another theme.</p>', 'go-further' ),
+				__( '<p>The <strong><em>%s</em></strong> child theme has been disabled because the minimum PHP version of <strong>%s</strong> has not been met. Go to the <a href="%s">%s</a> to activate the <strong><em>%s</em></strong> parent theme or another theme.</p>', 'go-further' ),
+				$child_name,
 				$this->minimum(),
 				esc_attr( esc_url( self_admin_url( 'themes.php' ) ) ),
-				__( 'themes page', 'go-further' )
+				__( 'themes page', 'go-further' ),
+				$parent_name
 			);
 
 		// Message for users who do not meet the conditions above.
