@@ -1,3 +1,10 @@
 ///
 /// Navigation styles
 ///
+
+.menu-is-open {
+
+	.header__navigation-inner > div {
+		overflow-y: auto;
+	}
+}
