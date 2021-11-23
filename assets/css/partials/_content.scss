@@ -2,6 +2,10 @@
 /// Main content styles
 ///
 
+.site {
+	position: relative;
+}
+
 .post__title {
 	font-size: calc(
 		var( --go--font-size ) * 0.7 * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio )
