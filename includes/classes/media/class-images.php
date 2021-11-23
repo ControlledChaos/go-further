@@ -51,9 +51,6 @@ class Images {
 			'center'
 		];
 
-		// Set the post thumbnail size, 16:9.
-		set_post_thumbnail_size( 1280, 720, $center );
-
 		/**
 		 * Add image sizes
 		 *
@@ -70,8 +67,9 @@ class Images {
 		add_image_size( 'large-thumbnail', 240, 240, $center );
 		add_image_size( 'x-large-thumbnail', 320, 320, $center );
 
-		// 16:9 for cover image templates.
-		add_image_size( 'cover-image-full', 1920, 1080, $center );
+		// 16:9 for featured images.
+		add_image_size( 'cover-image-full', 2048, 1152, $center );
+		add_image_size( 'cover-image-medium', 1536, 864, $center );
 		add_image_size( 'cover-image-small', 960, 540, $center );
 
 		// 16:9 HD Video.
@@ -79,6 +77,9 @@ class Images {
 		add_image_size( 'medium-video', 960, 540, $center );
 		add_image_size( 'small-video', 640, 360, $center );
 		add_image_size( 'thumbnail-video', 320, 180, $center );
+
+		// Set the post thumbnail size, 16:9.
+		set_post_thumbnail_size( 2048, 1152, $center );
 	}
 
 	/**
