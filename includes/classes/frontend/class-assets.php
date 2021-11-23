@@ -67,24 +67,24 @@ class Assets {
 		 * The main stylesheet, in the root directory, only contains the theme header but
 		 * it is necessary for theme activation. DO NOT delete the main stylesheet!
 		 */
-		wp_enqueue_style( 'gft-theme', get_theme_file_uri( '/assets/css/style' . $this->suffix() . '.css' ), [ 'go-style' ], GFT_VERSION, 'all' );
+		wp_enqueue_style( 'go-further', get_theme_file_uri( '/assets/css/style' . $this->suffix() . '.css' ), [ 'go-style' ], GFT_VERSION, 'all' );
 
 		// Right-to-left languages.
 		if ( is_rtl() ) {
-			wp_enqueue_style( 'gft-theme-rtl', get_theme_file_uri( 'assets/css/style-rtl' . $this->suffix() . '.css' ), [ 'gft-theme' ], GFT_VERSION, 'all' );
+			wp_enqueue_style( 'go-further-rtl', get_theme_file_uri( 'assets/css/style-rtl' . $this->suffix() . '.css' ), [ 'go-further' ], GFT_VERSION, 'all' );
 		}
 
 		// Block styles.
 		if ( function_exists( 'has_blocks' ) ) {
-			wp_enqueue_style( 'gft-blocks', get_theme_file_uri( '/assets/css/blocks' . $this->suffix() . '.css' ), [ 'wp-block-library', 'gft-theme' ], GFT_VERSION, 'all' );
+			wp_enqueue_style( 'go-further-blocks', get_theme_file_uri( '/assets/css/blocks' . $this->suffix() . '.css' ), [ 'wp-block-library', 'go-further' ], GFT_VERSION, 'all' );
 
 			if ( is_rtl() ) {
-				wp_enqueue_style( 'gft-blocks-rtl', get_theme_file_uri( '/assets/css/blocks-rtl' . $this->suffix() . '.css' ), [ 'gft-theme' ], GFT_VERSION, 'all' );
+				wp_enqueue_style( 'go-further-blocks-rtl', get_theme_file_uri( '/assets/css/blocks-rtl' . $this->suffix() . '.css' ), [ 'go-further-blocks' ], GFT_VERSION, 'all' );
 			}
 		}
 
 		// Print styles.
-		wp_enqueue_style( 'gft-print', get_theme_file_uri( '/assets/css/print' . $this->suffix() . '.css' ), [], GFT_VERSION, 'print' );
+		wp_enqueue_style( 'go-further-print', get_theme_file_uri( '/assets/css/print' . $this->suffix() . '.css' ), [], GFT_VERSION, 'print' );
 	}
 
 	/**
