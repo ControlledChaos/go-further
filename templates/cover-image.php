@@ -19,7 +19,7 @@ get_header();
 // Start the Loop.
 while ( have_posts() ) :
 	the_post();
-	get_template_part( 'partials/content', get_post_type( get_the_ID() ) );
+	get_template_part( 'templates/template-parts/content/content', 'cover-image' );
 
 	// If comments are open or we have at least one comment, load up the comment template.
 	if ( comments_open() || get_comments_number() ) {
