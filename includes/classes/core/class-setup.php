@@ -32,6 +32,9 @@ class Setup {
 		// Theme setup.
 		add_action( 'after_setup_theme', [ $this, 'setup' ] );
 
+		// Add excerpts to pages for use in meta data.
+		add_action( 'init', [ $this, 'add_page_excerpts' ] );
+
 		// Login title.
 		add_filter( 'login_headertext', [ $this, 'login_title' ] );
 
@@ -54,6 +57,17 @@ class Setup {
 		// Add stylesheet for the content editor.
 		$assets = new Assets;
 		add_editor_style( 'assets/css/editor' . $assets->suffix() . '.css', [ 'gft-admin' ], '', 'screen' );
+	}
+
+	/**
+	 * Add excerpts to page post type
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function add_page_excerpts() {
+		add_post_type_support( 'page', 'excerpt' );
 	}
 
 	/**
