@@ -5,3 +5,13 @@
 .site-header {
 	width: 100%;
 }
+
+/**
+ * Hide the menu toggle button if
+ * there is nothing to toggle.
+ */
+.has-no-primary-menu {
+	.nav-toggle {
+		display: none;
+	}
+}
