@@ -6,6 +6,26 @@
   position: absolute;
 }
 
+.page-template-cover-image .site-header .site-title,
+.page-template-cover-image .site-header .site-description {
+  color: white;
+  opacity: 1;
+}
+
+@media screen and (min-width: 960px) {
+  .page-template-cover-image .site-header .header__navigation a {
+    color: white;
+  }
+}
+
+.page-template-cover-image:not(.menu-is-open) .site-header button:focus {
+  outline-color: white;
+}
+
+.page-template-cover-image:not(.menu-is-open) .site-header svg {
+  fill: white;
+}
+
 /**
  * Hide the menu toggle button if
  * there is nothing to toggle.
@@ -60,18 +80,56 @@
      object-position: center;
 }
 
-body.page-template-cover-image .post__thumbnail, body.full-width-featured .post__thumbnail {
+.page-template-cover-image .post__thumbnail,
+.full-width-featured .post__thumbnail {
   margin: 0 calc( -1 * var( --go-header--padding--x, var( --go-block--padding--x ) ));
 }
 
-body.page-template-cover-image .post__thumbnail {
+.page-template-cover-image .post__thumbnail {
   height: 100vh;
   min-height: 100vh;
   margin: 0;
   padding: 0;
 }
 
-body.singular .post__thumbnail img {
+.page-template-cover-image .post__thumbnail * {
+  color: white;
+}
+
+.page-template-cover-image .post__thumbnail:after,
+.page-template-cover-image .post__thumbnail header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.page-template-cover-image .post__thumbnail:after {
+  content: '';
+  display: block;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.625)), to(rgba(0, 0, 0, 0.325)));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.625) 0%, rgba(0, 0, 0, 0.325) 100%);
+}
+
+.page-template-cover-image .post__thumbnail header {
+  z-index: 100;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.singular .post__thumbnail img {
   -o-object-fit: cover;
      object-fit: cover;
 }

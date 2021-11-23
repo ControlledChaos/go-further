@@ -7,8 +7,40 @@
 }
 
 .page-template-cover-image {
+
 	.site-header {
 		position: absolute;
+
+		.site-title,
+		.site-description {
+			color: white;
+			opacity: 1;
+		}
+
+		@media screen and ( min-width: 960px ) {
+
+			.header__navigation {
+				a {
+					color: white;
+				}
+			}
+		}
+	}
+
+	&:not( .menu-is-open ) {
+
+		.site-header {
+
+			button {
+				&:focus {
+					outline-color: white;
+				}
+			}
+
+			svg {
+				fill: white;
+			}
+		}
 	}
 }
 
@@ -17,6 +49,7 @@
  * there is nothing to toggle.
  */
 .has-no-primary-menu {
+
 	.nav-toggle {
 		display: none;
 	}
