@@ -139,7 +139,7 @@ class Template_Tags {
 			has_excerpt( get_the_ID() )
 		) {
 			$subtitle = sprintf(
-				' <p class="entry-header-subtitle">%1$s</p>',
+				' <p class="post__subtitle text-center">%1$s</p>',
 				get_the_excerpt( get_the_ID() )
 			);
 		} else {
