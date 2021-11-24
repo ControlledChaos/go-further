@@ -132,15 +132,30 @@ class Template_Tags {
 			$args['atts'][ $attribute ] = [];
 		}
 
+		// Page subtitle/excerpt.
+		if (
+			is_singular() &&
+			post_type_supports( get_post_type( get_the_ID() ), 'excerpt' ) &&
+			has_excerpt( get_the_ID() )
+		) {
+			$subtitle = sprintf(
+				' <p class="entry-header-subtitle">%1$s</p>',
+				get_the_excerpt( get_the_ID() )
+			);
+		} else {
+			$subtitle = '';
+		}
+
 		printf(
-			'<header class="page-header entry-header m-auto px %1$s">%2$s</header>',
+			'<header class="page-header entry-header m-auto px %1$s">%2$s%3$s</header>',
 			is_customize_preview() ? ( get_theme_mod( 'page_titles', true ) ? '' : 'display-none' ) : '',
 			wp_kses(
 				$html,
 				[
 					$args['wrapper'] => $args['atts'],
 				]
-			)
+				),
+				$subtitle
 		);
 	}
 }
