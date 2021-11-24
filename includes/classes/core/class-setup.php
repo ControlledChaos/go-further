@@ -11,7 +11,8 @@
 namespace GoFurther\Classes\Core;
 
 // Alias namespaces.
-use  GoFurther\Classes\Core as Core;
+use GoFurther\Classes\Core as Core,
+	GoFurther\Classes\Customize  as Customize;
 
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -37,6 +38,9 @@ class Setup {
 
 		// Add social links to the parent array.
 		add_filter( 'go_avaliable_social_icons', [ $this, 'get_available_social_icons' ] );
+
+		// Display the social media links below content.
+		add_action( 'wp_head', [ $this, 'display_social' ] );
 
 		// Login title.
 		add_filter( 'login_headertext', [ $this, 'login_title' ] );
@@ -91,6 +95,33 @@ class Setup {
 		];
 
 		return array_merge( $social_icons, $added_icons );
+	}
+
+	/**
+	 * Display social media links
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  $input
+	 * @return string Returns a style block.
+	 */
+	public function display_social() {
+
+		new Customize\Customizer;
+
+		// Get the navigation location setting from the Customizer.
+		$display = Customize\mods()->display_social( get_theme_mod( 'gft_display_social' ) );
+
+		if ( false == $display ) {
+			$style = sprintf(
+				'<style>%1$s</style>',
+				'.site-footer .social-icons { display: none; }'
+			);
+		} else {
+			$style = '';
+		}
+
+		echo $style . "\n";
 	}
 
 	/**
