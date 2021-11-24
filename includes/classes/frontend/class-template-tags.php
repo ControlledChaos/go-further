@@ -154,8 +154,8 @@ class Template_Tags {
 				[
 					$args['wrapper'] => $args['atts'],
 				]
-				),
-				$subtitle
+			),
+			$subtitle
 		);
 	}
 }
