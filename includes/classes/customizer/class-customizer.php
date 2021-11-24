@@ -55,7 +55,7 @@ class Customizer {
 	public function __construct() {
 
 		// Modify existing Customizer elements.
-		add_action( 'customize_register', [ $this, 'customize_modify' ] );
+		add_action( 'customize_register', [ $this, 'customize_modify' ], 11 );
 
 		// Register new panels, sections, & fields.
 		add_action( 'customize_register', [ $this, 'customize_register' ] );
@@ -71,6 +71,8 @@ class Customizer {
 	 */
 	public function customize_modify( $wp_customize ) {
 
+		// Refresh for page titles setting.
+		$wp_customize->get_setting( 'page_titles' )->transport = 'refresh';
 	}
 
 	/**
