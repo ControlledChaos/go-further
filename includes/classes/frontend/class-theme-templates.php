@@ -28,8 +28,28 @@ class Theme_Templates {
 	 */
 	public function __construct() {
 
+		// Body classes for templates.
+		add_filter( 'body_class', [ $this, 'body_classes' ] );
+
 		// Conditional logos.
 		add_filter( 'get_custom_logo',  [ $this, 'custom_logo' ] );
+	}
+
+	/**
+	 * Body classes for templates
+	 *
+	 * Adds classes frontend body element.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return array Returns a modified array of body classes.
+	 */
+	public function body_classes( $classes ) {
+
+		if ( is_page_template( 'templates/cover-image.php' ) ) {
+			return array_merge( $classes, [ 'template-cover-image' ] );
+		}
+		return $classes;
 	}
 
 	/**
