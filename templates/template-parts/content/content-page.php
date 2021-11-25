@@ -16,7 +16,7 @@ use GoFurther\Classes\Front as Front;
 ?>
 
 <?php if ( has_post_thumbnail() ) : ?>
-	<figure class="post__thumbnail">
+	<figure class="post__thumbnail <?php Front\tags()->featured_class(); ?>">
 		<?php the_post_thumbnail(); ?>
 	</figure>
 <?php endif; ?>

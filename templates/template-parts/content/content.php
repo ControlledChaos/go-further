@@ -12,9 +12,9 @@
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 	<?php if ( is_singular() && has_post_thumbnail() ) : ?>
-		<div class="post__thumbnail">
+		<figure class="post__thumbnail <?php Front\tags()->featured_class(); ?>">
 			<?php the_post_thumbnail(); ?>
-		</div>
+		</figure>
 	<?php endif; ?>
 
 	<header class="entry-header m-auto px">

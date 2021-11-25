@@ -61,6 +61,19 @@ class Template_Tags {
 	public function __construct() {}
 
 	/**
+	 * Featured class
+	 *
+	 * Adds classes to the featured image figure element.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function featured_class() {
+		do_action( 'GoFurther\featured_class' );
+	}
+
+	/**
 	 * Page title
 	 *
 	 * Displays the page title markup
