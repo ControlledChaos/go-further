@@ -8,6 +8,11 @@
  * @since      1.0.0
  */
 
+namespace GoFurther;
+
+// Alias namespaces.
+use GoFurther\Classes\Front as Front;
+
 ?>
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
@@ -27,11 +32,11 @@
 		endif;
 		?>
 
-		<?php Go\post_meta( get_the_ID(), 'top' ); ?>
+		<?php \Go\post_meta( get_the_ID(), 'top' ); ?>
 
 	</header>
 
-	<div class="<?php Go\content_wrapper_class( 'content-area__wrapper' ); ?>">
+	<div class="<?php \Go\content_wrapper_class( 'content-area__wrapper' ); ?>">
 
 		<div class="content-area entry-content">
 			<?php
@@ -51,7 +56,7 @@
 
 		<?php
 		if ( is_singular() ) {
-			Go\post_meta( get_the_ID(), 'single-bottom' );
+			\Go\post_meta( get_the_ID(), 'single-bottom' );
 		}
 		?>
 
