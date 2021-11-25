@@ -15,6 +15,9 @@
 
 namespace GoFurther\Classes\Front;
 
+// Alias namespaces.
+use GoFurther\Classes\Customize as Customize;
+
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -59,19 +62,6 @@ class Template_Tags {
 	 * @return self
 	 */
 	public function __construct() {}
-
-	/**
-	 * Featured class
-	 *
-	 * Adds classes to the featured image figure element.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function featured_class() {
-		do_action( 'GoFurther\featured_class' );
-	}
 
 	/**
 	 * Page title
@@ -170,6 +160,38 @@ class Template_Tags {
 			),
 			$subtitle
 		);
+	}
+
+	/**
+	 * Featured image class
+	 *
+	 * Adds a `contained` class to the featured image figure element
+	 * if the post option is enabled.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return array Returns a modified array of body classes.
+	 */
+	public function featured_class() {
+
+		// Get the author section display setting from the Customizer.
+		$contain_featured = Customize\mods()->featured_image( get_theme_mod( 'gft_featured_image' ) );
+
+		$class   = '';
+		$options = get_post_meta( get_the_ID(), 'gft_post_options', true );
+		$enable  = $options ? in_array( 'enable_contain_featured', $options, true ) : false;
+		$disable = $options ? in_array( 'disable_contain_featured', $options, true ) : false;
+
+		if ( 'never' != $contain_featured ) {
+			if (
+				'always' == $contain_featured ||
+				( 'enable_per'  == $contain_featured && true  == $enable ) ||
+				( 'disable_per' == $contain_featured && false == $disable )
+			) {
+				$class = 'contained';
+			}
+		}
+		return $class;
 	}
 }
 

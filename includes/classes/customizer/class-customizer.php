@@ -117,6 +117,30 @@ class Customizer {
 			]
 		) );
 
+		// Featured image options.
+		$wp_customize->add_setting( 'gft_featured_image', [
+			'default'	        => 'never',
+			'sanitize_callback' => [ $this, 'featured_image' ]
+		] );
+		$wp_customize->add_control( new \WP_Customize_Control(
+			$wp_customize,
+			'gft_featured_image',
+			[	// The core "Colors" section is renamed "Site Design" by the parent theme.
+				'section'     => 'colors',
+				'settings'    => 'gft_featured_image',
+				'priority'    => 1,
+				'label'       => __( 'Featured Image Containment', 'go-further' ),
+				'description' => __( 'Choose when to contain the featured image with left & right padding. Does not apply to the Cover Image template.', 'go-further' ),
+				'type'        => 'select',
+				'choices'     => [
+					'never'       => __( 'Never Contain', 'go-further' ),
+					'always'      => __( 'Always Contain', 'go-further' ),
+					'enable_per'  => __( 'Contain per Post/Page', 'go-further' ),
+					'disable_per' => __( 'Remove per Post/Page', 'go-further' )
+				],
+			]
+		) );
+
 		// Display the social media links below content.
 		$wp_customize->add_setting( 'gft_display_social', [
 			'default'	        => true,
@@ -134,6 +158,24 @@ class Customizer {
 				'priority'    => 11
 			]
 		) );
+	}
+
+	/**
+	 * Featured image
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  $input
+	 * @return string Returns the theme mod.
+	 */
+	public function featured_image( $input ) {
+
+		$valid = [ 'never', 'always', 'enable_per', 'disable_per' ];
+
+		if ( in_array( $input, $valid ) ) {
+			return $input;
+		}
+		return 'never';
 	}
 
 	/**

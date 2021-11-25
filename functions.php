@@ -85,18 +85,25 @@ require_once GFT_PATH . 'includes/autoloader.php';
 // Theme setup.
 $gft_core_setup  = new Core\Setup;
 $gft_core_assets = new Core\Assets;
+$gft_core_mods   = new Customize\Customizer;
 
 // Media classes.
 $gft_images = new Media\Images;
-
-// Customizer classes.
-if ( is_customize_preview() ) {
-	$gft_customize = new Customize\Customizer;
-}
 
 // Frontend classes.
 if ( ! is_admin() ) {
 	$gft_tags   = new Front\Template_Tags;
 	$gft_assets = new Front\Assets;
 }
-$gft_tmpls  = new Front\Theme_Templates;
+
+// Backend classes.
+if ( is_admin() ) {
+	$gft_post_options = new Admin\Post_Options;
+}
+
+$gft_tmpls = new Front\Theme_Templates;
+
+// Customizer classes.
+if ( is_customize_preview() ) {
+	$gft_customize = new Customize\Customizer;
+}

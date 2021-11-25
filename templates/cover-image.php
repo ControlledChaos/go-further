@@ -6,7 +6,7 @@
  * on supported post types' singular pages.
  *
  * Template Name: Cover Image
- * Template Post Type: page, post, event, product
+ * Template Post Type: page, post, event, product, sample_type
  *
  * @package    Go_Further
  * @subpackage Templates

@@ -14,14 +14,13 @@ namespace GoFurther;
 use GoFurther\Classes\Front as Front;
 
 ?>
-
-<?php if ( has_post_thumbnail() ) : ?>
-	<figure class="post__thumbnail <?php Front\tags()->featured_class(); ?>">
-		<?php the_post_thumbnail(); ?>
-	</figure>
-<?php endif; ?>
-
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+
+	<?php if ( has_post_thumbnail() ) : ?>
+		<figure class="post__thumbnail <?php echo Front\tags()->featured_class(); ?>">
+			<?php the_post_thumbnail(); ?>
+		</figure>
+	<?php endif; ?>
 
 	<?php Front\tags()->page_title(); ?>
 

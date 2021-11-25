@@ -64,9 +64,6 @@ define( 'GFT_CLASSES', [
 	GFT_CLASS_NS . '\Core\Assets' => GFT_CLASS['core'] . 'assets.php',
 	GFT_CLASS_NS . '\Core\Setup'  => GFT_CLASS['core'] . 'setup.php',
 
-	// Customizer classes.
-	GFT_CLASS_NS . '\Customize\Customizer'  => GFT_CLASS['customize'] . 'customizer.php',
-
 	// Media classes.
 	GFT_CLASS_NS . '\Media\Images' => GFT_CLASS['media'] . 'images.php',
 
@@ -74,6 +71,12 @@ define( 'GFT_CLASSES', [
 	GFT_CLASS_NS . '\Front\Template_Tags'   => GFT_CLASS['front'] . 'template-tags.php',
 	GFT_CLASS_NS . '\Front\Theme_Templates' => GFT_CLASS['front'] . 'theme-templates.php',
 	GFT_CLASS_NS . '\Front\Assets'          => GFT_CLASS['front'] . 'assets.php',
+
+	// Backend classes.
+	GFT_CLASS_NS . '\Admin\Post_Options' => GFT_CLASS['admin'] . 'post-options.php',
+
+	// Customizer classes.
+	GFT_CLASS_NS . '\Customize\Customizer'  => GFT_CLASS['customize'] . 'customizer.php'
 ] );
 
 /**
