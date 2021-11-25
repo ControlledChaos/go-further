@@ -76,6 +76,9 @@ class Customizer {
 
 		// Social icon color below social link display.
 		$wp_customize->get_control( 'social_icon_color_alt' )->priority = 12;
+
+		// Add a description to the default logo field.
+		$wp_customize->get_control( 'custom_logo' )->description = __( 'Displays in the header of posts & pages assigned the Default template.', 'go-further' );
 	}
 
 	/**
@@ -87,6 +90,32 @@ class Customizer {
 	 * @return void
 	 */
 	public function customize_register( $wp_customize ) {
+
+		// Cover image template logo.
+		$wp_customize->add_setting( 'gft_cover_logo', [
+			'default'           => '',
+			'sanitize_callback' => 'absint'
+		] );
+		$wp_customize->add_control( new \WP_Customize_Cropped_Image_Control(
+			$wp_customize,
+			'gft_cover_logo',
+			[
+				'section'       => 'title_tagline',
+				'settings'      => 'gft_cover_logo',
+				'label'         => __( 'Cover Image Logo', 'go-further' ),
+				'description'   => __( 'Displays in the header of posts & pages assigned the Cover Image template, if the default logo is also set.', 'go-further' ),
+				'priority'      => 8,
+				'width'         => get_theme_support( 'custom-logo', 'width' ),
+				'height'        => get_theme_support( 'custom-logo', 'height' ),
+                'flex_width'    => get_theme_support( 'custom-logo', 'flex-width' ),
+                'flex_height'   => get_theme_support( 'custom-logo', 'flex-height' ),
+				'button_labels' => [
+					'select' => __( 'Select logo', 'go-further' ),
+					'remove' => __( 'Remove', 'go-further' ),
+					'change' => __( 'Change logo', 'go-further' ),
+				]
+			]
+		) );
 
 		// Display the social media links below content.
 		$wp_customize->add_setting( 'gft_display_social', [
