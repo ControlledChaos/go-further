@@ -2,13 +2,32 @@
 /// Site header styles
 ///
 
-.site-header {
+.header {
 	width: 100%;
+
+	.header__titles {
+		align-items: baseline;
+
+		@media screen and ( min-width: 960px ) {
+			flex-wrap: wrap;
+			gap: 0 1.5vw;
+		}
+	}
+}
+
+.custom-logo-link ~ a .site-title {
+	margin: 0;
+}
+
+.site-description {
+	@media screen and ( min-width: 960px ) {
+		margin: 0;
+	}
 }
 
 .page-template-cover-image {
 
-	.site-header {
+	.header {
 		position: absolute;
 		background-color: transparent;
 
@@ -30,7 +49,7 @@
 
 	&:not( .menu-is-open ) {
 
-		.site-header {
+		.header {
 
 			button {
 				&:focus {
