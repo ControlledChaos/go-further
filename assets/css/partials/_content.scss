@@ -54,13 +54,15 @@
 }
 
 .page-template-cover-image,
+.post-template-cover-image,
 .full-width-featured {
 	.post__thumbnail {
 		margin: 0 calc( -1 * var( --go-header--padding--x, var( --go-block--padding--x ) ) );
 	}
 }
 
-.page-template-cover-image {
+.page-template-cover-image,
+.post-template-cover-image {
 
 	.post__thumbnail {
 		min-height: 100vh;

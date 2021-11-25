@@ -26,28 +26,34 @@
   }
 }
 
-.page-template-cover-image .header {
+.page-template-cover-image .header,
+.post-template-cover-image .header {
   position: absolute;
   background-color: transparent;
 }
 
 .page-template-cover-image .header .site-title,
-.page-template-cover-image .header .site-description {
+.page-template-cover-image .header .site-description,
+.post-template-cover-image .header .site-title,
+.post-template-cover-image .header .site-description {
   color: white;
   opacity: 1;
 }
 
 @media screen and (min-width: 960px) {
-  .page-template-cover-image .header .header__navigation a {
+  .page-template-cover-image .header .header__navigation a,
+  .post-template-cover-image .header .header__navigation a {
     color: white;
   }
 }
 
-.page-template-cover-image:not(.menu-is-open) .header button:focus {
+.page-template-cover-image:not(.menu-is-open) .header button:focus,
+.post-template-cover-image:not(.menu-is-open) .header button:focus {
   outline-color: white;
 }
 
-.page-template-cover-image:not(.menu-is-open) .header svg {
+.page-template-cover-image:not(.menu-is-open) .header svg,
+.post-template-cover-image:not(.menu-is-open) .header svg {
   fill: white;
 }
 
@@ -116,22 +122,27 @@
 }
 
 .page-template-cover-image .post__thumbnail,
+.post-template-cover-image .post__thumbnail,
 .full-width-featured .post__thumbnail {
   margin: 0 calc( -1 * var( --go-header--padding--x, var( --go-block--padding--x ) ));
 }
 
-.page-template-cover-image .post__thumbnail {
+.page-template-cover-image .post__thumbnail,
+.post-template-cover-image .post__thumbnail {
   min-height: 100vh;
   margin: 0;
   padding: 0;
 }
 
-.page-template-cover-image .post__thumbnail * {
+.page-template-cover-image .post__thumbnail *,
+.post-template-cover-image .post__thumbnail * {
   color: white;
 }
 
 .page-template-cover-image .post__thumbnail:after,
-.page-template-cover-image .post__thumbnail header {
+.page-template-cover-image .post__thumbnail header,
+.post-template-cover-image .post__thumbnail:after,
+.post-template-cover-image .post__thumbnail header {
   position: absolute;
   top: 0;
   left: 0;
@@ -139,14 +150,16 @@
   bottom: 0;
 }
 
-.page-template-cover-image .post__thumbnail:after {
+.page-template-cover-image .post__thumbnail:after,
+.post-template-cover-image .post__thumbnail:after {
   content: '';
   display: block;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.625)), to(rgba(0, 0, 0, 0.325)));
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.625) 0%, rgba(0, 0, 0, 0.325) 100%);
 }
 
-.page-template-cover-image .post__thumbnail header {
+.page-template-cover-image .post__thumbnail header,
+.post-template-cover-image .post__thumbnail header {
   z-index: 100;
   display: -webkit-box;
   display: -ms-flexbox;
