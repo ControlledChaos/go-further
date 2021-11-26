@@ -67,6 +67,9 @@
 		margin: 0;
 		padding: 0;
 
+		// In case the image does not load.
+		background-color: var( --go--color--text );
+
 		* {
 			color: white;
 		}
