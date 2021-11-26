@@ -74,7 +74,11 @@ class Theme_Templates {
 		 * If the Cover Image template is assigned and
 		 * the cover image logo is set.
 		 */
-		if ( is_page_template( 'templates/cover-image.php' ) && $cover ) {
+		if (
+			is_page_template( 'templates/cover-image.php' ) &&
+			has_post_thumbnail( get_the_ID() ) &&
+			$cover
+		) {
 			$logo = $cover;
 
 		/**
