@@ -1,3 +1,7 @@
+///
+/// Nippon RTL design styles
+///
+
 :root {
     --go--max-width: 42rem;
     --go--max-width--alignwide: 84rem;
@@ -96,6 +100,18 @@
     --wp-block-coblocks-gallery-carousel--overlay--opacity: .5;
     --wp-block-coblocks-services--heading--margin-bottom: 1.25rem;
     --wp-block-coblocks-services--heading--margin-top: 2rem;
+}
+
+.woocommerce-checkout #ship-to-different-address-checkbox {
+    margin-left: .5rem;
+}
+
+.woocommerce-checkout .wc_payment_methods li.wc_payment_method label[for^=payment_method_]:before {
+    top: 5px;
+}
+
+.wp-block-coblocks-food-item__attributes {
+    top: 0;
 }
 
 @media only screen and (min-width:600px) {
