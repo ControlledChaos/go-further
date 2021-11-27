@@ -78,7 +78,7 @@ class Customizer {
 		$wp_customize->get_control( 'social_icon_color_alt' )->priority = 12;
 
 		// Add a description to the default logo field.
-		$wp_customize->get_control( 'custom_logo' )->description = __( 'Displays in the header of posts & pages assigned the Default template.', 'go-further' );
+		$wp_customize->get_control( 'custom_logo' )->description = __( 'Displays in the header of posts & pages not assigned the Cover Image template and all other pages.', 'go-further' );
 	}
 
 	/**
