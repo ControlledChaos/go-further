@@ -181,10 +181,10 @@ class Setup {
 
 		$add_design_styles = [
 			'nippon' => array(
-				'slug'          => 'nippon',
+				'slug'          => 'rising-sun',
 				'label'         => _x( 'Rising Sun', 'design style name', 'go-further' ),
-				'url'           => get_theme_file_uri( "assets/css/design-styles/rising-sun/style-nippon{$rtl}{$suffix}.css" ),
-				'editor_style'  => "assets/css/design-styles/rising-sun/style-nippon-editor{$rtl}{$suffix}.css",
+				'url'           => get_theme_file_uri( "assets/css/design-styles/rising-sun/style{$rtl}{$suffix}.css" ),
+				'editor_style'  => "assets/css/design-styles/rising-sun/style-editor{$rtl}{$suffix}.css",
 				'color_schemes' => array(
 					'zen' => array(
 						'label'      => _x( 'Zen Garden', 'color palette name', 'go-further' ),

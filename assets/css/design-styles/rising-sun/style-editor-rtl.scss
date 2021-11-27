@@ -1,6 +1,9 @@
 ///
-/// Nippon editor design styles
+/// Nippon editor RTL design styles
 ///
+
+@import 'modules/_colors.scss';
+@import 'modules/_typography.scss';
 
 :root {
     --go--max-width: 42rem;
@@ -10,7 +13,7 @@
     --go--spacing--paragraph: 9;
     --go--spacing--header: 30;
     --go--color--text: #434a56;
-    --go--font-family: "Nunito Sans", sans-serif;
+    --go--font-family: #{$general};
     --go--font-size--small: 85%;
     --go--font-size--smallest: 82%;
     --go--font-size: 1.05rem;
@@ -19,7 +22,7 @@
     --go--type-ratio: 1.275;
     --go-heading--button-spacing: 1.75rem;
     --go-heading--color--text: var(--go--color--secondary);
-    --go-heading--font-family: "Crimson Text", serif;
+    --go-heading--font-family: #{$display};
     --go-heading--font-weight: 400;
     --go-heading--letter-spacing: -0.02em;
     --go-heading--line-height: 1.15;
@@ -37,7 +40,7 @@
     --go-selection--color--background: var(--go--color--secondary);
     --go-selection--color--background: var(--go-heading--color--text);
     --go-button--border-radius: 4px;
-    --go-button--font-family: "Crimson Text", serif;
+    --go-button--font-family: #{$display};
     --go-button--font-family: var(--go-heading--font-family);
     --go-button--font-size: 1.3rem;
     --go-button--font-weight: 500;
@@ -45,7 +48,7 @@
     --go-button--padding--y: 1.4rem;
     --go-button-interactive--color--background: var(--go--color--secondary);
     --go-button-interactive--color--background: var(--go-heading--color--text);
-    --go-label--font-family: "Nunito Sans", sans-serif;
+    --go-label--font-family: #{$general};
     --go-label--font-family: var(--go--font-family);
     --go-label--font-size: 1rem;
     --go-label--font-weight: 400;
@@ -70,7 +73,7 @@
     --go-site-description--color--text: var(--go-heading--color--text);
     --go-navigation--color--text: var(--go--color--secondary);
     --go-navigation--color--text: var(--go-heading--color--text);
-    --go-navigation--font-family: "Crimson Text", serif;
+    --go-navigation--font-family: #{$display};
     --go-navigation--font-family: var(--go-heading--font-family);
     --go-navigation--font-size: 1.3rem;
     --go-navigation-mobile--font-size: 1.65rem;
