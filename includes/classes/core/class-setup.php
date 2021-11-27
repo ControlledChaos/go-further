@@ -170,59 +170,58 @@ class Setup {
 	}
 
 	/**
-	 * Returns the avaliable design styles.
+	 * Returns the available design styles.
 	 *
 	 * @return array
 	 */
 	function add_design_styles( $supported_design_styles ) {
 
-		$suffix = SCRIPT_DEBUG ? '' : '.min';
-		$suffix = '';
+		$suffix = ( SCRIPT_DEBUG || WP_DEBUG ) ? '' : '.min';
 		$rtl    = ! is_rtl() ? '' : '-rtl';
 
 		$add_design_styles = [
 			'nippon' => array(
 				'slug'          => 'nippon',
 				'label'         => _x( 'Rising Sun', 'design style name', 'go-further' ),
-				'url'           => get_theme_file_uri( "assets/css/design-styles/style-nippon{$rtl}{$suffix}.css" ),
-				'editor_style'  => "assets/css/design-styles/style-nippon-editor{$rtl}{$suffix}.css",
+				'url'           => get_theme_file_uri( "assets/css/design-styles/rising-sun/style-nippon{$rtl}{$suffix}.css" ),
+				'editor_style'  => "assets/css/design-styles/rising-sun/style-nippon-editor{$rtl}{$suffix}.css",
 				'color_schemes' => array(
-					'one' => array(
+					'zen' => array(
 						'label'      => _x( 'Zen Garden', 'color palette name', 'go-further' ),
-						'primary'    => '#687530',
-						'secondary'  => '#4c454e',
+						'primary'    => '#4c454e',
+						'secondary'  => '#687530',
 						'tertiary'   => '#e7e2e8',
 						'background' => '#ffffff'
 					),
-					'two' => array(
+					'cherry' => array(
 						'label'      => _x( 'Cherry Blossom', 'color palette name', 'go-further' ),
 						'primary'    => '#c83771',
 						'secondary'  => '#4d8622',
 						'tertiary'   => '#f4e6eb',
 						'background' => '#ffffff'
 					),
-					'three' => array(
+					'koi' => array(
 						'label'      => _x( 'Koi Pond', 'color palette name', 'go-further' ),
 						'primary'    => '#e0661f',
 						'secondary'  => '#2c5aa0',
 						'tertiary'   => '#eaeff7',
 						'background' => '#ffffff'
 					),
-					'four' => array(
+					'mum' => array(
 						'label'      => _x( 'Chrysanthemum', 'color palette name', 'go-further' ),
 						'primary'    => '#f0ae00',
 						'secondary'  => '#4d8622',
 						'tertiary'   => '#fff6d5',
 						'background' => '#ffffff'
 					),
-					'five' => array(
+					'tea' => array(
 						'label'      => _x( 'Tea House', 'color palette name', 'go-further' ),
 						'primary'    => '#7f6032',
 						'secondary'  => '#764fb6',
 						'tertiary'   => '#eee9e2',
 						'background' => '#ffffff'
 					),
-					'six' => array(
+					'fuji' => array(
 						'label'      => _x( 'Volcano', 'color palette name', 'go-further' ),
 						'primary'    => '#6f7c91',
 						'secondary'  => '#b7bec8',
@@ -258,7 +257,7 @@ class Setup {
 				),
 				'font_size'      => '1.125rem',
 				'type_ratio'     => '1.275',
-				'viewport_basis' => '900'
+				'viewport_basis' => '1600'
 			),
 		];
 
