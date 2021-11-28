@@ -245,7 +245,7 @@
   --go--spacing--header: 30;
   --go--color--text: #444045;
   --go--font-family: RS General, Metropolis, Proxima Nova, Red Hat Display, Nunito Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-  --go--letter-spacing: 0.0825em;
+  --go--letter-spacing: 0.075em;
   --go--font-size--small: 85%;
   --go--font-size--smallest: 82%;
   --go--font-size: 1.125rem;
@@ -302,7 +302,7 @@
   --go-site-title--color--text: var( --go--color--secondary );
   --go-site-title--color--text: var( --go-heading--color--text );
   --go-site-title--font-size: 1.75rem;
-  --go-site-title--font-weight: 500;
+  --go-site-title--font-weight: 400;
   --go-site-title--letter-spacing: -0.02em;
   --go-site-description--color--text: var( --go--color--secondary );
   --go-site-description--color--text: var( --go-heading--color--text );
@@ -340,18 +340,6 @@
   --wp-block-coblocks-services--heading--margin-top: 2rem;
 }
 
-.woocommerce-checkout #ship-to-different-address-checkbox {
-  margin-right: .5rem;
-}
-
-.woocommerce-checkout .wc_payment_methods li.wc_payment_method label[for^=payment_method_]:before {
-  top: 5px;
-}
-
-.wp-block-coblocks-food-item__attributes {
-  top: 0;
-}
-
 @media only screen and (min-width: 600px) {
   :root {
     --go--font-size--small: 90%;
@@ -369,4 +357,16 @@
     --go-quote-large--font-size: 3.75em;
     --go-site-title--font-size: 2.15rem;
   }
+}
+
+.woocommerce-checkout #ship-to-different-address-checkbox {
+  margin-right: .5rem;
+}
+
+.woocommerce-checkout .wc_payment_methods li.wc_payment_method label[for^=payment_method_]:before {
+  top: 5px;
+}
+
+.wp-block-coblocks-food-item__attributes {
+  top: 0;
 }
