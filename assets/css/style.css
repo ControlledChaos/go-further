@@ -84,7 +84,7 @@ p {
 
 .post__subtitle {
   margin-top: var(--go-header--padding--y, var(--go-block--padding--x));
-  font-size: 1.325em;
+  font-size: 1.25em;
   font-weight: 300;
   line-height: 1.4;
   letter-spacing: var(--go-further--post-subtitle-letter-spacing);
@@ -144,11 +144,11 @@ p {
 }
 
 .template-cover-image.has-featured-image .post__thumbnail .post__title {
-  text-shadow: 0.015em 0.015em 0.075em rgba(0, 0, 0, 0.7);
+  text-shadow: 0.025em 0.025em 0.0625em rgba(0, 0, 0, 0.85);
 }
 
 .template-cover-image.has-featured-image .post__thumbnail .post__subtitle {
-  text-shadow: 0.05em 0.05em 0.115em rgba(0, 0, 0, 0.7);
+  text-shadow: 0.075em 0.075em 0.125em rgba(0, 0, 0, 0.85);
 }
 
 .template-cover-image.has-featured-image .post__thumbnail:after,
