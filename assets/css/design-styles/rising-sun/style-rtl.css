@@ -6,7 +6,7 @@
   --go--spacing--paragraph: 9;
   --go--spacing--header: 30;
   --go--color--text: #434a56;
-  --go--font-family: Red Hat Display, Nunito Sans, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, Helvetica, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --go--font-family: RS General, Metropolis, Proxima Nova, Red Hat Display, Nunito Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --go--font-size--small: 85%;
   --go--font-size--smallest: 82%;
   --go--font-size: 1.05rem;
@@ -15,7 +15,7 @@
   --go--type-ratio: 1.275;
   --go-heading--button-spacing: 1.75rem;
   --go-heading--color--text: var(--go--color--secondary);
-  --go-heading--font-family: Crimson Pro, Crimson Text, Georgia, Times, Garamond, NonBreakingSpaceOverride, Hoefler Text, Lucida Bright, Lucidabright, Lucida Serif, Lucida, Liberation Serif, Times New Roman, Constantia, serif;
+  --go-heading--font-family: RS Display, Crimson Pro, Crimson Text, Georgia, Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --go-heading--font-weight: 400;
   --go-heading--letter-spacing: -0.02em;
   --go-heading--line-height: 1.15;
@@ -33,7 +33,7 @@
   --go-selection--color--background: var(--go--color--secondary);
   --go-selection--color--background: var(--go-heading--color--text);
   --go-button--border-radius: 4px;
-  --go-button--font-family: Crimson Pro, Crimson Text, Georgia, Times, Garamond, NonBreakingSpaceOverride, Hoefler Text, Lucida Bright, Lucidabright, Lucida Serif, Lucida, Liberation Serif, Times New Roman, Constantia, serif;
+  --go-button--font-family: RS Display, Crimson Pro, Crimson Text, Georgia, Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --go-button--font-family: var(--go-heading--font-family);
   --go-button--font-size: 1.3rem;
   --go-button--font-weight: 500;
@@ -41,7 +41,7 @@
   --go-button--padding--y: 1.4rem;
   --go-button-interactive--color--background: var(--go--color--secondary);
   --go-button-interactive--color--background: var(--go-heading--color--text);
-  --go-label--font-family: Red Hat Display, Nunito Sans, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, Helvetica, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --go-label--font-family: RS General, Metropolis, Proxima Nova, Red Hat Display, Nunito Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --go-label--font-family: var(--go--font-family);
   --go-label--font-size: 1rem;
   --go-label--font-weight: 400;
@@ -66,7 +66,7 @@
   --go-site-description--color--text: var(--go-heading--color--text);
   --go-navigation--color--text: var(--go--color--secondary);
   --go-navigation--color--text: var(--go-heading--color--text);
-  --go-navigation--font-family: Crimson Pro, Crimson Text, Georgia, Times, Garamond, NonBreakingSpaceOverride, Hoefler Text, Lucida Bright, Lucidabright, Lucida Serif, Lucida, Liberation Serif, Times New Roman, Constantia, serif;
+  --go-navigation--font-family: RS Display, Crimson Pro, Crimson Text, Georgia, Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --go-navigation--font-family: var(--go-heading--font-family);
   --go-navigation--font-size: 1.3rem;
   --go-navigation-mobile--font-size: 1.65rem;

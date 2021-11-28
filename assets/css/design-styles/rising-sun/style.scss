@@ -4,6 +4,7 @@
 
 @import 'modules/_colors.scss';
 @import 'modules/_typography.scss';
+@import 'partials/_font-face';
 
 :root {
     --go--max-width: 42rem;
@@ -14,10 +15,11 @@
     --go--spacing--header: 30;
     --go--color--text: #444045;
     --go--font-family: #{$general};
-    --go--letter-spacing: .0625em;
+    --go--letter-spacing: 0.0825em;
     --go--font-size--small: 85%;
     --go--font-size--smallest: 82%;
     --go--font-size: 1.125rem;
+    --go--font-weight: 300;
     --go--letter-spacing--small: .015em;
     --go--line-height: 1.5;
     --go--type-ratio: 1.275;
