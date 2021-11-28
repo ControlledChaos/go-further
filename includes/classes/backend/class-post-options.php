@@ -71,6 +71,31 @@ class Post_Options {
 	}
 
 	/**
+	 * Options available
+	 *
+	 * Whether there are any options available for the metabox.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return boolean Returns true if at least one option is available.
+	 *                 Returns false by default.
+	 */
+	public function options_available() {
+
+		// Get featured image setting from the Customizer.
+		$contain_featured = Customize\mods()->featured_image( get_theme_mod( 'gft_featured_image' ) );
+
+		// If there are featured image options.
+		if (
+			'enable_per' == $contain_featured ||
+			'disable_per' == $contain_featured
+		) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * Author metabox
 	 *
 	 * @since  1.0.0
@@ -112,7 +137,10 @@ class Post_Options {
 			$disable_contain_featured = false;
 		}
 
-	?>
+		// Message for no available options.
+		if ( $this->options_available() ) :
+
+		?>
 		<fieldset>
 			<legend class="screen-reader-text"><?php _e( 'Display Options Form', 'go-further' ); ?></legend>
 
@@ -140,7 +168,14 @@ class Post_Options {
 			</p>
 			<?php endif; ?>
 		</fieldset>
-	<?php
+		<?php
+
+		else :
+			printf(
+				'<p>%s</p>',
+				__( 'No options available.', 'go-further' )
+			);
+		endif;
 	}
 
 	/**
