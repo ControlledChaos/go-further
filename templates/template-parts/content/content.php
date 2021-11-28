@@ -36,11 +36,17 @@ use GoFurther\Classes\Front as Front;
 
 	</header>
 
+	<?php if ( ! is_singular() && has_post_thumbnail() ) : ?>
+		<figure class="post__thumbnail <?php echo Front\tags()->featured_class(); ?>">
+			<?php the_post_thumbnail( 'post-thumbnail' ); ?>
+		</figure>
+	<?php endif; ?>
+
 	<div class="<?php \Go\content_wrapper_class( 'content-area__wrapper' ); ?>">
 
 		<div class="content-area entry-content">
 			<?php
-			if ( is_search() || ( get_theme_mod( 'blog_excerpt', false ) && is_home() ) ) {
+			if ( is_search() || is_archive() || ( get_theme_mod( 'blog_excerpt', false ) && is_home() ) ) {
 				the_excerpt();
 			} else {
 				the_content();
