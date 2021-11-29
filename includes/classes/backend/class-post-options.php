@@ -83,7 +83,7 @@ class Post_Options {
 	public function options_available() {
 
 		// Get featured image setting from the Customizer.
-		$contain_featured = Customize\mods()->featured_image( get_theme_mod( 'gft_featured_image' ) );
+		$contain_featured = Customize\mods()->featured_image( get_theme_mod( 'gft_contain_featured' ) );
 
 		// If there are featured image options.
 		if (
@@ -114,7 +114,7 @@ class Post_Options {
 		$post_name = $get_post->labels->singular_name;
 
 		// Get featured image setting from the Customizer.
-		$contain_featured = Customize\mods()->featured_image( get_theme_mod( 'gft_featured_image' ) );
+		$contain_featured = Customize\mods()->featured_image( get_theme_mod( 'gft_contain_featured' ) );
 
 		wp_nonce_field( "gft_post_{$post->ID}_options_nonce", 'gft_post_options_nonce' );
 

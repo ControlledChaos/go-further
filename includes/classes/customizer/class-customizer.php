@@ -117,17 +117,17 @@ class Customizer {
 			]
 		) );
 
-		// Featured image options.
-		$wp_customize->add_setting( 'gft_featured_image', [
+		// Featured image banner options.
+		$wp_customize->add_setting( 'gft_contain_featured', [
 			'default'	        => 'never',
 			'sanitize_callback' => [ $this, 'featured_image' ]
 		] );
 		$wp_customize->add_control( new \WP_Customize_Control(
 			$wp_customize,
-			'gft_featured_image',
+			'gft_contain_featured',
 			[	// The core "Colors" section is renamed "Site Design" by the parent theme.
 				'section'     => 'colors',
-				'settings'    => 'gft_featured_image',
+				'settings'    => 'gft_contain_featured',
 				'priority'    => 1,
 				'label'       => __( 'Featured Image Containment', 'go-further' ),
 				'description' => __( 'Choose when to contain the featured image with left & right padding. Does not apply to the Cover Image template.', 'go-further' ),
@@ -140,6 +140,8 @@ class Customizer {
 				],
 			]
 		) );
+
+		// Featured image archive options.
 
 		// Display the social media links below content.
 		$wp_customize->add_setting( 'gft_display_social', [
