@@ -17,8 +17,8 @@ use GoFurther\Classes\Front as Front;
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 	<?php if ( is_singular() && has_post_thumbnail() ) : ?>
-		<figure class="post__thumbnail <?php echo Front\tags()->featured_class(); ?>">
-			<?php the_post_thumbnail(); ?>
+		<figure class="post__thumbnail page-banner <?php echo Front\tags()->featured_class(); ?>">
+			<?php the_post_thumbnail( 'post-thumbnail' ); ?>
 		</figure>
 	<?php endif; ?>
 
@@ -37,8 +37,8 @@ use GoFurther\Classes\Front as Front;
 	</header>
 
 	<?php if ( ! is_singular() && has_post_thumbnail() ) : ?>
-		<figure class="post__thumbnail <?php echo Front\tags()->featured_class(); ?>">
-			<?php the_post_thumbnail( 'post-thumbnail' ); ?>
+		<figure class="post__thumbnail archive-image <?php echo Front\tags()->featured_class(); ?>">
+			<?php the_post_thumbnail( 'medium' ); ?>
 		</figure>
 	<?php endif; ?>
 
