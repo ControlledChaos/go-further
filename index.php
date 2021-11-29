@@ -27,7 +27,7 @@ if (
 	( ! is_paged() || ( is_paged() && 1 == $paged ) ) &&
 	has_post_thumbnail( $blog )
 ) : ?>
-	<figure class="post__thumbnail">
+	<figure class="post__thumbnail page-banner">
 		<?php echo get_the_post_thumbnail( $blog ); ?>
 	</figure>
 <?php endif;

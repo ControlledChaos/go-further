@@ -53,7 +53,7 @@
 
 .template-cover-image.has-featured-image {
 
-	.post__thumbnail {
+	.post__thumbnail.cover-image {
 		min-height: 100vh;
 		margin: 0;
 		padding: 0;
@@ -102,10 +102,13 @@
 	}
 }
 
+.blog,
 .singular {
 	.post__thumbnail {
-		img {
-			object-fit: cover;
+		&.page-banner {
+			img {
+				object-fit: cover;
+			}
 		}
 	}
 }

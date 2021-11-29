@@ -38,7 +38,7 @@ use GoFurther\Classes\Front as Front;
 
 	<?php if ( ! is_singular() && has_post_thumbnail() ) : ?>
 		<figure class="post__thumbnail archive-image <?php echo Front\tags()->featured_class(); ?>">
-			<?php the_post_thumbnail( 'medium' ); ?>
+			<?php the_post_thumbnail( 'large' ); ?>
 		</figure>
 	<?php endif; ?>
 

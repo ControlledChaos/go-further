@@ -113,27 +113,27 @@
   margin: 0 calc( -1 * var( --go-header--padding--x, var( --go-block--padding--x ) ));
 }
 
-.template-cover-image.has-featured-image .post__thumbnail {
+.template-cover-image.has-featured-image .post__thumbnail.cover-image {
   min-height: 100vh;
   margin: 0;
   padding: 0;
   background-color: var(--go--color--text);
 }
 
-.template-cover-image.has-featured-image .post__thumbnail * {
+.template-cover-image.has-featured-image .post__thumbnail.cover-image * {
   color: white;
 }
 
-.template-cover-image.has-featured-image .post__thumbnail .post__title {
+.template-cover-image.has-featured-image .post__thumbnail.cover-image .post__title {
   text-shadow: 0.025em 0.025em 0.0625em rgba(0, 0, 0, 0.85);
 }
 
-.template-cover-image.has-featured-image .post__thumbnail .post__subtitle {
+.template-cover-image.has-featured-image .post__thumbnail.cover-image .post__subtitle {
   text-shadow: 0.075em 0.075em 0.125em rgba(0, 0, 0, 0.85);
 }
 
-.template-cover-image.has-featured-image .post__thumbnail:after,
-.template-cover-image.has-featured-image .post__thumbnail header {
+.template-cover-image.has-featured-image .post__thumbnail.cover-image:after,
+.template-cover-image.has-featured-image .post__thumbnail.cover-image header {
   position: absolute;
   top: 0;
   left: 0;
@@ -141,14 +141,14 @@
   bottom: 0;
 }
 
-.template-cover-image.has-featured-image .post__thumbnail:after {
+.template-cover-image.has-featured-image .post__thumbnail.cover-image:after {
   content: '';
   display: block;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.625)), to(rgba(0, 0, 0, 0.325)));
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.625) 0%, rgba(0, 0, 0, 0.325) 100%);
 }
 
-.template-cover-image.has-featured-image .post__thumbnail header {
+.template-cover-image.has-featured-image .post__thumbnail.cover-image header {
   z-index: 100;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -165,7 +165,8 @@
           justify-content: center;
 }
 
-.singular .post__thumbnail img {
+.blog .post__thumbnail.page-banner img,
+.singular .post__thumbnail.page-banner img {
   -o-object-fit: cover;
      object-fit: cover;
 }
