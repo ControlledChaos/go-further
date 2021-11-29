@@ -79,7 +79,7 @@ class Images {
 		add_image_size( 'thumbnail-video', 320, 180, $center );
 
 		// Set the post thumbnail size, 16:9.
-		set_post_thumbnail_size( 2048, 1152, $center );
+		set_post_thumbnail_size( 1920, 1080, $center );
 	}
 
 	/**
