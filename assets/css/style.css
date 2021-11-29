@@ -165,7 +165,8 @@
           justify-content: center;
 }
 
-.blog .post__thumbnail.page-banner img,
+.blog .post__thumbnail.cover-image img, .blog .post__thumbnail.page-banner img,
+.singular .post__thumbnail.cover-image img,
 .singular .post__thumbnail.page-banner img {
   -o-object-fit: cover;
      object-fit: cover;

@@ -105,6 +105,7 @@
 .blog,
 .singular {
 	.post__thumbnail {
+		&.cover-image,
 		&.page-banner {
 			img {
 				object-fit: cover;
