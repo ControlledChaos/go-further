@@ -312,6 +312,7 @@
   --go-navigation--font-family: var( --go-heading--font-family );
   --go-navigation--font-size: 1.375rem;
   --go-navigation-mobile--font-size: 1.65rem;
+  --go-meta--font-size: 1rem;
   --go-search-button--color--text-interactive: var( --go--color--primary );
   --go-search-button--color--background: var( --go--color--primary );
   --go-search-button--color--background-interactive: var( --go--color--secondary );

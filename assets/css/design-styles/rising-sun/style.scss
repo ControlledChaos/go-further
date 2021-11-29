@@ -6,15 +6,15 @@
 @import 'modules/_typography.scss';
 @import 'partials/_font-face';
 @import 'partials/_root';
+@import 'partials/_content';
+@import 'partials/_vendor';
 
-.woocommerce-checkout #ship-to-different-address-checkbox {
-    margin-right: .5rem;
-}
+// Post meta
+.post__meta  {
+    gap: 0.5em;
+    margin-bottom: 2rem;
 
-.woocommerce-checkout .wc_payment_methods li.wc_payment_method label[for^=payment_method_]:before {
-    top: 5px;
-}
-
-.wp-block-coblocks-food-item__attributes {
-    top: 0;
+    li {
+        margin: 0;
+    }
 }

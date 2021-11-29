@@ -1,0 +1,15 @@
+///
+/// Styles for third-party elements
+///
+
+.woocommerce-checkout #ship-to-different-address-checkbox {
+    margin-right: .5rem;
+}
+
+.woocommerce-checkout .wc_payment_methods li.wc_payment_method label[for^=payment_method_]:before {
+    top: 5px;
+}
+
+.wp-block-coblocks-food-item__attributes {
+    top: 0;
+}

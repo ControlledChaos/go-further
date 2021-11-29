@@ -2,33 +2,12 @@
 /// Main content styles
 ///
 
-h1,
-h2,
-h3 {
-	letter-spacing: var( --go-heading--letter-spacing );
-}
-
-p {
-    margin: 0 0 1.5rem;
-}
-
 .site {
 	position: relative;
 }
 
-.post__title {
-	font-size: calc(
-		var( --go--font-size ) * 0.7 * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio )
-	);
-	font-size: var(--go--type-scale-6);
-}
-
 .post__subtitle {
 	margin-top: var( --go-header--padding--y, var( --go-block--padding--x ) );
-	font-size: 1.25em;
-	font-weight: 300;
-	line-height: 1.4;
-	letter-spacing: var( --go-further--post-subtitle-letter-spacing );
 }
 
 // @todo Object fit options, overall & per post.
