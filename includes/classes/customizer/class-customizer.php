@@ -117,10 +117,21 @@ class Customizer {
 			]
 		) );
 
+		/**
+		 * Blog featured image
+		 *
+		 * This theme provides an optional featured image for
+		 * blog pages and corresponding display options.
+		 *
+		 * If a static front page and a blog page is set then
+		 * the template & settings of the blog page may
+		 * supersede some of these settings.
+		 */
+
 		// Featured image banner options.
 		$wp_customize->add_setting( 'gft_contain_featured', [
 			'default'	        => 'never',
-			'sanitize_callback' => [ $this, 'featured_image' ]
+			'sanitize_callback' => [ $this, 'contain_featured' ]
 		] );
 		$wp_customize->add_control( new \WP_Customize_Control(
 			$wp_customize,
@@ -170,7 +181,7 @@ class Customizer {
 	 * @param  $input
 	 * @return string Returns the theme mod.
 	 */
-	public function featured_image( $input ) {
+	public function contain_featured( $input ) {
 
 		$valid = [ 'never', 'always', 'enable_per', 'disable_per' ];
 

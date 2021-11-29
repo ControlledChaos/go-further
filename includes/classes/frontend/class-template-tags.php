@@ -175,7 +175,7 @@ class Template_Tags {
 	public function featured_class() {
 
 		// Get the author section display setting from the Customizer.
-		$contain_featured = Customize\mods()->featured_image( get_theme_mod( 'gft_contain_featured' ) );
+		$contain_featured = Customize\mods()->contain_featured( get_theme_mod( 'gft_contain_featured' ) );
 
 		$class   = '';
 		$options = get_post_meta( get_the_ID(), 'gft_post_options', true );
