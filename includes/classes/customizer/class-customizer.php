@@ -55,7 +55,7 @@ class Customizer {
 	public function __construct() {
 
 		// Modify existing Customizer elements.
-		add_action( 'customize_register', [ $this, 'customize_modify' ], 11 );
+		add_action( 'customize_register', [ $this, 'customize_modify' ], 20 );
 
 		// Register new panels, sections, & fields.
 		add_action( 'customize_register', [ $this, 'customize_register' ] );
@@ -74,11 +74,21 @@ class Customizer {
 		// Refresh for page titles setting.
 		$wp_customize->get_setting( 'page_titles' )->transport = 'refresh';
 
-		// Social icon color below social link display.
-		$wp_customize->get_control( 'social_icon_color_alt' )->priority = 12;
+		// Move Site Settings section up in the list.
+		$wp_customize->get_section( 'go_site_settings' )->priority = 41;
 
 		// Add a description to the default logo field.
 		$wp_customize->get_control( 'custom_logo' )->description = __( 'Displays in the header of posts & pages not assigned the Cover Image template and all other pages.', 'go-further' );
+
+		// Move blog excerpt setting below other blog settings.
+		$wp_customize->get_control( 'blog_excerpt_checkbox' )->priority = 9;
+
+		// Put parent theme Social section into Menus panel.
+		$wp_customize->get_section( 'go_social_media' )->panel    = 'nav_menus';
+		$wp_customize->get_section( 'go_social_media' )->priority = 999;
+
+		// Social icon color below social link display.
+		$wp_customize->get_control( 'social_icon_color_alt' )->priority = 12;
 	}
 
 	/**
@@ -128,6 +138,57 @@ class Customizer {
 		 * supersede some of these settings.
 		 */
 
+		// Blog image display options.
+		$wp_customize->add_setting( 'gft_blog_image_display', [
+			'default'	        => 'never',
+			'sanitize_callback' => [ $this, 'contain_featured' ]
+		] );
+		$wp_customize->add_control( new \WP_Customize_Control(
+			$wp_customize,
+			'gft_blog_image_display',
+			[
+				'section'     => 'go_site_settings',
+				'settings'    => 'gft_blog_image_display',
+				'priority'    => 1,
+				'label'       => __( 'Blog Image Display', 'go-further' ),
+				'description' => __( 'Choose where to display a featured image on blog pages. If a static front page and a blog page is set then the template & settings of the blog page may supersede some of these settings.', 'go-further' ),
+				'type'        => 'select',
+				'choices'     => [
+					'never'  => __( 'Do Not Display', 'go-further' ),
+					'always' => __( 'Banner All Pages', 'go-further' ),
+					'banner' => __( 'Banner First Page Only', 'go-further' ),
+					'cover'  => __( 'Cover First Page Only', 'go-further' ),
+					'mixed'  => __( 'Cover First Page, Banner Other Pages', 'go-further' )
+				],
+				'active_callback' => ''
+			]
+		) );
+
+		// Blog image if no blog page is set.
+		$image_sizes = wp_get_additional_image_sizes();
+		$wp_customize->add_setting( 'gft_blog_image', [
+			'default'           => '',
+			'sanitize_callback' => [ $this, 'sanitize_image' ]
+		] );
+		$wp_customize->add_control( new \WP_Customize_Image_Control(
+			$wp_customize,
+			'gft_blog_image',
+			[
+				'section'       => 'go_site_settings',
+				'settings'      => 'gft_blog_image',
+				'label'         => __( 'Blog Image', 'go-further' ),
+				'description'   => __( 'Displays in the header of blog pages according to display settings.', 'go-further' ),
+				'priority'      => 8,
+				'width'         => $image_sizes['post-thumbnail']['width'],
+				'height'        => $image_sizes['post-thumbnail']['height'],
+				'button_labels' => [
+					'select' => __( 'Select image', 'go-further' ),
+					'remove' => __( 'Remove', 'go-further' ),
+					'change' => __( 'Change image', 'go-further' ),
+				]
+			]
+		) );
+
 		// Featured image banner options.
 		$wp_customize->add_setting( 'gft_contain_featured', [
 			'default'	        => 'never',
@@ -154,6 +215,24 @@ class Customizer {
 
 		// Featured image archive options.
 
+		// Sticky header.
+		$wp_customize->add_setting( 'gft_sticky_header', [
+			'default'	        => false,
+			'sanitize_callback' => [ $this, 'sticky_header' ]
+		] );
+		$wp_customize->add_control( new \WP_Customize_Control(
+			$wp_customize,
+			'gft_sticky_header',
+			[
+				'section'     => 'go_header_settings',
+				'settings'    => 'gft_sticky_header',
+				'label'       => __( 'Sticky Header', 'go-further' ),
+				'description' => __( 'Check to make the header stick to the top of the page.', 'go-further' ),
+				'type'        => 'checkbox',
+				'priority'    => 100
+			]
+		) );
+
 		// Display the social media links below content.
 		$wp_customize->add_setting( 'gft_display_social', [
 			'default'	        => true,
@@ -174,6 +253,48 @@ class Customizer {
 	}
 
 	/**
+	 * Sanitize image
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  $input
+	 * @param  $setting
+	 * @return string Returns the URL of the image.
+	 */
+	public function sanitize_image( $input, $setting ) {
+		return esc_url_raw( $this->validate_image( $input, $setting->default ) );
+	}
+
+	/**
+	 * Validate image
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  $input
+	 * @param  $default
+	 * @return array Returns an array with file extension and mime_type.
+	 */
+	public function validate_image( $input, $default = '' ) {
+
+		$mimes = [
+			'jpg|jpeg|jpe' => 'image/jpeg',
+			'gif'          => 'image/gif',
+			'png'          => 'image/png',
+			'bmp'          => 'image/bmp',
+			'tif|tiff'     => 'image/tiff',
+			'ico'          => 'image/x-icon'
+		];
+
+		$file = wp_check_filetype( $input, $mimes );
+
+		if ( $file['ext'] ) {
+			return $input;
+		} else {
+			return $default;
+		}
+	}
+
+	/**
 	 * Featured image
 	 *
 	 * @since  1.0.0
@@ -189,6 +310,22 @@ class Customizer {
 			return $input;
 		}
 		return 'never';
+	}
+
+	/**
+	 * Sticky header
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  $input
+	 * @return string Returns the theme mod.
+	 */
+	public function sticky_header( $input ) {
+
+		if ( ! isset( $input ) || true == $input ) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
