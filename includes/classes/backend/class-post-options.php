@@ -48,7 +48,7 @@ class Post_Options {
 	 * @return void
 	 */
 	public function metabox_setup() {
-		add_action( 'add_meta_boxes', [ $this, 'metaboxes' ], 10, 1 );
+		add_action( 'add_meta_boxes', [ $this, 'metaboxes' ] );
 	}
 
 	/**
