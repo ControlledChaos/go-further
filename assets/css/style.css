@@ -1,3 +1,7 @@
+:root {
+  --go-header--color--background: #ffffff;
+}
+
 .header {
   width: 100%;
 }
@@ -13,6 +17,29 @@
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     gap: 0 1.5vw;
+  }
+}
+
+.has-sticky-header .header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.has-sticky-header.logged-in.admin-bar .header {
+  top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+  .has-sticky-header.logged-in.admin-bar .header {
+    top: 46px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .has-sticky-header.logged-in.admin-bar .header {
+    position: static;
+    top: unset;
   }
 }
 

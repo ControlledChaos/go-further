@@ -15,6 +15,32 @@
 	}
 }
 
+.has-sticky-header {
+	.header {
+		position: sticky;
+		top: 0;
+	}
+
+	&.logged-in.admin-bar {
+		.header {
+			top: 32px;
+		}
+
+		@media screen and ( max-width: 782px ) {
+			.header {
+				top: 46px;
+			}
+		}
+
+		@media screen and ( max-width: 600px ) {
+			.header {
+				position: static;
+				top: unset;
+			}
+		}
+	}
+}
+
 .custom-logo-link ~ a .site-title {
 	margin: 0;
 }
