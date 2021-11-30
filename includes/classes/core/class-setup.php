@@ -36,6 +36,9 @@ class Setup {
 		// Add excerpts to pages for use in meta data.
 		add_action( 'init', [ $this, 'add_page_excerpts' ] );
 
+		// Sticky header.
+		add_filter( 'body_class', [ $this, 'sticky_header' ] );
+
 		// Add social links to the parent array.
 		add_filter( 'go_avaliable_social_icons', [ $this, 'get_available_social_icons' ] );
 
@@ -77,6 +80,28 @@ class Setup {
 	 */
 	public function add_page_excerpts() {
 		add_post_type_support( 'page', 'excerpt' );
+	}
+
+	/**
+	 * Sticky header
+	 *
+	 * Adds classes frontend body element.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return array Returns a modified array of body classes.
+	 */
+	public function sticky_header( $classes ) {
+
+		new Customize\Customizer;
+
+		// Get the navigation location setting from the Customizer.
+		$sticky = Customize\mods()->sticky_header( get_theme_mod( 'gft_sticky_header' ) );
+
+		if ( $sticky ) {
+			return array_merge( $classes, [ 'has-sticky-header' ] );
+		}
+		return $classes;
 	}
 
 	/**
@@ -215,13 +240,27 @@ class Setup {
 						'background' => '#ffffff'
 					),
 					'five' => array(
-						'label'      => _x( 'Tea House', 'color palette name', 'go-further' ),
+						'label'      => _x( 'Wisteria', 'color palette name', 'go-further' ),
 						'primary'    => '#7f6032',
 						'secondary'  => '#764fb6',
 						'tertiary'   => '#eee9e2',
 						'background' => '#ffffff'
 					),
 					'six' => array(
+						'label'      => _x( 'Maple', 'color palette name', 'go-further' ),
+						'primary'    => '#7f6032',
+						'secondary'  => '#764fb6',
+						'tertiary'   => '#eee9e2',
+						'background' => '#ffffff'
+					),
+					'seven' => array(
+						'label'      => _x( 'Tea House', 'color palette name', 'go-further' ),
+						'primary'    => '#7f6032',
+						'secondary'  => '#764fb6',
+						'tertiary'   => '#eee9e2',
+						'background' => '#ffffff'
+					),
+					'eight' => array(
 						'label'      => _x( 'Volcano', 'color palette name', 'go-further' ),
 						'primary'    => '#6f7c91',
 						'secondary'  => '#b7bec8',
