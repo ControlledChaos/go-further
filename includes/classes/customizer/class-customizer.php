@@ -141,7 +141,7 @@ class Customizer {
 		// Blog image display options.
 		$wp_customize->add_setting( 'gft_blog_image_display', [
 			'default'	        => 'never',
-			'sanitize_callback' => [ $this, 'contain_featured' ]
+			'sanitize_callback' => [ $this, 'blog_image_display' ]
 		] );
 		$wp_customize->add_control( new \WP_Customize_Control(
 			$wp_customize,
@@ -292,6 +292,24 @@ class Customizer {
 		} else {
 			return $default;
 		}
+	}
+
+	/**
+	 * Blog image display
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  $input
+	 * @return string Returns the theme mod.
+	 */
+	public function blog_image_display( $input ) {
+
+		$valid = [ 'never', 'always', 'banner', 'cover', 'mixed' ];
+
+		if ( in_array( $input, $valid ) ) {
+			return $input;
+		}
+		return 'never';
 	}
 
 	/**
