@@ -54,7 +54,7 @@
 	&.has-sticky-header {
 		.header {
 			position: absolute;
-			transition: background-color ease-in-out .15s;
+			transition: background-color .15s linear;
 
 			&.header-scrolled {
 				background-color: var( --go-header--color--background );
@@ -63,8 +63,7 @@
 	}
 
 	&:not( .menu-is-open ) {
-
-		.header {
+		.header:not( .header-scrolled ) {
 
 			button {
 				&:focus {
@@ -88,7 +87,7 @@
 			top: 0;
 
 			.header__inner {
-				transition: padding ease-in-out .25s;
+				transition: padding .25s linear;
 			}
 
 			&.header-scrolled {

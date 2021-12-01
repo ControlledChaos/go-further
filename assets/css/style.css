@@ -53,19 +53,19 @@
 
 .template-cover-image.has-sticky-header .header {
   position: absolute;
-  -webkit-transition: background-color ease-in-out .15s;
-  transition: background-color ease-in-out .15s;
+  -webkit-transition: background-color .15s linear;
+  transition: background-color .15s linear;
 }
 
 .template-cover-image.has-sticky-header .header.header-scrolled {
   background-color: var(--go-header--color--background);
 }
 
-.template-cover-image:not(.menu-is-open) .header button:focus {
+.template-cover-image:not(.menu-is-open) .header:not(.header-scrolled) button:focus {
   outline-color: white;
 }
 
-.template-cover-image:not(.menu-is-open) .header svg {
+.template-cover-image:not(.menu-is-open) .header:not(.header-scrolled) svg {
   fill: white;
 }
 
@@ -76,8 +76,8 @@
 }
 
 .js .has-sticky-header .header .header__inner {
-  -webkit-transition: padding ease-in-out .25s;
-  transition: padding ease-in-out .25s;
+  -webkit-transition: padding .25s linear;
+  transition: padding .25s linear;
 }
 
 .js .has-sticky-header .header.header-scrolled .header__inner {
