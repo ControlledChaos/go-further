@@ -101,8 +101,6 @@ if ( is_admin() ) {
 	$gft_post_options = new Admin\Post_Options;
 }
 
-$gft_tmpls = new Front\Theme_Templates;
-
 // Customizer classes.
 if ( is_customize_preview() ) {
 	$gft_customize = new Customize\Customizer;

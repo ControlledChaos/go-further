@@ -69,7 +69,6 @@ define( 'GFT_CLASSES', [
 
 	// Frontend classes.
 	GFT_CLASS_NS . '\Front\Template_Tags'   => GFT_CLASS['front'] . 'template-tags.php',
-	GFT_CLASS_NS . '\Front\Theme_Templates' => GFT_CLASS['front'] . 'theme-templates.php',
 	GFT_CLASS_NS . '\Front\Assets'          => GFT_CLASS['front'] . 'assets.php',
 
 	// Backend classes.
