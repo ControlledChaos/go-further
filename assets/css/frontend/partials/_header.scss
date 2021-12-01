@@ -6,7 +6,7 @@
 	width: 100%;
 
 	.header__titles {
-		align-items: baseline;
+		align-items: center;
 
 		@media screen and ( min-width: 960px ) {
 			flex-wrap: wrap;
