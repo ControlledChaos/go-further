@@ -1,5 +1,6 @@
 :root {
   --go-header--color--background: #ffffff;
+  --further-cover-overlay: #000000;
 }
 
 .header {
@@ -199,8 +200,9 @@
 .template-cover-image .post__thumbnail.cover-image:after {
   content: '';
   display: block;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.625)), to(rgba(0, 0, 0, 0.325)));
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.625) 0%, rgba(0, 0, 0, 0.325) 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(var(--further-cover-overlay-rgb), 0.625)));
+  background-image: linear-gradient(to bottom, black 0%, rgba(var(--further-cover-overlay-rgb), 0.625) 100%);
+  opacity: 0.625;
 }
 
 .template-cover-image .post__thumbnail.cover-image header {
