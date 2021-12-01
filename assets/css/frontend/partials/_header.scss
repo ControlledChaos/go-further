@@ -15,6 +15,10 @@
 	}
 }
 
+.custom-logo-wrap {
+	position: relative;
+}
+
 .custom-logo-link ~ a .site-title {
 	margin: 0;
 }
@@ -27,7 +31,7 @@
 
 .template-cover-image {
 
-	.header {
+	.header:not( .header-scrolled ) {
 		position: absolute;
 		background-color: transparent;
 
@@ -50,6 +54,11 @@
 	&.has-sticky-header {
 		.header {
 			position: absolute;
+			transition: background-color ease-in-out .15s;
+
+			&.header-scrolled {
+				background-color: var( --go-header--color--background );
+			}
 		}
 	}
 
@@ -77,6 +86,17 @@
 		.header {
 			position: sticky;
 			top: 0;
+
+			.header__inner {
+				transition: padding ease-in-out .25s;
+			}
+
+			&.header-scrolled {
+				.header__inner {
+					padding-top: calc( var( --go-header--padding--y ) / 3 );
+					padding-bottom: calc( var( --go-header--padding--y ) / 3 );
+				}
+			}
 		}
 
 		&.logged-in.admin-bar {
