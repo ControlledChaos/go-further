@@ -30,6 +30,9 @@ class Setup {
 	 */
 	public function __construct() {
 
+		// Swap html 'no-js' class with 'js'.
+		add_action( 'wp_head', [ $this, 'js_detect' ], 0 );
+
 		// Theme setup.
 		add_action( 'after_setup_theme', [ $this, 'setup' ] );
 
@@ -52,6 +55,21 @@ class Setup {
 		add_filter( 'login_headerurl', [ $this, 'login_url' ] );
 
 		add_filter( 'go_design_styles', [ $this, 'add_design_styles' ] );
+	}
+
+	/**
+	 * HTML JS class
+	 *
+	 * Adds a 'js' to the <html> element with JavaScript.
+	 * Parent theme does not have a `no-js` class to replace
+	 * so CSS works opposite a "no JS" method.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string
+	 */
+	public function js_detect() {
+		echo "<script>var root=document.getElementsByTagName('html')[0];root.setAttribute('class','js');</script>\n";
 	}
 
 	/**
