@@ -83,6 +83,10 @@ class Customizer {
 		// Move blog excerpt setting below other blog settings.
 		$wp_customize->get_control( 'blog_excerpt_checkbox' )->priority = 9;
 
+		// Change the blog excerpt setting label & description.
+		$wp_customize->get_control( 'blog_excerpt_checkbox' )->label = __( 'Blog Index Content', 'go-further' );
+		$wp_customize->get_control( 'blog_excerpt_checkbox' )->description = __( 'Use post excerpts on the blog index pages.', 'go-further' );
+
 		// Put parent theme Social section into Menus panel.
 		$wp_customize->get_section( 'go_social_media' )->panel    = 'nav_menus';
 		$wp_customize->get_section( 'go_social_media' )->priority = 999;
