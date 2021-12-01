@@ -15,32 +15,6 @@
 	}
 }
 
-.has-sticky-header {
-	.header {
-		position: sticky;
-		top: 0;
-	}
-
-	&.logged-in.admin-bar {
-		.header {
-			top: 32px;
-		}
-
-		@media screen and ( max-width: 782px ) {
-			.header {
-				top: 46px;
-			}
-		}
-
-		@media screen and ( max-width: 600px ) {
-			.header {
-				position: static;
-				top: unset;
-			}
-		}
-	}
-}
-
 .custom-logo-link ~ a .site-title {
 	margin: 0;
 }
@@ -51,7 +25,7 @@
 	}
 }
 
-.template-cover-image.has-featured-image {
+.template-cover-image {
 
 	.header {
 		position: absolute;
@@ -73,6 +47,12 @@
 		}
 	}
 
+	&.has-sticky-header {
+		.header {
+			position: absolute;
+		}
+	}
+
 	&:not( .menu-is-open ) {
 
 		.header {
@@ -85,6 +65,44 @@
 
 			svg {
 				fill: white;
+			}
+		}
+	}
+}
+
+// Styles if JavaScript is enabled.
+.js {
+
+	.has-sticky-header {
+		.header {
+			position: sticky;
+			top: 0;
+		}
+
+		&.logged-in.admin-bar {
+			.header {
+				top: 32px;
+			}
+
+			@media screen and ( max-width: 782px ) {
+				.header {
+					top: 46px;
+				}
+			}
+
+			@media screen and ( max-width: 600px ) {
+				.header {
+					position: static;
+					top: unset;
+				}
+			}
+		}
+	}
+
+	.template-cover-image {
+		&.has-sticky-header {
+			.header {
+				position: fixed;
 			}
 		}
 	}
