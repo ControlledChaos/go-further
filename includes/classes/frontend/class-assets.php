@@ -94,7 +94,26 @@ class Assets {
 	 * @access public
 	 * @return void
 	 */
-	public function print_scripts() {}
+	public function print_scripts() {
+
+		?>
+		<script>
+		// Add class to header on scroll.
+		( function($) {
+			$(window).scroll( function() {
+
+				scroll_top = $( '.header' ).outerHeight();
+
+				if ( $(this).scrollTop() > scroll_top ) {
+					$( '.header' ).addClass( 'header-scrolled' );
+				} else {
+					$( '.header' ).removeClass( 'header-scrolled' );
+				}
+			});
+		})(jQuery);
+		</script>
+		<?php
+	}
 
 	/**
 	 * File suffix
