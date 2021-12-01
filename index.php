@@ -8,9 +8,24 @@
  * @since      1.0.0
  */
 
-// Get blog data.
-$blog  = (int) get_option( 'page_for_posts' );
-$paged = get_query_var( 'paged' );
+namespace GoFurther;
+
+// Alias namespaces.
+use GoFurther\Classes\Front     as Front,
+	GoFurther\Classes\Customize as Customize;
+
+// Get blog settings.
+$blog          = (int) get_option( 'page_for_posts' );
+$blog_image    = get_theme_mod( 'gft_blog_image' );
+$display_image = Front\tags()->display_blog_image();
+$has_image     = Front\tags()->blog_has_image();
+
+$image = '';
+if ( $blog && has_post_thumbnail( $blog ) ) {
+	$image = get_the_post_thumbnail_url( $blog, 'full' );
+} elseif ( $blog_image ) {
+	$image = $blog_image;
+}
 
 get_header();
 
@@ -18,17 +33,16 @@ get_header();
  * Featured image on the first page of the blog if
  * an ID for the blog page is set.
  */
-if (
-	$blog && is_main_query() &&
-	( ! is_paged() || ( is_paged() && 1 == $paged ) ) &&
-	has_post_thumbnail( $blog )
-) : ?>
-	<figure class="post__thumbnail page-banner">
-		<?php echo get_the_post_thumbnail( $blog ); ?>
+if ( $display_image && $has_image ) : ?>
+	<figure class="post__thumbnail cover-image">
+		<img src="<?php echo $image; ?>" alt="">
+		<?php Front\tags()->page_title(); ?>
 	</figure>
 <?php endif;
 
-Go\page_title();
+if ( ! $display_image ) {
+	\Go\page_title();
+}
 
 if ( have_posts() ) {
 
