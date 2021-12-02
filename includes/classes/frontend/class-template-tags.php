@@ -297,15 +297,20 @@ class Template_Tags {
 			$args['classes'][] = sprintf( '%s="%s"', sanitize_key( $key ), esc_attr( $value ) );
 		}
 
-		$html = esc_html( $args['title'] );
+		$blog_title = $this->get_blog_title();
+		if ( is_home() ) {
+			$title = esc_html( $blog_title );
+		} else {
+			$title = esc_html( $args['title'] );
+		}
 
 		if ( ! empty( $args['wrapper'] ) ) {
 
-			$html = sprintf(
+			$title = sprintf(
 				'<%1$s %2$s>%3$s</%1$s>',
 				sanitize_key( $args['wrapper'] ),
 				implode( ' ', $args['classes'] ),
-				$html
+				$title
 			);
 		}
 
@@ -317,7 +322,7 @@ class Template_Tags {
 			'<header class="page-header entry-header m-auto px %1$s">%2$s%3$s</header>',
 			is_customize_preview() ? ( get_theme_mod( 'page_titles', true ) ? '' : 'display-none' ) : '',
 			wp_kses(
-				$html,
+				$title,
 				[
 					$args['wrapper'] => $args['atts'],
 				]
@@ -327,16 +332,39 @@ class Template_Tags {
 	}
 
 	/**
+	 * Get blog title
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return mixed Returns the text of the title or null.
+	 */
+	public function get_blog_title() {
+
+		$title      = __( 'Latest Blog Posts', 'go-further' );
+		$blog_page  = (int) get_option( 'page_for_posts' );
+		$blog_title = get_theme_mod( 'gft_blog_title' );
+
+		if ( ! empty( $blog_page ) ) {
+			$title = get_the_title( $blog_page );
+		} elseif ( $blog_title ) {
+			$title = $blog_title;
+		}
+
+		return apply_filters( 'gft_get_blog_title', $title );
+	}
+
+	/**
 	 * Get the subtitle
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return string Returns the text of the subtitle.
+	 * @return mixed Returns the text of the subtitle or null.
 	 */
 	public function get_page_subtitle() {
 
-		$subtitle  = '';
-		$blog_page = (int) get_option( 'page_for_posts' );
+		$subtitle      = '';
+		$blog_page     = (int) get_option( 'page_for_posts' );
+		$blog_subtitle = get_theme_mod( 'gft_blog_subtitle' );
 
 		if (
 			is_home() &&
@@ -344,6 +372,12 @@ class Template_Tags {
 			has_excerpt( $blog_page )
 		) {
 			$subtitle = get_the_excerpt( $blog_page );
+
+		} elseif (
+				is_home() &&
+				! empty( $blog_subtitle )
+			) {
+				$subtitle = esc_html( $blog_subtitle );
 
 		} elseif (
 			is_singular() &&

@@ -84,8 +84,8 @@ class Customizer {
 		$wp_customize->get_control( 'blog_excerpt_checkbox' )->priority = 9;
 
 		// Change the blog excerpt setting label & description.
-		$wp_customize->get_control( 'blog_excerpt_checkbox' )->label = __( 'Blog Index Content', 'go-further' );
-		$wp_customize->get_control( 'blog_excerpt_checkbox' )->description = __( 'Use post excerpts on the blog index pages.', 'go-further' );
+		$wp_customize->get_control( 'blog_excerpt_checkbox' )->label = __( 'Summarize Blog Index', 'go-further' );
+		$wp_customize->get_control( 'blog_excerpt_checkbox' )->description = __( 'Check to use post excerpts on the blog index pages.', 'go-further' );
 
 		// Put parent theme Social section into Menus panel.
 		$wp_customize->get_section( 'go_social_media' )->panel    = 'nav_menus';
@@ -131,6 +131,40 @@ class Customizer {
 			]
 		) );
 
+		// Blog title.
+		$wp_customize->add_setting( 'gft_blog_title', [
+			'default'           => '',
+			'sanitize_callback' => 'wp_filter_nohtml_kses'
+		] );
+		$wp_customize->add_control( new \WP_Customize_Control(
+			$wp_customize,
+			'gft_blog_title', [
+				'section'     => 'go_site_settings',
+				'settings'    => 'gft_blog_title',
+				'priority'    => 1,
+				'label'       => __( 'Blog Title', 'go-further' ),
+				'description' => __( '', 'go-further' ),
+				'type'        => 'text'
+			]
+		) );
+
+		// Blog subtitle/description.
+		$wp_customize->add_setting( 'gft_blog_subtitle', [
+			'default'           => '',
+			'sanitize_callback' => 'wp_filter_nohtml_kses'
+		] );
+		$wp_customize->add_control( new \WP_Customize_Control(
+			$wp_customize,
+			'gft_blog_subtitle', [
+				'section'     => 'go_site_settings',
+				'settings'    => 'gft_blog_subtitle',
+				'priority'    => 2,
+				'label'       => __( 'Blog Subtitle', 'go-further' ),
+				'description' => __( '', 'go-further' ),
+				'type'        => 'textarea'
+			]
+		) );
+
 		/**
 		 * Blog featured image
 		 *
@@ -153,7 +187,7 @@ class Customizer {
 			[
 				'section'     => 'go_site_settings',
 				'settings'    => 'gft_blog_image_display',
-				'priority'    => 1,
+				'priority'    => 3,
 				'label'       => __( 'Blog Image Display', 'go-further' ),
 				'description' => __( 'Choose where to display a featured image on blog pages. If a static front page and a blog page is set then the template & settings of the blog page may supersede some of these settings.', 'go-further' ),
 				'type'        => 'select',
@@ -182,7 +216,7 @@ class Customizer {
 				'settings'      => 'gft_blog_image',
 				'label'         => __( 'Blog Image', 'go-further' ),
 				'description'   => __( 'Displays in the header of blog pages according to display settings.', 'go-further' ),
-				'priority'      => 8,
+				'priority'      => 4,
 				'width'         => $image_sizes['post-thumbnail']['width'],
 				'height'        => $image_sizes['post-thumbnail']['height'],
 				'button_labels' => [
