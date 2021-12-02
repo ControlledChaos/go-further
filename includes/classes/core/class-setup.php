@@ -54,6 +54,7 @@ class Setup {
 		// Login URL.
 		add_filter( 'login_headerurl', [ $this, 'login_url' ] );
 
+		// Add design styles to the parent theme customizer options.
 		add_filter( 'go_design_styles', [ $this, 'add_design_styles' ] );
 	}
 
