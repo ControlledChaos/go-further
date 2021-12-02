@@ -41,7 +41,7 @@ if ( $display_image && $has_image ) : ?>
 <?php endif;
 
 if ( ! $display_image ) {
-	\Go\page_title();
+	Front\tags()->page_title();
 }
 
 if ( have_posts() ) {
