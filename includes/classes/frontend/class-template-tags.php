@@ -313,20 +313,6 @@ class Template_Tags {
 			$args['atts'][ $attribute ] = [];
 		}
 
-		// Page subtitle/excerpt.
-		if (
-			is_singular() &&
-			post_type_supports( get_post_type( get_the_ID() ), 'excerpt' ) &&
-			has_excerpt( get_the_ID() )
-		) {
-			$subtitle = sprintf(
-				' <p class="post__subtitle text-center">%1$s</p>',
-				get_the_excerpt( get_the_ID() )
-			);
-		} else {
-			$subtitle = '';
-		}
-
 		printf(
 			'<header class="page-header entry-header m-auto px %1$s">%2$s%3$s</header>',
 			is_customize_preview() ? ( get_theme_mod( 'page_titles', true ) ? '' : 'display-none' ) : '',
@@ -336,8 +322,67 @@ class Template_Tags {
 					$args['wrapper'] => $args['atts'],
 				]
 			),
-			$subtitle
+			$this->page_subtitle( '<p class="post__subtitle m-0 text-center">', '</p>', false )
 		);
+	}
+
+	/**
+	 * Get the subtitle
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string Returns the text of the subtitle.
+	 */
+	public function get_page_subtitle() {
+
+		$subtitle  = '';
+		$blog_page = (int) get_option( 'page_for_posts' );
+
+		if (
+			is_home() &&
+			! empty( $blog_page ) &&
+			has_excerpt( $blog_page )
+		) {
+			$subtitle = get_the_excerpt( $blog_page );
+
+		} elseif (
+			is_singular() &&
+			post_type_supports( get_post_type( get_the_ID() ), 'excerpt' ) &&
+			has_excerpt( get_the_ID() )
+		) {
+			$subtitle = get_the_excerpt( get_the_ID() );
+		}
+
+		return apply_filters( 'gft_get_page_subtitle', $subtitle );
+	}
+
+	/**
+	 * The subtitle
+	 *
+	 * Display or retrieve the current post subtitle with optional markup.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  string $before Optional. Markup to prepend to the title. Default empty.
+	 * @param  string $after Optional. Markup to append to the title. Default empty.
+	 * @param  bool $echo Optional. Whether to echo or return the title. Default true for echo.
+	 * @return void|string Void if `$echo` argument is true, current post title if `$echo` is false.
+	 */
+	public function page_subtitle( $before = '', $after = '', $echo = true ) {
+
+		$subtitle = $this->get_page_subtitle();
+
+		if ( 0 == strlen( $subtitle ) ) {
+			return;
+		}
+
+		$subtitle = $before . $subtitle . $after;
+
+		if ( $echo ) {
+			echo $subtitle;
+		} else {
+			return $subtitle;
+		}
 	}
 
 	/**
