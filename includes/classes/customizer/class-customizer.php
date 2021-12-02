@@ -78,7 +78,7 @@ class Customizer {
 		$wp_customize->get_section( 'go_site_settings' )->priority = 41;
 
 		// Add a description to the default logo field.
-		$wp_customize->get_control( 'custom_logo' )->description = __( 'Displays in the header of posts & pages not assigned the Cover Image template and all other pages.', 'go-further' );
+		$wp_customize->get_control( 'custom_logo' )->description = __( 'Displays in the header of posts & pages not assigned the Cover Image template and all other pages. However, it will be used for the Cover Image template if no Cover Image Logo, and upon page scroll if the sticky header option is selected.', 'go-further' );
 
 		// Move blog excerpt setting below other blog settings.
 		$wp_customize->get_control( 'blog_excerpt_checkbox' )->priority = 9;
