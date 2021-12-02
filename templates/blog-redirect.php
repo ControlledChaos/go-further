@@ -14,7 +14,8 @@
  * @since      1.0.0
  */
 
-if ( ! is_user_logged_in() && ! current_user_can( 'edit_pages' ) ) :
+$front = (string) get_option( 'show_on_front' );
+if ( 'posts' == $front && ! is_user_logged_in() && ! current_user_can( 'edit_pages' ) ) :
 	wp_safe_redirect( site_url( '/' ), '302', get_bloginfo( 'name' ) );
 else :
 
