@@ -114,3 +114,16 @@
 		}
 	}
 }
+
+.blog {
+	article {
+		.post__thumbnail {
+			&.cover-image,
+			&.page-banner {
+				img {
+					object-fit: contain;
+				}
+			}
+		}
+	}
+}

@@ -228,3 +228,8 @@
   -o-object-fit: cover;
      object-fit: cover;
 }
+
+.blog article .post__thumbnail.cover-image img, .blog article .post__thumbnail.page-banner img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
