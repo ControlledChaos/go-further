@@ -83,21 +83,21 @@ require get_theme_file_path( '/includes/config.php' );
 require_once GFT_PATH . 'includes/autoloader.php';
 
 // Theme setup.
-$gft_core_setup  = new Core\Setup;
-$gft_core_assets = new Core\Assets;
-$gft_core_mods   = new Customize\Customizer;
+new Core\Setup;
+new Core\Assets;
+new Customize\Customizer;
 
 // Media classes.
-$gft_images = new Media\Images;
+new Media\Images;
 
 // Frontend classes.
 if ( ! is_admin() ) {
-	$gft_tags   = new Front\Template_Tags;
-	$gft_assets = new Front\Assets;
+	new Front\Template_Tags;
+	new Front\Assets;
 }
 
 // Backend classes.
 if ( is_admin() ) {
-	$gft_editor_styles = new Admin\Editor_Styles;
-	$gft_post_options  = new Admin\Post_Options;
+	new Admin\Editor_Styles;
+	new Admin\Post_Options;
 }
