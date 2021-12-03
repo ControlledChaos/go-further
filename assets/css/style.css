@@ -5,6 +5,7 @@
 
 .header {
   width: 100%;
+  position: relative;
 }
 
 .header .header__titles {
@@ -18,11 +19,42 @@
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     gap: 0 1.5vw;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
   }
+}
+
+.header:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
 }
 
 .custom-logo-wrap {
   position: relative;
+}
+
+@media screen and (min-width: 960px) {
+  .custom-logo-wrap {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-item-align: center;
+        align-self: center;
+  }
+}
+
+.custom-logo-wrap a {
+  display: inline-block;
+}
+
+.custom-logo-wrap a img {
+  display: block;
 }
 
 .custom-logo-link ~ a .site-title {
@@ -42,8 +74,14 @@
 
 .template-cover-image .header:not(.header-scrolled) .site-title,
 .template-cover-image .header:not(.header-scrolled) .site-description {
-  color: white;
   opacity: 1;
+}
+
+@media not screen and (max-width: 600px) {
+  .template-cover-image .header:not(.header-scrolled) .site-title,
+  .template-cover-image .header:not(.header-scrolled) .site-description {
+    color: white;
+  }
 }
 
 @media screen and (min-width: 960px) {
@@ -62,12 +100,16 @@
   background-color: var(--go-header--color--background);
 }
 
-.template-cover-image:not(.menu-is-open) .header:not(.header-scrolled) button:focus {
-  outline-color: white;
+@media not screen and (max-width: 600px) {
+  .template-cover-image:not(.menu-is-open) .header:not(.header-scrolled) button:focus {
+    outline-color: white;
+  }
 }
 
-.template-cover-image:not(.menu-is-open) .header:not(.header-scrolled) svg {
-  fill: white;
+@media not screen and (max-width: 600px) {
+  .template-cover-image:not(.menu-is-open) .header:not(.header-scrolled) svg {
+    fill: white;
+  }
 }
 
 .js .has-sticky-header .header {
@@ -77,8 +119,8 @@
 }
 
 .js .has-sticky-header .header .header__inner {
-  -webkit-transition: padding .25s linear;
-  transition: padding .25s linear;
+  -webkit-transition: padding .15s linear;
+  transition: padding .15s linear;
 }
 
 .js .has-sticky-header .header.header-scrolled .header__inner {

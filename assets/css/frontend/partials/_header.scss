@@ -4,6 +4,7 @@
 
 .header {
 	width: 100%;
+	position: relative;
 
 	.header__titles {
 		align-items: center;
@@ -11,12 +12,36 @@
 		@media screen and ( min-width: 960px ) {
 			flex-wrap: wrap;
 			gap: 0 1.5vw;
+			align-items: baseline;
 		}
+	}
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: inherit;
 	}
 }
 
 .custom-logo-wrap {
 	position: relative;
+
+	@media screen and ( min-width: 960px ) {
+		display: inline-flex;
+		align-self: center;
+	}
+
+	a {
+		display: inline-block;
+
+		img {
+			display: block;
+		}
+	}
 }
 
 .custom-logo-link ~ a .site-title {
@@ -37,12 +62,14 @@
 
 		.site-title,
 		.site-description {
-			color: white;
 			opacity: 1;
+
+			@media not screen and ( max-width: 600px ) {
+				color: white;
+			}
 		}
 
 		@media screen and ( min-width: 960px ) {
-
 			.header__navigation {
 				a {
 					color: white;
@@ -67,12 +94,16 @@
 
 			button {
 				&:focus {
-					outline-color: white;
+					@media not screen and ( max-width: 600px ) {
+						outline-color: white;
+					}
 				}
 			}
 
 			svg {
-				fill: white;
+				@media not screen and ( max-width: 600px ) {
+					fill: white;
+				}
 			}
 		}
 	}
@@ -87,7 +118,7 @@
 			top: 0;
 
 			.header__inner {
-				transition: padding .25s linear;
+				transition: padding .15s linear;
 			}
 
 			&.header-scrolled {
@@ -132,7 +163,6 @@
  * there is nothing to toggle.
  */
 .has-no-primary-menu {
-
 	.nav-toggle {
 		display: none;
 	}

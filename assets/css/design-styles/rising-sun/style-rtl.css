@@ -306,6 +306,8 @@
   --go-site-title--letter-spacing: -0.02em;
   --go-site-description--color--text: var( --go--color--secondary );
   --go-site-description--color--text: var( --go-heading--color--text );
+  --go-site-description--letter-spacing: 0.0625em;
+  --go-site-description--font-weight: 500;
   --go-navigation--color--text: var( --go--color--secondary );
   --go-navigation--color--text: var( --go-heading--color--text );
   --go-navigation--font-family: RS Display, Crimson Pro, Crimson Text, Georgia, Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
