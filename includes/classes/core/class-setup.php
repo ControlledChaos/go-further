@@ -232,8 +232,8 @@ class Setup {
 				'color_schemes' => array(
 					'one' => array(
 						'label'      => _x( 'Zen Garden', 'color palette name', 'go-further' ),
-						'primary'    => '#4c454e',
-						'secondary'  => '#687530',
+						'primary'    => '#687530',
+						'secondary'  => '#4c454e',
 						'tertiary'   => '#e7e2e8',
 						'background' => '#ffffff'
 					),
