@@ -371,7 +371,7 @@ class Template_Tags {
 			! empty( $blog_page ) &&
 			has_excerpt( $blog_page )
 		) {
-			$subtitle = get_the_excerpt( $blog_page );
+			$subtitle = wp_strip_all_tags( get_the_excerpt( $blog_page ), true );
 
 		} elseif (
 				is_home() &&
@@ -384,7 +384,7 @@ class Template_Tags {
 			post_type_supports( get_post_type( get_the_ID() ), 'excerpt' ) &&
 			has_excerpt( get_the_ID() )
 		) {
-			$subtitle = get_the_excerpt( get_the_ID() );
+			$subtitle = wp_strip_all_tags( get_the_excerpt( get_the_ID() ), true );
 		}
 
 		return apply_filters( 'gft_get_page_subtitle', $subtitle );
@@ -476,7 +476,7 @@ class Template_Tags {
 		// Get the author section display setting from the Customizer.
 		$contain_featured = Customize\mods()->contain_featured( get_theme_mod( 'gft_contain_featured' ) );
 
-		$class   = '';
+		$classes   = [];
 		$options = get_post_meta( get_the_ID(), 'gft_post_options', true );
 		$enable  = $options ? in_array( 'enable_contain_featured', $options, true ) : false;
 		$disable = $options ? in_array( 'disable_contain_featured', $options, true ) : false;
@@ -484,13 +484,18 @@ class Template_Tags {
 		if ( 'never' != $contain_featured ) {
 			if (
 				'always' == $contain_featured ||
-				( 'enable_per'  == $contain_featured && true  == $enable ) ||
-				( 'disable_per' == $contain_featured && false == $disable )
+				( 'enable_per'  == $contain_featured && true == $enable ) ||
+				( 'disable_per' == $contain_featured && true != $disable )
 			) {
-				$class = 'contained';
+				$classes[] .= 'contained';
 			}
 		}
-		return $class;
+
+		if ( $this->has_cover_image() ) {
+			// $classes[] .= 'cover-image';
+		}
+
+		return implode( $classes, ' ' );
 	}
 
 	/**
