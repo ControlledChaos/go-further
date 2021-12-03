@@ -98,10 +98,6 @@ if ( ! is_admin() ) {
 
 // Backend classes.
 if ( is_admin() ) {
-	$gft_post_options = new Admin\Post_Options;
-}
-
-// Customizer classes.
-if ( is_customize_preview() ) {
-	$gft_customize = new Customize\Customizer;
+	$gft_editor_styles = new Admin\Editor_Styles;
+	$gft_post_options  = new Admin\Post_Options;
 }

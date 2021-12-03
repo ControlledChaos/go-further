@@ -72,7 +72,8 @@ define( 'GFT_CLASSES', [
 	GFT_CLASS_NS . '\Front\Assets'          => GFT_CLASS['front'] . 'assets.php',
 
 	// Backend classes.
-	GFT_CLASS_NS . '\Admin\Post_Options' => GFT_CLASS['admin'] . 'post-options.php',
+	GFT_CLASS_NS . '\Admin\Editor_Styles' => GFT_CLASS['admin'] . 'editor-styles.php',
+	GFT_CLASS_NS . '\Admin\Post_Options'  => GFT_CLASS['admin'] . 'post-options.php',
 
 	// Customizer classes.
 	GFT_CLASS_NS . '\Customize\Customizer'  => GFT_CLASS['customize'] . 'customizer.php'
