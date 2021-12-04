@@ -224,71 +224,71 @@ class Setup {
 		$rtl    = ! is_rtl() ? '' : '-rtl';
 
 		$add_design_styles = [
-			'rising-sun' => array(
+			'rising-sun' => [
 				'slug'          => 'rising-sun',
 				'label'         => _x( 'Rising Sun', 'design style name', 'go-further' ),
 				'url'           => get_theme_file_uri( "assets/css/design-styles/rising-sun/style{$rtl}{$suffix}.css" ),
 				'editor_style'  => "assets/css/design-styles/rising-sun/style-editor{$rtl}{$suffix}.css",
-				'color_schemes' => array(
-					'one' => array(
+				'color_schemes' => [
+					'one' => [
 						'label'      => _x( 'Zen Garden', 'color palette name', 'go-further' ),
 						'primary'    => '#687530',
 						'secondary'  => '#4c454e',
 						'tertiary'   => '#e7e2e8',
 						'background' => '#ffffff'
-					),
-					'two' => array(
+					],
+					'two' => [
 						'label'      => _x( 'Cherry Blossom', 'color palette name', 'go-further' ),
 						'primary'    => '#c83771',
 						'secondary'  => '#4d8622',
 						'tertiary'   => '#f4e6eb',
 						'background' => '#ffffff'
-					),
-					'three' => array(
+					],
+					'three' => [
 						'label'      => _x( 'Koi Pond', 'color palette name', 'go-further' ),
 						'primary'    => '#e0661f',
 						'secondary'  => '#2c5aa0',
 						'tertiary'   => '#eaeff7',
 						'background' => '#ffffff'
-					),
-					'four' => array(
+					],
+					'four' => [
 						'label'      => _x( 'Chrysanthemum', 'color palette name', 'go-further' ),
 						'primary'    => '#f0ae00',
 						'secondary'  => '#4d8622',
 						'tertiary'   => '#fff6d5',
 						'background' => '#ffffff'
-					),
-					'five' => array(
+					],
+					'five' => [
 						'label'      => _x( 'Wisteria', 'color palette name', 'go-further' ),
 						'primary'    => '#7f6032',
 						'secondary'  => '#764fb6',
 						'tertiary'   => '#eee9e2',
 						'background' => '#ffffff'
-					),
-					'six' => array(
+					],
+					'six' => [
 						'label'      => _x( 'Maple', 'color palette name', 'go-further' ),
 						'primary'    => '#7f6032',
 						'secondary'  => '#764fb6',
 						'tertiary'   => '#eee9e2',
 						'background' => '#ffffff'
-					),
-					'seven' => array(
+					],
+					'seven' => [
 						'label'      => _x( 'Tea House', 'color palette name', 'go-further' ),
 						'primary'    => '#7f6032',
 						'secondary'  => '#764fb6',
 						'tertiary'   => '#eee9e2',
 						'background' => '#ffffff'
-					),
-					'eight' => array(
+					],
+					'eight' => [
 						'label'      => _x( 'Volcano', 'color palette name', 'go-further' ),
 						'primary'    => '#6f7c91',
 						'secondary'  => '#b7bec8',
 						'tertiary'   => '#eceef1',
 						'background' => '#ffffff'
-					),
-				),
-				'fonts'=> array(
-					'Crimson Pro' => array(
+					],
+				],
+				'fonts'=> [
+					'Crimson Pro' => [
 						'300',
 						'300i',
 						'400',
@@ -299,8 +299,8 @@ class Setup {
 						'600i',
 						'700',
 						'700i'
-					),
-					'Red Hat Display'  => array(
+					],
+					'Red Hat Display' => [
 						'300',
 						'300i',
 						'400',
@@ -311,12 +311,12 @@ class Setup {
 						'600i',
 						'700',
 						'700i'
-					),
-				),
+					],
+				],
 				'font_size'      => '1.125rem',
 				'type_ratio'     => '1.275',
 				'viewport_basis' => '1600'
-			),
+			]
 		];
 
 		return array_merge( $add_design_styles, $supported_design_styles );
