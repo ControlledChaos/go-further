@@ -82,8 +82,11 @@
   }
 }
 
-.template-cover-image .header:not(.header-scrolled) {
+.template-cover-image .header {
   position: absolute;
+}
+
+.template-cover-image .header:not(.header-scrolled) {
   background-color: transparent;
 }
 

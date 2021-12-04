@@ -80,8 +80,11 @@ $header_transition_timing: 0.15s;
 
 .template-cover-image {
 
-	.header:not( .header-scrolled ) {
+	.header {
 		position: absolute;
+	}
+
+	.header:not( .header-scrolled ) {
 		background-color: transparent;
 
 		.site-title,
