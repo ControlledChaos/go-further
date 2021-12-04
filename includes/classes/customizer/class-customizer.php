@@ -181,6 +181,14 @@ class Customizer {
 		$wp_customize->get_control( 'blog_excerpt_checkbox' )->label = __( 'Summarize Blog Index', 'go-further' );
 		$wp_customize->get_control( 'blog_excerpt_checkbox' )->description = __( 'Check to use post excerpts on the blog index pages.', 'go-further' );
 
+		// Put the parent theme's copyright field into the Site Identity section.
+		$wp_customize->get_control( 'copyright_control' )->section = 'title_tagline';
+		$wp_customize->get_control( 'copyright_control' )->priority = 25;
+
+		// Put the parent theme's page titles field into the Site Identity section.
+		$wp_customize->get_control( 'show_page_title_checkbox' )->section = 'colors';
+		$wp_customize->get_control( 'show_page_title_checkbox' )->priority = 45;
+
 		// Put the parent theme's Social section into the core Menus panel.
 		$wp_customize->get_section( 'go_social_media' )->panel = 'nav_menus';
 		$wp_customize->get_section( 'go_social_media' )->priority = 999;
@@ -356,7 +364,7 @@ class Customizer {
 			[	// The core "Colors" section is renamed "Site Design" by the parent theme.
 				'section'     => 'colors',
 				'settings'    => 'gft_contain_featured',
-				'priority'    => 1,
+				'priority'    => 55,
 				'label'       => __( 'Featured Image Containment', 'go-further' ),
 				'description' => __( 'Choose when to contain the featured image with left & right padding. Does not apply to the Cover Image template.', 'go-further' ),
 				'type'        => 'select',
