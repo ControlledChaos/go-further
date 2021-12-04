@@ -217,7 +217,7 @@ class Customizer {
 			'gft_cover_logo',
 			[
 				'section'       => 'title_tagline',
-				'settings'      => [ 'gft_cover_logo' ],
+				'settings'      => 'gft_cover_logo',
 				'priority'      => 16,
 				'label'         => __( 'Cover Image Logo', 'go-further' ),
 				'description'   => __( 'Displays in the header of posts & pages assigned the Cover Image template, if the default logo is also set.', 'go-further' ),
@@ -250,7 +250,7 @@ class Customizer {
 			$wp_customize,
 			'gft_blog_title', [
 				'section'     => 'static_front_page',
-				'settings'    => [ 'gft_blog_title' ],
+				'settings'    => 'gft_blog_title',
 				'priority'    => 20,
 				'label'       => __( 'Blog Title', 'go-further' ),
 				'description' => __( 'If a static front page and a blog page is set then the title of the blog page will supersede this setting.', 'go-further' ),
@@ -267,7 +267,7 @@ class Customizer {
 			$wp_customize,
 			'gft_blog_subtitle', [
 				'section'     => 'static_front_page',
-				'settings'    => [ 'gft_blog_subtitle' ],
+				'settings'    => 'gft_blog_subtitle',
 				'priority'    => 25,
 				'label'       => __( 'Blog Subtitle', 'go-further' ),
 				'description' => __( 'If a static front page and a blog page is set then the manual excerpt of the blog page will supersede this text.', 'go-further' ),
@@ -297,7 +297,7 @@ class Customizer {
 			'gft_blog_image',
 			[
 				'section'       => 'static_front_page',
-				'settings'      => [ 'gft_blog_image' ],
+				'settings'      => 'gft_blog_image',
 				'label'         => __( 'Blog Image', 'go-further' ),
 				'description'   => __( 'Displays in the header of blog pages according to display settings. If a static front page and a blog page is set then the featured image of the blog page will supersede this image.', 'go-further' ),
 				'priority'      => 30,
@@ -321,7 +321,7 @@ class Customizer {
 			'gft_blog_image_display',
 			[
 				'section'     => 'static_front_page',
-				'settings'    => [ 'gft_blog_image_display' ],
+				'settings'    => 'gft_blog_image_display',
 				'priority'    => 35,
 				'label'       => __( 'Blog Image Display', 'go-further' ),
 				'description' => __( 'Choose where to display a featured image on blog pages. If a static front page and a blog page is set then the template & settings of the blog page will supersede this text.', 'go-further' ),
@@ -355,7 +355,7 @@ class Customizer {
 			'gft_contain_featured',
 			[	// The core "Colors" section is renamed "Site Design" by the parent theme.
 				'section'     => 'colors',
-				'settings'    => [ 'gft_contain_featured' ],
+				'settings'    => 'gft_contain_featured',
 				'priority'    => 1,
 				'label'       => __( 'Featured Image Containment', 'go-further' ),
 				'description' => __( 'Choose when to contain the featured image with left & right padding. Does not apply to the Cover Image template.', 'go-further' ),
@@ -383,7 +383,7 @@ class Customizer {
 			'gft_sticky_header',
 			[
 				'section'     => 'go_header_settings',
-				'settings'    => [ 'gft_sticky_header' ],
+				'settings'    => 'gft_sticky_header',
 				'priority'    => 100,
 				'label'       => __( 'Sticky Header', 'go-further' ),
 				'description' => __( 'Check to make the header stick to the top of the page.', 'go-further' ),
@@ -406,7 +406,7 @@ class Customizer {
 			'gft_display_social',
 			[
 				'section'     => 'go_social_media',
-				'settings'    => [ 'gft_display_social' ],
+				'settings'    => 'gft_display_social',
 				'priority'    => 11,
 				'label'       => __( 'Links Below Content', 'go-further' ),
 				'description' => __( 'Check to display the social media links below the content.', 'go-further' ),
