@@ -55,6 +55,21 @@
 
 .custom-logo-wrap a img {
   display: block;
+  -webkit-transition: opacity 0.15s;
+  transition: opacity 0.15s;
+}
+
+.custom-logo-wrap a img + img {
+  margin-top: -100%;
+  opacity: 0;
+}
+
+.custom-logo-wrap.has-cover-logo a img:first-of-type {
+  opacity: 0;
+}
+
+.custom-logo-wrap.has-cover-logo a img + img {
+  opacity: 1;
 }
 
 .custom-logo-link ~ a .site-title {
@@ -92,12 +107,20 @@
 
 .template-cover-image.has-sticky-header .header {
   position: absolute;
-  -webkit-transition: background-color .15s linear;
-  transition: background-color .15s linear;
+  -webkit-transition: background-color 0.15s linear;
+  transition: background-color 0.15s linear;
 }
 
 .template-cover-image.has-sticky-header .header.header-scrolled {
   background-color: var(--go-header--color--background);
+}
+
+.template-cover-image.has-sticky-header .header.header-scrolled .custom-logo-wrap a img:first-of-type {
+  opacity: 1;
+}
+
+.template-cover-image.has-sticky-header .header.header-scrolled .custom-logo-wrap a img + img {
+  opacity: 0;
 }
 
 @media not screen and (max-width: 600px) {
@@ -119,8 +142,8 @@
 }
 
 .js .has-sticky-header .header .header__inner {
-  -webkit-transition: padding .15s linear;
-  transition: padding .15s linear;
+  -webkit-transition: padding 0.15s linear;
+  transition: padding 0.15s linear;
 }
 
 .js .has-sticky-header .header.header-scrolled .header__inner {

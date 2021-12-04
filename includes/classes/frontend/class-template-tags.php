@@ -102,75 +102,81 @@ class Template_Tags {
 	public function custom_logo ( $html ) {
 
 		// Get logos & logo link URL.
-		$logo_img   = null;
-		$logo_link  = site_url( '/' );
-		$cover_logo = get_theme_mod( 'gft_cover_logo' );
-		$default    = get_theme_mod( 'custom_logo' );
-		$post_type  = get_post_type( get_the_ID() );
-
-		// Get blog data.
-		$blog  = (int) get_option( 'page_for_posts' );
-		$paged = get_query_var( 'paged' );
-
-		// Get settings from the customizer.
-		$blog_image = Customize\mods()->blog_image_display( get_theme_mod( 'gft_blog_image_display' ) );
-
-		/**
-		 * If the Cover Image template is assigned and
-		 * the cover image logo is set.
-		 */
-		if (
-			is_singular( $post_type ) &&
-			post_type_supports( $post_type, 'thumbnail' ) &&
-			has_post_thumbnail( get_the_ID() ) &&
-			tags()->has_cover_image() &&
-			$cover_logo
-		) {
-			$logo_img = $cover_logo;
-
-		/**
-		 * If the blog page is assigned the cover image and
-		 * the cover image logo is set.
-		 */
-		} elseif (
-			! is_singular() &&
-			tags()->has_cover_image() &&
-			$cover_logo
-		) {
-			$logo_img = $cover_logo;
-
-		/**
-		 * If the Cover Image template is assigned and
-		 * no cover image logo is set.
-		 */
-		} elseif ( tags()->has_cover_image() && ! $cover ) {
-			$logo_img = $default;
-
-		/**
-		 * If the Default template is assigned and
-		 * the default logo is set.
-		 */
-		} elseif ( $default ) {
-			$logo_img = $default;
-		}
+		$wrap_class  = [ 'custom-logo-wrap' ];
+		$logo        = null;
+		$logo_link   = site_url( '/' );
+		$custom_logo = get_theme_mod( 'custom_logo' );
+		$cover_logo  = get_theme_mod( 'gft_cover_logo' );
+		$post_type   = get_post_type( get_the_ID() );
 
 		// Stop here if no logo is found.
-		if ( is_null( $logo_img ) ) {
+		if ( empty( $custom_logo ) ) {
 			return;
 		}
 
+		// Default logo markup.
+		$logo = wp_get_attachment_image(
+			$custom_logo,
+			'full',
+			false,
+			[
+				'class' => 'custom-logo default-logo',
+			]
+		);
+
+		// Cover logo markup, if image is available.
+		if ( $cover_logo ) {
+
+			/**
+			 * If the Cover Image template is assigned and
+			 * the cover image logo is set.
+			 */
+			if (
+				is_singular( $post_type ) &&
+				post_type_supports( $post_type, 'thumbnail' ) &&
+				has_post_thumbnail( get_the_ID() ) &&
+				tags()->has_cover_image()
+			) {
+				$wrap_class[] .= 'has-cover-logo';
+
+				$logo .= wp_get_attachment_image(
+					$cover_logo,
+					'full',
+					false,
+					[
+						'class' => 'custom-logo cover-logo',
+					]
+				);
+
+			/**
+			 * If the blog page is assigned the cover image and
+			 * the cover image logo is set.
+			 */
+			} elseif (
+				! is_singular() &&
+				tags()->has_cover_image()
+			) {
+				$wrap_class[] .= 'has-cover-logo';
+
+				$logo .= wp_get_attachment_image(
+					$cover_logo,
+					'full',
+					false,
+					[
+						'class' => 'custom-logo cover-logo',
+					]
+				);
+			}
+		} // if ( $cover_logo )
+
+		$wrap_class = implode( ' ', $wrap_class );
+
 		// The markup of the linked logo.
 		$html = sprintf(
-			'<div class="custom-logo-wrap"><a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a></div>',
+			'<div class="%1$s"><a href="%2$s" class="custom-logo-link" rel="home" itemprop="url">%3$s</a></div>',
+			$wrap_class,
 			esc_url( $logo_link  ),
-			wp_get_attachment_image(
-				$logo_img,
-				'full',
-				false,
-				[
-					'class' => 'custom-logo',
-				]
-			)
+			$logo
 		);
 
 		// Return the markup of the logo with a filter applied.

@@ -2,6 +2,9 @@
 /// Site header styles
 ///
 
+// General transition timing.
+$header_transition_timing: 0.15s;
+
 .header {
 	width: 100%;
 	position: relative;
@@ -40,6 +43,27 @@
 
 		img {
 			display: block;
+			transition: opacity $header_transition_timing;
+
+			// Cover image template logo.
+			& + img {
+				margin-top: -100%;
+				opacity: 0;
+			}
+		}
+	}
+
+	&.has-cover-logo {
+		a {
+			img {
+				&:first-of-type {
+					opacity: 0;
+				}
+
+				& + img {
+					opacity: 1;
+				}
+			}
 		}
 	}
 }
@@ -81,10 +105,24 @@
 	&.has-sticky-header {
 		.header {
 			position: absolute;
-			transition: background-color .15s linear;
+			transition: background-color $header_transition_timing linear;
 
 			&.header-scrolled {
 				background-color: var( --go-header--color--background );
+
+				.custom-logo-wrap {
+					a {
+						img {
+							&:first-of-type {
+								opacity: 1;
+							}
+
+							& + img {
+								opacity: 0;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -118,7 +156,7 @@
 			top: 0;
 
 			.header__inner {
-				transition: padding .15s linear;
+				transition: padding $header_transition_timing linear;
 			}
 
 			&.header-scrolled {
