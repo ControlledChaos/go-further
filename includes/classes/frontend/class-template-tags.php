@@ -169,6 +169,7 @@ class Template_Tags {
 			}
 		} // if ( $cover_logo )
 
+		// Compile the wrapper classes.
 		$wrap_class = implode( ' ', $wrap_class );
 
 		// The markup of the linked logo.
