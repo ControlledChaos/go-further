@@ -499,7 +499,9 @@ class Template_Tags {
 		}
 
 		if ( $this->has_cover_image() ) {
-			// $classes[] .= 'cover-image';
+			$classes[] .= 'cover-image';
+		} else {
+			$classes[] .= 'page-banner';
 		}
 
 		return implode( $classes, ' ' );

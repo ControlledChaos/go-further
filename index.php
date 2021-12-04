@@ -33,12 +33,16 @@ get_header();
  * Featured image on the first page of the blog if
  * an ID for the blog page is set.
  */
-if ( $display_image && $has_image ) : ?>
-	<figure class="post__thumbnail cover-image">
+if ( $display_image && $has_image ) :
+
+?>
+	<figure class="post__thumbnail <?php echo Front\tags()->featured_class(); ?>">
 		<img src="<?php echo $image; ?>" alt="">
 		<?php Front\tags()->page_title(); ?>
 	</figure>
-<?php endif;
+<?php
+
+endif;
 
 if ( ! $display_image ) {
 	Front\tags()->page_title();
