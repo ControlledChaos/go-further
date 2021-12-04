@@ -2,13 +2,6 @@
 /// Root style variables
 ///
 
-// Convert hex to RGB.
-@function hex_to_rgb($hex) {
-    @return red($hex), green($hex), blue($hex);
-}
-
-$further-cover-overlay: #000000;
-
 :root {
     --go--max-width: 42rem;
     --go--max-width--alignwide: 84rem;
@@ -114,8 +107,6 @@ $further-cover-overlay: #000000;
     --wp-block-coblocks-gallery-carousel--overlay--opacity: .5;
     --wp-block-coblocks-services--heading--margin-bottom: 1.25rem;
     --wp-block-coblocks-services--heading--margin-top: 2rem;
-
-    --further-cover-overlay-rgb: #{hex_to_rgb( $further-cover-overlay )};
 
 	@media only screen and ( min-width: 600px ) {
 		--go--font-size--small: 90%;

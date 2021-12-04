@@ -1,0 +1,15 @@
+///
+/// Root style variables
+///
+
+// Convert hex to RGB.
+@function hex_to_rgb($hex) {
+    @return red($hex), green($hex), blue($hex);
+}
+
+$further-cover-overlay: #000000;
+
+:root {
+    --go-header--color--background: #ffffff;
+    --further-cover-overlay-rgb: #{hex_to_rgb( $further-cover-overlay )};
+}

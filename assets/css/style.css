@@ -1,6 +1,6 @@
 :root {
   --go-header--color--background: #ffffff;
-  --further-cover-overlay: #000000;
+  --further-cover-overlay-rgb: 0, 0, 0;
 }
 
 .header {
