@@ -52,7 +52,7 @@ $header_transition_timing: 0.15s;
 
 			// Cover image template logo.
 			& + img {
-				margin-top: -100%;
+				margin-top: -100% !important;
 				opacity: 0;
 			}
 		}

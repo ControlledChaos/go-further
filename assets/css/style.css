@@ -62,7 +62,7 @@
 }
 
 .custom-logo-wrap a img + img {
-  margin-top: -100%;
+  margin-top: -100% !important;
   opacity: 0;
 }
 
