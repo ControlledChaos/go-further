@@ -36,6 +36,9 @@ class Setup {
 		// Theme setup.
 		add_action( 'after_setup_theme', [ $this, 'setup' ] );
 
+		// Register widget areas.
+        add_action( 'widgets_init', [ $this, 'widgets' ] );
+
 		// Add excerpts to pages for use in meta data.
 		add_action( 'init', [ $this, 'add_page_excerpts' ] );
 
@@ -94,6 +97,27 @@ class Setup {
 		// Add stylesheet for the content editor.
 		$assets = new Assets;
 		add_editor_style( 'assets/css/editor' . $assets->suffix() . '.css', [ 'gft-admin' ], '', 'screen' );
+	}
+
+	/**
+	 * Register widgets
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function widgets() {
+
+		// Register footer widget area.
+		register_sidebar( [
+			'name'          => __( 'Footer Widgets', 'go-further' ),
+			'id'            => 'footer',
+			'description'   => __( 'Displays below the main content.', 'go-further' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		] );
 	}
 
 	/**
