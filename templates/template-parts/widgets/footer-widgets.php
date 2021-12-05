@@ -15,6 +15,6 @@ use GoFurther\Classes\Front     as Front,
 	GoFurther\Classes\Customize as Customize;
 
 ?>
-<aside id="secondary" class="footer-widgets">
+<aside id="footer-widgets" class="footer-widgets">
 	<?php dynamic_sidebar( 'footer' ); ?>
 </aside>
