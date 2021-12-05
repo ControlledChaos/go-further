@@ -25,7 +25,7 @@ p {
 	line-height: 1.4;
 	letter-spacing: var( --go-further--post-subtitle-letter-spacing );
 
-	@media not ( min-width: 960px ), (orientation: landscape) {
+	@media not screen and ( min-width: 960px ) {
 		font-size: 1.125rem;
 	}
 }

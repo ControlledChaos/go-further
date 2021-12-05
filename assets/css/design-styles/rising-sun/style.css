@@ -384,7 +384,7 @@ p {
   letter-spacing: var(--go-further--post-subtitle-letter-spacing);
 }
 
-@media (min-width: 960px), (orientation: landscape) {
+@media not screen and (min-width: 960px) {
   .post__subtitle {
     font-size: 1.125rem;
   }
