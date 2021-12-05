@@ -9,16 +9,6 @@ $header_transition_timing: 0.15s;
 	width: 100%;
 	position: relative;
 
-	.header__titles {
-		align-items: center;
-
-		@media screen and ( min-width: 960px ) {
-			flex-wrap: wrap;
-			gap: 0 1.5vw;
-			align-items: baseline;
-		}
-	}
-
 	&:before {
 		content: '';
 		position: absolute;
@@ -27,6 +17,21 @@ $header_transition_timing: 0.15s;
 		width: 100%;
 		height: 100%;
 		background-color: inherit;
+	}
+}
+
+.has-header-1,
+.has-header-2 {
+	.header {
+		.header__titles {
+			align-items: center;
+
+			@media screen and ( min-width: 960px ) {
+				flex-wrap: wrap;
+				gap: 0 1.5vw;
+				align-items: baseline;
+			}
+		}
 	}
 }
 
