@@ -21,7 +21,9 @@ $header_transition_timing: 0.15s;
 }
 
 .has-header-1,
-.has-header-2 {
+.has-header-2,
+.has-header-8,
+.has-header-9 {
 	.header {
 		.header__titles {
 			align-items: center;
@@ -156,6 +158,106 @@ $header_transition_timing: 0.15s;
 				}
 			}
 		}
+	}
+}
+
+.header-8 .header__extras,
+.header-9 .header__extras {
+	display: none;
+}
+
+.header-8.has-featured-image .header,
+.header-9.has-featured-image .header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.header-8.has-featured-image.admin-bar .header,
+.header-9.has-featured-image.admin-bar .header {
+	top: 32px;
+}
+
+@media only screen and (min-width:960px) {
+
+	.header-8 .header__extras {
+		justify-content: flex-end;
+	}
+}
+
+@media only screen and (max-width:781px) {
+
+	.header-8.has-featured-image.admin-bar .header,
+	.header-9.has-featured-image.admin-bar .header {
+		top: 46px;
+	}
+}
+
+.has-header-9 .header__extras {
+    justify-content: flex-start;
+    margin-left: -.75rem;
+    margin-right: 2.25vw;
+    margin-right: var(--go-navigation--padding--x, 2.25vw);
+    order: 1;
+}
+
+.has-header-9 .header__title-nav {
+    order: 2;
+}
+
+.has-header-9 .header .header__titles {
+    justify-content: flex-end;
+}
+
+.has-header-9 .header .header__titles a {
+    order: 2;
+}
+
+.has-header-9 .header .header__titles a.custom-logo-link {
+    order: 3;
+}
+
+.has-header-9 .header__titles .custom-logo-link~a .site-title {
+    margin-left: 0;
+    margin-right: 2vw;
+    margin-right: var(--go-navigation--padding--x, 2vw);
+}
+
+@media only screen and (min-width:960px) {
+
+	.has-header-9 .header__titles .site-description {
+		margin-left: 0;
+		margin-right: 2vw;
+		margin-right: var(--go-navigation--padding--x, 2vw);
+	}
+	.has-header-9 .header__title-nav {
+		order: 3;
+	}
+
+	.has-header-9 .header__navigation {
+		justify-content: flex-start;
+		order: 1;
+		padding-left: 0;
+		padding-right: 2vw;
+		padding-right: var(--go-navigation--padding--x, 2vw);
+		text-align: left;
+	}
+
+	.has-header-9 .header__navigation li:not(:first-child) {
+		margin-left: 0;
+	}
+
+	.has-header-9 .header__navigation li:not(:last-child) {
+		margin-right: 2vw;
+		margin-right: var(--go-navigation--padding--x, 2vw);
+	}
+
+	.has-header-9 .header__navigation ul.sub-menu li.menu-item {
+		margin-right: inherit;
+	}
+
+	.has-header-9 .header__extras {
+		order: 1;
 	}
 }
 

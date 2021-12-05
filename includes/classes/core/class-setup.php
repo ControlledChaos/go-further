@@ -56,6 +56,12 @@ class Setup {
 
 		// Add design styles to the parent theme customizer options.
 		add_filter( 'go_design_styles', [ $this, 'add_design_styles' ] );
+
+		// Add header variations to the parent theme customizer options.
+		add_filter( 'go_header_variations', [ $this, 'add_header_variations' ] );
+
+		// Default header variation.
+		add_filter( 'go_default_header', [ $this, 'default_header_variation' ] );
 	}
 
 	/**
@@ -214,11 +220,14 @@ class Setup {
 	}
 
 	/**
-	 * Returns the available design styles.
+	 * Available design styles
 	 *
-	 * @return array
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $supported_design_styles
+	 * @return array Returns the filtered array of styles.
 	 */
-	function add_design_styles( $supported_design_styles ) {
+	public function add_design_styles( $supported_design_styles ) {
 
 		$suffix = ( SCRIPT_DEBUG || WP_DEBUG ) ? '' : '.min';
 		$rtl    = ! is_rtl() ? '' : '-rtl';
@@ -320,5 +329,40 @@ class Setup {
 		];
 
 		return array_merge( $add_design_styles, $supported_design_styles );
+	}
+
+	/**
+	 * Available header variations
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $default_header_variations
+	 * @return array Returns the filtered array of headers.
+	 */
+	public function add_header_variations( $default_header_variations ) {
+
+		$add_header_variations = [
+			'header-8' => [
+				'label'         => esc_html_x( 'Header 8', 'name of the eighth header variation option', 'go-further' ),
+				'preview_image' => get_theme_file_uri( 'assets/images/admin/header-8.svg' ),
+			],
+			'header-9' => [
+				'label'         => esc_html_x( 'Header 9', 'name of the ninth header variation option', 'go-further' ),
+				'preview_image' => get_theme_file_uri( 'assets/images/admin/header-9.svg' ),
+			]
+		];
+
+		return array_merge( $add_header_variations, $default_header_variations );
+	}
+
+	/**
+	 * Default header variation
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string Returns the default header variation.
+	 */
+	function default_header_variation() {
+		return (string) 'header-8';
 	}
 }
