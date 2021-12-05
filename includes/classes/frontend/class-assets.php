@@ -102,9 +102,7 @@ class Assets {
 		( function($) {
 			$(window).scroll( function() {
 
-				scroll_top = $( '.header' ).outerHeight();
-
-				if ( $(this).scrollTop() > scroll_top ) {
+				if ( $(this).scrollTop() > 0 ) {
 					$( '.header' ).addClass( 'header-scrolled' );
 				} else {
 					$( '.header' ).removeClass( 'header-scrolled' );
