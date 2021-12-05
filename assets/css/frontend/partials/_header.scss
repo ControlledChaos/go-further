@@ -87,26 +87,30 @@ $header_transition_timing: 0.15s;
 
 	.header {
 		position: absolute;
-	}
 
-	.header:not( .header-scrolled ) {
-		background-color: transparent;
+		&:not( .header-scrolled ) {
+			background-color: transparent;
 
-		.site-title,
-		.site-description {
-			opacity: 1;
+			.site-title,
+			.site-description {
+				opacity: 1;
 
-			@media not screen and ( max-width: 600px ) {
-				color: white;
-			}
-		}
-
-		@media screen and ( min-width: 960px ) {
-			.header__navigation {
-				a {
+				@media not screen and ( max-width: 600px ) {
 					color: white;
 				}
 			}
+
+			@media screen and ( min-width: 960px ) {
+				.header__navigation {
+					a {
+						color: white;
+					}
+				}
+			}
+		}
+
+		&.header-scrolled {
+			box-shadow: -0.25rem 0 3rem -0.325rem rgba( $color: black, $alpha: 0.25 );
 		}
 	}
 

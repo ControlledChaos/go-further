@@ -110,6 +110,11 @@
   }
 }
 
+.template-cover-image .header.header-scrolled {
+  -webkit-box-shadow: -0.25rem 0 3rem -0.325rem rgba(0, 0, 0, 0.25);
+          box-shadow: -0.25rem 0 3rem -0.325rem rgba(0, 0, 0, 0.25);
+}
+
 .template-cover-image.has-sticky-header .header {
   position: absolute;
   -webkit-transition: background-color 0.15s linear;
