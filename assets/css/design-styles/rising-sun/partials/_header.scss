@@ -1,0 +1,27 @@
+///
+/// Site header styles
+///
+
+.has-header-1,
+.has-header-2,
+.has-header-8,
+.has-header-9 {
+	.header {
+		.header__titles {
+			align-items: center;
+
+			@media screen and ( min-width: 960px ) {
+				flex-wrap: wrap;
+				gap: 0 1.5vw;
+				align-items: baseline;
+			}
+		}
+	}
+}
+
+.custom-logo-wrap {
+	@media screen and ( min-width: 960px ) {
+		display: inline-flex;
+		align-self: center;
+	}
+}

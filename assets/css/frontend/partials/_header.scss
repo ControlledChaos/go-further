@@ -31,7 +31,6 @@ $header_transition_timing: 0.15s;
 			@media screen and ( min-width: 960px ) {
 				flex-wrap: wrap;
 				gap: 0 1.5vw;
-				align-items: baseline;
 			}
 		}
 	}
@@ -42,7 +41,6 @@ $header_transition_timing: 0.15s;
 
 	@media screen and ( min-width: 960px ) {
 		display: inline-flex;
-		align-self: center;
 	}
 
 	a {

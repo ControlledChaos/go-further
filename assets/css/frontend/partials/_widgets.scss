@@ -1,3 +1,19 @@
 ///
 /// Sidebar & widget styles
 ///
+
+.footer-widgets {
+
+	& > * {
+		margin-bottom: calc(var(--go--spacing--paragraph)/var(--go--viewport-basis)*100rem);
+		margin-bottom: var(--go--spacing--vertical);
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	& > :not( .alignwide ):not( .alignfull ):not( .alignleft ):not( .alignright ):not( .is-style-wide ) {
+		--double-padding: calc( var( --go-block--padding--x ) * 2 );
+		max-width: var( --go--max-width );
+		width: calc( 100% - var( --double-padding ) );
+	}
+}
