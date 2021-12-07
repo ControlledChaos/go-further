@@ -2,11 +2,20 @@
 /// Sidebar & widget styles
 ///
 
+// Convert hex to RGB.
+@function hex_to_rgb($hex) {
+    @return red($hex), green($hex), blue($hex);
+}
+
 .footer-widgets {
+	background-color: var( --gf-footer-widgets--background-color );
+	margin-top: var( --gf-spacing--vertical--md );
+	padding-top: var( --gf-spacing--vertical--md );
+	padding-bottom: var( --gf-spacing--vertical--md );
 
 	& > * {
-		margin-bottom: calc(var(--go--spacing--paragraph)/var(--go--viewport-basis)*100rem);
-		margin-bottom: var(--go--spacing--vertical);
+		margin-bottom: calc( var( --go--spacing--paragraph ) / var( --go--viewport-basis ) * 100rem );
+		margin-bottom: var( --go--spacing--vertical );
 		margin-left: auto;
 		margin-right: auto;
 	}
@@ -15,5 +24,82 @@
 		--double-padding: calc( var( --go-block--padding--x ) * 2 );
 		max-width: var( --go--max-width );
 		width: calc( 100% - var( --double-padding ) );
+	}
+
+	.widget {
+
+		h2,
+		h3 {
+			font-size: var( --go--type-scale-3 );
+		}
+	}
+}
+
+/* Base List Widget -------------------------- */
+
+.wp-block-categories-list,
+.wp-block-latest-comments,
+.widget_archive ul,
+.widget_categories ul,
+.widget_pages ul,
+.widget_meta ul,
+.widget_nav_menu ul,
+.widget_recent_comments ul,
+.widget_recent_entries ul,
+.widget_rss ul {
+	list-style: none;
+	padding: 0;
+}
+
+// Widget: Calendar.
+.wp-block-calendar table th,
+.wp-block-calendar tbody td,
+.calendar_wrap th,
+.calendar_wrap td,
+.wp-calendar-nav span {
+	display: table-cell;
+	padding: 2.5% 2.5% 1.75% 2.5%;
+	line-height: 1;
+	text-align: center;
+}
+
+.wp-block-calendar table th {
+	background-color: inherit;
+	font-weight: 700;
+}
+
+.wp-block-calendar a {
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.wp-block-calendar tbody td,
+.wp-block-calendar th {
+	border: var( --go-input--border );
+}
+
+.wp-calendar-table {
+	margin-bottom: 0;
+}
+
+.wp-calendar-nav {
+	display: table;
+	width: 100%;
+}
+
+.calendar_wrap tfoot #prev,
+.calendar_wrap .wp-calendar-nav-prev {
+	text-align: left;
+}
+
+.calendar_wrap tfoot #next,
+.calendar_wrap .wp-calendar-nav-next {
+	text-align: right;
+}
+
+// Widget: Comments.
+.wp-block-latest-comments__comment-excerpt {
+	p {
+		line-height: var( --go--line-height );
 	}
 }

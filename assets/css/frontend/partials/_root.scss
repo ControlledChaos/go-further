@@ -7,9 +7,12 @@
     @return red($hex), green($hex), blue($hex);
 }
 
-$further-cover-overlay: #000000;
+$gf_cover_overlay: #000000;
 
 :root {
+    --gf-spacing--vertical--md: calc( 60 / var( --go--viewport-basis ) * 100vw );
+    --gf-spacing--vertical--sm: calc( 30 / var( --go--viewport-basis ) * 100vw );
     --go-header--color--background: #ffffff;
-    --further-cover-overlay-rgb: #{hex_to_rgb( $further-cover-overlay )};
+    --gf-cover-overlay-rgb: #{hex_to_rgb( $gf_cover_overlay )};
+    --gf-footer-widgets--background-color: var( --go--color--tertiary );
 }

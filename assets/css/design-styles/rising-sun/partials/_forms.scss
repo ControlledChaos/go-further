@@ -1,0 +1,10 @@
+///
+/// Form styles
+///
+
+select {
+	-webkit-appearance: none;
+	   -moz-appearance: none;
+	        appearance: none;
+	letter-spacing: var( --gf-select--letter-spacing );
+}
