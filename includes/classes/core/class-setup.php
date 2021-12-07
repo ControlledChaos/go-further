@@ -458,7 +458,7 @@ class Setup {
 		$classic = Customize\mods()->classic_widgets( get_theme_mod( 'gft_classic_widgets' ) );
 
 		// Add filters if the setting returns true (checked).
-		if ( $classic ) {
+		if ( $classic && ! function_exists( 'classicpress_version' ) ) {
 			add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
 			add_filter( 'use_widgets_block_editor', '__return_false' );
 		}

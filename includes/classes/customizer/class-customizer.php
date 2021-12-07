@@ -447,23 +447,26 @@ class Customizer {
 		 * Classic widgets
 		 *
 		 * Use the classic widgets interfaces rather than block widgets.
+		 * Do not register if ClassicPress is running.
 		 */
-		$wp_customize->add_setting( 'gft_classic_widgets', [
-			'default'	        => false,
-			'sanitize_callback' => [ $this, 'classic_widgets' ]
-		] );
-		$wp_customize->add_control( new \WP_Customize_Control(
-			$wp_customize,
-			'gft_classic_widgets',
-			[
-				'section'     => 'gft_widgets',
-				'settings'    => 'gft_classic_widgets',
-				'priority'    => 11,
-				'label'       => __( 'Classic Widgets', 'go-further' ),
-				'description' => __( 'Check to use the classic widgets interfaces rather than block widgets.', 'go-further' ),
-				'type'        => 'checkbox',
-			]
-		) );
+		if ( ! function_exists( 'classicpress_version' ) ) :
+			$wp_customize->add_setting( 'gft_classic_widgets', [
+				'default'	        => false,
+				'sanitize_callback' => [ $this, 'classic_widgets' ]
+			] );
+			$wp_customize->add_control( new \WP_Customize_Control(
+				$wp_customize,
+				'gft_classic_widgets',
+				[
+					'section'     => 'gft_widgets',
+					'settings'    => 'gft_classic_widgets',
+					'priority'    => 11,
+					'label'       => __( 'Classic Widgets', 'go-further' ),
+					'description' => __( 'Check to use the classic widgets interfaces rather than block widgets.', 'go-further' ),
+					'type'        => 'checkbox',
+				]
+			) );
+		endif;
 	}
 
 	/**
