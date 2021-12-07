@@ -65,6 +65,9 @@ class Setup {
 
 		// Default header variation.
 		add_filter( 'go_default_header', [ $this, 'default_header_variation' ] );
+
+		// Classic widgets.
+		add_action( 'init', [ $this, 'classic_widgets' ] );
 	}
 
 	/**
@@ -267,57 +270,105 @@ class Setup {
 						'label'      => _x( 'Zen Garden', 'color palette name', 'go-further' ),
 						'primary'    => '#687530',
 						'secondary'  => '#4c454e',
-						'tertiary'   => '#e7e2e8',
-						'background' => '#ffffff'
+						'tertiary'   => '#ededed',
+						'background' => '#ffffff',
+						'header_background'    => '',
+						'header_text'          => '',
+						'footer_background'    => '',
+						'footer_heading_color' => '',
+						'footer_text_color'    => '',
+						'social_icon_color'    => ''
 					],
 					'two' => [
 						'label'      => _x( 'Cherry Blossom', 'color palette name', 'go-further' ),
 						'primary'    => '#c83771',
 						'secondary'  => '#4d8622',
-						'tertiary'   => '#f4e6eb',
-						'background' => '#ffffff'
+						'tertiary'   => '#faecf1',
+						'background' => '#ffffff',
+						'header_background'    => '',
+						'header_text'          => '',
+						'footer_background'    => '',
+						'footer_heading_color' => '',
+						'footer_text_color'    => '',
+						'social_icon_color'    => ''
 					],
 					'three' => [
 						'label'      => _x( 'Koi Pond', 'color palette name', 'go-further' ),
 						'primary'    => '#e0661f',
 						'secondary'  => '#2c5aa0',
-						'tertiary'   => '#eaeff7',
-						'background' => '#ffffff'
+						'tertiary'   => '#edf2fb',
+						'background' => '#ffffff',
+						'header_background'    => '',
+						'header_text'          => '',
+						'footer_background'    => '',
+						'footer_heading_color' => '',
+						'footer_text_color'    => '',
+						'social_icon_color'    => ''
 					],
 					'four' => [
 						'label'      => _x( 'Chrysanthemum', 'color palette name', 'go-further' ),
 						'primary'    => '#f0ae00',
 						'secondary'  => '#4d8622',
-						'tertiary'   => '#fff6d5',
-						'background' => '#ffffff'
+						'tertiary'   => '#fff8d8',
+						'background' => '#ffffff',
+						'header_background'    => '',
+						'header_text'          => '',
+						'footer_background'    => '',
+						'footer_heading_color' => '',
+						'footer_text_color'    => '',
+						'social_icon_color'    => ''
 					],
 					'five' => [
 						'label'      => _x( 'Wisteria', 'color palette name', 'go-further' ),
 						'primary'    => '#7f6032',
 						'secondary'  => '#764fb6',
 						'tertiary'   => '#eee9e2',
-						'background' => '#ffffff'
+						'background' => '#ffffff',
+						'header_background'    => '',
+						'header_text'          => '',
+						'footer_background'    => '',
+						'footer_heading_color' => '',
+						'footer_text_color'    => '',
+						'social_icon_color'    => ''
 					],
 					'six' => [
 						'label'      => _x( 'Maple', 'color palette name', 'go-further' ),
 						'primary'    => '#7f6032',
 						'secondary'  => '#764fb6',
 						'tertiary'   => '#eee9e2',
-						'background' => '#ffffff'
+						'background' => '#ffffff',
+						'header_background'    => '',
+						'header_text'          => '',
+						'footer_background'    => '',
+						'footer_heading_color' => '',
+						'footer_text_color'    => '',
+						'social_icon_color'    => ''
 					],
 					'seven' => [
 						'label'      => _x( 'Tea House', 'color palette name', 'go-further' ),
 						'primary'    => '#7f6032',
 						'secondary'  => '#764fb6',
 						'tertiary'   => '#eee9e2',
-						'background' => '#ffffff'
+						'background' => '#ffffff',
+						'header_background'    => '',
+						'header_text'          => '',
+						'footer_background'    => '',
+						'footer_heading_color' => '',
+						'footer_text_color'    => '',
+						'social_icon_color'    => ''
 					],
 					'eight' => [
 						'label'      => _x( 'Volcano', 'color palette name', 'go-further' ),
 						'primary'    => '#6f7c91',
 						'secondary'  => '#b7bec8',
 						'tertiary'   => '#eceef1',
-						'background' => '#ffffff'
+						'background' => '#ffffff',
+						'header_background'    => '',
+						'header_text'          => '',
+						'footer_background'    => '',
+						'footer_heading_color' => '',
+						'footer_text_color'    => '',
+						'social_icon_color'    => ''
 					],
 				],
 				'fonts'=> [
@@ -386,7 +437,30 @@ class Setup {
 	 * @access public
 	 * @return string Returns the default header variation.
 	 */
-	function default_header_variation() {
+	public function default_header_variation() {
 		return (string) 'header-8';
+	}
+
+	/**
+	 * Classic widgets
+	 *
+	 * Use the classic widgets interfaces rather than block widgets.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function classic_widgets() {
+
+		new Customize\Customizer;
+
+		// Get the classic widgets setting from the Customizer.
+		$classic = Customize\mods()->classic_widgets( get_theme_mod( 'gft_classic_widgets' ) );
+
+		// Add filters if the setting returns true (checked).
+		if ( $classic ) {
+			add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
+			add_filter( 'use_widgets_block_editor', '__return_false' );
+		}
 	}
 }

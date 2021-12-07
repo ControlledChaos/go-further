@@ -103,6 +103,7 @@ class Customizer {
 		 * - Site Identity
 		 * - Site Settings
 		 * - Front Page & Blog
+		 * - Widgets
 		 */
 		$wp_customize->add_panel( 'gft_settings', [
 			'priority'       => 2,
@@ -110,6 +111,25 @@ class Customizer {
 			'type'           => 'site-settings',
 			'title'          => __( 'Site Settings', 'go-further' ),
 			'description'    => __( 'Site identity & branding, user interface, and other site details.', 'go-further' )
+		] );
+
+
+
+		/* ------------------------------ Add Sections ------------------------------ */
+
+
+		/**
+		 * Widgets section
+		 *
+		 * Displays in the Site Settings panel.
+		 */
+		$wp_customize->add_section( 'gft_widgets', [
+			'panel'          => 'gft_settings',
+			'priority'       => 40,
+			'capability'     => 'edit_theme_options',
+			'type'           => 'widget-settings',
+			'title'          => __( 'Widgets', 'go-further' ),
+			'description'    => __( '', 'go-further' )
 		] );
 
 
@@ -136,17 +156,18 @@ class Customizer {
 		 * Move the core Homepage Settings section to the Site Settings panel.
 		 * Rename the section and change the description.
 		 */
-		$wp_customize->get_section( 'static_front_page' )->panel = 'gft_settings';
-		$wp_customize->get_section( 'static_front_page' )->title = __( 'Front Page & Blog', 'go-further' );
+		$wp_customize->get_section( 'static_front_page' )->panel       = 'gft_settings';
+		$wp_customize->get_section( 'static_front_page' )->priority    = 30;
+		$wp_customize->get_section( 'static_front_page' )->title       = __( 'Front Page & Blog', 'go-further' );
 		$wp_customize->get_section( 'static_front_page' )->description = 'Customize the front page of the site and how the blog is displayed.';
 
 		// Move core and parent theme sections to the Design & Layout panel.
 		$wp_customize->get_section( 'go_header_settings' )->panel = 'gft_design';
 		$wp_customize->get_section( 'go_footer_settings' )->panel = 'gft_design';
-		$wp_customize->get_section( 'custom_css' )->panel = 'gft_design';
+		$wp_customize->get_section( 'custom_css' )->panel         = 'gft_design';
 
 		// Parent theme's Site Settings section.
-		$wp_customize->get_section( 'go_site_settings' )->panel = 'gft_settings';
+		$wp_customize->get_section( 'go_site_settings' )->panel    = 'gft_settings';
 		$wp_customize->get_section( 'go_site_settings' )->priority = 25;
 
 		// Rename the core Homepage Settings section and change the description.
@@ -421,6 +442,28 @@ class Customizer {
 				'type'        => 'checkbox',
 			]
 		) );
+
+		/*
+		 * Classic widgets
+		 *
+		 * Use the classic widgets interfaces rather than block widgets.
+		 */
+		$wp_customize->add_setting( 'gft_classic_widgets', [
+			'default'	        => false,
+			'sanitize_callback' => [ $this, 'classic_widgets' ]
+		] );
+		$wp_customize->add_control( new \WP_Customize_Control(
+			$wp_customize,
+			'gft_classic_widgets',
+			[
+				'section'     => 'gft_widgets',
+				'settings'    => 'gft_classic_widgets',
+				'priority'    => 11,
+				'label'       => __( 'Classic Widgets', 'go-further' ),
+				'description' => __( 'Check to use the classic widgets interfaces rather than block widgets.', 'go-further' ),
+				'type'        => 'checkbox',
+			]
+		) );
 	}
 
 	/**
@@ -526,6 +569,24 @@ class Customizer {
 	 * @return string Returns the theme mod.
 	 */
 	public function display_social( $input ) {
+
+		if ( ! isset( $input ) || true == $input ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Classic widgets
+	 *
+	 * Use the classic widgets interfaces rather than block widgets.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  $input
+	 * @return string Returns the theme mod.
+	 */
+	public function classic_widgets( $input ) {
 
 		if ( ! isset( $input ) || true == $input ) {
 			return true;
