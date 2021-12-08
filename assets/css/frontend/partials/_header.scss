@@ -292,7 +292,7 @@ $header_transition_timing: 0.15s;
 
 			@media screen and ( max-width: 600px ) {
 				.header {
-					position: static;
+					position: relative;
 					top: unset;
 				}
 			}

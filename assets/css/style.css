@@ -289,7 +289,7 @@
 
 @media screen and (max-width: 600px) {
   .js .has-sticky-header.logged-in.admin-bar .header {
-    position: static;
+    position: relative;
     top: unset;
   }
 }
@@ -435,25 +435,147 @@
 
 .footer-widgets {
   background-color: var(--gf-footer-widgets--background-color);
-  margin-top: var(--gf-spacing--vertical--md);
+  margin-top: var(--gf-spacing--vertical--sm);
   padding-top: var(--gf-spacing--vertical--md);
   padding-bottom: var(--gf-spacing--vertical--md);
+  font-size: 1em;
+  font-size: var(--gf-footer-widgets--font-size, var(--go--font-size));
+  font-weight: 400;
+  font-weight: var(--gf-footer-widgets--font-weight, var(--go--font-weight));
+  color: var(--gf-footer-widgets--text--color);
 }
 
-.footer-widgets > * {
+.footer-widgets a {
+  color: var(--go--color--primary);
+  color: var(--gf-footer-widgets--hyperlink--color--text, var(--go--color--primary));
+}
+
+.footer-widgets.block-widgets section > * {
   margin-bottom: calc( var( --go--spacing--paragraph ) / var( --go--viewport-basis ) * 100rem);
   margin-bottom: var(--go--spacing--vertical);
   margin-left: auto;
   margin-right: auto;
 }
 
-.footer-widgets > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
+.footer-widgets.block-widgets section:first-of-type > :first-child {
+  margin-top: 0;
+}
+
+.footer-widgets.block-widgets section > :not(hr):not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
   --double-padding: calc( var( --go-block--padding--x ) * 2 );
   max-width: var(--go--max-width);
   width: calc( 100% - var( --double-padding ));
 }
 
-.footer-widgets .widget h2,
+.footer-widgets.block-widgets section > hr {
+  --double-padding: calc( var( --go-block--padding--x ) * 2 );
+  margin: var(--gf-spacing--vertical--md) auto;
+  width: calc( 100% - var( --double-padding ));
+}
+
+.footer-widgets.block-widgets section > .alignfull {
+  margin-top: 0;
+  padding: 0 var(--go-block--padding--x);
+}
+
+.footer-widgets.classic-widgets .footer-widgets-wrapper {
+  margin-bottom: calc( var( --go--spacing--paragraph ) / var( --go--viewport-basis ) * 100rem);
+  margin-bottom: var(--go--spacing--vertical);
+  margin-left: auto;
+  margin-right: auto;
+  --double-padding: calc( var( --go-block--padding--x ) * 2 );
+  max-width: var(--go--max-width);
+  width: calc( 100% - var( --double-padding ));
+}
+
+@media only screen and (min-width: 600px) {
+  .footer-widgets.classic-widgets.sidebars-active--2 .footer-widgets-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: var(--go-block--padding--x);
+  }
+}
+
+.footer-widgets.classic-widgets.sidebars-active--2 .footer-widgets-wrapper .widgets-grid-item {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .footer-widgets.classic-widgets.sidebars-active--2 .footer-widgets-wrapper .widgets-grid-item {
+    max-width: 50%;
+    max-width: calc( var( --go--max-width ) / 2);
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .footer-widgets.classic-widgets.sidebars-active--3 .footer-widgets-wrapper, .footer-widgets.classic-widgets.sidebars-active--4 .footer-widgets-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: var(--go-block--padding--x);
+  }
+  .footer-widgets.classic-widgets.sidebars-active--3 .footer-widgets-wrapper .widgets-grid-item, .footer-widgets.classic-widgets.sidebars-active--4 .footer-widgets-wrapper .widgets-grid-item {
+    width: 100%;
+    max-width: calc( var( --go--max-width ) / 2 - calc( var( --go-block--padding--x ) * 2 ));
+  }
+}
+
+@media only screen and (min-width: 782px) {
+  .footer-widgets.classic-widgets.sidebars-active--3 .footer-widgets-wrapper, .footer-widgets.classic-widgets.sidebars-active--4 .footer-widgets-wrapper {
+    display: -ms-grid;
+    display: grid;
+    grid-gap: var(--go-block--padding--x);
+  }
+}
+
+.footer-widgets.classic-widgets.sidebars-active--3 .footer-widgets-wrapper {
+  --double-padding: calc( var( --go-block--padding--x ) * 2 );
+  --half-width: calc( var( --go--max-width ) / 2 );
+}
+
+@media only screen and (min-width: 782px) {
+  .footer-widgets.classic-widgets.sidebars-active--3 .footer-widgets-wrapper {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    --double-padding: calc( var( --go-block--padding--x ) * 2 );
+    --half-width: calc( var( --go--max-width ) / 2 );
+    max-width: calc( var( --half-width ) * 3);
+    width: calc( 100% - var( --double-padding ));
+  }
+}
+
+.footer-widgets.classic-widgets.sidebars-active--4 .footer-widgets-wrapper {
+  --double-padding: calc( var( --go-block--padding--x ) * 2 );
+  --half-width: calc( var( --go--max-width ) / 2 );
+}
+
+@media only screen and (min-width: 782px) {
+  .footer-widgets.classic-widgets.sidebars-active--4 .footer-widgets-wrapper {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    max-width: calc( var( --half-width ) * 3);
+    width: calc( 100% - var( --double-padding ));
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .footer-widgets.classic-widgets.sidebars-active--4 .footer-widgets-wrapper {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    max-width: calc( var( --half-width ) * 4);
+    width: calc( 100% - var( --double-padding ));
+  }
+}
+
+.footer-widgets .widget section > h3 {
+  margin: 0;
+}
+
 .footer-widgets .widget h3 {
   font-size: var(--go--type-scale-3);
 }
@@ -473,6 +595,95 @@
   padding: 0;
 }
 
+.wp-block-categories-list li,
+.wp-block-latest-comments li,
+.widget_archive ul li,
+.widget_categories ul li,
+.widget_pages ul li,
+.widget_meta ul li,
+.widget_nav_menu ul li,
+.widget_recent_comments ul li,
+.widget_recent_entries ul li,
+.widget_rss ul li {
+  font-size: var(--gf-footer-widgets--list--font-size, var(--go--font-size));
+  font-weight: var(--gf-footer-widgets--list--font-weight, var(--go--font-weight));
+}
+
+.widget_nav_menu ul ul {
+  margin: 0;
+  padding-left: 1em;
+}
+
+.wp-block-search .wp-block-search__inside-wrapper {
+  gap: 0.25em;
+}
+
+.wp-block-search .wp-block-search__input {
+  background-color: inherit;
+  border: var(--go-input--border);
+}
+
+.wp-block-search .wp-block-search__button {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  margin: 0;
+  padding: var(--go-button--padding--y) var(--go-button--padding--x);
+  vertical-align: bottom;
+  background-color: var(--go-button--color--background, var(--go--color--primary));
+  border: none;
+  color: var(--go--color--white);
+  color: var(--go-button--color--text, var(--go--color--white));
+}
+
+.wp-block-search .wp-block-search__button:hover, .wp-block-search .wp-block-search__button:focus {
+  background-color: var(--go--color--secondary);
+  background-color: var(--go-button-interactive--color--background, var(--go--color--secondary));
+}
+
+.widget_search .search-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.25em;
+}
+
+.widget_search .search-form input,
+.widget_search .search-form button {
+  margin: 0;
+}
+
+.widget_search .search-form input {
+  background-color: inherit;
+}
+
+.widget_search .search-form input:focus {
+  background: var(--go--color--white);
+  background: var(--go-input-interactive--color--background, var(--go--color--white));
+}
+
+.widget_search .search-form .search-input__button {
+  position: relative;
+}
+
+.widget_search .search-form .search-input__button .search-input__label {
+  position: absolute;
+  left: -5000px;
+}
+
+.widget_search .search-form .search-input__button .search-input__arrow-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: auto;
+  fill: var(--go--color--white);
+  fill: var(--go-search-button--color--text, var(--go--color--white));
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+}
+
 .wp-block-calendar table th,
 .wp-block-calendar tbody td,
 .calendar_wrap th,
@@ -489,7 +700,7 @@
   font-weight: 700;
 }
 
-.wp-block-calendar a {
+.wp-block-calendar td a {
   font-weight: 700;
   text-decoration: none;
 }
