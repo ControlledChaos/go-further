@@ -11,8 +11,9 @@
 namespace GoFurther\Classes\Core;
 
 // Alias namespaces.
-use GoFurther\Classes\Core as Core,
-	GoFurther\Classes\Customize  as Customize;
+use GoFurther\Classes\Core      as Core,
+	GoFurther\Classes\Front     as Front,
+	GoFurther\Classes\Customize as Customize;
 
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -111,16 +112,80 @@ class Setup {
 	 */
 	public function widgets() {
 
-		// Register footer widget area.
-		register_sidebar( [
-			'name'          => __( 'Footer Widgets', 'go-further' ),
-			'id'            => 'footer',
-			'description'   => __( 'Displays below the main content.', 'go-further' ),
+		// Arguments used in all register_sidebar() calls.
+		$shared_args = [
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h3 class="widget-title">',
-			'after_title'   => '</h3>',
-		] );
+			'after_title'   => '</h3>'
+		];
+
+		new Front\Template_Tags;
+
+		if ( Front\tags()->has_classic_widgets() ) :
+
+			// Footer #1.
+			register_sidebar(
+				array_merge(
+					$shared_args,
+					[
+						'name'        => __( 'Footer #1', 'go-further' ),
+						'id'          => 'footer-1',
+						'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'go-further' ),
+					]
+				)
+			);
+
+			// Footer #2.
+			register_sidebar(
+				array_merge(
+					$shared_args,
+					[
+						'name'        => __( 'Footer #2', 'go-further' ),
+						'id'          => 'footer-2',
+						'description' => __( 'Widgets in this area will be displayed in the second column in the footer.', 'go-further' ),
+					]
+				)
+			);
+
+			// Footer #3.
+			register_sidebar(
+				array_merge(
+					$shared_args,
+					[
+						'name'        => __( 'Footer #3', 'go-further' ),
+						'id'          => 'footer-3',
+						'description' => __( 'Widgets in this area will be displayed in the third column in the footer.', 'go-further' ),
+					]
+				)
+			);
+
+			// Footer #4.
+			register_sidebar(
+				array_merge(
+					$shared_args,
+					[
+						'name'        => __( 'Footer #4', 'go-further' ),
+						'id'          => 'footer-4',
+						'description' => __( 'Widgets in this area will be displayed in the fourth column in the footer.', 'go-further' ),
+					]
+				)
+			);
+
+		else :
+
+			// Register footer widget area.
+			register_sidebar(
+				array_merge(
+					$shared_args,
+					[
+						'name'        => __( 'Footer Widgets', 'go-further' ),
+						'id'          => 'footer',
+						'description' => __( 'Displays below the main content.', 'go-further' ),
+					]
+				)
+			);
+		endif;
 	}
 
 	/**
@@ -442,7 +507,7 @@ class Setup {
 	}
 
 	/**
-	 * Classic widgets
+	 * Use classic widgets
 	 *
 	 * Use the classic widgets interfaces rather than block widgets.
 	 *
@@ -452,13 +517,8 @@ class Setup {
 	 */
 	public function classic_widgets() {
 
-		new Customize\Customizer;
-
-		// Get the classic widgets setting from the Customizer.
-		$classic = Customize\mods()->classic_widgets( get_theme_mod( 'gft_classic_widgets' ) );
-
-		// Add filters if the setting returns true (checked).
-		if ( $classic && ! function_exists( 'classicpress_version' ) ) {
+		// Add filters if classic widgets are used.
+		if ( Front\tags()->has_classic_widgets() ) {
 			add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
 			add_filter( 'use_widgets_block_editor', '__return_false' );
 		}

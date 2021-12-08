@@ -16,7 +16,8 @@
 namespace GoFurther\Classes\Front;
 
 // Alias namespaces.
-use GoFurther\Classes\Customize as Customize;
+use GoFurther\Classes\Core      as Core,
+	GoFurther\Classes\Customize as Customize;
 
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -539,6 +540,177 @@ class Template_Tags {
 		}
 
 		return $display;
+	}
+
+	/**
+	 * Has classic widgets
+	 *
+	 * Determines whether to use the classic widgets
+	 * interfaces rather than block widgets.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function has_classic_widgets() {
+
+		// Get the classic widgets setting from the Customizer.
+		new Customize\Customizer;
+		$classic = Customize\mods()->classic_widgets( get_theme_mod( 'gft_classic_widgets' ) );
+
+		// Return true if ClassicPress is running.
+		if ( $classic || function_exists( 'classicpress_version' ) ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Footer widgets active
+	 *
+	 * Check if any of the footer sidebars are active.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return boolean Returns true if any of the footer sidebars are active.
+	 */
+	public function has_active_footer_sidebars() {
+
+		// Get the array footer sidebars.
+		$get_sidebars = $this->get_footer_sidebars();
+
+		// Loop sidebars and return true if/when an active one is found.
+		foreach ( (array) $get_sidebars as $sidebar ) {
+			if ( is_active_sidebar( $sidebar ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Get registered footer sidebars
+	 *
+	 * Only returns sidebars with `footer` in the ID.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @global array $wp_registered_sidebars
+	 * @return array Returns an array of footer IDs.
+	 */
+	public function get_footer_sidebars() {
+
+		// Access global variables.
+		global $wp_registered_sidebars;
+
+		// Start with an empty array.
+		$id = [];
+
+		// For each registered sidebar.
+		foreach ( (array) $wp_registered_sidebars as $sidebar ) {
+
+			// Look for `footer` in the sidebar ID.
+			$footer = strpos( $sidebar['id'], 'footer' );
+
+			// ID is null if `footer` is not found in the ID.
+			if ( false === $footer ) {
+				$id[] = null;
+
+			// ID with `footer`.
+			} else {
+				$id[] = $sidebar['id'];
+			}
+		}
+
+		// Return an array of footer IDs.
+		return $id;
+	}
+
+	/**
+	 * Footer widgets class
+	 *
+	 * Adds classes to the footer widgets area, if active.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string Returns various widget classes.
+	 */
+	public function footer_widgets_class() {
+
+		// Get the array footer sidebars.
+		$get_sidebars = $this->get_footer_sidebars();
+
+		$class    = [];
+		$class[] .= 'footer-widgets';
+		$count    = 0;
+
+		// For each registered sidebar.
+		foreach ( (array) $get_sidebars as $sidebar ) {
+
+			// Count active sidebars.
+			if ( is_active_sidebar( $sidebar ) ) {
+				$count = $count + 1;
+			}
+		}
+
+		// Add widgets type class.
+		if ( $this->has_classic_widgets() ) {
+			$class[] .= 'classic-widgets';
+		} else {
+			$class[] .= 'block-widgets';
+		}
+
+		// Add sidebars active class.
+		$class[] .= 'sidebars-active--' . $count;
+
+		// Return a string of widget classes.
+		return implode( ' ', $class );
+	}
+
+	/**
+	 * Print footer widget areas
+	 *
+	 * Only prints widgets for registered sidebars with
+	 * `footer` in the ID.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function footer_widgets() {
+
+		// Get the array footer sidebars.
+		$get_sidebars = $this->get_footer_sidebars();
+
+		// Stop here if no footer sidebars.
+		if ( empty( $get_sidebars ) ) {
+			return;
+		}
+
+		// Set up sidebar counter.
+		$sidebar_count = 0;
+
+		// For each registered footer sidebar.
+		foreach ( (array) $get_sidebars as $sidebar ) {
+
+			// Count sidebars for id attribute.
+			$sidebar_count = $sidebar_count + 1;
+
+			// Don't allow more than four widget areas.
+			if ( $sidebar_count > 4 ) {
+				return;
+			}
+
+			// Print a widget area and widgets if the sidebar is active.
+			if ( is_active_sidebar( $sidebar ) ) {
+				printf(
+					'<div id="widgets-grid-%s" class="widgets-grid-item">',
+					$sidebar_count
+				);
+				dynamic_sidebar( $sidebar );
+				echo '</div>';
+			}
+		}
 	}
 }
 
