@@ -145,6 +145,15 @@ input[type="search"] {
   opacity: 0;
 }
 
+@media screen and (max-width: 600px) {
+  .template-cover-image.has-sticky-header .header .custom-logo-wrap a img:first-of-type {
+    opacity: 1;
+  }
+  .template-cover-image.has-sticky-header .header .custom-logo-wrap a img + img {
+    opacity: 0;
+  }
+}
+
 @media not screen and (max-width: 600px) {
   .template-cover-image:not(.menu-is-open) .header:not(.header-scrolled) button:focus {
     outline-color: white;

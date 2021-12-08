@@ -136,6 +136,23 @@ $header_transition_timing: 0.15s;
 					}
 				}
 			}
+
+			@media screen and ( max-width: 600px ) {
+
+				.custom-logo-wrap {
+					a {
+						img {
+							&:first-of-type {
+								opacity: 1;
+							}
+
+							& + img {
+								opacity: 0;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 
