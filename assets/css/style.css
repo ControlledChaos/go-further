@@ -701,9 +701,21 @@ input[type="search"] {
 .wp-calendar-nav span {
   display: table-cell;
   padding: 2.5% 0.25rem 2%;
-  font-size: 0.875rem;
+  font-size: 1rem;
+  font-size: clamp(1rem, 1vw, var(--go--font-size));
   line-height: 1;
   text-align: center;
+}
+
+@media only screen and (min-width: 782px) {
+  .wp-block-calendar table th,
+  .wp-block-calendar tbody td,
+  .calendar_wrap th,
+  .calendar_wrap td,
+  .wp-calendar-nav span {
+    font-size: 0.875rem;
+    font-size: clamp(0.8125rem, 0.875vw, var(--go--font-size));
+  }
 }
 
 .calendar_wrap tfoot #prev,
