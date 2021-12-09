@@ -15,6 +15,7 @@ namespace GoFurther;
 
 // Alias namespaces.
 use GoFurther\Core as Core,
+	GoFurther\Media as Media,
 	GoFurther\Post_Options as Options,
 	GoFurther\Customize    as Customize,
 	GoFurther\Assets as Assets,
@@ -38,12 +39,9 @@ $theme_version = wp_get_theme()->get( 'Version' );
 define( 'GF_VERSION', $theme_version );
 
 // Load required files.
-require_once get_theme_file_path( '/includes/autoloader.php' );
-require_once get_theme_file_path( '/includes/customizer.php' );
-require_once get_theme_file_path( '/includes/post-options.php' );
-require_once get_theme_file_path( '/includes/template-tags.php' );
-require_once get_theme_file_path( '/includes/media.php' );
-require_once get_theme_file_path( '/includes/assets.php' );
+foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $filename ) {
+	require_once $filename;
+}
 
 // Theme setup.
 new Core_Classes\Setup;
