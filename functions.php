@@ -15,7 +15,7 @@ namespace GoFurther;
 
 // Alias namespaces.
 use GoFurther\Core as Core,
-	GoFurther\Post_Options as Post_Options,
+	GoFurther\Post_Options as Options,
 	GoFurther\Customize    as Customize,
 	GoFurther\Assets as Assets,
 	GoFurther\Classes\Core       as Core_Classes,
@@ -50,13 +50,8 @@ new Core_Classes\Setup;
 
 Customize\setup();
 Media\setup();
-Post_Options\setup();
+Options\setup();
 Assets\setup();
-
-// Frontend classes.
-if ( ! is_admin() ) {
-	new Front_Classes\Assets;
-}
 
 // Backend classes.
 if ( is_admin() ) {

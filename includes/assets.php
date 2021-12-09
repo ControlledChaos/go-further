@@ -26,10 +26,72 @@ function setup() {
 		return __NAMESPACE__ . "\\$function";
 	};
 
+	add_action( 'wp_enqueue_scripts', $n( 'frontend_styles' ) );
+	add_action( 'wp_footer', $n( 'print_scripts' ) );
 	add_action( 'wp_enqueue_scripts', $n( 'toolbar_styles' ) );
 	add_action( 'admin_enqueue_scripts', $n( 'toolbar_styles' ), 99 );
 	add_action( 'login_enqueue_scripts', $n( 'login_styles' ) );
 	add_action( 'wp_head', $n( 'embed_styles' ) );
+}
+
+/**
+ * Frontend styles
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function frontend_styles() {
+
+	/**
+	 * Theme stylesheet
+	 *
+	 * This enqueues the minified stylesheet compiled from SASS (.scss) files.
+	 * The main stylesheet, in the root directory, only contains the theme header but
+	 * it is necessary for theme activation. DO NOT delete the main stylesheet!
+	 */
+	wp_enqueue_style( 'go-further', get_theme_file_uri( '/assets/css/style' . suffix() . '.css' ), [ 'go-style' ], GF_VERSION, 'all' );
+
+	// Right-to-left languages.
+	if ( is_rtl() ) {
+		wp_enqueue_style( 'go-further-rtl', get_theme_file_uri( 'assets/css/style-rtl' . suffix() . '.css' ), [ 'go-further' ], GF_VERSION, 'all' );
+	}
+
+	// Block styles.
+	if ( function_exists( 'has_blocks' ) ) {
+		wp_enqueue_style( 'go-further-blocks', get_theme_file_uri( '/assets/css/blocks' . suffix() . '.css' ), [ 'wp-block-library', 'go-further' ], GF_VERSION, 'all' );
+
+		if ( is_rtl() ) {
+			wp_enqueue_style( 'go-further-blocks-rtl', get_theme_file_uri( '/assets/css/blocks-rtl' . suffix() . '.css' ), [ 'go-further-blocks' ], GF_VERSION, 'all' );
+		}
+	}
+
+	// Print styles.
+	wp_enqueue_style( 'go-further-print', get_theme_file_uri( '/assets/css/print' . suffix() . '.css' ), [], GF_VERSION, 'print' );
+}
+
+/**
+ * Print footer scripts
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function print_scripts() {
+
+	?>
+	<script>
+	// Add class to header on scroll.
+	( function($) {
+		$(window).scroll( function() {
+
+			if ( $(this).scrollTop() > 0 ) {
+				$( '.header' ).addClass( 'header-scrolled' );
+			} else {
+				$( '.header' ).removeClass( 'header-scrolled' );
+			}
+		});
+	})(jQuery);
+	</script>
+	<?php
 }
 
 /**
