@@ -11,9 +11,10 @@
 namespace GoFurther\Classes\Core;
 
 // Alias namespaces.
-use GoFurther\Classes\Core      as Core,
+use GoFurther\Classes\Core as Core,
 	GoFurther\Front     as Front,
-	GoFurther\Customize as Customize;
+	GoFurther\Customize as Customize,
+	GoFurther\Assets    as Assets;
 
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -105,8 +106,7 @@ final class Setup {
 		load_theme_textdomain( 'go-further' );
 
 		// Add stylesheet for the content editor.
-		$assets = new Assets;
-		add_editor_style( 'assets/css/editor' . $assets->suffix() . '.css', [ 'gft-admin' ], '', 'screen' );
+		add_editor_style( 'assets/css/editor' . Assets\suffix() . '.css', [ 'gft-admin' ], '', 'screen' );
 	}
 
 	/**

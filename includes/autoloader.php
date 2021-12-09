@@ -52,7 +52,6 @@ define( 'GFT_CLASS_NS', __NAMESPACE__ . '\Classes' );
 define( 'GFT_CLASSES', [
 
 	// Core classes.
-	GFT_CLASS_NS . '\Core\Assets' => GFT_CLASS['core'] . 'assets.php',
 	GFT_CLASS_NS . '\Core\Setup'  => GFT_CLASS['core'] . 'setup.php',
 
 	// Frontend classes.
