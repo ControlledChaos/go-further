@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Setup {
+final class Setup {
 
 	/**
 	 * Constructor magic method
@@ -334,54 +334,58 @@ class Setup {
 					'one' => [
 						'label'      => _x( 'Zen Garden', 'color palette name', 'go-further' ),
 						'primary'    => '#687530',
-						'secondary'  => '#4c454e',
+						'secondary'  => '#433d47',
 						'tertiary'   => '#ededed',
 						'background' => '#ffffff',
-						'header_background'    => '',
-						'header_text'          => '',
+						'text'       => '#333333',
+						'header_background'    => '#ffffff',
+						'header_text'          => '#433d47',
 						'footer_background'    => '',
 						'footer_heading_color' => '',
 						'footer_text_color'    => '',
-						'social_icon_color'    => ''
+						'social_icon_color'    => '#687530'
 					],
 					'two' => [
 						'label'      => _x( 'Cherry Blossom', 'color palette name', 'go-further' ),
-						'primary'    => '#c83771',
-						'secondary'  => '#4d8622',
-						'tertiary'   => '#faecf1',
+						'primary'    => '#c43b71',
+						'secondary'  => '#396816',
+						'tertiary'   => '#f9edf1',
 						'background' => '#ffffff',
-						'header_background'    => '',
+						'text'       => '#333333',
+						'header_background'    => '#ffffff',
 						'header_text'          => '',
-						'footer_background'    => '',
+						'footer_background'    => '#ffffff',
 						'footer_heading_color' => '',
 						'footer_text_color'    => '',
-						'social_icon_color'    => ''
+						'social_icon_color'    => '#c43b71'
 					],
 					'three' => [
-						'label'      => _x( 'Koi Pond', 'color palette name', 'go-further' ),
-						'primary'    => '#e0661f',
-						'secondary'  => '#2c5aa0',
-						'tertiary'   => '#edf2fb',
+						'label'      => _x( 'Chrysanthemum', 'color palette name', 'go-further' ),
+						'primary'    => '#efa700',
+						'secondary'  => '#225400',
+						'tertiary'   => '#fffae0',
 						'background' => '#ffffff',
-						'header_background'    => '',
+						'text'       => '#333333',
+						'header_background'    => '#ffffff',
 						'header_text'          => '',
-						'footer_background'    => '',
+						'footer_background'    => '#ffffff',
 						'footer_heading_color' => '',
 						'footer_text_color'    => '',
-						'social_icon_color'    => ''
+						'social_icon_color'    => '#efa700'
 					],
 					'four' => [
-						'label'      => _x( 'Chrysanthemum', 'color palette name', 'go-further' ),
-						'primary'    => '#f0ae00',
-						'secondary'  => '#4d8622',
-						'tertiary'   => '#fff8d8',
+						'label'      => _x( 'Koi Pond', 'color palette name', 'go-further' ),
+						'primary'    => '#d46408',
+						'secondary'  => '#253555',
+						'tertiary'   => '#edf2fb',
 						'background' => '#ffffff',
-						'header_background'    => '',
+						'text'       => '#333333',
+						'header_background'    => '#ffffff',
 						'header_text'          => '',
-						'footer_background'    => '',
+						'footer_background'    => '#ffffff',
 						'footer_heading_color' => '',
 						'footer_text_color'    => '',
-						'social_icon_color'    => ''
+						'social_icon_color'    => '#d46408'
 					],
 					'five' => [
 						'label'      => _x( 'Wisteria', 'color palette name', 'go-further' ),
@@ -389,9 +393,10 @@ class Setup {
 						'secondary'  => '#764fb6',
 						'tertiary'   => '#eee9e2',
 						'background' => '#ffffff',
-						'header_background'    => '',
+						'text'       => '#333333',
+						'header_background'    => '#ffffff',
 						'header_text'          => '',
-						'footer_background'    => '',
+						'footer_background'    => '#ffffff',
 						'footer_heading_color' => '',
 						'footer_text_color'    => '',
 						'social_icon_color'    => ''
@@ -402,9 +407,10 @@ class Setup {
 						'secondary'  => '#764fb6',
 						'tertiary'   => '#eee9e2',
 						'background' => '#ffffff',
-						'header_background'    => '',
+						'text'       => '#333333',
+						'header_background'    => '#ffffff',
 						'header_text'          => '',
-						'footer_background'    => '',
+						'footer_background'    => '#ffffff',
 						'footer_heading_color' => '',
 						'footer_text_color'    => '',
 						'social_icon_color'    => ''
@@ -415,25 +421,27 @@ class Setup {
 						'secondary'  => '#764fb6',
 						'tertiary'   => '#eee9e2',
 						'background' => '#ffffff',
-						'header_background'    => '',
+						'text'       => '#333333',
+						'header_background'    => '#ffffff',
 						'header_text'          => '',
-						'footer_background'    => '',
+						'footer_background'    => '#ffffff',
 						'footer_heading_color' => '',
 						'footer_text_color'    => '',
 						'social_icon_color'    => ''
 					],
 					'eight' => [
 						'label'      => _x( 'Volcano', 'color palette name', 'go-further' ),
-						'primary'    => '#6f7c91',
-						'secondary'  => '#b7bec8',
+						'primary'    => '#63738d',
+						'secondary'  => '#393e51',
 						'tertiary'   => '#eceef1',
 						'background' => '#ffffff',
-						'header_background'    => '',
+						'text'       => '#333333',
+						'header_background'    => '#ffffff',
 						'header_text'          => '',
-						'footer_background'    => '',
+						'footer_background'    => '#ffffff',
 						'footer_heading_color' => '',
 						'footer_text_color'    => '',
-						'social_icon_color'    => ''
+						'social_icon_color'    => '#393e51'
 					],
 				],
 				'fonts'=> [
