@@ -27,7 +27,7 @@ final class Assets {
 	 * @access private
 	 * @var    string The version number.
 	 */
-	private $version = GFT_VERSION;
+	private $version = GF_VERSION;
 
 	/**
 	 * Constructor magic method
@@ -61,7 +61,7 @@ final class Assets {
 	public function toolbar_styles() {
 
 		if ( is_user_logged_in() && is_admin_bar_showing() ) {
-			wp_enqueue_style( 'go-further-toolbar', get_theme_file_uri( '/assets/css/toolbar' . $this->suffix() . '.css' ), [], GFT_VERSION, 'screen' );
+			wp_enqueue_style( 'go-further-toolbar', get_theme_file_uri( '/assets/css/toolbar' . $this->suffix() . '.css' ), [], GF_VERSION, 'screen' );
 		}
 	}
 
@@ -73,7 +73,7 @@ final class Assets {
 	 * @return void
 	 */
 	public function login_styles() {
-		wp_enqueue_style( 'go-further-login', get_theme_file_uri( '/assets/css/login' . $this->suffix() . '.css' ), [ 'login' ], GFT_VERSION, 'screen' );
+		wp_enqueue_style( 'go-further-login', get_theme_file_uri( '/assets/css/login' . $this->suffix() . '.css' ), [ 'login' ], GF_VERSION, 'screen' );
 	}
 
 	/**
@@ -84,7 +84,7 @@ final class Assets {
 	 * @return void
 	 */
 	public function embed_styles() {
-		wp_enqueue_style( 'go-further-embed', get_theme_file_uri( '/assets/css/embed' . $this->suffix() . '.css' ), [], GFT_VERSION, 'screen' );
+		wp_enqueue_style( 'go-further-embed', get_theme_file_uri( '/assets/css/embed' . $this->suffix() . '.css' ), [], GF_VERSION, 'screen' );
 	}
 
 	/**

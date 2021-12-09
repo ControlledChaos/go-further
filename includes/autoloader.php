@@ -24,18 +24,18 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var   array Defines an array of class file paths.
  */
 define( 'GFT_CLASS', [
-	'core'       => GFT_PATH . 'includes/classes/core/class-',
-	'settings'   => GFT_PATH . 'includes/classes/settings/class-',
-	'tools'      => GFT_PATH . 'includes/classes/tools/class-',
-	'media'      => GFT_PATH . 'includes/classes/media/class-',
-	'users'      => GFT_PATH . 'includes/classes/users/class-',
-	'navigation' => GFT_PATH . 'includes/classes/navigation/class-',
-	'widgets'    => GFT_PATH . 'includes/classes/widgets/class-',
-	'vendor'     => GFT_PATH . 'includes/classes/vendor/class-',
-	'admin'      => GFT_PATH . 'includes/classes/backend/class-',
-	'front'      => GFT_PATH . 'includes/classes/frontend/class-',
-	'customize'  => GFT_PATH . 'includes/classes/customizer/class-',
-	'general'    => GFT_PATH . 'includes/classes/class-',
+	'core'       => get_stylesheet_directory() . '/includes/classes/core/class-',
+	'settings'   => get_stylesheet_directory() . '/includes/classes/settings/class-',
+	'tools'      => get_stylesheet_directory() . '/includes/classes/tools/class-',
+	'media'      => get_stylesheet_directory() . '/includes/classes/media/class-',
+	'users'      => get_stylesheet_directory() . '/includes/classes/users/class-',
+	'navigation' => get_stylesheet_directory() . '/includes/classes/navigation/class-',
+	'widgets'    => get_stylesheet_directory() . '/includes/classes/widgets/class-',
+	'vendor'     => get_stylesheet_directory() . '/includes/classes/vendor/class-',
+	'admin'      => get_stylesheet_directory() . '/includes/classes/backend/class-',
+	'front'      => get_stylesheet_directory() . '/includes/classes/frontend/class-',
+	'customize'  => get_stylesheet_directory() . '/includes/classes/customizer/class-',
+	'general'    => get_stylesheet_directory() . '/includes/classes/class-',
 ] );
 
 /**

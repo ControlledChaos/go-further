@@ -31,11 +31,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Get theme configuration file.
-require get_theme_file_path( '/includes/config.php' );
+/**
+ * Constant: Theme version
+ *
+ * @since 1.0.0
+ * @var   string The latest theme version.
+ */
+$theme_version = wp_get_theme()->get( 'Version' );
+define( 'GF_VERSION', $theme_version );
 
 // Autoload class files.
-require_once GFT_PATH . 'includes/autoloader.php';
+require_once get_theme_file_path( '/includes/autoloader.php' );
+
+require_once get_theme_file_path( '/includes/template-tags.php' );
 
 // Theme setup.
 new Core\Setup;
@@ -56,4 +64,4 @@ if ( is_admin() ) {
 	new Admin\Post_Options;
 }
 
-require_once get_theme_file_path( '/includes/template-tags.php' );
+
