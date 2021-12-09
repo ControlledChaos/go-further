@@ -25,17 +25,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 define( 'GFT_CLASS', [
 	'core'       => get_stylesheet_directory() . '/includes/classes/core/class-',
-	'settings'   => get_stylesheet_directory() . '/includes/classes/settings/class-',
-	'tools'      => get_stylesheet_directory() . '/includes/classes/tools/class-',
-	'media'      => get_stylesheet_directory() . '/includes/classes/media/class-',
-	'users'      => get_stylesheet_directory() . '/includes/classes/users/class-',
-	'navigation' => get_stylesheet_directory() . '/includes/classes/navigation/class-',
-	'widgets'    => get_stylesheet_directory() . '/includes/classes/widgets/class-',
-	'vendor'     => get_stylesheet_directory() . '/includes/classes/vendor/class-',
 	'admin'      => get_stylesheet_directory() . '/includes/classes/backend/class-',
 	'front'      => get_stylesheet_directory() . '/includes/classes/frontend/class-',
-	'customize'  => get_stylesheet_directory() . '/includes/classes/customizer/class-',
-	'general'    => get_stylesheet_directory() . '/includes/classes/class-',
+	'customize'  => get_stylesheet_directory() . '/includes/classes/customizer/class-'
 ] );
 
 /**
@@ -63,9 +55,6 @@ define( 'GFT_CLASSES', [
 	// Core classes.
 	GFT_CLASS_NS . '\Core\Assets' => GFT_CLASS['core'] . 'assets.php',
 	GFT_CLASS_NS . '\Core\Setup'  => GFT_CLASS['core'] . 'setup.php',
-
-	// Media classes.
-	GFT_CLASS_NS . '\Media\Images' => GFT_CLASS['media'] . 'images.php',
 
 	// Frontend classes.
 	GFT_CLASS_NS . '\Front\Assets' => GFT_CLASS['front'] . 'assets.php',

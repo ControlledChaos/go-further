@@ -21,7 +21,6 @@ GoFurther\Classes\Core       as Core,
 GoFurther\Classes\Front      as Front,
 GoFurther\Classes\Navigation as Navigation,
 GoFurther\Classes\Widgets    as Widgets,
-GoFurther\Classes\Media      as Media,
 GoFurther\Classes\Admin      as Admin,
 GoFurther\Classes\Customize  as Customize,
 GoFurther\Classes\Vendor     as Vendor;
@@ -44,14 +43,14 @@ define( 'GF_VERSION', $theme_version );
 require_once get_theme_file_path( '/includes/autoloader.php' );
 
 require_once get_theme_file_path( '/includes/template-tags.php' );
+require_once get_theme_file_path( '/includes/media.php' );
 
 // Theme setup.
 new Core\Setup;
 new Core\Assets;
 new Customize\Customizer;
 
-// Media classes.
-new Media\Images;
+Media\setup();
 
 // Frontend classes.
 if ( ! is_admin() ) {
