@@ -6,15 +6,14 @@
  *
  * @package    Go_Further
  * @subpackage Includes
- * @category   Post Options
+ * @category   Options
  * @since      1.0.0
  */
 
-namespace GoFurther\Post_Options;
+namespace GoFurther\Options;
 
 // Alias namespaces.
-use GoFurther\Classes\Front     as Front,
-	GoFurther\Customize as Customize;
+use GoFurther\Customize as Customize;
 
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) {

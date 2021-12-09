@@ -14,15 +14,8 @@
 namespace GoFurther;
 
 // Alias namespaces.
-use GoFurther\Core as Core,
-	GoFurther\Media as Media,
-	GoFurther\Post_Options as Options,
-	GoFurther\Customize    as Customize,
-	GoFurther\Assets as Assets,
-	GoFurther\Classes\Core       as Core_Classes,
-	GoFurther\Classes\Front      as Front_Classes,
-	GoFurther\Classes\Admin      as Admin_Classes,
-	GoFurther\Classes\Customize  as Customize_Classes;
+use GoFurther\Classes\Core  as Core_Classes,
+	GoFurther\Classes\Admin as Admin_Classes;
 
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) {
