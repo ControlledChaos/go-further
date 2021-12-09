@@ -3,7 +3,7 @@
  * Frontend template tags
  *
  * @package    Go_Further
- * @subpackage Classes
+ * @subpackage Front
  * @category   Frontend
  * @since      1.0.0
  */
