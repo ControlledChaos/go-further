@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Editor_Styles {
+final class Editor_Styles {
 
 	/**
 	 * Constructor method
