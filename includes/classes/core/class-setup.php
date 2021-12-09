@@ -13,7 +13,7 @@ namespace GoFurther\Classes\Core;
 // Alias namespaces.
 use GoFurther\Classes\Core      as Core,
 	GoFurther\Front     as Front,
-	GoFurther\Classes\Customize as Customize;
+	GoFurther\Customize as Customize;
 
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -328,10 +328,8 @@ final class Setup {
 	 */
 	public function sticky_header( $classes ) {
 
-		new Customize\Customizer;
-
 		// Get the navigation location setting from the Customizer.
-		$sticky = Customize\mods()->sticky_header( get_theme_mod( 'gft_sticky_header' ) );
+		$sticky = Customize\sticky_header( get_theme_mod( 'gft_sticky_header' ) );
 
 		if ( $sticky ) {
 			return array_merge( $classes, [ 'has-sticky-header' ] );
@@ -369,10 +367,8 @@ final class Setup {
 	 */
 	public function display_social() {
 
-		new Customize\Customizer;
-
 		// Get the navigation location setting from the Customizer.
-		$display = Customize\mods()->display_social( get_theme_mod( 'gft_display_social' ) );
+		$display = Customize\display_social( get_theme_mod( 'gft_display_social' ) );
 
 		if ( false == $display ) {
 			$style = sprintf(

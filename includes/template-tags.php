@@ -11,7 +11,7 @@
 namespace GoFurther\Front;
 
 // Alias namespaces.
-use GoFurther\Classes\Customize as Customize;
+use GoFurther\Customize as Customize;
 
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -237,7 +237,7 @@ function has_cover_image() {
 	$blog  = (int) get_option( 'page_for_posts' );
 
 	// Get blog settings from the customizer.
-	$blog_image = Customize\mods()->blog_image_display( get_theme_mod( 'gft_blog_image_display' ) );
+	$blog_image = Customize\blog_image_display( get_theme_mod( 'gft_blog_image_display' ) );
 
 	// If the blog is set to use the cover image on the first page.
 	if (
@@ -272,7 +272,7 @@ function has_cover_image() {
 function featured_class() {
 
 	// Get the author section display setting from the Customizer.
-	$contain_featured = Customize\mods()->contain_featured( get_theme_mod( 'gft_contain_featured' ) );
+	$contain_featured = Customize\contain_featured( get_theme_mod( 'gft_contain_featured' ) );
 
 	$classes   = [];
 	$options = get_post_meta( get_the_ID(), 'gft_post_options', true );
@@ -313,7 +313,7 @@ function display_blog_image() {
 	$paged = get_query_var( 'paged' );
 
 	// Get blog settings from the customizer.
-	$image_display = Customize\mods()->blog_image_display( get_theme_mod( 'gft_blog_image_display' ) );
+	$image_display = Customize\blog_image_display( get_theme_mod( 'gft_blog_image_display' ) );
 
 	// Default customizer setting is `never`.
 	$display = false;
@@ -378,8 +378,7 @@ function blog_has_image() {
 function has_classic_widgets() {
 
 	// Get the classic widgets setting from the Customizer.
-	new Customize\Customizer;
-	$classic = Customize\mods()->classic_widgets( get_theme_mod( 'gft_classic_widgets' ) );
+	$classic = Customize\classic_widgets( get_theme_mod( 'gft_classic_widgets' ) );
 
 	// Return true if ClassicPress is running.
 	if ( $classic || function_exists( 'classicpress_version' ) ) {

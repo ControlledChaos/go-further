@@ -26,8 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'GFT_CLASS', [
 	'core'       => get_stylesheet_directory() . '/includes/classes/core/class-',
 	'admin'      => get_stylesheet_directory() . '/includes/classes/backend/class-',
-	'front'      => get_stylesheet_directory() . '/includes/classes/frontend/class-',
-	'customize'  => get_stylesheet_directory() . '/includes/classes/customizer/class-'
+	'front'      => get_stylesheet_directory() . '/includes/classes/frontend/class-'
 ] );
 
 /**
@@ -60,10 +59,7 @@ define( 'GFT_CLASSES', [
 	GFT_CLASS_NS . '\Front\Assets' => GFT_CLASS['front'] . 'assets.php',
 
 	// Backend classes.
-	GFT_CLASS_NS . '\Admin\Editor_Styles' => GFT_CLASS['admin'] . 'editor-styles.php',
-
-	// Customizer classes.
-	GFT_CLASS_NS . '\Customize\Customizer' => GFT_CLASS['customize'] . 'customizer.php'
+	GFT_CLASS_NS . '\Admin\Editor_Styles' => GFT_CLASS['admin'] . 'editor-styles.php'
 ] );
 
 /**

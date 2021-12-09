@@ -14,7 +14,7 @@ namespace GoFurther\Post_Options;
 
 // Alias namespaces.
 use GoFurther\Classes\Front     as Front,
-	GoFurther\Classes\Customize as Customize;
+	GoFurther\Customize as Customize;
 
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -78,7 +78,7 @@ function metaboxes() {
 function options_available() {
 
 	// Get featured image setting from the Customizer.
-	$contain_featured = Customize\mods()->contain_featured( get_theme_mod( 'gft_contain_featured' ) );
+	$contain_featured = Customize\contain_featured( get_theme_mod( 'gft_contain_featured' ) );
 
 	// If there are featured image options.
 	if (
@@ -108,7 +108,7 @@ function display_metabox( $post ) {
 	$post_name = $get_post->labels->singular_name;
 
 	// Get featured image setting from the Customizer.
-	$contain_featured = Customize\mods()->contain_featured( get_theme_mod( 'gft_contain_featured' ) );
+	$contain_featured = Customize\contain_featured( get_theme_mod( 'gft_contain_featured' ) );
 
 	wp_nonce_field( "gft_post_{$post->ID}_options_nonce", 'gft_post_options_nonce' );
 

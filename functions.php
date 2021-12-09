@@ -16,6 +16,7 @@ namespace GoFurther;
 // Alias namespaces.
 use GoFurther\Core as Core,
 	GoFurther\Post_Options as Post_Options,
+	GoFurther\Customize    as Customize,
 	GoFurther\Classes\Core       as Core_Classes,
 	GoFurther\Classes\Front      as Front_Classes,
 	GoFurther\Classes\Admin      as Admin_Classes,
@@ -37,6 +38,7 @@ define( 'GF_VERSION', $theme_version );
 
 // Load required files.
 require_once get_theme_file_path( '/includes/autoloader.php' );
+require_once get_theme_file_path( '/includes/customizer.php' );
 require_once get_theme_file_path( '/includes/post-options.php' );
 require_once get_theme_file_path( '/includes/template-tags.php' );
 require_once get_theme_file_path( '/includes/media.php' );
@@ -44,8 +46,8 @@ require_once get_theme_file_path( '/includes/media.php' );
 // Theme setup.
 new Core_Classes\Setup;
 new Core_Classes\Assets;
-new Customize_Classes\Customizer;
 
+Customize\setup();
 Media\setup();
 Post_Options\setup();
 
