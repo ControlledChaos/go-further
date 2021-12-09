@@ -3,7 +3,7 @@
  * Images, galleries, and other media
  *
  * @package    Go_Further
- * @subpackage Media
+ * @subpackage Includes
  * @category   Media
  * @since      1.0.0
  */
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Apply image & gallery functions
+ * Apply functions
  *
  * @since  1.0.0
  * @return void

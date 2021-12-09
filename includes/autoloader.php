@@ -61,7 +61,6 @@ define( 'GFT_CLASSES', [
 
 	// Backend classes.
 	GFT_CLASS_NS . '\Admin\Editor_Styles' => GFT_CLASS['admin'] . 'editor-styles.php',
-	GFT_CLASS_NS . '\Admin\Post_Options'  => GFT_CLASS['admin'] . 'post-options.php',
 
 	// Customizer classes.
 	GFT_CLASS_NS . '\Customize\Customizer' => GFT_CLASS['customize'] . 'customizer.php'

@@ -14,16 +14,12 @@
 namespace GoFurther;
 
 // Alias namespaces.
-use
-GoFurther\Classes            as General,
-GoFurther\Classes\Activate   as Activate,
-GoFurther\Classes\Core       as Core,
-GoFurther\Classes\Front      as Front,
-GoFurther\Classes\Navigation as Navigation,
-GoFurther\Classes\Widgets    as Widgets,
-GoFurther\Classes\Admin      as Admin,
-GoFurther\Classes\Customize  as Customize,
-GoFurther\Classes\Vendor     as Vendor;
+use GoFurther\Core as Core,
+	GoFurther\Post_Options as Post_Options,
+	GoFurther\Classes\Core       as Core_Classes,
+	GoFurther\Classes\Front      as Front_Classes,
+	GoFurther\Classes\Admin      as Admin_Classes,
+	GoFurther\Classes\Customize  as Customize_Classes;
 
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -39,28 +35,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 $theme_version = wp_get_theme()->get( 'Version' );
 define( 'GF_VERSION', $theme_version );
 
-// Autoload class files.
+// Load required files.
 require_once get_theme_file_path( '/includes/autoloader.php' );
-
+require_once get_theme_file_path( '/includes/post-options.php' );
 require_once get_theme_file_path( '/includes/template-tags.php' );
 require_once get_theme_file_path( '/includes/media.php' );
 
 // Theme setup.
-new Core\Setup;
-new Core\Assets;
-new Customize\Customizer;
+new Core_Classes\Setup;
+new Core_Classes\Assets;
+new Customize_Classes\Customizer;
 
 Media\setup();
+Post_Options\setup();
 
 // Frontend classes.
 if ( ! is_admin() ) {
-	new Front\Assets;
+	new Front_Classes\Assets;
 }
 
 // Backend classes.
 if ( is_admin() ) {
-	new Admin\Editor_Styles;
-	new Admin\Post_Options;
+	new Admin_Classes\Editor_Styles;
 }
-
-
