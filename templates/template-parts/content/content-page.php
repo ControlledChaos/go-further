@@ -11,18 +11,18 @@
 namespace GoFurther;
 
 // Alias namespaces.
-use GoFurther\Classes\Front as Front;
+use GoFurther\Front as Front;
 
 ?>
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 	<?php if ( has_post_thumbnail() ) : ?>
-		<figure class="post__thumbnail <?php echo Front\tags()->featured_class(); ?>">
+		<figure class="post__thumbnail <?php echo Front\featured_class(); ?>">
 			<?php the_post_thumbnail(); ?>
 		</figure>
 	<?php endif; ?>
 
-	<?php Front\tags()->page_title(); ?>
+	<?php Front\page_title(); ?>
 
 	<div class="<?php \Go\content_wrapper_class( 'content-area__wrapper' ); ?>">
 		<div class="content-area entry-content">

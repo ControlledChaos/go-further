@@ -11,18 +11,18 @@
 namespace GoFurther;
 
 // Alias namespaces.
-use GoFurther\Classes\Front as Front;
+use GoFurther\Front as Front;
 
-if ( Front\tags()->has_active_footer_sidebars() ) :
+if ( Front\has_active_footer_sidebars() ) :
 
 do_action( 'GoFurther\before_footer_sidebar' );
 
 ?>
-<aside id="footer-widgets" class="<?php echo Front\tags()->footer_widgets_class(); ?>" role="complementary">
+<aside id="footer-widgets" class="<?php echo Front\footer_widgets_class(); ?>" role="complementary">
 	<div class="footer-widgets-wrapper">
 		<?php
 		do_action( 'GoFurther\before_footer_widgets' );
-		Front\tags()->footer_widgets();
+		Front\footer_widgets();
 		do_action( 'GoFurther\after_footer_widgets' );
 		?>
 	</div>

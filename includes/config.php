@@ -75,43 +75,6 @@ $theme_url = get_template_directory_uri();
 define( 'GFT_URL', $theme_url );
 
 /**
- * Constant: Companion plugin active
- *
- * Looks for a companion plugin as defined in the variables
- * and returns true or false depending on the presence and
- * activation of the plugin.
- *
- * Variables used refer to the companion starter plugin for
- * this starter theme. Change for your plugin.
- *
- * @link https://github.com/ControlledChaos/ccdzine
- *
- * @example ```if ( GFT_COMPANION ) {
- *     // Execute code.
- * }```
- */
-
-// Plugin directory.
-$companion_dir  = 'ccdzine';
-
-// Core plugin filename.
-$companion_file = 'ccdzine.php';
-
-// Return false by default.
-$companion = false;
-
-/**
- * Return true if the plugin exists and is active.
- * Namespace escaped as it sometimes causes an error.
- */
-if ( \is_plugin_active( "$companion_dir/$companion_file" ) ) {
-	$companion = true;
-}
-
-// Define the companion plugin constant.
-define( 'GFT_COMPANION', $companion );
-
-/**
  * Check for block editor
  *
  * @since  1.0.0

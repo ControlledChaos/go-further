@@ -12,7 +12,7 @@ namespace GoFurther\Classes\Core;
 
 // Alias namespaces.
 use GoFurther\Classes\Core      as Core,
-	GoFurther\Classes\Front     as Front,
+	GoFurther\Front     as Front,
 	GoFurther\Classes\Customize as Customize;
 
 // Restrict direct access.
@@ -36,6 +36,12 @@ final class Setup {
 
 		// Theme setup.
 		add_action( 'after_setup_theme', [ $this, 'setup' ] );
+
+		// Body classes for templates.
+		add_filter( 'body_class', [ $this, 'body_classes' ] );
+
+		// Conditional logos.
+		add_filter( 'get_custom_logo',  [ $this, 'custom_logo' ] );
 
 		// Register widget areas.
         add_action( 'widgets_init', [ $this, 'widgets' ] );
@@ -104,6 +110,120 @@ final class Setup {
 	}
 
 	/**
+	 * Body classes for templates
+	 *
+	 * Adds classes frontend body element.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return array Returns a modified array of body classes.
+	 */
+	public function body_classes( $classes ) {
+
+		$add_classes = [];
+
+		if ( Front\has_cover_image() ) {
+			$add_classes[] .= 'template-cover-image';
+		}
+		return array_merge( $classes, $add_classes );
+	}
+
+	/**
+	 * Conditional logos
+	 *
+	 * Get logos for specified templates.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  string $html
+	 * @return string Returns the markup of the logo.
+	 */
+	public function custom_logo ( $html ) {
+
+		// Get logos & logo link URL.
+		$wrap_class  = [ 'custom-logo-wrap' ];
+		$logo        = null;
+		$logo_link   = site_url( '/' );
+		$custom_logo = get_theme_mod( 'custom_logo' );
+		$cover_logo  = get_theme_mod( 'gft_cover_logo' );
+		$post_type   = get_post_type( get_the_ID() );
+
+		// Stop here if no logo is found.
+		if ( empty( $custom_logo ) ) {
+			return;
+		}
+
+		// Default logo markup.
+		$logo = wp_get_attachment_image(
+			$custom_logo,
+			'full',
+			false,
+			[
+				'class' => 'custom-logo default-logo',
+			]
+		);
+
+		// Cover logo markup, if image is available.
+		if ( $cover_logo ) {
+
+			/**
+			 * If the Cover Image template is assigned and
+			 * the cover image logo is set.
+			 */
+			if (
+				is_singular( $post_type ) &&
+				post_type_supports( $post_type, 'thumbnail' ) &&
+				has_post_thumbnail( get_the_ID() ) &&
+				Front\has_cover_image()
+			) {
+				$wrap_class[] .= 'has-cover-logo';
+
+				$logo .= wp_get_attachment_image(
+					$cover_logo,
+					'full',
+					false,
+					[
+						'class' => 'custom-logo cover-logo',
+					]
+				);
+
+			/**
+			 * If the blog page is assigned the cover image and
+			 * the cover image logo is set.
+			 */
+			} elseif (
+				! is_singular() &&
+				Front\has_cover_image()
+			) {
+				$wrap_class[] .= 'has-cover-logo';
+
+				$logo .= wp_get_attachment_image(
+					$cover_logo,
+					'full',
+					false,
+					[
+						'class' => 'custom-logo cover-logo',
+					]
+				);
+			}
+		} // if ( $cover_logo )
+
+		// Compile the wrapper classes.
+		$wrap_class = implode( ' ', $wrap_class );
+
+		// The markup of the linked logo.
+		$html = sprintf(
+			'<div class="%1$s"><a href="%2$s" class="custom-logo-link" rel="home" itemprop="url">%3$s</a></div>',
+			$wrap_class,
+			esc_url( $logo_link  ),
+			$logo
+		);
+
+		// Return the markup of the logo with a filter applied.
+		return apply_filters( 'gft_custom_logo', $html );
+	}
+
+	/**
 	 * Register widgets
 	 *
 	 * @since  1.0.0
@@ -120,9 +240,7 @@ final class Setup {
 			'after_title'   => '</h3>'
 		];
 
-		new Front\Template_Tags;
-
-		if ( Front\tags()->has_classic_widgets() ) :
+		if ( Front\has_classic_widgets() ) :
 
 			// Footer #1.
 			register_sidebar(
@@ -526,7 +644,7 @@ final class Setup {
 	public function classic_widgets() {
 
 		// Add filters if classic widgets are used.
-		if ( Front\tags()->has_classic_widgets() ) {
+		if ( Front\has_classic_widgets() ) {
 			add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
 			add_filter( 'use_widgets_block_editor', '__return_false' );
 		}

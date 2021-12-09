@@ -11,13 +11,13 @@
 namespace GoFurther;
 
 // Alias namespaces.
-use GoFurther\Classes\Front as Front;
+use GoFurther\Front as Front;
 
 ?>
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 	<?php if ( is_singular() && has_post_thumbnail() ) : ?>
-		<figure class="post__thumbnail page-banner <?php echo Front\tags()->featured_class(); ?>">
+		<figure class="post__thumbnail page-banner <?php echo Front\featured_class(); ?>">
 			<?php the_post_thumbnail( 'post-thumbnail' ); ?>
 		</figure>
 	<?php endif; ?>

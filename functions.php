@@ -31,51 +31,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Get the PHP version class.
-require_once get_theme_file_path( '/includes/classes/core/class-php-version.php' );
-
-/**
- * PHP version check
- *
- * Disables theme front end if the minimum PHP version is not met.
- * Prevents breaking sites running older PHP versions.
- *
- * @since  1.0.0
- * @return void
- */
-if ( ! Core\php()->version() ) {
-
-	// Put up an admin notice.
-	if ( is_admin() ) {
-		Core\php()->add_php_admin_notice();
-		return;
-
-	// Disable the theme's front end.
-	} else {
-		die( Core\php()->frontend_message() );
-	}
-}
-
-/**
- * Get plugins path
- *
- * Used to check for active plugins with the `is_plugin_active` function.
- * Namespace escaped in example ( \ ) as it sometimes causes an error.
- *
- * @link https://developer.wordpress.org/reference/functions/is_plugin_active/
- *
- * @example The following would check for the Advanced Custom Fields plugin:
- *          ```
- *          if ( \is_plugin_active( 'advanced-custom-fields/acf.php' ) ) {
- *          	// Execute code.
- *           }
- *          ```
- */
-$get_plugin = ABSPATH . 'wp-admin/includes/plugin.php';
-if ( file_exists( $get_plugin ) ) {
-	include_once( $get_plugin );
-}
-
 // Get theme configuration file.
 require get_theme_file_path( '/includes/config.php' );
 
@@ -92,7 +47,6 @@ new Media\Images;
 
 // Frontend classes.
 if ( ! is_admin() ) {
-	new Front\Template_Tags;
 	new Front\Assets;
 }
 
@@ -101,3 +55,5 @@ if ( is_admin() ) {
 	new Admin\Editor_Styles;
 	new Admin\Post_Options;
 }
+
+require_once get_theme_file_path( '/includes/template-tags.php' );

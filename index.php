@@ -11,14 +11,15 @@
 namespace GoFurther;
 
 // Alias namespaces.
-use GoFurther\Classes\Front     as Front,
+use GoFurther\Front as Front,
+	GoFurther\Classes\Front as Front_Classes,
 	GoFurther\Classes\Customize as Customize;
 
 // Get blog settings.
 $blog          = (int) get_option( 'page_for_posts' );
 $blog_image    = get_theme_mod( 'gft_blog_image' );
-$display_image = Front\tags()->display_blog_image();
-$has_image     = Front\tags()->blog_has_image();
+$display_image = Front\display_blog_image();
+$has_image     = Front\blog_has_image();
 
 $image = '';
 if ( $blog && has_post_thumbnail( $blog ) ) {
@@ -36,16 +37,16 @@ get_header();
 if ( $display_image && $has_image ) :
 
 ?>
-	<figure class="post__thumbnail <?php echo Front\tags()->featured_class(); ?>">
+	<figure class="post__thumbnail <?php echo Front\featured_class(); ?>">
 		<img src="<?php echo $image; ?>" alt="">
-		<?php Front\tags()->page_title(); ?>
+		<?php Front\page_title(); ?>
 	</figure>
 <?php
 
 endif;
 
 if ( ! $display_image ) {
-	Front\tags()->page_title();
+	Front\page_title();
 }
 
 if ( have_posts() ) {
