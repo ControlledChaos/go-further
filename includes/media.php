@@ -10,11 +10,6 @@
 
 namespace GoFurther\Media;
 
-// Restrict direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Apply functions
  *

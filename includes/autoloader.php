@@ -10,11 +10,6 @@
 
 namespace GoFurther;
 
-// Restrict direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Class files
  *

@@ -9,11 +9,6 @@
 
 namespace GoFurther\Assets;
 
-// Restrict direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Apply functions
  *

@@ -13,11 +13,6 @@ namespace GoFurther\Front;
 // Alias namespaces.
 use GoFurther\Customize as Customize;
 
-// Restrict direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Page title
  *

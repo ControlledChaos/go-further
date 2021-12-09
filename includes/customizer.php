@@ -9,11 +9,6 @@
 
 namespace GoFurther\Customize;
 
-// Restrict direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Apply functions
  *

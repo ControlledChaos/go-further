@@ -12,11 +12,6 @@
 
 namespace GoFurther\Classes\Admin;
 
-// Restrict direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 final class Editor_Styles {
 
 	/**

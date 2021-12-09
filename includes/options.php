@@ -15,11 +15,6 @@ namespace GoFurther\Options;
 // Alias namespaces.
 use GoFurther\Customize as Customize;
 
-// Restrict direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Apply functions
  *

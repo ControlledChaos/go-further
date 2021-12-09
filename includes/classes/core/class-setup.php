@@ -16,11 +16,6 @@ use GoFurther\Classes\Core as Core,
 	GoFurther\Customize as Customize,
 	GoFurther\Assets    as Assets;
 
-// Restrict direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 final class Setup {
 
 	/**

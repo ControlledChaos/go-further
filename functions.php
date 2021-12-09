@@ -13,15 +13,6 @@
 
 namespace GoFurther;
 
-// Alias namespaces.
-use GoFurther\Classes\Core  as Core_Classes,
-	GoFurther\Classes\Admin as Admin_Classes;
-
-// Restrict direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Constant: Theme version
  *
@@ -37,7 +28,7 @@ foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $filename ) 
 }
 
 // Theme setup.
-new Core_Classes\Setup;
+new Classes\Core\Setup;
 
 Customize\setup();
 Media\setup();
@@ -46,5 +37,5 @@ Assets\setup();
 
 // Backend classes.
 if ( is_admin() ) {
-	new Admin_Classes\Editor_Styles;
+	new Classes\Admin\Editor_Styles;
 }
