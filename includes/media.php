@@ -125,7 +125,7 @@ function custom_logo ( $html ) {
 	$logo        = null;
 	$logo_link   = site_url( '/' );
 	$custom_logo = get_theme_mod( 'custom_logo' );
-	$cover_logo  = get_theme_mod( 'gft_cover_logo' );
+	$cover_logo  = get_theme_mod( 'gf_cover_logo' );
 	$post_type   = get_post_type( get_the_ID() );
 
 	// Stop here if no logo is found.
@@ -200,5 +200,5 @@ function custom_logo ( $html ) {
 	);
 
 	// Return the markup of the logo with a filter applied.
-	return apply_filters( 'gft_custom_logo', $html );
+	return apply_filters( 'gf_custom_logo', $html );
 }

@@ -195,7 +195,7 @@ function add_page_excerpts() {
 function sticky_header( $classes ) {
 
 	// Get the navigation location setting from the Customizer.
-	$sticky = Customize\sticky_header( get_theme_mod( 'gft_sticky_header' ) );
+	$sticky = Customize\sticky_header( get_theme_mod( 'gf_sticky_header' ) );
 
 	if ( $sticky ) {
 		return array_merge( $classes, [ 'has-sticky-header' ] );
@@ -231,7 +231,7 @@ function get_available_social_icons( $social_icons ) {
 function display_social() {
 
 	// Get the navigation location setting from the Customizer.
-	$display = Customize\display_social( get_theme_mod( 'gft_display_social' ) );
+	$display = Customize\display_social( get_theme_mod( 'gf_display_social' ) );
 
 	if ( false == $display ) {
 		$style = sprintf(

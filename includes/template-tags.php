@@ -112,7 +112,7 @@ function get_blog_title() {
 
 	$title      = __( 'Latest Blog Posts', 'go-further' );
 	$blog_page  = (int) get_option( 'page_for_posts' );
-	$blog_title = get_theme_mod( 'gft_blog_title' );
+	$blog_title = get_theme_mod( 'gf_blog_title' );
 
 	if ( ! empty( $blog_page ) ) {
 		$title = get_the_title( $blog_page );
@@ -120,7 +120,7 @@ function get_blog_title() {
 		$title = $blog_title;
 	}
 
-	return apply_filters( 'gft_get_blog_title', $title );
+	return apply_filters( 'gf_get_blog_title', $title );
 }
 
 /**
@@ -133,7 +133,7 @@ function get_page_subtitle() {
 
 	$subtitle      = '';
 	$blog_page     = (int) get_option( 'page_for_posts' );
-	$blog_subtitle = get_theme_mod( 'gft_blog_subtitle' );
+	$blog_subtitle = get_theme_mod( 'gf_blog_subtitle' );
 
 	if (
 		is_home() &&
@@ -156,7 +156,7 @@ function get_page_subtitle() {
 		$subtitle = wp_strip_all_tags( get_the_excerpt( get_the_ID() ), true );
 	}
 
-	return apply_filters( 'gft_get_page_subtitle', $subtitle );
+	return apply_filters( 'gf_get_page_subtitle', $subtitle );
 }
 
 /**
@@ -232,7 +232,7 @@ function has_cover_image() {
 	$blog  = (int) get_option( 'page_for_posts' );
 
 	// Get blog settings from the customizer.
-	$blog_image = Customize\blog_image_display( get_theme_mod( 'gft_blog_image_display' ) );
+	$blog_image = Customize\blog_image_display( get_theme_mod( 'gf_blog_image_display' ) );
 
 	// If the blog is set to use the cover image on the first page.
 	if (
@@ -252,7 +252,7 @@ function has_cover_image() {
 		$cover = true;
 	}
 
-	return apply_filters( 'gft_has_cover_image', $cover );
+	return apply_filters( 'gf_has_cover_image', $cover );
 }
 
 /**
@@ -267,10 +267,10 @@ function has_cover_image() {
 function featured_class() {
 
 	// Get the author section display setting from the Customizer.
-	$contain_featured = Customize\contain_featured( get_theme_mod( 'gft_contain_featured' ) );
+	$contain_featured = Customize\contain_featured( get_theme_mod( 'gf_contain_featured' ) );
 
 	$classes   = [];
-	$options = get_post_meta( get_the_ID(), 'gft_post_options', true );
+	$options = get_post_meta( get_the_ID(), 'gf_post_options', true );
 	$enable  = $options ? in_array( 'enable_contain_featured', $options, true ) : false;
 	$disable = $options ? in_array( 'disable_contain_featured', $options, true ) : false;
 
@@ -308,7 +308,7 @@ function display_blog_image() {
 	$paged = get_query_var( 'paged' );
 
 	// Get blog settings from the customizer.
-	$image_display = Customize\blog_image_display( get_theme_mod( 'gft_blog_image_display' ) );
+	$image_display = Customize\blog_image_display( get_theme_mod( 'gf_blog_image_display' ) );
 
 	// Default customizer setting is `never`.
 	$display = false;
@@ -342,7 +342,7 @@ function blog_has_image() {
 	$blog  = (int) get_option( 'page_for_posts' );
 
 	// Get blog settings from the customizer.
-	$blog_image    = get_theme_mod( 'gft_blog_image' );
+	$blog_image    = get_theme_mod( 'gf_blog_image' );
 	$display_image = display_blog_image();
 
 	// Default to false.
@@ -358,7 +358,7 @@ function blog_has_image() {
 	}
 
 	// Apply a filter for unforeseen conditions.
-	return apply_filters( 'gft_blog_has_image', $image );
+	return apply_filters( 'gf_blog_has_image', $image );
 }
 
 /**
@@ -373,7 +373,7 @@ function blog_has_image() {
 function has_classic_widgets() {
 
 	// Get the classic widgets setting from the Customizer.
-	$classic = Customize\classic_widgets( get_theme_mod( 'gft_classic_widgets' ) );
+	$classic = Customize\classic_widgets( get_theme_mod( 'gf_classic_widgets' ) );
 
 	// Return true if ClassicPress is running.
 	if ( $classic || function_exists( 'classicpress_version' ) ) {

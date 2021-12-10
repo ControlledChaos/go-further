@@ -17,7 +17,7 @@ use GoFurther\Front as Front,
 
 // Get blog settings.
 $blog          = (int) get_option( 'page_for_posts' );
-$blog_image    = get_theme_mod( 'gft_blog_image' );
+$blog_image    = get_theme_mod( 'gf_blog_image' );
 $display_image = Front\display_blog_image();
 $has_image     = Front\blog_has_image();
 

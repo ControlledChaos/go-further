@@ -57,7 +57,7 @@ function metaboxes() {
 	unset( $post_types['elementor_library'], $post_types['fl-builder-template'] );
 
 	// Display Options metabox.
-	add_meta_box( 'gft_post_display', __( 'Display Options', 'go-further' ), __NAMESPACE__ . '\display_metabox', $post_types, 'side', 'default' );
+	add_meta_box( 'gf_post_display', __( 'Display Options', 'go-further' ), __NAMESPACE__ . '\display_metabox', $post_types, 'side', 'default' );
 }
 
 /**
@@ -72,7 +72,7 @@ function metaboxes() {
 function options_available() {
 
 	// Get featured image setting from the Customizer.
-	$contain_featured = Customize\contain_featured( get_theme_mod( 'gft_contain_featured' ) );
+	$contain_featured = Customize\contain_featured( get_theme_mod( 'gf_contain_featured' ) );
 
 	// If there are featured image options.
 	if (
@@ -102,11 +102,11 @@ function display_metabox( $post ) {
 	$post_name = $get_post->labels->singular_name;
 
 	// Get featured image setting from the Customizer.
-	$contain_featured = Customize\contain_featured( get_theme_mod( 'gft_contain_featured' ) );
+	$contain_featured = Customize\contain_featured( get_theme_mod( 'gf_contain_featured' ) );
 
-	wp_nonce_field( "gft_post_{$post->ID}_options_nonce", 'gft_post_options_nonce' );
+	wp_nonce_field( "gf_post_{$post->ID}_options_nonce", 'gf_post_options_nonce' );
 
-	$stored_meta = get_post_meta( $post->ID, 'gft_post_options', true );
+	$stored_meta = get_post_meta( $post->ID, 'gf_post_options', true );
 	if ( empty( $stored_meta ) ) {
 		$stored_meta = [];
 	} else {
@@ -136,7 +136,7 @@ function display_metabox( $post ) {
 		?>
 		<p>
 			<label for="enable_contain_featured">
-				<input id="enable_contain_featured" type="checkbox" name="gft_post_options[]" value="enable_contain_featured" <?php checked( $enable_contain_featured, 'enable_contain_featured' ); ?> />
+				<input id="enable_contain_featured" type="checkbox" name="gf_post_options[]" value="enable_contain_featured" <?php checked( $enable_contain_featured, 'enable_contain_featured' ); ?> />
 				<?php printf(
 					__( 'Contain the featured image for this %s.', 'go-further' ),
 					strtolower( $post_name )
@@ -147,7 +147,7 @@ function display_metabox( $post ) {
 		?>
 		<p>
 			<label for="disable_contain_featured">
-				<input id="disable_contain_featured" type="checkbox" name="gft_post_options[]" value="disable_contain_featured" <?php checked( $disable_contain_featured, 'disable_contain_featured' ); ?> />
+				<input id="disable_contain_featured" type="checkbox" name="gf_post_options[]" value="disable_contain_featured" <?php checked( $disable_contain_featured, 'disable_contain_featured' ); ?> />
 				<?php printf(
 					__( 'Do not contain the featured image for this %s.', 'go-further' ),
 					strtolower( $post_name )
@@ -180,7 +180,7 @@ function save_metadata( $post_id, $post, $update ) {
 	$is_autosave = wp_is_post_autosave( $post_id );
 	$is_revision = wp_is_post_revision( $post_id );
 
-	$is_valid_nonce = ( isset( $_POST['gft_post_options_nonce'] ) && wp_verify_nonce( $_POST['gft_post_options_nonce'], "gft_post_{$post_id}_options_nonce" ) ) ? true : false;
+	$is_valid_nonce = ( isset( $_POST['gf_post_options_nonce'] ) && wp_verify_nonce( $_POST['gf_post_options_nonce'], "gf_post_{$post_id}_options_nonce" ) ) ? true : false;
 
 	// Stop here if autosave, revision or nonce is invalid.
 	if ( $is_autosave || $is_revision || ! $is_valid_nonce ) {
@@ -195,16 +195,16 @@ function save_metadata( $post_id, $post, $update ) {
 	// Save options metadata.
 	$checked = [];
 
-	if ( isset( $_POST['gft_post_options'] ) ) {
+	if ( isset( $_POST['gf_post_options'] ) ) {
 
-		if ( in_array( 'enable_contain_featured', $_POST['gft_post_options'], true ) ) {
+		if ( in_array( 'enable_contain_featured', $_POST['gf_post_options'], true ) ) {
 			$checked[] .= 'enable_contain_featured';
 		}
 
-		if ( in_array( 'disable_contain_featured', $_POST['gft_post_options'], true ) ) {
+		if ( in_array( 'disable_contain_featured', $_POST['gf_post_options'], true ) ) {
 			$checked[] .= 'disable_contain_featured';
 		}
 	}
 
-	update_post_meta( $post_id, 'gft_post_options', $checked );
+	update_post_meta( $post_id, 'gf_post_options', $checked );
 }

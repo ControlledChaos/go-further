@@ -47,7 +47,7 @@ function customize( $wp_customize ) {
 		* - Footer
 		* - Additional CSS
 		*/
-	$wp_customize->add_panel( 'gft_design', [
+	$wp_customize->add_panel( 'gf_design', [
 		'priority'       => 1,
 		'capability'     => 'edit_theme_options',
 		'type'           => 'site-display',
@@ -64,7 +64,7 @@ function customize( $wp_customize ) {
 		* - Front Page & Blog
 		* - Widgets
 		*/
-	$wp_customize->add_panel( 'gft_settings', [
+	$wp_customize->add_panel( 'gf_settings', [
 		'priority'       => 2,
 		'capability'     => 'edit_theme_options',
 		'type'           => 'site-settings',
@@ -82,8 +82,8 @@ function customize( $wp_customize ) {
 	 *
 	 * Displays in the Site Settings panel.
 	 */
-	$wp_customize->add_section( 'gft_widgets', [
-		'panel'          => 'gft_settings',
+	$wp_customize->add_section( 'gf_widgets', [
+		'panel'          => 'gf_settings',
 		'priority'       => 40,
 		'capability'     => 'edit_theme_options',
 		'type'           => 'widget-settings',
@@ -103,30 +103,30 @@ function customize( $wp_customize ) {
 		*/
 
 	// Move the core Site Identity section to the Site Settings panel.
-	$wp_customize->get_section( 'title_tagline' )->panel = 'gft_settings';
+	$wp_customize->get_section( 'title_tagline' )->panel = 'gf_settings';
 
 	/*
 		* Move the core Colors section to the Design & Layout panel.
 		* The Colors section is renamed Site Design by the parent theme.
 		*/
-	$wp_customize->get_section( 'colors' )->panel = 'gft_design';
+	$wp_customize->get_section( 'colors' )->panel = 'gf_design';
 
 	/*
 		* Move the core Homepage Settings section to the Site Settings panel.
 		* Rename the section and change the description.
 		*/
-	$wp_customize->get_section( 'static_front_page' )->panel       = 'gft_settings';
+	$wp_customize->get_section( 'static_front_page' )->panel       = 'gf_settings';
 	$wp_customize->get_section( 'static_front_page' )->priority    = 30;
 	$wp_customize->get_section( 'static_front_page' )->title       = __( 'Front Page & Blog', 'go-further' );
 	$wp_customize->get_section( 'static_front_page' )->description = 'Customize the front page of the site and how the blog is displayed.';
 
 	// Move core and parent theme sections to the Design & Layout panel.
-	$wp_customize->get_section( 'go_header_settings' )->panel = 'gft_design';
-	$wp_customize->get_section( 'go_footer_settings' )->panel = 'gft_design';
-	$wp_customize->get_section( 'custom_css' )->panel         = 'gft_design';
+	$wp_customize->get_section( 'go_header_settings' )->panel = 'gf_design';
+	$wp_customize->get_section( 'go_footer_settings' )->panel = 'gf_design';
+	$wp_customize->get_section( 'custom_css' )->panel         = 'gf_design';
 
 	// Parent theme's Site Settings section.
-	$wp_customize->get_section( 'go_site_settings' )->panel    = 'gft_settings';
+	$wp_customize->get_section( 'go_site_settings' )->panel    = 'gf_settings';
 	$wp_customize->get_section( 'go_site_settings' )->priority = 25;
 
 	// Rename the core Homepage Settings section and change the description.
@@ -196,16 +196,16 @@ function customize( $wp_customize ) {
 		*
 		* @uses get_theme_support()
 		*/
-	$wp_customize->add_setting( 'gft_cover_logo', [
+	$wp_customize->add_setting( 'gf_cover_logo', [
 		'default'           => '',
 		'sanitize_callback' => 'absint'
 	] );
 	$wp_customize->add_control( new \WP_Customize_Cropped_Image_Control(
 		$wp_customize,
-		'gft_cover_logo',
+		'gf_cover_logo',
 		[
 			'section'       => 'title_tagline',
-			'settings'      => 'gft_cover_logo',
+			'settings'      => 'gf_cover_logo',
 			'priority'      => 16,
 			'label'         => __( 'Cover Image Logo', 'go-further' ),
 			'description'   => __( 'Displays in the header of posts & pages assigned the Cover Image template, if the default logo is also set.', 'go-further' ),
@@ -230,15 +230,15 @@ function customize( $wp_customize ) {
 		*/
 
 	// Blog title.
-	$wp_customize->add_setting( 'gft_blog_title', [
+	$wp_customize->add_setting( 'gf_blog_title', [
 		'default'           => '',
 		'sanitize_callback' => 'wp_filter_nohtml_kses'
 	] );
 	$wp_customize->add_control( new \WP_Customize_Control(
 		$wp_customize,
-		'gft_blog_title', [
+		'gf_blog_title', [
 			'section'     => 'static_front_page',
-			'settings'    => 'gft_blog_title',
+			'settings'    => 'gf_blog_title',
 			'priority'    => 20,
 			'label'       => __( 'Blog Title', 'go-further' ),
 			'description' => __( 'If a static front page and a blog page is set then the title of the blog page will supersede this setting.', 'go-further' ),
@@ -247,15 +247,15 @@ function customize( $wp_customize ) {
 	) );
 
 	// Blog subtitle/description.
-	$wp_customize->add_setting( 'gft_blog_subtitle', [
+	$wp_customize->add_setting( 'gf_blog_subtitle', [
 		'default'           => '',
 		'sanitize_callback' => 'wp_filter_nohtml_kses'
 	] );
 	$wp_customize->add_control( new \WP_Customize_Control(
 		$wp_customize,
-		'gft_blog_subtitle', [
+		'gf_blog_subtitle', [
 			'section'     => 'static_front_page',
-			'settings'    => 'gft_blog_subtitle',
+			'settings'    => 'gf_blog_subtitle',
 			'priority'    => 25,
 			'label'       => __( 'Blog Subtitle', 'go-further' ),
 			'description' => __( 'If a static front page and a blog page is set then the manual excerpt of the blog page will supersede this text.', 'go-further' ),
@@ -276,16 +276,16 @@ function customize( $wp_customize ) {
 
 	// Blog image.
 	$image_sizes = wp_get_additional_image_sizes();
-	$wp_customize->add_setting( 'gft_blog_image', [
+	$wp_customize->add_setting( 'gf_blog_image', [
 		'default'           => '',
 		'sanitize_callback' => __NAMESPACE__ . '\sanitize_image'
 	] );
 	$wp_customize->add_control( new \WP_Customize_Image_Control(
 		$wp_customize,
-		'gft_blog_image',
+		'gf_blog_image',
 		[
 			'section'       => 'static_front_page',
-			'settings'      => 'gft_blog_image',
+			'settings'      => 'gf_blog_image',
 			'label'         => __( 'Blog Image', 'go-further' ),
 			'description'   => __( 'Displays in the header of blog pages according to display settings. If a static front page and a blog page is set then the featured image of the blog page will supersede this image.', 'go-further' ),
 			'priority'      => 30,
@@ -300,16 +300,16 @@ function customize( $wp_customize ) {
 	) );
 
 	// Blog image display.
-	$wp_customize->add_setting( 'gft_blog_image_display', [
+	$wp_customize->add_setting( 'gf_blog_image_display', [
 		'default'	        => 'never',
 		'sanitize_callback' => __NAMESPACE__ . '\blog_image_display'
 	] );
 	$wp_customize->add_control( new \WP_Customize_Control(
 		$wp_customize,
-		'gft_blog_image_display',
+		'gf_blog_image_display',
 		[
 			'section'     => 'static_front_page',
-			'settings'    => 'gft_blog_image_display',
+			'settings'    => 'gf_blog_image_display',
 			'priority'    => 35,
 			'label'       => __( 'Blog Image Display', 'go-further' ),
 			'description' => __( 'Choose where to display a featured image on blog pages. If a static front page and a blog page is set then the template & settings of the blog page will supersede this text.', 'go-further' ),
@@ -334,16 +334,16 @@ function customize( $wp_customize ) {
 		*/
 
 	// Featured image banner containment.
-	$wp_customize->add_setting( 'gft_contain_featured', [
+	$wp_customize->add_setting( 'gf_contain_featured', [
 		'default'	        => 'never',
 		'sanitize_callback' => __NAMESPACE__ . '\contain_featured'
 	] );
 	$wp_customize->add_control( new \WP_Customize_Control(
 		$wp_customize,
-		'gft_contain_featured',
+		'gf_contain_featured',
 		[	// The core "Colors" section is renamed "Site Design" by the parent theme.
 			'section'     => 'colors',
-			'settings'    => 'gft_contain_featured',
+			'settings'    => 'gf_contain_featured',
 			'priority'    => 55,
 			'label'       => __( 'Featured Image Containment', 'go-further' ),
 			'description' => __( 'Choose when to contain the featured image with left & right padding. Does not apply to the Cover Image template.', 'go-further' ),
@@ -362,16 +362,16 @@ function customize( $wp_customize ) {
 		*
 		* Allow the page header to stick to the top of the viewport.
 		*/
-	$wp_customize->add_setting( 'gft_sticky_header', [
+	$wp_customize->add_setting( 'gf_sticky_header', [
 		'default'	        => false,
 		'sanitize_callback' => __NAMESPACE__ . '\sticky_header'
 	] );
 	$wp_customize->add_control( new \WP_Customize_Control(
 		$wp_customize,
-		'gft_sticky_header',
+		'gf_sticky_header',
 		[
 			'section'     => 'go_header_settings',
-			'settings'    => 'gft_sticky_header',
+			'settings'    => 'gf_sticky_header',
 			'priority'    => 100,
 			'label'       => __( 'Sticky Header', 'go-further' ),
 			'description' => __( 'Check to make the header stick to the top of the page.', 'go-further' ),
@@ -385,16 +385,16 @@ function customize( $wp_customize ) {
 		* Determines whether to display the social media links
 		* at the bottom of the main content.
 		*/
-	$wp_customize->add_setting( 'gft_display_social', [
+	$wp_customize->add_setting( 'gf_display_social', [
 		'default'	        => true,
 		'sanitize_callback' => __NAMESPACE__ . '\display_social'
 	] );
 	$wp_customize->add_control( new \WP_Customize_Control(
 		$wp_customize,
-		'gft_display_social',
+		'gf_display_social',
 		[
 			'section'     => 'go_social_media',
-			'settings'    => 'gft_display_social',
+			'settings'    => 'gf_display_social',
 			'priority'    => 11,
 			'label'       => __( 'Links Below Content', 'go-further' ),
 			'description' => __( 'Check to display the social media links below the content.', 'go-further' ),
@@ -409,16 +409,16 @@ function customize( $wp_customize ) {
 		* Do not register if ClassicPress is running.
 		*/
 	if ( ! function_exists( 'classicpress_version' ) ) :
-		$wp_customize->add_setting( 'gft_classic_widgets', [
+		$wp_customize->add_setting( 'gf_classic_widgets', [
 			'default'	        => false,
 			'sanitize_callback' => __NAMESPACE__ . '\classic_widgets'
 		] );
 		$wp_customize->add_control( new \WP_Customize_Control(
 			$wp_customize,
-			'gft_classic_widgets',
+			'gf_classic_widgets',
 			[
-				'section'     => 'gft_widgets',
-				'settings'    => 'gft_classic_widgets',
+				'section'     => 'gf_widgets',
+				'settings'    => 'gf_classic_widgets',
 				'priority'    => 11,
 				'label'       => __( 'Classic Widgets', 'go-further' ),
 				'description' => __( 'Check to use the classic widgets interfaces rather than block widgets.', 'go-further' ),
