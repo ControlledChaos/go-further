@@ -42,6 +42,7 @@ function setup() {
 	add_filter( 'go_header_variations', $n( 'add_header_variations' ) );
 	add_filter( 'go_default_header', $n( 'default_header_variation' ) );
 	add_action( 'init', $n( 'classic_widgets' ) );
+	add_filter( 'go_default_design_style', $n( 'default_design_style' ) );
 }
 
 /**
@@ -502,4 +503,14 @@ function add_design_styles( $supported_design_styles ) {
 		]
 	];
 	return array_merge( $add_design_styles, $supported_design_styles );
+}
+
+/**
+ * Default design style
+ *
+ * @since  1.0.0
+ * @return string Returns the default design style.
+ */
+function default_design_style() {
+	return (string) 'rising-sun';
 }
