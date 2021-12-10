@@ -55,12 +55,6 @@ function setup() {
  * @return string
  */
 function js_detect() {
-
-	// Front end only.
-	if ( is_admin() ) {
-		return;
-	}
-
 	echo "<script>var root=document.getElementsByTagName('html')[0];root.setAttribute('class','js');</script>\n";
 }
 
