@@ -28,7 +28,7 @@ function setup() {
 	};
 
 	add_action( 'wp_head', $n( 'js_detect' ), 0 );
-	add_action( 'after_setup_theme', $n( 'theme_setup' ) );
+	add_action( 'after_setup_theme', $n( 'theme_textdomain' ) );
 	add_filter( 'body_class', $n( 'body_classes' ) );
 	add_action( 'widgets_init', $n( 'widgets' ) );
 	add_action( 'init', $n( 'add_page_excerpts' ) );
@@ -65,18 +65,13 @@ function js_detect() {
 }
 
 /**
- * Theme setup
+ * Load domain for translation
  *
  * @since  1.0.0
  * @return void
  */
-function theme_setup() {
-
-	// Load domain for translation.
+function theme_textdomain() {
 	load_theme_textdomain( 'go-further' );
-
-	// Add stylesheet for the content editor.
-	add_editor_style( 'assets/css/editor' . Assets\suffix() . '.css', [], '', 'screen' );
 }
 
 /**

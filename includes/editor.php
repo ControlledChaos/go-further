@@ -23,7 +23,19 @@ function setup() {
 	$n = function( $function ) {
 		return __NAMESPACE__ . "\\$function";
 	};
+
+	add_action( 'after_setup_theme', $n( 'tinymce_editor_style' ) );
 	add_filter( 'mce_css', $n( 'fresh_editor_style' ) );
+}
+
+/**
+ * TinyMCE editor styles
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function tinymce_editor_style() {
+	add_editor_style( 'assets/css/editor' . Assets\suffix() . '.css', [], '', 'screen' );
 }
 
 /**
