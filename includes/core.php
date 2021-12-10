@@ -71,7 +71,7 @@ function theme_setup() {
 	load_theme_textdomain( 'go-further' );
 
 	// Add stylesheet for the content editor.
-	add_editor_style( 'assets/css/editor' . Assets\suffix() . '.css', [ 'gft-admin' ], '', 'screen' );
+	add_editor_style( 'assets/css/editor' . Assets\suffix() . '.css', [], '', 'screen' );
 }
 
 /**
