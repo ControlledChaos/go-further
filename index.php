@@ -11,9 +11,7 @@
 namespace GoFurther;
 
 // Alias namespaces.
-use GoFurther\Front as Front,
-	GoFurther\Classes\Front as Front_Classes,
-	GoFurther\Classes\Customize as Customize;
+use GoFurther\Front as Front;
 
 // Get blog settings.
 $blog          = (int) get_option( 'page_for_posts' );
@@ -45,7 +43,7 @@ if ( $display_image && $has_image ) :
 
 endif;
 
-if ( ! $display_image ) {
+if ( ! $display_image && Front\blog_first_page() ) {
 	Front\page_title();
 }
 
