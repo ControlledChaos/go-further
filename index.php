@@ -28,6 +28,8 @@ if ( $blog && has_post_thumbnail( $blog ) ) {
 
 get_header();
 
+do_action( 'GoFurther\before_index' );
+
 /**
  * Featured image on the first page of the blog if
  * an ID for the blog page is set.
@@ -63,5 +65,7 @@ if ( have_posts() ) {
 	// If no content, include the "No posts found" template.
 	get_template_part( 'partials/content', 'none' );
 }
+
+do_action( 'GoFurther\after_index' );
 
 get_footer();
