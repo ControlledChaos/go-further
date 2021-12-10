@@ -31,7 +31,6 @@ function setup() {
 	add_action( 'wp_head', $n( 'js_detect' ), 0 );
 	add_action( 'after_setup_theme', $n( 'theme_setup' ) );
 	add_filter( 'body_class', $n( 'body_classes' ) );
-	// add_filter( 'get_custom_logo',  $n( 'custom_logo' ) );
 	add_action( 'widgets_init', $n( 'widgets' ) );
 	add_action( 'init', $n( 'add_page_excerpts' ) );
 	add_filter( 'body_class', $n( 'sticky_header' ) );
@@ -56,6 +55,12 @@ function setup() {
  * @return string
  */
 function js_detect() {
+
+	// Front end only.
+	if ( is_admin() ) {
+		return;
+	}
+
 	echo "<script>var root=document.getElementsByTagName('html')[0];root.setAttribute('class','js');</script>\n";
 }
 
