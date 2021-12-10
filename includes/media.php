@@ -61,9 +61,9 @@ function image_sizes() {
 	add_image_size( 'x-large-thumbnail', 320, 320, $center );
 
 	// 16:9 for featured images.
-	add_image_size( 'cover-image-full', 2048, 1152, $center );
-	add_image_size( 'cover-image-medium', 1536, 864, $center );
-	add_image_size( 'cover-image-small', 960, 540, $center );
+	add_image_size( 'full-cover-image', 2048, 1152, $center );
+	add_image_size( 'medium-cover-image', 1536, 864, $center );
+	add_image_size( 'small-cover-image', 960, 540, $center );
 
 	// 16:9 HD Video.
 	add_image_size( 'large-video', 1280, 720, $center );
