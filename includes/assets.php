@@ -21,6 +21,7 @@ function setup() {
 		return __NAMESPACE__ . "\\$function";
 	};
 
+	add_action( 'enqueue_block_editor_assets', $n( 'parent_block_editor_assets' ), 11 );
 	add_action( 'wp_enqueue_scripts', $n( 'frontend_styles' ) );
 	add_action( 'wp_footer', $n( 'print_scripts' ) );
 	add_action( 'wp_enqueue_scripts', $n( 'toolbar_styles' ) );
@@ -30,12 +31,38 @@ function setup() {
 }
 
 /**
+ * Parent block editor assets
+ *
+ * Fix error PHP notice from parent theme.
+ * Dequeue block editor scripts if on the widgets screen.
+ * No regard is given to the classic widgets option because
+ * they don't need the scripts, so dequeue for all.
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function parent_block_editor_assets() {
+
+	global $pagenow;
+
+	if ( $pagenow === 'widgets.php' ) {
+		wp_dequeue_script( 'go-block-filters' );
+    	wp_deregister_script( 'go-block-filters' );
+	}
+}
+
+/**
  * Frontend styles
  *
  * @since  1.0.0
  * @return void
  */
 function frontend_styles() {
+
+	// Front end only.
+	if ( is_admin() ) {
+		return;
+	}
 
 	/**
 	 * Theme stylesheet
