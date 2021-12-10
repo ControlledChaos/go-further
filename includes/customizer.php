@@ -507,11 +507,11 @@ function contain_featured( $input ) {
  *
  * @since  1.0.0
  * @param  $input
- * @return string Returns the theme mod.
+ * @return boolean Returns false by default.
  */
 function sticky_header( $input ) {
 
-	if ( ! isset( $input ) || true == $input ) {
+	if ( true == $input ) {
 		return true;
 	}
 	return false;
@@ -520,30 +520,34 @@ function sticky_header( $input ) {
 /**
  * Display social media links
  *
+ * Display the social media links at
+ * the bottom of the main content.
+ *
  * @since  1.0.0
  * @param  $input
- * @return string Returns the theme mod.
+ * @return boolean Returns true by default.
  */
 function display_social( $input ) {
 
-	if ( ! isset( $input ) || true == $input ) {
-		return true;
+	if ( false == $input ) {
+		return false;
 	}
-	return false;
+	return true;
 }
 
 /**
  * Classic widgets
  *
- * Use the classic widgets interfaces rather than block widgets.
+ * Use the classic widgets interfaces
+ * rather than block widgets.
  *
  * @since  1.0.0
  * @param  $input
- * @return string Returns the theme mod.
+ * @return boolean Returns false by default.
  */
 function classic_widgets( $input ) {
 
-	if ( ! isset( $input ) || true == $input ) {
+	if ( true == $input ) {
 		return true;
 	}
 	return false;
