@@ -10,10 +10,6 @@
 
 namespace GoFurther;
 
-// Alias namespaces.
-use GoFurther\Classes\Front     as Front,
-	GoFurther\Classes\Customize as Customize;
-
 ?>
 
 	</main>

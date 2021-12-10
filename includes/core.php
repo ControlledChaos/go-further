@@ -11,8 +11,7 @@
 namespace GoFurther\Core;
 
 // Alias namespaces.
-use GoFurther\Classes\Core as Core,
-	GoFurther\Front     as Front,
+use GoFurther\Front     as Front,
 	GoFurther\Customize as Customize,
 	GoFurther\Assets    as Assets;
 
