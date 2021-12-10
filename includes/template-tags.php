@@ -188,6 +188,26 @@ function page_subtitle( $before = '', $after = '', $echo = true ) {
 }
 
 /**
+ * Has sticky header
+ *
+ * Determines whether the sticky header option
+ * is enabled in the customizer.
+ *
+ * @since  1.0.0
+ * @return boolean Returns true if the option is enabled.
+ */
+function has_sticky_header() {
+
+	// Get the navigation location setting from the Customizer.
+	$sticky = Customize\sticky_header( get_theme_mod( 'gf_sticky_header' ) );
+
+	if ( $sticky ) {
+		return true;
+	}
+	return false;
+}
+
+/**
  * Blog first page
  *
  * Determines whether on the first page of the blog,

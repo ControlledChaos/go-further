@@ -9,6 +9,9 @@
 
 namespace GoFurther\Assets;
 
+// Alias namespaces.
+use GoFurther\Front as Front;
+
 /**
  * Apply functions
  *
@@ -99,6 +102,13 @@ function frontend_styles() {
  */
 function print_scripts() {
 
+	/**
+	 * Add class to header on scroll
+	 *
+	 * Only run if the sticky header option
+	 * is eneabled.
+	 */
+	if ( Front\has_sticky_header() ) :
 	?>
 	<script>
 	// Add class to header on scroll.
@@ -114,6 +124,7 @@ function print_scripts() {
 	})(jQuery);
 	</script>
 	<?php
+	endif;
 }
 
 /**

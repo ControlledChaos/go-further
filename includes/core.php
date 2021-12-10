@@ -33,7 +33,7 @@ function setup() {
 	add_filter( 'body_class', $n( 'body_classes' ) );
 	add_action( 'widgets_init', $n( 'widgets' ) );
 	add_action( 'init', $n( 'add_page_excerpts' ) );
-	add_filter( 'body_class', $n( 'sticky_header' ) );
+	add_filter( 'body_class', $n( 'sticky_header_class' ) );
 	add_filter( 'go_avaliable_social_icons', $n( 'get_available_social_icons' ) );
 	add_action( 'wp_head', $n( 'display_social' ) );
 	add_filter( 'login_headertext', $n( 'login_title' ) );
@@ -190,19 +190,16 @@ function add_page_excerpts() {
 }
 
 /**
- * Sticky header
+ * Sticky header class
  *
  * Adds classes frontend body element.
  *
  * @since  1.0.0
  * @return array Returns a modified array of body classes.
  */
-function sticky_header( $classes ) {
+function sticky_header_class( $classes ) {
 
-	// Get the navigation location setting from the Customizer.
-	$sticky = Customize\sticky_header( get_theme_mod( 'gf_sticky_header' ) );
-
-	if ( $sticky ) {
+	if ( Front\has_sticky_header() ) {
 		return array_merge( $classes, [ 'has-sticky-header' ] );
 	}
 	return $classes;
