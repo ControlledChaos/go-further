@@ -27,15 +27,13 @@ foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $filename ) 
 	require_once $filename;
 }
 
-// Theme setup.
-new Classes\Core\Setup;
-
+// Run setup functions.
+Core\setup();
 Customize\setup();
 Media\setup();
 Options\setup();
 Assets\setup();
 
-// Backend classes.
 if ( is_admin() ) {
-	new Classes\Admin\Editor_Styles;
+	Editor\setup();
 }

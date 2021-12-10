@@ -10,6 +10,9 @@
 
 namespace GoFurther\Media;
 
+// Alias namespaces.
+use GoFurther\Front as Front;
+
 /**
  * Apply functions
  *
@@ -24,6 +27,7 @@ function setup() {
 
 	add_action( 'after_setup_theme', $n( 'image_sizes' ) );
 	add_filter( 'image_size_names_choose', $n( 'insert_image_sizes' ) );
+	add_filter( 'get_custom_logo', $n( 'custom_logo' ) );
 }
 
 /**
@@ -102,4 +106,99 @@ function insert_image_sizes( $sizes ) {
 
 	// Return the modified array of sizes.
 	return $sizes;
+}
+
+/**
+ * Conditional logos
+ *
+ * Get logos for specified templates.
+ *
+ * @since  1.0.0
+ * @access public
+ * @param  string $html
+ * @return string Returns the markup of the logo.
+ */
+function custom_logo ( $html ) {
+
+	// Get logos & logo link URL.
+	$wrap_class  = [ 'custom-logo-wrap' ];
+	$logo        = null;
+	$logo_link   = site_url( '/' );
+	$custom_logo = get_theme_mod( 'custom_logo' );
+	$cover_logo  = get_theme_mod( 'gft_cover_logo' );
+	$post_type   = get_post_type( get_the_ID() );
+
+	// Stop here if no logo is found.
+	if ( empty( $custom_logo ) ) {
+		return;
+	}
+
+	// Default logo markup.
+	$logo = wp_get_attachment_image(
+		$custom_logo,
+		'full',
+		false,
+		[
+			'class' => 'custom-logo default-logo',
+		]
+	);
+
+	// Cover logo markup, if image is available.
+	if ( $cover_logo ) {
+
+		/**
+		 * If the Cover Image template is assigned and
+		 * the cover image logo is set.
+		 */
+		if (
+			is_singular( $post_type ) &&
+			post_type_supports( $post_type, 'thumbnail' ) &&
+			has_post_thumbnail( get_the_ID() ) &&
+			Front\has_cover_image()
+		) {
+			$wrap_class[] .= 'has-cover-logo';
+
+			$logo .= wp_get_attachment_image(
+				$cover_logo,
+				'full',
+				false,
+				[
+					'class' => 'custom-logo cover-logo',
+				]
+			);
+
+		/**
+		 * If the blog page is assigned the cover image and
+		 * the cover image logo is set.
+		 */
+		} elseif (
+			! is_singular() &&
+			Front\has_cover_image()
+		) {
+			$wrap_class[] .= 'has-cover-logo';
+
+			$logo .= wp_get_attachment_image(
+				$cover_logo,
+				'full',
+				false,
+				[
+					'class' => 'custom-logo cover-logo',
+				]
+			);
+		}
+	} // if ( $cover_logo )
+
+	// Compile the wrapper classes.
+	$wrap_class = implode( ' ', $wrap_class );
+
+	// The markup of the linked logo.
+	$html = sprintf(
+		'<div class="%1$s"><a href="%2$s" class="custom-logo-link" rel="home" itemprop="url">%3$s</a></div>',
+		$wrap_class,
+		esc_url( $logo_link  ),
+		$logo
+	);
+
+	// Return the markup of the logo with a filter applied.
+	return apply_filters( 'gft_custom_logo', $html );
 }
