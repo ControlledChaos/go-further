@@ -182,30 +182,10 @@ $header_transition_timing: 0.15s;
 	display: none;
 }
 
-.has-header-8.has-featured-image .header,
-.has-header-9.has-featured-image .header {
-	position: absolute;
-	top: 0;
-	width: 100%;
-}
-
-.has-sticky-header.has-header-8.has-featured-image.admin-bar .header,
-.has-sticky-header.has-header-9.has-featured-image.admin-bar .header {
-	top: 32px;
-}
-
-@media only screen and (min-width:960px) {
+@media only screen and ( min-width:960px ) {
 
 	.has-header-8 .header__extras {
 		justify-content: flex-end;
-	}
-}
-
-@media only screen and (max-width:781px) {
-
-	.has-sticky-header.has-header-8.has-featured-image.admin-bar .header,
-	.has-sticky-header.has-header-9.has-featured-image.admin-bar .header {
-		top: 46px;
 	}
 }
 
@@ -213,7 +193,7 @@ $header_transition_timing: 0.15s;
     justify-content: flex-start;
     margin-left: -.75rem;
     margin-right: 2.25vw;
-    margin-right: var(--go-navigation--padding--x, 2.25vw);
+    margin-right: var( --go-navigation--padding--x, 2.25vw );
     order: 1;
 }
 
@@ -236,7 +216,7 @@ $header_transition_timing: 0.15s;
 .has-header-9 .header__titles .custom-logo-link~a .site-title {
     margin-left: 0;
     margin-right: 2vw;
-    margin-right: var(--go-navigation--padding--x, 2vw);
+    margin-right: var( --go-navigation--padding--x, 2vw );
 }
 
 @media only screen and (min-width:960px) {
@@ -244,7 +224,7 @@ $header_transition_timing: 0.15s;
 	.has-header-9 .header__titles .site-description {
 		margin-left: 0;
 		margin-right: 2vw;
-		margin-right: var(--go-navigation--padding--x, 2vw);
+		margin-right: var( --go-navigation--padding--x, 2vw );
 	}
 	.has-header-9 .header__title-nav {
 		order: 3;
@@ -255,7 +235,7 @@ $header_transition_timing: 0.15s;
 		order: 1;
 		padding-left: 0;
 		padding-right: 2vw;
-		padding-right: var(--go-navigation--padding--x, 2vw);
+		padding-right: var( --go-navigation--padding--x, 2vw );
 		text-align: left;
 	}
 
@@ -265,7 +245,7 @@ $header_transition_timing: 0.15s;
 
 	.has-header-9 .header__navigation li:not(:last-child) {
 		margin-right: 2vw;
-		margin-right: var(--go-navigation--padding--x, 2vw);
+		margin-right: var( --go-navigation--padding--x, 2vw );
 	}
 
 	.has-header-9 .header__navigation ul.sub-menu li.menu-item {

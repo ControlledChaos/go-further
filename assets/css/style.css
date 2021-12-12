@@ -172,30 +172,11 @@ input[type="search"] {
   display: none;
 }
 
-.has-header-8.has-featured-image .header,
-.has-header-9.has-featured-image .header {
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-
-.has-sticky-header.has-header-8.has-featured-image.admin-bar .header,
-.has-sticky-header.has-header-9.has-featured-image.admin-bar .header {
-  top: 32px;
-}
-
 @media only screen and (min-width: 960px) {
   .has-header-8 .header__extras {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
-  }
-}
-
-@media only screen and (max-width: 781px) {
-  .has-sticky-header.has-header-8.has-featured-image.admin-bar .header,
-  .has-sticky-header.has-header-9.has-featured-image.admin-bar .header {
-    top: 46px;
   }
 }
 
