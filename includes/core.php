@@ -3,8 +3,8 @@
  * Theme setup
  *
  * @package    Go_Further
- * @subpackage Classes
- * @category   Setup
+ * @subpackage Includes
+ * @category   Core
  * @since      1.0.0
  */
 
@@ -13,6 +13,7 @@ namespace GoFurther\Core;
 // Alias namespaces.
 use GoFurther\Front     as Front,
 	GoFurther\Customize as Customize,
+	GoFurther\Styles    as Styles,
 	GoFurther\Assets    as Assets;
 
 /**
@@ -232,7 +233,6 @@ function display_social() {
 	} else {
 		$style = '';
 	}
-
 	echo $style . "\n";
 }
 
@@ -312,7 +312,6 @@ function login_title() {
 		'<span class="login-title-text site-title">%s</span> ',
 		get_bloginfo( 'name' )
 	);
-
 	return $output;
 }
 
@@ -336,161 +335,17 @@ function login_url() {
  */
 function add_design_styles( $supported_design_styles ) {
 
-	$suffix = ( SCRIPT_DEBUG || WP_DEBUG ) ? '' : '.min';
-	$rtl    = ! is_rtl() ? '' : '-rtl';
+	// Get design style arrays.
+	foreach ( glob( get_stylesheet_directory() . '/includes/design-styles/*.php' ) as $filename ) {
+		require_once $filename;
+	}
 
-	$add_design_styles = [
-		'rising-sun' => [
-			'slug'          => 'rising-sun',
-			'label'         => _x( 'Rising Sun', 'design style name', 'go-further' ),
-			'url'           => get_theme_file_uri( "assets/css/design-styles/rising-sun/style{$rtl}{$suffix}.css" ),
-			'editor_style'  => "assets/css/design-styles/rising-sun/style-editor{$rtl}{$suffix}.css",
-			'color_schemes' => [
-				'one' => [
-					'label'      => _x( 'Zen Garden', 'color palette name', 'go-further' ),
-					'primary'    => '#687530',
-					'secondary'  => '#433d47',
-					'tertiary'   => '#ededed',
-					'background' => '#ffffff',
-					'text'       => '#333333',
-					'header_background'    => '#ffffff',
-					'header_text'          => '#433d47',
-					'footer_background'    => '',
-					'footer_heading_color' => '',
-					'footer_text_color'    => '',
-					'social_icon_color'    => '#687530'
-				],
-				'two' => [
-					'label'      => _x( 'Cherry Blossom', 'color palette name', 'go-further' ),
-					'primary'    => '#c43b71',
-					'secondary'  => '#396816',
-					'tertiary'   => '#f9edf1',
-					'background' => '#ffffff',
-					'text'       => '#333333',
-					'header_background'    => '#ffffff',
-					'header_text'          => '',
-					'footer_background'    => '#ffffff',
-					'footer_heading_color' => '',
-					'footer_text_color'    => '',
-					'social_icon_color'    => '#c43b71'
-				],
-				'three' => [
-					'label'      => _x( 'Chrysanthemum', 'color palette name', 'go-further' ),
-					'primary'    => '#efa700',
-					'secondary'  => '#225400',
-					'tertiary'   => '#fffae0',
-					'background' => '#ffffff',
-					'text'       => '#333333',
-					'header_background'    => '#ffffff',
-					'header_text'          => '',
-					'footer_background'    => '#ffffff',
-					'footer_heading_color' => '',
-					'footer_text_color'    => '',
-					'social_icon_color'    => '#efa700'
-				],
-				'four' => [
-					'label'      => _x( 'Koi Pond', 'color palette name', 'go-further' ),
-					'primary'    => '#d46408',
-					'secondary'  => '#253555',
-					'tertiary'   => '#edf2fb',
-					'background' => '#ffffff',
-					'text'       => '#333333',
-					'header_background'    => '#ffffff',
-					'header_text'          => '',
-					'footer_background'    => '#ffffff',
-					'footer_heading_color' => '',
-					'footer_text_color'    => '',
-					'social_icon_color'    => '#d46408'
-				],
-				'five' => [
-					'label'      => _x( 'Wisteria', 'color palette name', 'go-further' ),
-					'primary'    => '#7f6032',
-					'secondary'  => '#764fb6',
-					'tertiary'   => '#eee9e2',
-					'background' => '#ffffff',
-					'text'       => '#333333',
-					'header_background'    => '#ffffff',
-					'header_text'          => '',
-					'footer_background'    => '#ffffff',
-					'footer_heading_color' => '',
-					'footer_text_color'    => '',
-					'social_icon_color'    => ''
-				],
-				'six' => [
-					'label'      => _x( 'Maple', 'color palette name', 'go-further' ),
-					'primary'    => '#7f6032',
-					'secondary'  => '#764fb6',
-					'tertiary'   => '#eee9e2',
-					'background' => '#ffffff',
-					'text'       => '#333333',
-					'header_background'    => '#ffffff',
-					'header_text'          => '',
-					'footer_background'    => '#ffffff',
-					'footer_heading_color' => '',
-					'footer_text_color'    => '',
-					'social_icon_color'    => ''
-				],
-				'seven' => [
-					'label'      => _x( 'Tea House', 'color palette name', 'go-further' ),
-					'primary'    => '#7f6032',
-					'secondary'  => '#764fb6',
-					'tertiary'   => '#eee9e2',
-					'background' => '#ffffff',
-					'text'       => '#333333',
-					'header_background'    => '#ffffff',
-					'header_text'          => '',
-					'footer_background'    => '#ffffff',
-					'footer_heading_color' => '',
-					'footer_text_color'    => '',
-					'social_icon_color'    => ''
-				],
-				'eight' => [
-					'label'      => _x( 'Volcano', 'color palette name', 'go-further' ),
-					'primary'    => '#63738d',
-					'secondary'  => '#393e51',
-					'tertiary'   => '#eceef1',
-					'background' => '#ffffff',
-					'text'       => '#333333',
-					'header_background'    => '#ffffff',
-					'header_text'          => '',
-					'footer_background'    => '#ffffff',
-					'footer_heading_color' => '',
-					'footer_text_color'    => '',
-					'social_icon_color'    => '#393e51'
-				],
-			],
-			'fonts'=> [
-				'Crimson Pro' => [
-					'300',
-					'300i',
-					'400',
-					'400i',
-					'500',
-					'500i',
-					'600',
-					'600i',
-					'700',
-					'700i'
-				],
-				'Red Hat Display' => [
-					'300',
-					'300i',
-					'400',
-					'400i',
-					'500',
-					'500i',
-					'600',
-					'600i',
-					'700',
-					'700i'
-				],
-			],
-			'font_size'      => '1.125rem',
-			'type_ratio'     => '1.275',
-			'viewport_basis' => '1600'
-		]
-	];
-	return array_merge( $add_design_styles, $supported_design_styles );
+	// Return design style arrays as variables.
+	$rising_sun  = Styles\rising_sun();
+	$code_monkey = Styles\code_monkey();
+
+	// Merge design style arrays.
+	return array_merge( $rising_sun, $code_monkey, $supported_design_styles );
 }
 
 /**
