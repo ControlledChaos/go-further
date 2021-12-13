@@ -5,8 +5,8 @@
  * Forces reload of WordPress & ClassicPress rich text (classic) editor stylesheets.
  *
  * @package    Go_Further
- * @subpackage Classes
- * @category   Admin
+ * @subpackage Includes
+ * @category   Editor
  * @since      1.0.0
  */
 
