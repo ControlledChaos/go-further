@@ -2,14 +2,18 @@
 /// Main content styles
 ///
 
+@import '../modules/_colors.scss';
+@import '../modules/_typography.scss';
+
 h1,
 h2,
 h3 {
 	letter-spacing: var( --go-heading--letter-spacing );
 }
 
-p {
-    margin: 0 0 1.5rem;
+b,
+strong {
+	font-weight: 600;
 }
 
 .post__title {
@@ -34,8 +38,32 @@ p {
 .post__meta  {
     gap: 0.5em;
     margin-bottom: 2rem;
+	font-weight: var( --gf-meta--font-weight, var( --go--font-weight ) );
+	letter-spacing: var( --gf-meta--letter-spacing, var( --go--letter-spacing ) );
 
     li {
         margin: 0;
+
+		.meta-icon {
+			top: 0.1em;
+		}
+
+		&.post-author,
+		&.post-comment-link {
+			.meta-icon {
+				top: 0.2em;
+			}
+		}
     }
+}
+
+.comments-area {
+	.comment-meta {
+		& > a {
+			font-family: var( --go-meta--font-family );
+			font-size: var( --go-meta--font-size );
+			font-weight: var( --gf-meta--font-weight, var( --go--font-weight ) );
+			letter-spacing: var( --gf-meta--letter-spacing, var( --go--letter-spacing ) );
+		}
+	}
 }

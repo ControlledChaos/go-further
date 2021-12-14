@@ -451,6 +451,14 @@ input[type="search"] {
   margin-bottom: var(--go--spacing--vertical);
 }
 
+.footer-widgets h2,
+.footer-widgets h3,
+.footer-widgets h4,
+.footer-widgets h5,
+.footer-widgets h6 {
+  color: var(--go--color--secondary);
+}
+
 .footer-widgets a {
   color: var(--go--color--primary);
   color: var(--gf-footer-widgets--hyperlink--color--text, var(--go--color--primary));

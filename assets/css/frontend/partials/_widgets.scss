@@ -31,6 +31,14 @@
 		margin-bottom: var( --go--spacing--vertical );
 	}
 
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: var( --go--color--secondary );
+	}
+
 	a {
 		color: var( --go--color--primary );
 		color: var( --gf-footer-widgets--hyperlink--color--text, var( --go--color--primary ) );

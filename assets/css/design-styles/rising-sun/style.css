@@ -249,18 +249,24 @@
   --go--font-size--small: 85%;
   --go--font-size--smallest: 82%;
   --go--font-size: 1.125rem;
-  --go--font-weight: 400;
+  --go--font-weight: 300;
   --go--letter-spacing--small: .015em;
   --go--line-height: 1.5;
   --go--type-ratio: 1.275;
+  --go--hyperlink--color--text: var( --go--color--secondary );
   --go-heading--button-spacing: 1.75rem;
-  --go-heading--color--text: var( --go--color--secondary );
+  --go-heading--color--text: var( --go--color--primary );
   --go-heading--font-family: RS Display, Crimson Pro, Crimson Text, Georgia, Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --go-heading--font-weight: 400;
   --go-heading--letter-spacing: -0.0325em;
   --go-heading--line-height: 1.15;
   --go-heading--margin-bottom: 2rem;
   --gf-post-subtitle-letter-spacing: var( --go--letter-spacing );
+  --go-meta--font-family: RS Display, Crimson Pro, Crimson Text, Georgia, Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --go-meta--font-size: 1.25rem;
+  --gf-meta--font-weight: 500;
+  --gf-meta--letter-spacing: -0.0125em;
+  --go-meta--color--text: var( --go--color--secondary );
   --go-caption--color--text: #4c454e;
   --go-caption--font-size: .85rem;
   --go-caption--text-align--rtl: right;
@@ -272,7 +278,6 @@
   --go-outline--color--text: var( --go--color--secondary );
   --go-outline--color--text: var( --go-heading--color--text );
   --go-selection--color--background: var( --go--color--secondary );
-  --go-selection--color--background: var( --go-heading--color--text );
   --go-button--border-radius: 0px;
   --go-button--font-family: RS Display, Crimson Pro, Crimson Text, Georgia, Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --go-button--font-family: var( --go-heading--font-family);
@@ -281,7 +286,6 @@
   --go-button--padding--x: 2.25rem;
   --go-button--padding--y: 1.4rem;
   --go-button-interactive--color--background: var( --go--color--secondary );
-  --go-button-interactive--color--background: var( --go-heading--color--text );
   --go-label--font-family: RS General, Metropolis, Proxima Nova, Red Hat Display, Nunito Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --go-label--font-family: var( --go--font-family);
   --go-label--font-size: 1rem;
@@ -292,6 +296,7 @@
   --go-input--border: 1px solid var( --go--color--secondary);
   --go-input--border: var( --go-input--border-width, 1px ) var( --go-input--border-style, solid ) var( --go-input--border-color, var( --go-heading--color--text ) );
   --go-input--color--background: var( --go--color--background );
+  --go-input-interactive--color--background: var( --go--color--background );
   --go-input--color--text: #343036;
   --go-input--color--text: var( --go--color--text );
   --go-input--font-size: 1.05rem;
@@ -310,18 +315,23 @@
   --go-site-description--letter-spacing: 0.075em;
   --go-site-description--font-weight: 400;
   --go-navigation--color--text: var( --go--color--secondary );
-  --go-navigation--color--text: var( --go-heading--color--text );
   --go-navigation--font-family: RS Display, Crimson Pro, Crimson Text, Georgia, Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --go-navigation--font-family: var( --go-heading--font-family );
   --go-navigation--font-size: 1.375rem;
   --go-navigation-mobile--font-size: 1.65rem;
-  --go-submenu--color--background: #343036;
-  --go-meta--font-size: 1rem;
+  --go-navigation--font-weight: 500;
+  --go-navigation--letter-spacing: -0.0125em;
+  --go-submenu--color--background: var( --go--color--primary, #343036 );
   --go-search-button--color--text-interactive: var( --go--color--primary );
   --go-search-button--color--background: var( --go--color--primary );
   --go-search-button--color--background-interactive: var( --go--color--secondary );
   --go-search-button--color--background-interactive: var( --go-heading--color--text );
   --go-entryheader--padding-top: 3rem;
+  --gf-footer-widgets--background-color: #eeeeee;
+  --gf-footer-widgets--font-size: 1rem;
+  --gf-footer-widgets--list--font-size: var( --gf-footer-widgets--font-size );
+  --gf-footer-widgets--font-weight: 400;
+  --gf-footer-widgets--list--font-weight: var( --gf-footer-widgets--font-weight );
   --go-footer--color--text: var( --go--color--secondary );
   --go-footer--color--text: var( --go-heading--color--text );
   --go-footer-navigation--line-height: 2.25;
@@ -429,8 +439,9 @@ h3 {
   letter-spacing: var(--go-heading--letter-spacing);
 }
 
-p {
-  margin: 0 0 1.5rem;
+b,
+strong {
+  font-weight: 600;
 }
 
 .post__title {
@@ -454,10 +465,27 @@ p {
 .post__meta {
   gap: 0.5em;
   margin-bottom: 2rem;
+  font-weight: var(--gf-meta--font-weight, var(--go--font-weight));
+  letter-spacing: var(--gf-meta--letter-spacing, var(--go--letter-spacing));
 }
 
 .post__meta li {
   margin: 0;
+}
+
+.post__meta li .meta-icon {
+  top: 0.1em;
+}
+
+.post__meta li.post-author .meta-icon, .post__meta li.post-comment-link .meta-icon {
+  top: 0.2em;
+}
+
+.comments-area .comment-meta > a {
+  font-family: var(--go-meta--font-family);
+  font-size: var(--go-meta--font-size);
+  font-weight: var(--gf-meta--font-weight, var(--go--font-weight));
+  letter-spacing: var(--gf-meta--letter-spacing, var(--go--letter-spacing));
 }
 
 select {
@@ -465,6 +493,10 @@ select {
   -moz-appearance: none;
   appearance: none;
   letter-spacing: var(--gf-select--letter-spacing);
+}
+
+select:focus {
+  background-color: var(--go-input-interactive--color--background);
 }
 
 .woocommerce-checkout #ship-to-different-address-checkbox {
