@@ -1,3 +1,16 @@
 ///
 /// Rising Sun color variables
 ///
+/// The use of "shared" here indicates that the color
+/// is shared across this design styles color palettes,
+/// not shared across design styles.
+///
+
+$shared_dark: #343036;
+$shared_medium: #4c454e;
+$shared_light: #504754;
+
+// Background colors.
+$shared_bg_dark: $shared_dark;
+$shared_bg_medium: $shared_medium;
+$shared_bg_light: $shared_light;

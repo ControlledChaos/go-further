@@ -1,20 +1,15 @@
 ///
-/// Nippon RTL design styles
+/// Design RTL styles
 ///
 
 @import 'modules/_colors.scss';
 @import 'modules/_typography.scss';
 @import 'partials/_font-face';
 @import 'partials/_root';
-
-.woocommerce-checkout #ship-to-different-address-checkbox {
-    margin-left: .5rem;
-}
-
-.woocommerce-checkout .wc_payment_methods li.wc_payment_method label[for^=payment_method_]:before {
-    top: 5px;
-}
-
-.wp-block-coblocks-food-item__attributes {
-    top: 0;
-}
+@import 'partials/_header';
+@import 'partials/_header-rtl';
+@import 'partials/_content';
+@import 'partials/_content-rtl';
+@import 'partials/_forms';
+@import 'partials/_vendor';
+@import 'partials/_vendor-rtl';

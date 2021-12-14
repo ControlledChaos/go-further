@@ -16,7 +16,7 @@ p {
 	font-size: calc(
 		var( --go--font-size ) * 0.7 * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio ) * var( --go--type-ratio )
 	);
-	font-size: var(--go--type-scale-6);
+	font-size: var( --go--type-scale-6 );
 }
 
 .post__subtitle {
@@ -28,4 +28,14 @@ p {
 	@media not screen and ( min-width: 960px ) {
 		font-size: 1.125rem;
 	}
+}
+
+// Post meta
+.post__meta  {
+    gap: 0.5em;
+    margin-bottom: 2rem;
+
+    li {
+        margin: 0;
+    }
 }

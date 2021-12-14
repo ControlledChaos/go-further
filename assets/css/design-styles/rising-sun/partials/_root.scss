@@ -2,6 +2,9 @@
 /// Root style variables
 ///
 
+@import '../modules/_colors.scss';
+@import '../modules/_typography.scss';
+
 :root {
     --go--max-width: 48rem;
     --go--max-width--alignwide: 84rem;
@@ -9,13 +12,13 @@
     --go--spacing--horizontal: 60;
     --go--spacing--paragraph: 20;
     --go--spacing--header: 30;
-    --go--color--text: #444045;
+    --go--color--text: #{$shared_dark};
     --go--font-family: #{$general};
     --go--letter-spacing: 0.075em;
     --go--font-size--small: 85%;
     --go--font-size--smallest: 82%;
     --go--font-size: 1.125rem;
-    --go--font-weight: 300;
+    --go--font-weight: 400;
     --go--letter-spacing--small: .015em;
     --go--line-height: 1.5;
     --go--type-ratio: 1.275;
@@ -27,7 +30,7 @@
     --go-heading--line-height: 1.15;
     --go-heading--margin-bottom: 2rem;
     --gf-post-subtitle-letter-spacing: var( --go--letter-spacing );
-    --go-caption--color--text: #6e6e6e;
+    --go-caption--color--text: #{$shared_medium};
     --go-caption--font-size: .85rem;
     --go-caption--text-align--rtl: right;
     --go-caption--text-align: left;
@@ -58,7 +61,7 @@
     --go-input--border: 1px solid var( --go--color--secondary);
     --go-input--border: var( --go-input--border-width, 1px ) var( --go-input--border-style, solid ) var( --go-input--border-color, var( --go-heading--color--text ) );
     --go-input--color--background: var( --go--color--background );
-    --go-input--color--text: #434a56;
+    --go-input--color--text: #{$shared_dark};
     --go-input--color--text: var( --go--color--text );
     --go-input--font-size: 1.05rem;
     --go-input--font-size: var( --go--font-size );
@@ -71,8 +74,8 @@
     --go-site-title--font-size: 1.75rem;
     --go-site-title--font-weight: 500;
     --go-site-title--letter-spacing: -0.02em;
-    --go-site-description--color--text: var( --go--color--secondary );
-    --go-site-description--color--text: var( --go-heading--color--text );
+    --go-site-description--font-family: #{$general};
+    --go-site-description--color--text: var( --go--color--text );
     --go-site-description--letter-spacing: 0.075em;
     --go-site-description--font-weight: 400;
     --go-navigation--color--text: var( --go--color--secondary );
@@ -81,6 +84,7 @@
     --go-navigation--font-family: var( --go-heading--font-family );
     --go-navigation--font-size: 1.375rem;
     --go-navigation-mobile--font-size: 1.65rem;
+    --go-submenu--color--background: #{$shared_bg_dark};
     --go-meta--font-size: 1rem;
     --go-search-button--color--text-interactive: var( --go--color--primary );
     --go-search-button--color--background: var( --go--color--primary );

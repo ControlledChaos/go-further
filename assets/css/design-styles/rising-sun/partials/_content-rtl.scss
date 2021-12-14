@@ -1,3 +1,14 @@
 ///
-/// Main content styles
+/// Main content RTL styles
 ///
+
+.wp-block-image {
+
+	.alignleft {
+		float: right;
+	}
+
+	.alignright {
+		float: left;
+	}
+}

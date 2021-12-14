@@ -345,7 +345,7 @@ function add_design_styles( $supported_design_styles ) {
 	$code_monkey = Styles\code_monkey();
 
 	// Merge design style arrays.
-	return array_merge( $rising_sun, $code_monkey, $supported_design_styles );
+	return array_merge( (array) $rising_sun, (array) $code_monkey, $supported_design_styles );
 }
 
 /**

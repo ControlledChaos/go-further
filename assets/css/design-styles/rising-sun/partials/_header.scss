@@ -2,6 +2,11 @@
 /// Site header styles
 ///
 
+.site-title,
+.site-description {
+	opacity: 1;
+}
+
 .has-header-1,
 .has-header-2,
 .has-header-8,
@@ -16,6 +21,22 @@
 				align-items: baseline;
 			}
 		}
+	}
+}
+
+.has-header-8,
+.has-header-9 {
+
+	.header__title-nav {
+		transform: translateX( 1.25rem );
+
+		@media screen and ( min-width: 960px ) {
+			transform: unset;
+		}
+	}
+
+	.header__nav-toggle {
+		flex: 0;
 	}
 }
 

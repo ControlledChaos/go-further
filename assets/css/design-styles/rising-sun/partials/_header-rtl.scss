@@ -1,0 +1,15 @@
+///
+/// Site header RTL styles
+///
+
+.has-header-8,
+.has-header-9 {
+
+	.header__title-nav {
+		transform: translateX( -1.25rem );
+
+		@media screen and ( min-width: 960px ) {
+			transform: unset;
+		}
+	}
+}

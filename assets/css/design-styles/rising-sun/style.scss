@@ -1,21 +1,12 @@
 ///
-/// Nippon design styles
+/// Design styles
 ///
 
 @import 'modules/_colors.scss';
 @import 'modules/_typography.scss';
 @import 'partials/_font-face';
 @import 'partials/_root';
+@import 'partials/_header';
 @import 'partials/_content';
 @import 'partials/_forms';
 @import 'partials/_vendor';
-
-// Post meta
-.post__meta  {
-    gap: 0.5em;
-    margin-bottom: 2rem;
-
-    li {
-        margin: 0;
-    }
-}

@@ -80,18 +80,6 @@ function frontend_styles() {
 	if ( is_rtl() ) {
 		wp_enqueue_style( 'go-further-rtl', get_theme_file_uri( 'assets/css/style-rtl' . suffix() . '.css' ), [ 'go-further' ], GF_VERSION, 'all' );
 	}
-
-	// Block styles.
-	if ( function_exists( 'has_blocks' ) ) {
-		wp_enqueue_style( 'go-further-blocks', get_theme_file_uri( '/assets/css/blocks' . suffix() . '.css' ), [ 'wp-block-library', 'go-further' ], GF_VERSION, 'all' );
-
-		if ( is_rtl() ) {
-			wp_enqueue_style( 'go-further-blocks-rtl', get_theme_file_uri( '/assets/css/blocks-rtl' . suffix() . '.css' ), [ 'go-further-blocks' ], GF_VERSION, 'all' );
-		}
-	}
-
-	// Print styles.
-	wp_enqueue_style( 'go-further-print', get_theme_file_uri( '/assets/css/print' . suffix() . '.css' ), [], GF_VERSION, 'print' );
 }
 
 /**
@@ -160,7 +148,7 @@ function suffix() {
 function toolbar_styles() {
 
 	if ( is_user_logged_in() && is_admin_bar_showing() ) {
-		wp_enqueue_style( 'gf-toolbar', get_theme_file_uri( '/assets/css/toolbar' . suffix() . '.css' ), [], GF_VERSION, 'screen' );
+		wp_enqueue_style( 'gf-toolbar', get_theme_file_uri( '/assets/css/shared/toolbar' . suffix() . '.css' ), [], GF_VERSION, 'screen' );
 	}
 }
 
@@ -181,8 +169,7 @@ function login_styles() {
  * @return void
  */
 function embed_styles() {
-
 	if ( ! is_admin() ) {
-		wp_enqueue_style( 'gf-embed', get_theme_file_uri( '/assets/css/embed' . suffix() . '.css' ), [], GF_VERSION, 'screen' );
+		wp_enqueue_style( 'gf-embed', get_theme_file_uri( '/assets/css/frontend/embed' . suffix() . '.css' ), [], GF_VERSION, 'screen' );
 	}
 }

@@ -33,13 +33,13 @@ function rising_sun() {
 				'one' => [
 					'label'      => _x( 'Zen Garden', 'color palette name', 'go-further' ),
 					'primary'    => '#687530',
-					'secondary'  => '#433d47',
+					'secondary'  => '#4c454e',
 					'tertiary'   => '#ededed',
 					'background' => '#ffffff',
 					'text'       => '#333333',
 					'header_background'    => '#ffffff',
-					'header_text'          => '#433d47',
-					'footer_background'    => '',
+					'header_text'          => '',
+					'footer_background'    => '#ffffff',
 					'footer_heading_color' => '',
 					'footer_text_color'    => '',
 					'social_icon_color'    => '#687530'
@@ -102,7 +102,7 @@ function rising_sun() {
 				],
 				'six' => [
 					'label'      => _x( 'Maple', 'color palette name', 'go-further' ),
-					'primary'    => '#a02323',
+					'primary'    => '#9c2743',
 					'secondary'  => '#382c25',
 					'tertiary'   => '#f6f2df',
 					'background' => '#ffffff',

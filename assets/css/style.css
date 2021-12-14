@@ -91,6 +91,7 @@ input[type="search"] {
 }
 
 @media screen and (min-width: 960px) {
+  .site-title,
   .site-description {
     margin: 0;
   }
@@ -102,11 +103,6 @@ input[type="search"] {
 
 .template-cover-image .header:not(.header-scrolled) {
   background-color: transparent;
-}
-
-.template-cover-image .header:not(.header-scrolled) .site-title,
-.template-cover-image .header:not(.header-scrolled) .site-description {
-  opacity: 1;
 }
 
 @media not screen and (max-width: 600px) {
