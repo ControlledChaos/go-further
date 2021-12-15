@@ -1,3 +1,36 @@
 ///
 /// Site header RTL styles
 ///
+
+.has-header-8 {
+	.header__titles {
+		transform: translateX( -1.25rem );
+
+		@media screen and ( min-width: 960px ) {
+			transform: unset;
+		}
+	}
+}
+
+.has-header-9 {
+
+	.header__nav-toggle {
+		order: 1;
+	}
+
+	.header__titles {
+		transform: translateX( 1.25rem );
+
+		@media screen and ( min-width: 960px ) {
+			transform: unset;
+		}
+	}
+
+	.header__extras {
+		justify-content: flex-start;
+		margin-left: -.75rem;
+		margin-right: 2.25vw;
+		margin-right: var( --go-navigation--padding--x, 2.25vw );
+		order: 3;
+	}
+}

@@ -13,30 +13,10 @@
 .has-header-9 {
 	.header {
 		.header__titles {
-			align-items: center;
-
 			@media screen and ( min-width: 960px ) {
-				flex-wrap: wrap;
-				gap: 0 1.5vw;
 				align-items: baseline;
 			}
 		}
-	}
-}
-
-.has-header-8,
-.has-header-9 {
-
-	.header__title-nav {
-		transform: translateX( 1.25rem );
-
-		@media screen and ( min-width: 960px ) {
-			transform: unset;
-		}
-	}
-
-	.header__nav-toggle {
-		flex: 0;
 	}
 }
 

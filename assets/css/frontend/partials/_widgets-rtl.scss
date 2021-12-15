@@ -1,3 +1,29 @@
 ///
 /// Sidebar & widget RTL styles
 ///
+
+.widget_nav_menu ul {
+
+	ul {
+		margin: 0;
+		padding-left: unset;
+		padding-right: 1em;
+	}
+}
+
+.calendar_wrap {
+
+	tfoot #prev,
+	.wp-calendar-nav-prev {
+		text-align: right;
+	}
+
+	tfoot #next,
+	.wp-calendar-nav-next {
+		text-align: left;
+	}
+}
+
+.widget_search .search-form .search-input__button .search-input__arrow-icon {
+	transform: translate3d( -50%, -50%, 0 ) rotate( 180deg );
+}

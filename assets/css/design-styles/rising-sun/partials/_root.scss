@@ -23,6 +23,7 @@
     --go--line-height: 1.5;
     --go--type-ratio: 1.275;
     --go--hyperlink--color--text: var( --go--color--secondary );
+    --go--hyperlink-interactive--color--text: var( --go--color--tertiary );
     --go-heading--button-spacing: 1.75rem;
     --go-heading--color--text: var( --go--color--primary );
     --go-heading--font-family: #{$display};
@@ -54,9 +55,10 @@
     --go-button--font-weight: 500;
     --go-button--padding--x: 2.25rem;
     --go-button--padding--y: 1.4rem;
+    --go-button--color--background: var( --go--color--primary );
     --go-button-interactive--color--background: var( --go--color--secondary );
     --go-label--font-family: #{$general};
-    --go-label--font-family: var( --go--font-family);
+    --go-label--font-family: var( --go--font-family );
     --go-label--font-size: 1rem;
     --go-label--font-weight: 400;
     --go-label--font-weight: var( --go-navigation--font-weight, 400 );

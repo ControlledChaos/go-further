@@ -1,1 +1,62 @@
-/* No CSS */
+.has-header-8 .header__titles {
+  -webkit-transform: translateX(-1.25rem);
+          transform: translateX(-1.25rem);
+}
+
+@media screen and (min-width: 960px) {
+  .has-header-8 .header__titles {
+    -webkit-transform: unset;
+            transform: unset;
+  }
+}
+
+.has-header-9 .header__nav-toggle {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+
+.has-header-9 .header__titles {
+  -webkit-transform: translateX(1.25rem);
+          transform: translateX(1.25rem);
+}
+
+@media screen and (min-width: 960px) {
+  .has-header-9 .header__titles {
+    -webkit-transform: unset;
+            transform: unset;
+  }
+}
+
+.has-header-9 .header__extras {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-left: -.75rem;
+  margin-right: 2.25vw;
+  margin-right: var(--go-navigation--padding--x, 2.25vw);
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+
+.widget_nav_menu ul ul {
+  margin: 0;
+  padding-left: unset;
+  padding-right: 1em;
+}
+
+.calendar_wrap tfoot #prev,
+.calendar_wrap .wp-calendar-nav-prev {
+  text-align: right;
+}
+
+.calendar_wrap tfoot #next,
+.calendar_wrap .wp-calendar-nav-next {
+  text-align: left;
+}
+
+.widget_search .search-form .search-input__button .search-input__arrow-icon {
+  -webkit-transform: translate3d(-50%, -50%, 0) rotate(180deg);
+          transform: translate3d(-50%, -50%, 0) rotate(180deg);
+}
