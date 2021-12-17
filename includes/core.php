@@ -261,6 +261,10 @@ function add_header_variations( $default_header_variations ) {
 /**
  * Default header variation
  *
+ * Because this child theme adds a widget area to
+ * the parent, the default header does not display
+ * the search toggle icon.
+ *
  * @since  1.0.0
  * @return string Returns the default header variation.
  */
@@ -345,7 +349,11 @@ function add_design_styles( $supported_design_styles ) {
 	$code_monkey = Styles\code_monkey();
 
 	// Merge design style arrays.
-	return array_merge( (array) $rising_sun, (array) $code_monkey, $supported_design_styles );
+	return array_merge(
+		(array) $rising_sun,
+		(array) $code_monkey,
+		(array) $supported_design_styles
+	);
 }
 
 /**
