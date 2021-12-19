@@ -32,9 +32,9 @@ function rising_sun() {
 			'color_schemes' => [
 				'one' => [
 					'label'      => _x( 'Zen Garden', 'color palette name', 'go-further' ),
-					'primary'    => '#504754',
-					'secondary'  => '#687530',
-					'tertiary'   => '#46501b',
+					'primary'    => '#667133',
+					'secondary'  => '#909b31',
+					'tertiary'   => '#eeebef',
 					'background' => '#ffffff',
 					'text'       => '#333333',
 					'header_background'    => '',
@@ -42,7 +42,7 @@ function rising_sun() {
 					'footer_background'    => '',
 					'footer_heading_color' => '',
 					'footer_text_color'    => '',
-					'social_icon_color'    => '#687530'
+					'social_icon_color'    => '#667133'
 				],
 				'two' => [
 					'label'      => _x( 'Cherry Blossom', 'color palette name', 'go-further' ),
