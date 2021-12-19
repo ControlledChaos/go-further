@@ -60,3 +60,14 @@
   -webkit-transform: translate3d(-50%, -50%, 0) rotate(180deg);
           transform: translate3d(-50%, -50%, 0) rotate(180deg);
 }
+
+.wp-block-latest-posts__featured-image {
+  float: right;
+  margin-right: unset;
+  margin-left: 0.5rem;
+}
+
+.wp-block-latest-posts__featured-image ~ .wp-block-latest-posts__post-excerpt {
+  padding-left: unset;
+  padding-right: 3rem;
+}

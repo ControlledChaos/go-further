@@ -253,10 +253,10 @@
   --go--letter-spacing--small: .015em;
   --go--line-height: 1.5;
   --go--type-ratio: 1.275;
-  --go--hyperlink--color--text: var( --go--color--secondary );
-  --go--hyperlink-interactive--color--text: var( --go--color--tertiary );
+  --go--hyperlink--color--text: var( --go--color--primary );
+  --go--hyperlink-interactive--color--text: var( --go--color--secondary );
   --go-heading--button-spacing: 1.75rem;
-  --go-heading--color--text: var( --go--color--primary );
+  --go-heading--color--text: #504754;
   --go-heading--font-family: RS Display, Crimson Pro, Crimson Text, Georgia, Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --go-heading--font-weight: 400;
   --go-heading--letter-spacing: -0.0325em;
@@ -316,7 +316,7 @@
   --go-site-description--color--text: var( --go--color--text );
   --go-site-description--letter-spacing: 0.075em;
   --go-site-description--font-weight: 400;
-  --go-navigation--color--text: var( --go--color--secondary );
+  --go-navigation--color--text: var( --go--color--primary );
   --go-navigation--font-family: RS Display, Crimson Pro, Crimson Text, Georgia, Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --go-navigation--font-family: var( --go-heading--font-family );
   --go-navigation--font-size: 1.375rem;
@@ -329,11 +329,14 @@
   --go-search-button--color--background-interactive: var( --go--color--secondary );
   --go-search-button--color--background-interactive: var( --go-heading--color--text );
   --go-entryheader--padding-top: 3rem;
-  --gf-footer-widgets--background-color: #eeeeee;
+  --gf-footer-widgets--background-color: var( --go--color--tertiary );
+  --gf-footer-widgets--text--color: var( --go--color--text );
   --gf-footer-widgets--font-size: 1rem;
   --gf-footer-widgets--list--font-size: var( --gf-footer-widgets--font-size );
   --gf-footer-widgets--font-weight: 400;
   --gf-footer-widgets--list--font-weight: var( --gf-footer-widgets--font-weight );
+  --gf-footer-widgets--hyperlink--color--text: var( --go--color--primary, var( --go--color--text ) );
+  --gf-footer-widgets--hyperlink-interactive--color--text: var(--go--hyperlink-interactive--color--text, var( --go--color--secondary ) );
   --go-footer--color--text: var( --go--color--secondary );
   --go-footer--color--text: var( --go-heading--color--text );
   --go-footer-navigation--line-height: 2.25;
@@ -374,6 +377,17 @@
     --go-quote-large--font-size: 3.75em;
     --go-site-title--font-size: 2.15rem;
   }
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  letter-spacing: var(--gf-select--letter-spacing);
+}
+
+select:focus {
+  background-color: var(--go-input-interactive--color--background);
 }
 
 .site-title,
@@ -455,17 +469,6 @@ strong {
   font-size: var(--go-meta--font-size);
   font-weight: var(--gf-meta--font-weight, var(--go--font-weight));
   letter-spacing: var(--gf-meta--letter-spacing, var(--go--letter-spacing));
-}
-
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  letter-spacing: var(--gf-select--letter-spacing);
-}
-
-select:focus {
-  background-color: var(--go-input-interactive--color--background);
 }
 
 .woocommerce-checkout #ship-to-different-address-checkbox {

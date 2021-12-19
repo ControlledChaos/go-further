@@ -22,10 +22,10 @@
     --go--letter-spacing--small: .015em;
     --go--line-height: 1.5;
     --go--type-ratio: 1.275;
-    --go--hyperlink--color--text: var( --go--color--secondary );
-    --go--hyperlink-interactive--color--text: var( --go--color--tertiary );
+    --go--hyperlink--color--text: var( --go--color--primary );
+    --go--hyperlink-interactive--color--text: var( --go--color--secondary );
     --go-heading--button-spacing: 1.75rem;
-    --go-heading--color--text: var( --go--color--primary );
+    --go-heading--color--text: #{$shared_light};
     --go-heading--font-family: #{$display};
     --go-heading--font-weight: 400;
     --go-heading--letter-spacing: -0.0325em;
@@ -85,7 +85,7 @@
     --go-site-description--color--text: var( --go--color--text );
     --go-site-description--letter-spacing: 0.075em;
     --go-site-description--font-weight: 400;
-    --go-navigation--color--text: var( --go--color--secondary );
+    --go-navigation--color--text: var( --go--color--primary );
     --go-navigation--font-family: #{$display};
     --go-navigation--font-family: var( --go-heading--font-family );
     --go-navigation--font-size: 1.375rem;
@@ -98,11 +98,14 @@
     --go-search-button--color--background-interactive: var( --go--color--secondary );
     --go-search-button--color--background-interactive: var( --go-heading--color--text );
     --go-entryheader--padding-top: 3rem;
-    --gf-footer-widgets--background-color: #{$footer_widgets_bg};
+    --gf-footer-widgets--background-color: var( --go--color--tertiary );
+    --gf-footer-widgets--text--color: var( --go--color--text );
     --gf-footer-widgets--font-size: 1rem;
     --gf-footer-widgets--list--font-size: var( --gf-footer-widgets--font-size );
     --gf-footer-widgets--font-weight: 400;
     --gf-footer-widgets--list--font-weight: var( --gf-footer-widgets--font-weight );
+    --gf-footer-widgets--hyperlink--color--text: var( --go--color--primary, var( --go--color--text ) );
+    --gf-footer-widgets--hyperlink-interactive--color--text: var(--go--hyperlink-interactive--color--text, var( --go--color--secondary ) );
     --go-footer--color--text: var( --go--color--secondary );
     --go-footer--color--text: var( --go-heading--color--text );
     --go-footer-navigation--line-height: 2.25;

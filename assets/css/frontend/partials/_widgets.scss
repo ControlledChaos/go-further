@@ -17,7 +17,7 @@
 	--heading-bottom: calc( var( --go-heading--margin-bottom ) / 2 );
 
 	// Styles for the `.footer-widgets` element.
-	background-color: var( --gf-footer-widgets--background-color );
+	background-color: var( --gf-footer-widgets--background-color, var( --go--color--tertiary ) );
 	margin-top: var( --gf-spacing--vertical--sm );
 	padding-top: var( --gf-spacing--vertical--md );
 	padding-bottom: var( --gf-spacing--vertical--md );
@@ -36,11 +36,16 @@
 	h4,
 	h5,
 	h6 {
-		color: var( --go--color--secondary );
+		color: var( --gf-footer-widgets--heading--color--text, var( --go-heading--color--text ) );
 	}
 
 	a {
 		color: var( --gf-footer-widgets--hyperlink--color--text, var( --go--color--primary ) );
+
+		&:hover,
+		&:active {
+			color: var( --gf-footer-widgets--hyperlink-interactive--color--text, var( --go--color--secondary ) );
+		}
 	}
 
 	&.block-widgets {
@@ -244,6 +249,14 @@
 			background-color: var( --go-button-interactive--color--background, var( --go--color--secondary ) );
 		}
 	}
+
+	&.wp-block-search__button-inside {
+		.wp-block-search__inside-wrapper {
+			.wp-block-search__button {
+				padding: var( --gf-block-search--inside-wrapper--button--padding--y, 0.75rem ) var( --gf-block-search--inside-wrapper--button--padding--x, 1rem );
+			}
+		}
+	}
 }
 
 // Classic search widget.
@@ -352,5 +365,43 @@
 .wp-block-latest-comments__comment-excerpt {
 	p {
 		line-height: var( --go--line-height );
+	}
+}
+
+// Widget: Latest/Recent Posts.
+.widget_recent_entries {
+	li {
+		clear: both;
+;
+		&:not( :last-of-type ) {
+			margin-bottom: 0.5em;
+			margin-bottom: calc( var( --go--spacing--vertical ) / 2 );
+		}
+	}
+}
+
+.wp-block-latest-posts__post-author,
+.wp-block-latest-posts__post-date,
+.widget .post-date,
+.widget .rss-date {
+	display: block;
+	font-size: 0.75em;
+	line-height: 1.3;
+	color: var( --gf-footer-widgets--text--color );
+}
+
+.wp-block-latest-posts__post-excerpt {
+	line-height: 1.25;
+}
+
+// Widget: Latest/Recent Comments.
+.widget_recent_comments {
+	li {
+		clear: both;
+;
+		&:not( :last-of-type ) {
+			margin-bottom: 0.5em;
+			margin-bottom: calc( var( --go--spacing--vertical ) / 2 );
+		}
 	}
 }

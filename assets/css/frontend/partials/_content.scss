@@ -6,6 +6,12 @@
 	position: relative;
 }
 
+.entry-content .wp-audio-shortcode,
+.entry-content > :not( .alignwide ):not( .alignfull ):not( .alignleft ):not( .alignright ):not( .wp-block-separator ):not( .woocommerce ) {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .post__subtitle {
 	margin-top: var( --go-header--padding--y, var( --go-block--padding--x ) );
 }
@@ -102,6 +108,19 @@
 	}
 }
 
+// Adjust cover image height for user toolbar.
+.admin-bar {
+	&.template-cover-image {
+		.post__thumbnail.cover-image {
+			min-height: calc( 100vh - 32px );
+
+			@media screen and ( max-width: 782px ) {
+				min-height: calc( 100vh - 46px );
+			}
+		}
+	}
+}
+
 .blog,
 .singular {
 	.post__thumbnail {
@@ -127,6 +146,15 @@
 	}
 }
 
+/// General purpose classes to be added
+/// via various user interfaces.
+.rounded-images {
+	img {
+		border-radius: 50%;
+	}
+}
+
+// Miscellaneous.
 ::selection {
 	text-shadow: none;
 }

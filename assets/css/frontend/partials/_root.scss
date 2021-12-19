@@ -14,5 +14,5 @@ $gf_cover_overlay: #000000;
     --gf-spacing--vertical--sm: calc( 30 / var( --go--viewport-basis ) * 100vw );
     --go-header--color--background: #ffffff;
     --gf-cover-overlay-rgb: #{hex_to_rgb( $gf_cover_overlay )};
-    --gf-footer-widgets--background-color: var( --go--color--tertiary );
+    --gf-footer-widgets--background-color: var( --go--color--tertiary, inherit );
 }

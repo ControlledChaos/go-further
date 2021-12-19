@@ -3,7 +3,7 @@
   --gf-spacing--vertical--sm: calc( 30 / var( --go--viewport-basis ) * 100vw );
   --go-header--color--background: #ffffff;
   --gf-cover-overlay-rgb: 0, 0, 0;
-  --gf-footer-widgets--background-color: var( --go--color--tertiary );
+  --gf-footer-widgets--background-color: var( --go--color--tertiary, inherit );
 }
 
 input[type="text"],
@@ -12,7 +12,8 @@ input[type="text"],
 input[type="password"],
 input[type="url"],
 input[type="tel"],
-input[type="search"] {
+input[type="search"],
+textarea {
   letter-spacing: var(--gf--input-text--letter-spacing, var(--go--letter-spacing));
 }
 
@@ -348,6 +349,12 @@ input[type="search"] {
   position: relative;
 }
 
+.entry-content .wp-audio-shortcode,
+.entry-content > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .post__subtitle {
   margin-top: var(--go-header--padding--y, var(--go-block--padding--x));
 }
@@ -447,6 +454,16 @@ input[type="search"] {
           justify-content: center;
 }
 
+.admin-bar.template-cover-image .post__thumbnail.cover-image {
+  min-height: calc( 100vh - 32px);
+}
+
+@media screen and (max-width: 782px) {
+  .admin-bar.template-cover-image .post__thumbnail.cover-image {
+    min-height: calc( 100vh - 46px);
+  }
+}
+
 .blog .post__thumbnail.cover-image img, .blog .post__thumbnail.page-banner img,
 .singular .post__thumbnail.cover-image img,
 .singular .post__thumbnail.page-banner img {
@@ -457,6 +474,10 @@ input[type="search"] {
 .blog article .post__thumbnail.cover-image img, .blog article .post__thumbnail.page-banner img {
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.rounded-images img {
+  border-radius: 50%;
 }
 
 ::-moz-selection {
@@ -473,7 +494,7 @@ input[type="search"] {
   --half-width: calc( var( --go--max-width ) / 2 );
   --half-gap: calc( var( --go-block--padding--x ) / 2 );
   --heading-bottom: calc( var( --go-heading--margin-bottom ) / 2 );
-  background-color: var(--gf-footer-widgets--background-color);
+  background-color: var(--gf-footer-widgets--background-color, var(--go--color--tertiary));
   margin-top: var(--gf-spacing--vertical--sm);
   padding-top: var(--gf-spacing--vertical--md);
   padding-bottom: var(--gf-spacing--vertical--md);
@@ -493,11 +514,15 @@ input[type="search"] {
 .footer-widgets h4,
 .footer-widgets h5,
 .footer-widgets h6 {
-  color: var(--go--color--secondary);
+  color: var(--gf-footer-widgets--heading--color--text, var(--go-heading--color--text));
 }
 
 .footer-widgets a {
   color: var(--gf-footer-widgets--hyperlink--color--text, var(--go--color--primary));
+}
+
+.footer-widgets a:hover, .footer-widgets a:active {
+  color: var(--gf-footer-widgets--hyperlink-interactive--color--text, var(--go--color--secondary));
 }
 
 .footer-widgets.block-widgets section > * {
@@ -683,6 +708,10 @@ input[type="search"] {
   background-color: var(--go-button-interactive--color--background, var(--go--color--secondary));
 }
 
+.wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper .wp-block-search__button {
+  padding: var(--gf-block-search--inside-wrapper--button--padding--y, 0.75rem) var(--gf-block-search--inside-wrapper--button--padding--x, 1rem);
+}
+
 .widget_search .search-form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -785,4 +814,36 @@ input[type="search"] {
 
 .wp-block-latest-comments__comment-excerpt p {
   line-height: var(--go--line-height);
+}
+
+.widget_recent_entries li {
+  clear: both;
+}
+
+.widget_recent_entries li:not(:last-of-type) {
+  margin-bottom: 0.5em;
+  margin-bottom: calc( var( --go--spacing--vertical ) / 2);
+}
+
+.wp-block-latest-posts__post-author,
+.wp-block-latest-posts__post-date,
+.widget .post-date,
+.widget .rss-date {
+  display: block;
+  font-size: 0.75em;
+  line-height: 1.3;
+  color: var(--gf-footer-widgets--text--color);
+}
+
+.wp-block-latest-posts__post-excerpt {
+  line-height: 1.25;
+}
+
+.widget_recent_comments li {
+  clear: both;
+}
+
+.widget_recent_comments li:not(:last-of-type) {
+  margin-bottom: 0.5em;
+  margin-bottom: calc( var( --go--spacing--vertical ) / 2);
 }
