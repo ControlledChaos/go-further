@@ -27,8 +27,8 @@ function setup() {
 	};
 
 	add_action( 'customize_register', $n( 'customize' ), 11 );
-	// add_action( 'customize_preview_init', $n( 'customize_preview_init' ) );
-	// add_action( 'customize_controls_enqueue_scripts', $n( 'customize_preview_init' ) );
+	add_action( 'customize_preview_init', $n( 'customize_preview_init' ), 11 );
+	add_action( 'customize_controls_enqueue_scripts', $n( 'customize_preview_init' ), 11 );
 	add_action( 'wp_head', $n( 'inline_css' ), 11 );
 }
 
@@ -307,6 +307,7 @@ function customize( $wp_customize ) {
 	 */
 	$wp_customize->add_setting( 'gf_display_social', [
 		'default'	        => true,
+		'transport'         => 'postMessage',
 		'sanitize_callback' => __NAMESPACE__ . '\display_social'
 	] );
 	$wp_customize->add_control( new \WP_Customize_Control(
@@ -708,7 +709,7 @@ function sticky_header( $input ) {
  */
 function display_social( $input ) {
 
-	if ( empty( $input ) || true == $input ) {
+	if ( true == $input ) {
 		return true;
 	}
 	return false;
@@ -726,18 +727,9 @@ function customize_preview_init() {
 	wp_enqueue_script(
 		'gf-customize-preview',
 		get_theme_file_uri( "assets/js/customize-preview{$suffix}.js" ),
-		array( 'jquery', 'wp-autop' ),
+		[ 'jquery', 'wp-autop' ],
 		GF_VERSION,
 		true
-	);
-
-	wp_localize_script(
-		'gf-customize-preview',
-		'GoPreviewData',
-		array(
-			'design_styles'       => \Go\Core\get_available_design_styles(),
-			'selectedDesignStyle' => get_theme_mod( 'design_style', \Go\Core\get_default_design_style() ),
-		)
 	);
 }
 
