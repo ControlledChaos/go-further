@@ -9,9 +9,10 @@
 
 namespace GoFurther\Customize;
 
-use Go\Customizer as Go;
+use \Go\Customizer as Go,
+	GoFurther\Assets as Assets;
 use function \Go\get_palette_color;
-use function Go\hex_to_hsl;
+use function \Go\hex_to_hsl;
 
 /**
  * Apply functions
@@ -26,6 +27,8 @@ function setup() {
 	};
 
 	add_action( 'customize_register', $n( 'customize' ), 11 );
+	// add_action( 'customize_preview_init', $n( 'customize_preview_init' ) );
+	// add_action( 'customize_controls_enqueue_scripts', $n( 'customize_preview_init' ) );
 	add_action( 'wp_head', $n( 'inline_css' ), 11 );
 }
 
@@ -390,7 +393,7 @@ function customize( $wp_customize ) {
 	$wp_customize->add_setting(
 		'footer_widgets_background_color',
 		[
-			'transport'         => 'postMessage',
+			// 'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 			'default'           => \Go\get_default_palette_color( 'tertiary' ),
 		]
@@ -412,7 +415,7 @@ function customize( $wp_customize ) {
 	$wp_customize->add_setting(
 		'footer_widgets_text_color',
 		[
-			'transport'         => 'postMessage',
+			// 'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		]
 	);
@@ -432,7 +435,7 @@ function customize( $wp_customize ) {
 	$wp_customize->add_setting(
 		'footer_widgets_heading_color',
 		[
-			'transport'         => 'postMessage',
+			// 'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		]
 	);
@@ -557,6 +560,10 @@ function customize( $wp_customize ) {
 	// Put the parent theme's Social section into the core Menus panel.
 	$wp_customize->get_section( 'go_social_media' )->panel = 'nav_menus';
 	$wp_customize->get_section( 'go_social_media' )->priority = 999;
+
+	// Rename social icons section & color control.
+	$wp_customize->get_section( 'go_social_media' )->title = __( 'Social Icons', 'go-further' );
+	$wp_customize->get_control( 'social_icon_color_alt' )->label = __( 'Social Icons Color', 'go-further' );
 
 	// Put the social icon color below social link display.
 	$wp_customize->get_control( 'social_icon_color_alt' )->priority = 12;
@@ -701,10 +708,37 @@ function sticky_header( $input ) {
  */
 function display_social( $input ) {
 
-	if ( false == $input ) {
-		return false;
+	if ( empty( $input ) || true == $input ) {
+		return true;
 	}
-	return true;
+	return false;
+}
+
+/**
+ * Enqueues the preview js for the customizer.
+ *
+ * @return void
+ */
+function customize_preview_init() {
+
+	$suffix = Assets\suffix();
+
+	wp_enqueue_script(
+		'gf-customize-preview',
+		get_theme_file_uri( "assets/js/customize-preview{$suffix}.js" ),
+		array( 'jquery', 'wp-autop' ),
+		GF_VERSION,
+		true
+	);
+
+	wp_localize_script(
+		'gf-customize-preview',
+		'GoPreviewData',
+		array(
+			'design_styles'       => \Go\Core\get_available_design_styles(),
+			'selectedDesignStyle' => get_theme_mod( 'design_style', \Go\Core\get_default_design_style() ),
+		)
+	);
 }
 
 /**
