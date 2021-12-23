@@ -20,7 +20,12 @@ namespace GoFurther;
  * @var   string The latest theme version.
  */
 $theme_version = wp_get_theme()->get( 'Version' );
-define( 'GF_VERSION', $theme_version );
+if ( $theme_version ) {
+	$gf_version = $theme_version;
+} else {
+	$gf_version = '';
+}
+define( 'GF_VERSION', $gf_version );
 
 // Load required files.
 foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $filename ) {
