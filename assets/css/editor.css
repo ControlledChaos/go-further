@@ -12,7 +12,7 @@
   font-size: var(--gf-footer-widgets--font-size, var(--go--font-size));
   font-weight: 400;
   font-weight: var(--gf-footer-widgets--font-weight, var(--go--font-weight));
-  color: var(--gf-footer-widgets--text--color);
+  color: var(--gf-footer-widgets--color--text);
 }
 
 .footer-widgets .widget {
@@ -33,6 +33,54 @@
 
 .footer-widgets a:hover, .footer-widgets a:active {
   color: var(--gf-footer-widgets--hyperlink-interactive--color--text, var(--go--color--secondary));
+}
+
+.footer-widgets fieldset {
+  margin-top: 0;
+}
+
+.footer-widgets input[type="text"],
+.footer-widgets input[type="email"],
+.footer-widgets input[type="text"],
+.footer-widgets input[type="password"],
+.footer-widgets input[type="url"],
+.footer-widgets input[type="tel"],
+.footer-widgets input[type="search"],
+.footer-widgets textarea {
+  background-color: inherit;
+  border-color: var(--gf-footer-widgets--input--border-color);
+}
+
+.footer-widgets input[type="text"]:focus,
+.footer-widgets input[type="email"]:focus,
+.footer-widgets input[type="text"]:focus,
+.footer-widgets input[type="password"]:focus,
+.footer-widgets input[type="url"]:focus,
+.footer-widgets input[type="tel"]:focus,
+.footer-widgets input[type="search"]:focus,
+.footer-widgets textarea:focus {
+  background: var(--go-input-interactive--color--background, var(--go--color--white));
+  border-color: var(--gf-footer-widgets--input-interactive--color--border-color);
+}
+
+.footer-widgets button,
+.footer-widgets .button,
+.footer-widgets input[type="submit"],
+.footer-widgets input[type="button"],
+.footer-widgets .wp-block-search .wp-block-search__button {
+  background-color: var(--gf-footer-widgets--button--color--background);
+}
+
+.footer-widgets button:hover, .footer-widgets button:active,
+.footer-widgets .button:hover,
+.footer-widgets .button:active,
+.footer-widgets input[type="submit"]:hover,
+.footer-widgets input[type="submit"]:active,
+.footer-widgets input[type="button"]:hover,
+.footer-widgets input[type="button"]:active,
+.footer-widgets .wp-block-search .wp-block-search__button:hover,
+.footer-widgets .wp-block-search .wp-block-search__button:active {
+  background-color: var(--gf-footer-widgets--button-interactive--color--background);
 }
 
 .footer-widgets.block-widgets section > * {
@@ -342,7 +390,7 @@
   display: block;
   font-size: 0.75em;
   line-height: 1.3;
-  color: var(--gf-footer-widgets--text--color);
+  color: var(--gf-footer-widgets--color--text);
 }
 
 .wp-block-latest-posts__post-excerpt {

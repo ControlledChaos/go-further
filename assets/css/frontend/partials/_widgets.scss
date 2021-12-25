@@ -25,7 +25,7 @@
 	font-size: var( --gf-footer-widgets--font-size, var( --go--font-size ) );
 	font-weight: 400;
 	font-weight: var( --gf-footer-widgets--font-weight, var( --go--font-weight ) );
-	color: var( --gf-footer-widgets--text--color );
+	color: var( --gf-footer-widgets--color--text );
 
 	.widget {
 		margin-bottom: var( --go--spacing--vertical );
@@ -45,6 +45,40 @@
 		&:hover,
 		&:active {
 			color: var( --gf-footer-widgets--hyperlink-interactive--color--text, var( --go--color--secondary ) );
+		}
+	}
+
+	fieldset {
+		margin-top: 0;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="text"],
+	input[type="password"],
+	input[type="url"],
+	input[type="tel"],
+	input[type="search"],
+	textarea {
+		background-color: inherit;
+		border-color: var( --gf-footer-widgets--input--border-color );
+
+		&:focus {
+			background: var( --go-input-interactive--color--background, var( --go--color--white ) );
+			border-color: var( --gf-footer-widgets--input-interactive--color--border-color );
+		}
+	}
+
+	button,
+	.button,
+	input[type="submit"],
+	input[type="button"],
+	.wp-block-search .wp-block-search__button {
+		background-color: var( --gf-footer-widgets--button--color--background );
+
+		&:hover,
+		&:active {
+			background-color: var( --gf-footer-widgets--button-interactive--color--background );
 		}
 	}
 
@@ -387,7 +421,7 @@
 	display: block;
 	font-size: 0.75em;
 	line-height: 1.3;
-	color: var( --gf-footer-widgets--text--color );
+	color: var( --gf-footer-widgets--color--text );
 }
 
 .wp-block-latest-posts__post-excerpt {

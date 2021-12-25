@@ -2,6 +2,12 @@
 /// Form styles
 ///
 
+fieldset {
+	legend {
+		padding: var( --gf-legend--padding-y ) var( --gf-legend--padding-x );
+	}
+}
+
 input[type="text"],
 input[type="email"],
 input[type="text"],

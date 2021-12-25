@@ -57,6 +57,10 @@
     --go-button--padding--y: 1.4rem;
     --go-button--color--background: var( --go--color--primary );
     --go-button-interactive--color--background: var( --go--color--secondary );
+    --go-input--border: 1px solid var( --go--color--secondary);
+    --go-input--border: var( --go-input--border-width, 1px ) var( --go-input--border-style, solid ) var( --go-input--border-color, var( --go-heading--color--text ) );
+    --gf-legend--padding-y: 0;
+    --gf-legend--padding-x: 0.5em;
     --go-label--font-family: #{$general};
     --go-label--font-family: var( --go--font-family );
     --go-label--font-size: 1rem;
@@ -64,8 +68,6 @@
     --go-label--font-weight: var( --go-navigation--font-weight, 400 );
     --go-label--letter-spacing: var( --go--letter-spacing );
     --go-label--margin-bottom: .25rem;
-    --go-input--border: 1px solid var( --go--color--secondary);
-    --go-input--border: var( --go-input--border-width, 1px ) var( --go-input--border-style, solid ) var( --go-input--border-color, var( --go-heading--color--text ) );
     --go-input--color--background: var( --go--color--background );
     --go-input-interactive--color--background: var( --go--color--background );
     --go-input--color--text: #{$shared_dark};
@@ -99,7 +101,7 @@
     --go-search-button--color--background-interactive: var( --go-heading--color--text );
     --go-entryheader--padding-top: 3rem;
     --gf-footer-widgets--background-color: var( --go--color--tertiary );
-    --gf-footer-widgets--text--color: var( --go--color--text );
+    --gf-footer-widgets--color--text: var( --go--color--text );
     --gf-footer-widgets--font-size: 1rem;
     --gf-footer-widgets--list--font-size: var( --gf-footer-widgets--font-size );
     --gf-footer-widgets--font-weight: 400;

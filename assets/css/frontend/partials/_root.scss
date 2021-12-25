@@ -12,7 +12,12 @@ $gf_cover_overlay: #000000;
 :root {
     --gf-spacing--vertical--md: calc( 60 / var( --go--viewport-basis ) * 100vw );
     --gf-spacing--vertical--sm: calc( 30 / var( --go--viewport-basis ) * 100vw );
-    --go-header--color--background: #ffffff;
     --gf-cover-overlay-rgb: #{hex_to_rgb( $gf_cover_overlay )};
+    --gf-legend--padding-y: 0;
+    --gf-legend--padding-x: 0;
+    --gf-footer-widgets--button--color--background: var( --go-button--color--background, var( --go--color--primary ) );
+    --gf-footer-widgets--button-interactive--color--background: var( --go-button-interactive--color--background, var( --go--color--secondary ) );
+    --gf-footer-widgets--input--border-color: var( --go-input--border-color, var(--gf-footer-widgets--color--text) );
+    --gf-footer-widgets--input-interactive--color--border-color: var( --go-input-interactive--color--border-color, var( --go--color--secondary ) );
     --gf-footer-widgets--background-color: var( --go--color--tertiary, inherit );
 }
