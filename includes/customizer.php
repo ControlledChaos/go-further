@@ -9,9 +9,10 @@
 
 namespace GoFurther\Customize;
 
-use \Go\Customizer as Go,
+use \Go\Customizer   as Go,
+	GoFurther\Front  as Front,
 	GoFurther\Assets as Assets;
-use function \Go\get_palette_color;
+
 use function \Go\hex_to_hsl;
 
 /**
@@ -394,9 +395,9 @@ function customize( $wp_customize ) {
 	$wp_customize->add_setting(
 		'footer_widgets_background_color',
 		[
-			// 'transport'         => 'postMessage',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
-			'default'           => \Go\get_default_palette_color( 'tertiary' ),
+			'default'           => \Go\get_default_palette_color( 'tertiary' )
 		]
 	);
 
@@ -724,12 +725,23 @@ function customize_preview_init() {
 
 	$suffix = Assets\suffix();
 
+	wp_dequeue_script( 'go-customize-preview' );
+
 	wp_enqueue_script(
 		'gf-customize-preview',
 		get_theme_file_uri( "assets/js/customize-preview{$suffix}.js" ),
 		[ 'jquery', 'wp-autop' ],
 		GF_VERSION,
 		true
+	);
+
+	wp_localize_script(
+		'gf-customize-preview',
+		'GoPreviewData',
+		array(
+			'design_styles'       => \Go\Core\get_available_design_styles(),
+			'selectedDesignStyle' => get_theme_mod( 'design_style', \Go\Core\get_default_design_style() ),
+		)
 	);
 }
 
@@ -762,6 +774,7 @@ function classic_widgets( $input ) {
 function inline_css() {
 
 	// Get theme mods.
+	$footer_widgets_bg_palette_color = Front\get_palette_color( 'footer_background', 'HSL' );
 	$footer_widgets_background_color = hex_to_hsl( get_theme_mod( 'footer_widgets_background_color', false ), true );
 	$footer_widgets_heading_color    = hex_to_hsl( get_theme_mod( 'footer_widgets_heading_color', false ), true );
 	$footer_widgets_text_color       = hex_to_hsl( get_theme_mod( 'footer_widgets_text_color', false ), true );
@@ -769,8 +782,12 @@ function inline_css() {
 	?>
 	<style>
 		:root {
-			<?php if ( $footer_widgets_background_color ) : ?>
+			<?php if ( ! empty( $footer_widgets_background_color ) ) : ?>
 				--gf-footer-widgets--background-color: hsl(<?php echo esc_attr( $footer_widgets_background_color ); ?>);
+			<?php elseif ( $footer_widgets_bg_palette_color ) : ?>
+				--gf-footer-widgets--background-color: hsl(<?php echo esc_attr( $footer_widgets_bg_palette_color ); ?>);
+			<?php else : ?>
+				--gf-footer-widgets--background-color: var( --go--color--tertiary, inherit );
 			<?php endif; ?>
 			<?php if ( $footer_widgets_heading_color ) : ?>
 				--gf-footer-widgets--heading--color--text: hsl(<?php echo esc_attr( $footer_widgets_heading_color ); ?>);
