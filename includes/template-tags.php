@@ -13,6 +13,8 @@ namespace GoFurther\Front;
 // Alias namespaces.
 use GoFurther\Customize as Customize;
 
+use function \Go\hex_to_hsl;
+
 /**
  * Page title
  *
@@ -185,6 +187,64 @@ function page_subtitle( $before = '', $after = '', $echo = true ) {
 	} else {
 		return $subtitle;
 	}
+}
+
+/**
+ * Get palette color
+ *
+ * Returns the color selected by the user.
+ *
+ * @since  1.0.0
+ * @param  string $color  Which color to return.
+ * @param  string $format The format to return the color. Possible Values: RGB (default), HSL (returns an array) or HEX.
+ * @return string|array|bool A string with the RGB value or an array containing the HSL values.
+ */
+function get_palette_color( $color, $format = 'RGB' ) {
+	$default         = \Go\Core\get_default_color_scheme();
+	$color_scheme    = get_theme_mod( 'color_scheme', $default );
+	$override_colors = [
+		'primary'                   => 'primary_color',
+		'secondary'                 => 'secondary_color',
+		'tertiary'                  => 'tertiary_color',
+		'background'                => 'background_color',
+		'header_background'         => 'header_background_color',
+		'footer_widgets_background' => 'footer_widgets_background_color',
+		'footer_background'         => 'footer_background_color'
+	];
+
+	$color_override = get_theme_mod( $override_colors[ $color ] );
+
+	$avaliable_color_schemes = \Go\Core\get_available_color_schemes();
+
+	$the_color = '';
+
+	if ( $color_scheme && isset( $avaliable_color_schemes[ $color_scheme ] ) && isset( $avaliable_color_schemes[ $color_scheme ][ $color ] ) ) {
+		$the_color = $avaliable_color_schemes[ $color_scheme ][ $color ];
+	}
+
+	if ( $color_override ) {
+		$the_color = $color_override;
+	}
+
+	if ( ! empty( $the_color ) ) {
+
+			// Ensure we have a hash mark at the beginning of the hex value.
+		$the_color = '#' . ltrim( $the_color, '#' );
+
+		if ( 'HSL' === $format ) {
+			return hex_to_hsl( $the_color );
+		}
+
+		if ( 'RGB' === $format ) {
+			return hex_to_rgb( $the_color );
+		}
+
+		if ( 'HEX' === $format ) {
+			return $the_color;
+		}
+	}
+
+	return $the_color;
 }
 
 /**
