@@ -397,7 +397,7 @@ function customize( $wp_customize ) {
 		[
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
-			'default'           => \Go\get_default_palette_color( 'tertiary' )
+			'default'           => ''
 		]
 	);
 
@@ -779,16 +779,26 @@ function inline_css() {
 	$footer_widgets_heading_color    = hex_to_hsl( get_theme_mod( 'footer_widgets_heading_color', false ), true );
 	$footer_widgets_text_color       = hex_to_hsl( get_theme_mod( 'footer_widgets_text_color', false ), true );
 
+	// Footer widgets background color.
+	if ( ! empty( $footer_widgets_background_color ) ) {
+		$gf_footer_widgets_background_color = sprintf(
+			'hsl(%s)',
+			esc_attr( $footer_widgets_background_color )
+		);
+	} elseif ( $footer_widgets_bg_palette_color ) {
+		$gf_footer_widgets_background_color = sprintf(
+			'hsl(%s)',
+			esc_attr( $footer_widgets_bg_palette_color )
+		);
+	} else {
+		$gf_footer_widgets_background_color = 'var( --go--color--tertiary )';
+	}
+
 	?>
 	<style>
 		:root {
-			<?php if ( ! empty( $footer_widgets_background_color ) ) : ?>
-				--gf-footer-widgets--background-color: hsl(<?php echo esc_attr( $footer_widgets_background_color ); ?>);
-			<?php elseif ( $footer_widgets_bg_palette_color ) : ?>
-				--gf-footer-widgets--background-color: hsl(<?php echo esc_attr( $footer_widgets_bg_palette_color ); ?>);
-			<?php else : ?>
-				--gf-footer-widgets--background-color: var( --go--color--tertiary, inherit );
-			<?php endif; ?>
+			--gf-footer-widgets--background-color: <?php echo $gf_footer_widgets_background_color; ?>;
+
 			<?php if ( $footer_widgets_heading_color ) : ?>
 				--gf-footer-widgets--heading--color--text: hsl(<?php echo esc_attr( $footer_widgets_heading_color ); ?>);
 			<?php endif; ?>
