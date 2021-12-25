@@ -84,6 +84,11 @@ function body_classes( $classes ) {
 	if ( Front\has_cover_image() ) {
 		$add_classes[] .= 'template-cover-image';
 	}
+
+	if ( get_theme_mod( 'footer_widgets_background_color', false ) ) {
+		$add_classes[] .= 'has-footer-widgets-background';
+	}
+
 	return array_merge( $classes, $add_classes );
 }
 

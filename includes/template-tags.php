@@ -232,11 +232,11 @@ function get_palette_color( $color, $format = 'RGB' ) {
 		$the_color = '#' . ltrim( $the_color, '#' );
 
 		if ( 'HSL' === $format ) {
-			return hex_to_hsl( $the_color );
+			return \Go\hex_to_hsl( $the_color );
 		}
 
 		if ( 'RGB' === $format ) {
-			return hex_to_rgb( $the_color );
+			return \Go\hex_to_rgb( $the_color );
 		}
 
 		if ( 'HEX' === $format ) {
@@ -245,6 +245,22 @@ function get_palette_color( $color, $format = 'RGB' ) {
 	}
 
 	return $the_color;
+}
+
+/**
+ * Has footer widgets background
+ *
+ * @since  1.0.0
+ * @return boolean Returns whether there is a footer background or not.
+ */
+function has_footer_widgets_background() {
+
+	$background_color = get_palette_color( 'footer_widgets_background' );
+
+	if ( $background_color ) {
+		return true;
+	}
+	return false;
 }
 
 /**
@@ -553,6 +569,11 @@ function footer_widgets_class() {
 		$class[] .= 'classic-widgets';
 	} else {
 		$class[] .= 'block-widgets';
+	}
+
+	// Add a background class.
+	if ( has_footer_widgets_background() ) {
+		$class[] .= 'has-background';
 	}
 
 	// Add sidebars active class.
