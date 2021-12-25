@@ -334,6 +334,38 @@ $(document).ready(setMenuLocationDescription);
 			document.querySelector(':root').style.setProperty('--go-social--color--text', setTo);
 		});
 	});
+	wp.customize('footer_widgets_text_color', value => {
+		value.bind(to => {
+			const hsl = Object(_util__WEBPACK_IMPORTED_MODULE_0__["hexToHSL"])(to);
+			const setTo = to ? `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)` : undefined;
+			document.querySelector(':root').style.setProperty('--gf-footer-widgets--color--text', setTo);
+		});
+	});
+	wp.customize('footer_widgets_heading_color', value => {
+		value.bind(to => {
+			const hsl = Object(_util__WEBPACK_IMPORTED_MODULE_0__["hexToHSL"])(to);
+			const setTo = to ? `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)` : 'var( --go-heading--color--text )';
+			document.querySelector(':root').style.setProperty('--gf-footer-widgets--heading--color--text', setTo);
+		});
+	});
+	wp.customize('footer_widgets_link_form_color', value => {
+		value.bind(to => {
+			const hsl    = Object(_util__WEBPACK_IMPORTED_MODULE_0__["hexToHSL"])(to);
+			const link   = to ? `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)` : 'var( --go--hyperlink--color--text )';
+			const button = to ? `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)` : 'var( --go-button--color--background )';
+			document.querySelector(':root').style.setProperty('--gf-footer-widgets--hyperlink--color--text', link);
+			document.querySelector(':root').style.setProperty('--gf-footer-widgets--button--color--background', button);
+		});
+	});
+	wp.customize('footer_widgets_interactive_color', value => {
+		value.bind(to => {
+			const hsl = Object(_util__WEBPACK_IMPORTED_MODULE_0__["hexToHSL"])(to);
+			const setTo = to ? `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)` : 'var( --go--color--secondary )';
+			document.querySelector(':root').style.setProperty('--gf-footer-widgets--hyperlink-interactive--color--text', setTo);
+			document.querySelector(':root').style.setProperty('--gf-footer-widgets--button-interactive--color--background', setTo);
+			document.querySelector(':root').style.setProperty('--gf-footer-widgets--input-interactive--color--border-color', setTo);
+		});
+	});
 	wp.customize('footer_text_color', value => {
 		value.bind(to => {
 			const hsl = Object(_util__WEBPACK_IMPORTED_MODULE_0__["hexToHSL"])(to);

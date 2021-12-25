@@ -417,7 +417,7 @@ function customize( $wp_customize ) {
 	$wp_customize->add_setting(
 		'footer_widgets_text_color',
 		[
-			// 'transport'         => 'postMessage',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		]
 	);
@@ -437,7 +437,7 @@ function customize( $wp_customize ) {
 	$wp_customize->add_setting(
 		'footer_widgets_heading_color',
 		[
-			// 'transport'         => 'postMessage',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		]
 	);
@@ -450,6 +450,46 @@ function customize( $wp_customize ) {
 				'label'    => esc_html__( 'Heading', 'go-further' ),
 				'section'  => 'colors',
 				'settings' => 'footer_widgets_heading_color',
+			]
+		)
+	);
+
+	$wp_customize->add_setting(
+		'footer_widgets_link_form_color',
+		[
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+		]
+	);
+
+	$wp_customize->add_control(
+		new \WP_Customize_Color_Control(
+			$wp_customize,
+			'footer_widgets_link_form_color',
+			[
+				'label'    => esc_html__( 'Links & Forms', 'go-further' ),
+				'section'  => 'colors',
+				'settings' => 'footer_widgets_link_form_color',
+			]
+		)
+	);
+
+	$wp_customize->add_setting(
+		'footer_widgets_interactive_color',
+		[
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+		]
+	);
+
+	$wp_customize->add_control(
+		new \WP_Customize_Color_Control(
+			$wp_customize,
+			'footer_widgets_interactive_color',
+			[
+				'label'    => esc_html__( 'Interactive', 'go-further' ),
+				'section'  => 'colors',
+				'settings' => 'footer_widgets_interactive_color',
 			]
 		)
 	);
@@ -590,10 +630,12 @@ function customize( $wp_customize ) {
 	$wp_customize->get_control( 'header_background_color' )->priority = 22;
 	$wp_customize->get_control( 'header_text_color'       )->priority = 24;
 
-	$wp_customize->get_control( 'title_footer_widgets_colors'     )->priority = 30;
-	$wp_customize->get_control( 'footer_widgets_background_color' )->priority = 32;
-	$wp_customize->get_control( 'footer_widgets_text_color'       )->priority = 34;
-	$wp_customize->get_control( 'footer_widgets_heading_color'    )->priority = 36;
+	$wp_customize->get_control( 'title_footer_widgets_colors'      )->priority = 30;
+	$wp_customize->get_control( 'footer_widgets_background_color'  )->priority = 32;
+	$wp_customize->get_control( 'footer_widgets_text_color'        )->priority = 34;
+	$wp_customize->get_control( 'footer_widgets_heading_color'     )->priority = 36;
+	$wp_customize->get_control( 'footer_widgets_link_form_color'   )->priority = 38;
+	$wp_customize->get_control( 'footer_widgets_interactive_color' )->priority = 38;
 
 	$wp_customize->get_control( 'title_footer_colors'     )->priority = 40;
 	$wp_customize->get_control( 'footer_background_color' )->priority = 42;
@@ -774,10 +816,12 @@ function classic_widgets( $input ) {
 function inline_css() {
 
 	// Get theme mods.
-	$footer_widgets_bg_palette_color = Front\get_palette_color( 'footer_background', 'HSL' );
-	$footer_widgets_background_color = hex_to_hsl( get_theme_mod( 'footer_widgets_background_color', false ), true );
-	$footer_widgets_heading_color    = hex_to_hsl( get_theme_mod( 'footer_widgets_heading_color', false ), true );
-	$footer_widgets_text_color       = hex_to_hsl( get_theme_mod( 'footer_widgets_text_color', false ), true );
+	$footer_widgets_bg_palette_color  = Front\get_palette_color( 'footer_background', 'HSL' );
+	$footer_widgets_background_color  = hex_to_hsl( get_theme_mod( 'footer_widgets_background_color', false ), true );
+	$footer_widgets_heading_color     = hex_to_hsl( get_theme_mod( 'footer_widgets_heading_color', false ), true );
+	$footer_widgets_text_color        = hex_to_hsl( get_theme_mod( 'footer_widgets_text_color', false ), true );
+	$footer_widgets_link_form_color   = hex_to_hsl( get_theme_mod( 'footer_widgets_link_form_color', false ), true );
+	$footer_widgets_interactive_color = hex_to_hsl( get_theme_mod( 'footer_widgets_interactive_color', false ), true );
 
 	// Footer widgets background color.
 	if ( ! empty( $footer_widgets_background_color ) ) {
@@ -803,7 +847,17 @@ function inline_css() {
 				--gf-footer-widgets--heading--color--text: hsl(<?php echo esc_attr( $footer_widgets_heading_color ); ?>);
 			<?php endif; ?>
 			<?php if ( $footer_widgets_text_color ) : ?>
-				--gf-footer-widgets--text--color: hsl(<?php echo esc_attr( $footer_widgets_text_color ); ?>);
+				--gf-footer-widgets--color--text: hsl(<?php echo esc_attr( $footer_widgets_text_color ); ?>);
+				--gf-footer-widgets--input--border-color: hsl(<?php echo esc_attr( $footer_widgets_text_color ); ?>);
+			<?php endif; ?>
+			<?php if ( $footer_widgets_link_form_color ) : ?>
+				--gf-footer-widgets--hyperlink--color--text: hsl(<?php echo esc_attr( $footer_widgets_link_form_color ); ?>);
+				--gf-footer-widgets--button--color--background: hsl(<?php echo esc_attr( $footer_widgets_link_form_color ); ?>);
+			<?php endif; ?>
+			<?php if ( $footer_widgets_interactive_color ) : ?>
+				--gf-footer-widgets--hyperlink-interactive--color--text: hsl(<?php echo esc_attr( $footer_widgets_interactive_color ); ?>);
+				--gf-footer-widgets--button-interactive--color--background: hsl(<?php echo esc_attr( $footer_widgets_interactive_color ); ?>);
+				--gf-footer-widgets--input-interactive--color--border-color: hsl(<?php echo esc_attr( $footer_widgets_interactive_color ); ?>);
 			<?php endif; ?>
 		}
 	</style>
