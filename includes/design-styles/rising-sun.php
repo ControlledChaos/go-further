@@ -21,14 +21,13 @@ use GoFurther\Assets as Assets;
 function rising_sun() {
 
 	$suffix = Assets\suffix();
-	$rtl    = ! is_rtl() ? '' : '-rtl';
 
 	return [ 'rising-sun' =>
 		[
 			'slug'          => 'rising-sun',
 			'label'         => _x( 'Rising Sun', 'design style name', 'go-further' ),
-			'url'           => get_theme_file_uri( "assets/css/design-styles/rising-sun/style{$rtl}{$suffix}.css" ),
-			'editor_style'  => "assets/css/design-styles/rising-sun/style-editor{$rtl}{$suffix}.css",
+			'url'           => get_theme_file_uri( "assets/css/design-styles/rising-sun/style{$suffix}.css" ),
+			'editor_style'  => "assets/css/design-styles/rising-sun/style-editor{$suffix}.css",
 			'color_schemes' => [
 				'one' => [
 					'label'      => _x( 'Zen Garden', 'color palette name', 'go-further' ),
@@ -194,7 +193,7 @@ function rising_sun() {
 			],
 			'font_size'      => '1.125rem',
 			'type_ratio'     => '1.275',
-			'viewport_basis' => '1600'
+			'viewport_basis' => '1000'
 		]
 	];
 }
