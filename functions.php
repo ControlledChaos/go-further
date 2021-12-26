@@ -40,5 +40,6 @@ Options\setup();
 Assets\setup();
 
 if ( is_admin() ) {
+	Admin\setup();
 	Editor\setup();
 }
