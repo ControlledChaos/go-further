@@ -11,6 +11,21 @@
   --gf-footer-widgets--background-color: var( --go--color--tertiary, inherit );
 }
 
+:root {
+  --gf-fieldset--padding--y: var( --go--spacing--vertical );
+  --gf-fieldset--padding--x: calc( var( --go-block--padding--x ) / 2 );
+  --gf-fieldset--border: var( --go-input--border );
+  --gf-fieldset--border-radius: var( --go-input--border-radius, var( --go-button--border-radius ) );
+  --gf-legend--padding-y: 0;
+  --gf-legend--padding-x: 0.5em;
+}
+
+fieldset {
+  padding: var(--gf-fieldset--padding--y, 1rem) var(--gf-fieldset--padding--x, 2rem);
+  border: var(--gf-fieldset--border);
+  border-radius: var(--gf-fieldset--border-radius);
+}
+
 fieldset legend {
   padding: var(--gf-legend--padding-y) var(--gf-legend--padding-x);
 }
@@ -24,6 +39,10 @@ input[type="tel"],
 input[type="search"],
 textarea {
   letter-spacing: var(--gf--input-text--letter-spacing, var(--go--letter-spacing));
+}
+
+textarea {
+  resize: var(--gf-textarea--resize, vertical);
 }
 
 .header {

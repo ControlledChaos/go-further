@@ -59,8 +59,6 @@
     --go-button-interactive--color--background: var( --go--color--secondary );
     --go-input--border: 1px solid var( --go--color--secondary);
     --go-input--border: var( --go-input--border-width, 1px ) var( --go-input--border-style, solid ) var( --go-input--border-color, var( --go-heading--color--text ) );
-    --gf-legend--padding-y: 0;
-    --gf-legend--padding-x: 0.5em;
     --go-label--font-family: #{$general};
     --go-label--font-family: var( --go--font-family );
     --go-label--font-size: 1rem;
