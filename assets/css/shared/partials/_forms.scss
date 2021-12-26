@@ -7,17 +7,22 @@
 	--gf-fieldset--padding--x: calc( var( --go-block--padding--x ) / 2 );
 	--gf-fieldset--border: var( --go-input--border );
 	--gf-fieldset--border-radius: var( --go-input--border-radius, var( --go-button--border-radius ) );
-	--gf-legend--padding-y: 0;
-	--gf-legend--padding-x: 0.5em;
 }
 
 fieldset {
 	padding: var( --gf-fieldset--padding--y, 1rem ) var( --gf-fieldset--padding--x, 2rem );
+	background: var( --gf-fieldset--background );
 	border: var( --gf-fieldset--border );
 	border-radius: var( --gf-fieldset--border-radius );
 
 	legend {
-		padding: var( --gf-legend--padding-y ) var( --gf-legend--padding-x );
+		padding: var( --gf-legend--padding-y, 0 ) var( --gf-legend--padding-x, 0.5em );
+		background: var( --gf-legend--background );
+		border: var( --gf-legend--border, none );
+		border-radius: var( --gf-legend--border-radius );
+		font-size: var( --gf-legend--font-size, 1em );
+		font-weight: var( --gf-legend--font-weight, 700 );
+		letter-spacing: var( --gf--legend--letter-spacing, var( --go--letter-spacing ) );
 	}
 }
 

@@ -2,8 +2,6 @@
   --gf-spacing--vertical--md: calc( 60 / var( --go--viewport-basis ) * 100vw );
   --gf-spacing--vertical--sm: calc( 30 / var( --go--viewport-basis ) * 100vw );
   --gf-cover-overlay-rgb: 0, 0, 0;
-  --gf-legend--padding-y: 0;
-  --gf-legend--padding-x: 0;
   --gf-footer-widgets--button--color--background: var( --go-button--color--background, var( --go--color--primary ) );
   --gf-footer-widgets--button-interactive--color--background: var( --go-button-interactive--color--background, var( --go--color--secondary ) );
   --gf-footer-widgets--input--border-color: var( --go-input--border-color, var(--gf-footer-widgets--color--text) );
@@ -16,18 +14,23 @@
   --gf-fieldset--padding--x: calc( var( --go-block--padding--x ) / 2 );
   --gf-fieldset--border: var( --go-input--border );
   --gf-fieldset--border-radius: var( --go-input--border-radius, var( --go-button--border-radius ) );
-  --gf-legend--padding-y: 0;
-  --gf-legend--padding-x: 0.5em;
 }
 
 fieldset {
   padding: var(--gf-fieldset--padding--y, 1rem) var(--gf-fieldset--padding--x, 2rem);
+  background: var(--gf-fieldset--background);
   border: var(--gf-fieldset--border);
   border-radius: var(--gf-fieldset--border-radius);
 }
 
 fieldset legend {
-  padding: var(--gf-legend--padding-y) var(--gf-legend--padding-x);
+  padding: var(--gf-legend--padding-y, 0) var(--gf-legend--padding-x, 0.5em);
+  background: var(--gf-legend--background);
+  border: var(--gf-legend--border, none);
+  border-radius: var(--gf-legend--border-radius);
+  font-size: var(--gf-legend--font-size, 1em);
+  font-weight: var(--gf-legend--font-weight, 700);
+  letter-spacing: var(--gf--legend--letter-spacing, var(--go--letter-spacing));
 }
 
 input[type="text"],
