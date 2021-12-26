@@ -21,14 +21,13 @@ use GoFurther\Assets as Assets;
 function code_monkey() {
 
 	$suffix = Assets\suffix();
-	$rtl    = ! is_rtl() ? '' : '-rtl';
 
 	return [ 'code-monkey' =>
 		[
 			'slug'          => 'code-monkey',
 			'label'         => _x( 'Code Monkey', 'design style name', 'go-further' ),
-			'url'           => get_theme_file_uri( "assets/css/design-styles/code-monkey/style{$rtl}{$suffix}.css" ),
-			'editor_style'  => "assets/css/design-styles/code-monkey/style-editor{$rtl}{$suffix}.css",
+			'url'           => get_theme_file_uri( "assets/css/design-styles/code-monkey/style{$suffix}.css" ),
+			'editor_style'  => "assets/css/design-styles/code-monkey/style-editor{$suffix}.css",
 			'color_schemes' => [
 				'one' => [
 					'label'      => _x( 'Monokai', 'color palette name', 'go-further' ),
@@ -39,6 +38,7 @@ function code_monkey() {
 					'text'       => '#d6d6d6',
 					'header_background'    => '#222222',
 					'header_text'          => '#e5b567',
+					'footer_widgets_background' => '#2d2c2d',
 					'footer_background'    => '#222222',
 					'footer_heading_color' => '#9e86c8',
 					'footer_text_color'    => '#b05279',
@@ -46,9 +46,7 @@ function code_monkey() {
 				]
 			],
 			'fonts'=> [
-				'Roboto Mono' => [
-					'100',
-					'100i',
+				'Source Code Pro' => [
 					'200',
 					'200i',
 					'300',
