@@ -10,10 +10,16 @@
 }
 
 fieldset {
+	margin: var( --go--spacing--vertical ) 0 0 0;
 	padding: var( --gf-fieldset--padding--y, 1rem ) var( --gf-fieldset--padding--x, 2rem );
 	background: var( --gf-fieldset--background );
 	border: var( --gf-fieldset--border );
 	border-radius: var( --gf-fieldset--border-radius );
+
+	& + fieldset {
+		--double-spacing--vertical: calc( var( --go--spacing--vertical ) * 2 );
+		margin-top: var( --double-spacing--vertical, 5rem );
+	}
 
 	legend {
 		padding: var( --gf-legend--padding-y, 0 ) var( --gf-legend--padding-x, 0.5em );
