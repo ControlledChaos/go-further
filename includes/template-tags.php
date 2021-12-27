@@ -365,7 +365,7 @@ function featured_class() {
 	// Get the author section display setting from the Customizer.
 	$contain_featured = Customize\contain_featured( get_theme_mod( 'gf_contain_featured' ) );
 
-	$classes   = [];
+	$classes = [];
 	$options = get_post_meta( get_the_ID(), 'gf_post_options', true );
 	$enable  = $options ? in_array( 'enable_contain_featured', $options, true ) : false;
 	$disable = $options ? in_array( 'disable_contain_featured', $options, true ) : false;
@@ -386,7 +386,7 @@ function featured_class() {
 		$classes[] .= 'page-banner';
 	}
 
-	return implode( $classes, ' ' );
+	return implode( ' ', $classes );
 }
 
 /**
