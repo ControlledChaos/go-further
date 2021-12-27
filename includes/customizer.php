@@ -816,7 +816,6 @@ function classic_widgets( $input ) {
 function inline_css() {
 
 	// Get theme mods.
-	$footer_widgets_bg_palette_color  = Front\get_palette_color( 'footer_background', 'HSL' );
 	$footer_widgets_background_color  = hex_to_hsl( get_theme_mod( 'footer_widgets_background_color', false ), true );
 	$footer_widgets_heading_color     = hex_to_hsl( get_theme_mod( 'footer_widgets_heading_color', false ), true );
 	$footer_widgets_text_color        = hex_to_hsl( get_theme_mod( 'footer_widgets_text_color', false ), true );
@@ -828,11 +827,6 @@ function inline_css() {
 		$gf_footer_widgets_background_color = sprintf(
 			'hsl(%s)',
 			esc_attr( $footer_widgets_background_color )
-		);
-	} elseif ( $footer_widgets_bg_palette_color ) {
-		$gf_footer_widgets_background_color = sprintf(
-			'hsl(%s)',
-			esc_attr( $footer_widgets_bg_palette_color )
 		);
 	} else {
 		$gf_footer_widgets_background_color = 'var( --go--color--tertiary )';
