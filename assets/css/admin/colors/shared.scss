@@ -1,0 +1,14 @@
+///
+/// Shared between all color schemes.
+///
+
+#adminmenu {
+
+	.wp-has-current-submenu .wp-submenu .wp-submenu-head,
+	.wp-menu-arrow,
+	.wp-menu-arrow div,
+	li.current a.menu-top,
+	li.wp-has-current-submenu a.wp-has-current-submenu {
+		background-color: var( --go--color--primary, #2271b1 );
+	}
+}
