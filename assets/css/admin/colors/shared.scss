@@ -11,4 +11,34 @@
 	li.wp-has-current-submenu a.wp-has-current-submenu {
 		background-color: var( --gf-admin--menu-current--background-color, var( --go--color--primary ) );
 	}
+
+	.wp-submenu a:focus,
+	.wp-submenu a:hover,
+	a:hover,
+	li.menu-top > a:focus {
+		color: var( --gf-admin--menu-interactive--color, #ffffff );
+	}
+
+	li.wp-menu-open,
+	a:hover,
+	li.menu-top:hover,
+	li.opensub > a.menu-top,
+	li > a.menu-top:focus {
+		color: var( --gf-admin--menu-interactive--color, #ffffff );
+		background-color: var( --gf-admin--menu-current--background-color, var( --go--color--primary ) );
+	}
+
+	li.menu-top:hover div.wp-menu-image:before,
+	li.opensub > a.menu-top div.wp-menu-image:before {
+		color: var( --gf-admin--menu-interactive--color, #ffffff );
+	}
+}
+
+#collapse-button {
+	color: var( --gf-admin--menu--collapse-button--color, #ffffff );
+
+	&:hover,
+	&:focus {
+		color: var( --gf-admin--menu--collapse-button--interactive--color, var( --go--color--primary ) );;
+	}
 }

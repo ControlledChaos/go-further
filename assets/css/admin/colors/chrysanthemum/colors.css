@@ -1,3 +1,6 @@
 :root {
   --go--color--primary: #efa700;
+  --go--color--secondary: #d27112;
+  --go--color--tertiary: #fffae0;
+  --go--color--background: #ffffff;
 }
