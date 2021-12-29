@@ -70,6 +70,28 @@ function admin_styles() {
 }
 
 /**
+ * Get active color schemes
+ *
+ * Returns an array of color scheme slugs/IDs
+ * for the active design style.
+ *
+ * @since  1.0.0
+ * @return array Returns an array of color scheme IDs/slugs
+ */
+function get_active_color_schemes() {
+
+	$get_design_style  = \Go\Core\get_design_style();
+	$get_style_schemes = $get_design_style['color_schemes'];
+	$color_schemes     = [];
+
+	foreach ( $get_style_schemes as $scheme ) {
+		$label = $scheme['label'];
+		$color_schemes[] = strtolower( str_replace( ' ', '-', $label ) );
+	}
+	return $color_schemes;
+}
+
+/**
  * Default admin color scheme
  *
  * Provides a slug/ID for the first color scheme
@@ -82,16 +104,7 @@ function admin_styles() {
  * @return string Returns an ID for the color scheme based on its name.
  */
 function default_color_scheme() {
-
-	$get_design_style = \Go\Core\get_design_style();
-	$color_schemes    = $get_design_style['color_schemes'];
-	$color_scheme     = [];
-
-	foreach ( $color_schemes as $scheme ) {
-		$label = $scheme['label'];
-		$color_scheme[] = strtolower( str_replace( ' ', '-', $label ) );
-	}
-	return current( $color_scheme );
+	return current( get_active_color_schemes() );
 }
 
 /**
@@ -132,10 +145,11 @@ function get_color_scheme_url( $scheme ) {
 function style_loader_src( $src, $handle ) {
 
 	$default = default_color_scheme();
-	$user    = get_user_option( 'admin_color' );
+	$user    = get_user_option( 'admin_color', get_current_user_id() );
+	$active  = get_active_color_schemes();
 	$suffix  = Assets\suffix();
 
-	if ( ! empty( $user ) ) {
+	if ( $user && in_array( $user, $active ) ) {
 		$slug = $user;
 	} else {
 		$slug = $default;
