@@ -95,17 +95,17 @@ function default_color_scheme() {
 }
 
 /**
- * Get admin color scheme directory
+ * Get admin color scheme file
  *
  * @since  1.0.0
  * @return string Returns a filtered directory.
  */
-function get_scheme_url( $scheme ) {
+function get_color_scheme_url( $scheme ) {
 
 	$suffix  = Assets\suffix();
 
 	return apply_filters(
-		'gf_get_color_scheme_directory',
+		'gf_get_color_scheme_url',
 		get_stylesheet_directory_uri() . "/assets/css/admin/colors/$scheme/colors$suffix.css"
 	);
 }
@@ -142,7 +142,7 @@ function style_loader_src( $src, $handle ) {
 	}
 
 	if ( 'colors' === $handle ) {
-		return get_scheme_url( $slug );
+		return get_color_scheme_url( $slug );
 	}
 	return $src;
 }
@@ -176,7 +176,7 @@ function register_admin_color_schemes() {
 		wp_admin_css_color(
 			$slug,
 			_x( $label, 'admin color scheme' ),
-			get_scheme_url( $slug ),
+			get_color_scheme_url( $slug ),
 			[
 				$scheme['primary'],
 				$scheme['secondary'],
