@@ -3,4 +3,5 @@
   --go--color--secondary: #455a64;
   --go--color--tertiary: #eceff1;
   --go--color--background: #ffffff;
+  --gf-admin--menu-current--background-color: var( --go--color--secondary );
 }
