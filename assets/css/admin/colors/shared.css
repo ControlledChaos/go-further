@@ -3,5 +3,5 @@
 #adminmenu .wp-menu-arrow div,
 #adminmenu li.current a.menu-top,
 #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
-  background-color: var(--go--color--primary, #2271b1);
+  background-color: var(--gf-admin--menu-current--background-color, var(--go--color--primary));
 }
