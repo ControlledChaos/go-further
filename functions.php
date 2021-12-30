@@ -23,7 +23,7 @@ $theme_version = wp_get_theme()->get( 'Version' );
 if ( $theme_version ) {
 	$gf_version = $theme_version;
 } else {
-	$gf_version = '';
+	$gf_version = $wp_version;
 }
 define( 'GF_VERSION', $gf_version );
 
