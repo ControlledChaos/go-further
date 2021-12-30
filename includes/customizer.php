@@ -557,6 +557,28 @@ function customize( $wp_customize ) {
 		]
 	) );
 
+	/**
+	 * Admin settings
+	 *
+	 * Choose to use admin theme & color schemes.
+	 */
+	$wp_customize->add_setting( 'gf_use_admin_theme', [
+		'default'	        => false,
+		'transport'         => false,
+		'sanitize_callback' => __NAMESPACE__ . '\use_admin_theme'
+	] );
+	$wp_customize->add_control( new \WP_Customize_Control(
+		$wp_customize,
+		'gf_use_admin_theme',
+		[
+			'section'     => 'gf_admin',
+			'settings'    => 'gf_use_admin_theme',
+			'label'       => __( 'Use Admin Theme', 'go-further' ),
+			'description' => __( 'Check to apply the active design style to the system\'s administration screens, including user color options.', 'go-further' ),
+			'type'        => 'checkbox',
+		]
+	) );
+
 
 
 	/* ------------------- Modify Existing Sections & Controls ------------------ */
@@ -691,6 +713,8 @@ function customize( $wp_customize ) {
 	$wp_customize->get_control( 'title_site_titles'        )->priority = 60;
 	$wp_customize->get_control( 'show_page_title_checkbox' )->priority = 62;
 	$wp_customize->get_control( 'gf_use_google_fonts'      )->priority = 70;
+
+	$wp_customize->get_control( 'gf_use_admin_theme' )->priority = 10;
 }
 
 /**
@@ -864,6 +888,21 @@ function use_google_fonts( $input ) {
 		return $input;
 	}
 	return 'always';
+}
+
+/**
+ * Use admin theme
+ *
+ * @since  1.0.0
+ * @param  $input
+ * @return boolean Returns false by default.
+ */
+function use_admin_theme( $input ) {
+
+	if ( true == $input ) {
+		return true;
+	}
+	return false;
 }
 
 /**
