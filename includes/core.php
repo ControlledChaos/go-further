@@ -43,6 +43,7 @@ function setup() {
 	add_filter( 'go_default_header', $n( 'default_header_variation' ) );
 	add_action( 'init', $n( 'classic_widgets' ) );
 	add_filter( 'go_default_design_style', $n( 'default_design_style' ) );
+	add_filter( 'go_use_google_fonts', $n( 'use_google_fonts' ) );
 }
 
 /**
@@ -369,4 +370,25 @@ function add_design_styles( $supported_design_styles ) {
  */
 function default_design_style() {
 	return (string) 'rising-sun';
+}
+
+/**
+ * Use Google fonts
+ *
+ * Adds a filter to stop loading Google
+ * fonts for design styles that have
+ * local font files.
+ *
+ * @since  1.0.0
+ * @return boolean Returns false for select design styles.
+ */
+function use_google_fonts() {
+
+	$get_design_style = \Go\Core\get_design_style();
+	$slug = $get_design_style['slug'];
+
+	if ( 'rising-sun' == $slug ) {
+		return false;
+	}
+	return true;
 }
