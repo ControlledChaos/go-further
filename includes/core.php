@@ -384,8 +384,8 @@ function default_design_style() {
  */
 function use_google_fonts() {
 
-	$get_design_style = \Go\Core\get_design_style();
-	$slug = $get_design_style['slug'];
+	$style = \Go\Core\get_design_style();
+	$slug  = $style['slug'];
 
 	if ( 'rising-sun' == $slug ) {
 		return false;
