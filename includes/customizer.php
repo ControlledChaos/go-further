@@ -535,6 +535,8 @@ function customize( $wp_customize ) {
 	 * Choose when to load fonts from Google.
 	 * Allows to load only web fonts included
 	 * with this child theme.
+	 *
+	 * Don't feed The Beast!
 	 */
 	$wp_customize->add_setting( 'gf_use_google_fonts', [
 		'default'	        => 'always',
@@ -874,6 +876,8 @@ function classic_widgets( $input ) {
 
 /**
  * Use Google fonts
+ *
+ * Don't feed The Beast!
  *
  * @since  1.0.0
  * @param  $input

@@ -379,6 +379,8 @@ function default_design_style() {
  * fonts for design styles that have
  * local font files.
  *
+ * Don't feed The Beast!
+ *
  * @since  1.0.0
  * @return boolean Returns false or false conditionally.
  *                 Default is true.
