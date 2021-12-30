@@ -65,8 +65,9 @@ function admin_styles() {
 		wp_enqueue_style( 'gf-color-picker', get_theme_file_uri( '/assets/css/admin/color-picker' . $suffix . '.css' ), [], '', 'all' );
 	}
 
-	// Global styles for all color schemes.
-	wp_enqueue_style( 'gf-color-shared', get_theme_file_uri( '/assets/css/admin/colors/shared' . $suffix . '.css' ), [], '', 'all' );
+	// Global styles for all design styles & color schemes.
+	wp_enqueue_style( 'gf-colors-shared', get_theme_file_uri( '/assets/css/admin/colors/shared' . $suffix . '.css' ), [], '', 'all' );
+	wp_enqueue_style( 'gf-typography-shared', get_theme_file_uri( '/assets/css/admin/typography/shared' . $suffix . '.css' ), [], '', 'all' );
 }
 
 /**
