@@ -165,7 +165,7 @@ function rising_sun() {
 					'social_icon_color'    => '#e36116'
 				],
 			],
-			'fonts'=> [
+			'fonts' => [
 				'Crimson Pro' => [
 					'300',
 					'300i',

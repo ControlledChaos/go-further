@@ -45,7 +45,7 @@ function code_monkey() {
 					'social_icon_color'    => '#b4d273'
 				]
 			],
-			'fonts'=> [
+			'fonts' => [
 				'Source Code Pro' => [
 					'200',
 					'200i',
