@@ -100,6 +100,20 @@ function customize( $wp_customize ) {
 		'description'    => __( '', 'go-further' )
 	] );
 
+	/**
+	 * Admin Settings section
+	 *
+	 * Displays in the Site Settings panel.
+	 */
+	$wp_customize->add_section( 'gf_admin', [
+		'panel'          => 'gf_settings',
+		'priority'       => 60,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'admin-settings',
+		'title'          => __( 'Admin Settings', 'go-further' ),
+		'description'    => __( '', 'go-further' )
+	] );
+
 
 
 	/* --------------------------- Add Theme Settings --------------------------- */
@@ -274,7 +288,7 @@ function customize( $wp_customize ) {
 				'always'      => __( 'Always Contain', 'go-further' ),
 				'enable_per'  => __( 'Contain per Post/Page', 'go-further' ),
 				'disable_per' => __( 'Remove per Post/Page', 'go-further' )
-			],
+			]
 		]
 	) );
 
@@ -515,6 +529,34 @@ function customize( $wp_customize ) {
 		)
 	);
 
+	/**
+	 * Use Google fonts
+	 *
+	 * Choose when to load fonts from Google.
+	 * Allows to load only web fonts included
+	 * with this child theme.
+	 */
+	$wp_customize->add_setting( 'gf_use_google_fonts', [
+		'default'	        => 'always',
+		'sanitize_callback' => __NAMESPACE__ . '\use_google_fonts'
+	] );
+	$wp_customize->add_control( new \WP_Customize_Control(
+		$wp_customize,
+		'gf_use_google_fonts',
+		[
+			'section'     => 'colors',
+			'settings'    => 'gf_use_google_fonts',
+			'label'       => __( 'Use Google Fonts', 'go-further' ),
+			'description' => __( 'Choose when to load Google fonts.', 'go-further' ),
+			'type'        => 'select',
+			'choices'     => [
+				'always'     => __( 'Always Load Fonts', 'go-further' ),
+				'use_local'  => __( 'Only if Not Included', 'go-further' ),
+				'never'      => __( 'Never Load Fonts', 'go-further' ),
+			]
+		]
+	) );
+
 
 
 	/* ------------------- Modify Existing Sections & Controls ------------------ */
@@ -648,6 +690,7 @@ function customize( $wp_customize ) {
 
 	$wp_customize->get_control( 'title_site_titles'        )->priority = 60;
 	$wp_customize->get_control( 'show_page_title_checkbox' )->priority = 62;
+	$wp_customize->get_control( 'gf_use_google_fonts'      )->priority = 70;
 }
 
 /**
@@ -803,6 +846,24 @@ function classic_widgets( $input ) {
 		return true;
 	}
 	return false;
+}
+
+/**
+ * Use Google fonts
+ *
+ * @since  1.0.0
+ * @param  $input
+ * @return string Returns the theme mod.
+ */
+function use_google_fonts( $input ) {
+
+	// Array of valid inputs.
+	$valid = [ 'always', 'never', 'use_local' ];
+
+	if ( in_array( $input, $valid ) ) {
+		return $input;
+	}
+	return 'always';
 }
 
 /**

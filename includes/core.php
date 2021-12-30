@@ -380,14 +380,24 @@ function default_design_style() {
  * local font files.
  *
  * @since  1.0.0
- * @return boolean Returns false for select design styles.
+ * @return boolean Returns false or false conditionally.
+ *                 Default is true.
  */
 function use_google_fonts() {
 
-	$style = \Go\Core\get_design_style();
-	$slug  = $style['slug'];
+	$setting = Customize\use_google_fonts( get_theme_mod( 'gf_use_google_fonts' ) );
+	$style   = \Go\Core\get_design_style();
+	$slug    = $style['slug'];
 
-	if ( 'rising-sun' == $slug ) {
+	// Design styles with local fonts.
+	$local = [
+		'rising-sun',
+		'code-monkey'
+	];
+
+	if ( 'never' == $setting ) {
+		return false;
+	} elseif ( 'use_local' == $setting && in_array( $slug, $local ) ) {
 		return false;
 	}
 	return true;
