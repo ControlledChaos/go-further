@@ -38,7 +38,8 @@ function setup() {
  * @return void
  */
 function tinymce_editor_style() {
-	add_editor_style( 'assets/css/editor' . Assets\suffix() . '.css', [], '', 'screen' );
+	$suffix = Assets\suffix();
+	add_editor_style( "assets/css/editor$suffix.css", [], GF_VERSION, 'screen' );
 }
 
 /**

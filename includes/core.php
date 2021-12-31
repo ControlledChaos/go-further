@@ -35,12 +35,12 @@ function setup() {
 	add_action( 'init', $n( 'add_page_excerpts' ) );
 	add_filter( 'go_avaliable_social_icons', $n( 'get_available_social_icons' ) );
 	add_action( 'wp_head', $n( 'display_social' ) );
-	add_filter( 'login_headertext', $n( 'login_title' ) );
-	add_filter( 'login_headerurl', $n( 'login_url' ) );
-	add_filter( 'go_design_styles', $n( 'add_design_styles' ) );
 	add_filter( 'go_header_variations', $n( 'add_header_variations' ) );
 	add_filter( 'go_default_header', $n( 'default_header_variation' ) );
 	add_action( 'init', $n( 'classic_widgets' ) );
+	add_filter( 'login_headertext', $n( 'login_title' ) );
+	add_filter( 'login_headerurl', $n( 'login_url' ) );
+	add_filter( 'go_design_styles', $n( 'add_design_styles' ) );
 	add_filter( 'go_default_design_style', $n( 'default_design_style' ) );
 	add_filter( 'go_use_google_fonts', $n( 'use_google_fonts' ) );
 }
@@ -218,7 +218,6 @@ function get_available_social_icons( $social_icons ) {
  */
 function display_social() {
 
-	// Get the navigation location setting from the Customizer.
 	$display = Customize\display_social( get_theme_mod( 'gf_display_social' ) );
 
 	if ( false == $display ) {

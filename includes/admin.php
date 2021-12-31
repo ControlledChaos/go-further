@@ -62,8 +62,10 @@ function admin_styles() {
 
 	global $pagenow;
 
-	$suffix    = Assets\suffix();
-	$fonts_url = fonts_url();
+	$suffix       = Assets\suffix();
+	$fonts_url    = fonts_url();
+	$get_design   = \Go\Core\get_design_style();
+	$design_style = $get_design['slug'];
 
 	// Enqueue Google fonts if available & customizer is set to use.
 	if ( ! empty( $fonts_url && Core\use_google_fonts() ) ) {
@@ -72,12 +74,15 @@ function admin_styles() {
 
 	// Styles for the replacement color picker.
 	if ( 'profile.php' == $pagenow || 'user-edit.php' == $pagenow ) {
-		wp_enqueue_style( 'gf-color-picker', get_theme_file_uri( '/assets/css/admin/color-picker' . $suffix . '.css' ), [], GF_VERSION, 'all' );
+		wp_enqueue_style( 'gf-color-picker', get_theme_file_uri( "/assets/css/admin/color-picker$suffix.css" ), [], GF_VERSION, 'all' );
 	}
 
 	// Global styles for all design styles & color schemes.
-	wp_enqueue_style( 'gf-colors-shared', get_theme_file_uri( '/assets/css/admin/colors/shared' . $suffix . '.css' ), [], GF_VERSION, 'all' );
-	wp_enqueue_style( 'gf-typography-shared', get_theme_file_uri( '/assets/css/admin/typography/shared' . $suffix . '.css' ), [], GF_VERSION, 'all' );
+	wp_enqueue_style( 'gf-colors-shared', get_theme_file_uri( "/assets/css/admin/colors/shared$suffix.css" ), [], GF_VERSION, 'all' );
+	wp_enqueue_style( 'gf-typography-shared', get_theme_file_uri( "/assets/css/admin/typography/shared$suffix.css" ), [], GF_VERSION, 'all' );
+
+	// Typography stylesheet for the active design style.
+	wp_enqueue_style( 'gf-typography', get_theme_file_uri( "/assets/css/admin/typography/$design_style/typography$suffix.css" ), [], GF_VERSION, 'all' );
 }
 
 /**
@@ -91,11 +96,11 @@ function admin_styles() {
  */
 function get_active_color_schemes() {
 
-	$get_design_style  = \Go\Core\get_design_style();
-	$get_style_schemes = $get_design_style['color_schemes'];
-	$color_schemes     = [];
+	$design_style  = \Go\Core\get_design_style();
+	$style_schemes = $design_style['color_schemes'];
+	$color_schemes = [];
 
-	foreach ( $get_style_schemes as $scheme ) {
+	foreach ( $style_schemes as $scheme ) {
 		$label = $scheme['label'];
 		$color_schemes[] = strtolower( str_replace( ' ', '-', $label ) );
 	}

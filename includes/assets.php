@@ -34,6 +34,28 @@ function setup() {
 }
 
 /**
+ * File suffix
+ *
+ * Adds the `.min` filename suffix if
+ * the system is not in debug mode.
+ *
+ * @since  1.0.0
+ * @return string Returns the `.min` suffix or
+ *                an empty string.
+ */
+function suffix() {
+
+	$suffix = '.min';
+	if (
+		( defined( 'WP_DEBUG' ) && WP_DEBUG ) ||
+		( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG )
+	) {
+		$suffix = '';
+	}
+	return $suffix;
+}
+
+/**
  * Parent block editor assets
  *
  * Fix error PHP notice from parent theme.
@@ -67,6 +89,8 @@ function frontend_styles() {
 		return;
 	}
 
+	$suffix = suffix();
+
 	/**
 	 * Theme stylesheet
 	 *
@@ -74,11 +98,11 @@ function frontend_styles() {
 	 * The main stylesheet, in the root directory, only contains the theme header but
 	 * it is necessary for theme activation. DO NOT delete the main stylesheet!
 	 */
-	wp_enqueue_style( 'go-further', get_theme_file_uri( '/assets/css/style' . suffix() . '.css' ), [ 'go-style' ], GF_VERSION, 'all' );
+	wp_enqueue_style( 'go-further', get_theme_file_uri( "/assets/css/style$suffix.css" ), [ 'go-style' ], GF_VERSION, 'all' );
 
 	// Right-to-left languages.
 	if ( is_rtl() ) {
-		wp_enqueue_style( 'go-further-rtl', get_theme_file_uri( 'assets/css/style-rtl' . suffix() . '.css' ), [ 'go-further' ], GF_VERSION, 'all' );
+		wp_enqueue_style( 'go-further-rtl', get_theme_file_uri( "assets/css/style-rtl$suffix.css" ), [ 'go-further' ], GF_VERSION, 'all' );
 	}
 }
 
@@ -94,7 +118,7 @@ function print_scripts() {
 	 * Add class to header on scroll
 	 *
 	 * Only run if the sticky header option
-	 * is eneabled.
+	 * is enabled.
 	 */
 	if ( Front\has_sticky_header() ) :
 	?>
@@ -116,28 +140,6 @@ function print_scripts() {
 }
 
 /**
- * File suffix
- *
- * Adds the `.min` filename suffix if
- * the system is not in debug mode.
- *
- * @since  1.0.0
- * @return string Returns the `.min` suffix or
- *                an empty string.
- */
-function suffix() {
-
-	$suffix = '.min';
-	if (
-		( defined( 'WP_DEBUG' ) && WP_DEBUG ) ||
-		( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG )
-	) {
-		$suffix = '';
-	}
-	return $suffix;
-}
-
-/**
  * Toolbar styles
  *
  * Enqueues if user is logged in and user toolbar is showing.
@@ -147,8 +149,9 @@ function suffix() {
  */
 function toolbar_styles() {
 
+	$suffix = suffix();
 	if ( is_user_logged_in() && is_admin_bar_showing() ) {
-		wp_enqueue_style( 'gf-toolbar', get_theme_file_uri( '/assets/css/shared/toolbar' . suffix() . '.css' ), [], GF_VERSION, 'screen' );
+		wp_enqueue_style( 'gf-toolbar', get_theme_file_uri( "/assets/css/shared/toolbar$suffix.css" ), [], GF_VERSION, 'screen' );
 	}
 }
 
@@ -159,7 +162,10 @@ function toolbar_styles() {
  * @return void
  */
 function login_styles() {
-	wp_enqueue_style( 'gf-login', get_theme_file_uri( '/assets/css/login' . suffix() . '.css' ), [ 'login' ], GF_VERSION, 'screen' );
+
+	$suffix = suffix();
+
+	wp_enqueue_style( 'gf-login', get_theme_file_uri( "/assets/css/login$suffix.css" ), [ 'login' ], GF_VERSION, 'screen' );
 }
 
 /**
@@ -169,7 +175,10 @@ function login_styles() {
  * @return void
  */
 function embed_styles() {
+
+	$suffix = suffix();
+
 	if ( ! is_admin() ) {
-		wp_enqueue_style( 'gf-embed', get_theme_file_uri( '/assets/css/frontend/embed' . suffix() . '.css' ), [], GF_VERSION, 'screen' );
+		wp_enqueue_style( 'gf-embed', get_theme_file_uri( "/assets/css/frontend/embed$suffix.css" ), [], GF_VERSION, 'screen' );
 	}
 }
