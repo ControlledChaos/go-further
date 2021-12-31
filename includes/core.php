@@ -33,7 +33,6 @@ function setup() {
 	add_filter( 'body_class', $n( 'body_classes' ) );
 	add_action( 'widgets_init', $n( 'widgets' ) );
 	add_action( 'init', $n( 'add_page_excerpts' ) );
-	add_filter( 'body_class', $n( 'sticky_header_class' ) );
 	add_filter( 'go_avaliable_social_icons', $n( 'get_available_social_icons' ) );
 	add_action( 'wp_head', $n( 'display_social' ) );
 	add_filter( 'login_headertext', $n( 'login_title' ) );
@@ -49,7 +48,7 @@ function setup() {
 /**
  * HTML JS class
  *
- * Adds a 'js' to the <html> element with JavaScript.
+ * Adds a 'js' class to the <html> element with JavaScript.
  * Parent theme does not have a `no-js` class to replace
  * so CSS works opposite a "no JS" method.
  *
@@ -73,7 +72,7 @@ function theme_textdomain() {
 /**
  * Body classes for templates
  *
- * Adds classes frontend body element.
+ * Adds classes to frontend body element.
  *
  * @since  1.0.0
  * @return array Returns a modified array of body classes.
@@ -84,6 +83,10 @@ function body_classes( $classes ) {
 
 	if ( Front\has_cover_image() ) {
 		$add_classes[] .= 'template-cover-image';
+	}
+
+	if ( Front\has_sticky_header() ) {
+		$add_classes[] .= 'has-sticky-header';
 	}
 
 	if ( get_theme_mod( 'footer_widgets_background_color', false ) ) {
@@ -176,29 +179,16 @@ function widgets() {
 }
 
 /**
- * Add excerpts to page post type
+ * Page excerpts
+ *
+ * Adds excerpts to the `page` post type.
+ * Excerpts are used as page subheadings.
  *
  * @since  1.0.0
  * @return void
  */
 function add_page_excerpts() {
 	add_post_type_support( 'page', 'excerpt' );
-}
-
-/**
- * Sticky header class
- *
- * Adds classes frontend body element.
- *
- * @since  1.0.0
- * @return array Returns a modified array of body classes.
- */
-function sticky_header_class( $classes ) {
-
-	if ( Front\has_sticky_header() ) {
-		return array_merge( $classes, [ 'has-sticky-header' ] );
-	}
-	return $classes;
 }
 
 /**
