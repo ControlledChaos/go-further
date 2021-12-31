@@ -11,10 +11,13 @@
 namespace GoFurther\Admin;
 
 // Alias namespaces.
-use GoFurther\Front     as Front,
+use GoFurther\Core      as Core,
+	GoFurther\Front     as Front,
 	GoFurther\Customize as Customize,
 	GoFurther\Styles    as Styles,
 	GoFurther\Assets    as Assets;
+
+use function \Go\Core\fonts_url;
 
 /**
  * Apply functions
@@ -58,16 +61,23 @@ function setup() {
 function admin_styles() {
 
 	global $pagenow;
-	$suffix = Assets\suffix();
+
+	$suffix    = Assets\suffix();
+	$fonts_url = fonts_url();
+
+	// Enqueue Google fonts if available & customizer is set to use.
+	if ( ! empty( $fonts_url && Core\use_google_fonts() ) ) {
+		wp_enqueue_style( 'go-fonts', $fonts_url, [], GF_VERSION );
+	}
 
 	// Styles for the replacement color picker.
 	if ( 'profile.php' == $pagenow || 'user-edit.php' == $pagenow ) {
-		wp_enqueue_style( 'gf-color-picker', get_theme_file_uri( '/assets/css/admin/color-picker' . $suffix . '.css' ), [], '', 'all' );
+		wp_enqueue_style( 'gf-color-picker', get_theme_file_uri( '/assets/css/admin/color-picker' . $suffix . '.css' ), [], GF_VERSION, 'all' );
 	}
 
 	// Global styles for all design styles & color schemes.
-	wp_enqueue_style( 'gf-colors-shared', get_theme_file_uri( '/assets/css/admin/colors/shared' . $suffix . '.css' ), [], '', 'all' );
-	wp_enqueue_style( 'gf-typography-shared', get_theme_file_uri( '/assets/css/admin/typography/shared' . $suffix . '.css' ), [], '', 'all' );
+	wp_enqueue_style( 'gf-colors-shared', get_theme_file_uri( '/assets/css/admin/colors/shared' . $suffix . '.css' ), [], GF_VERSION, 'all' );
+	wp_enqueue_style( 'gf-typography-shared', get_theme_file_uri( '/assets/css/admin/typography/shared' . $suffix . '.css' ), [], GF_VERSION, 'all' );
 }
 
 /**
