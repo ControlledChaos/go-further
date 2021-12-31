@@ -242,33 +242,45 @@ function admin_color_scheme_picker( $user_id ) {
 	<fieldset id="color-picker" class="scheme-list">
 
 		<legend class="screen-reader-text"><span><?php echo $legend; ?></span></legend>
+
+		<div class="switcher__wrapper">
 		<?php
 
 		wp_nonce_field( 'save-color-scheme', 'color-nonce', false );
 
 		foreach ( $_wp_admin_css_colors as $color => $color_info ) :
 
+			// Set up an array of colors.
+			$colors = [];
+			foreach ( $color_info->colors as $html_color ) {
+				$colors[] = $html_color;
+			}
+
+			// Shouldn't need to count the colors array but just in case...
+			if ( 3 >= count( $colors ) ) {
+				$background = sprintf(
+					'linear-gradient( to right, %s 0&#37;, %s 33.33325&#37;, %s 33.33325&#37;, %s 66.66675&#37;, %s 66.66675&#37;, %s 100&#37; )',
+					$colors[0],
+					$colors[0],
+					$colors[1],
+					$colors[1],
+					$colors[2],
+					$colors[2]
+				);
+
+			// Some tolerable background if color count is less than three.
+			} else {
+				$background = 'linear-gradient( to bottom, #888888 0%, #000000 100% )';
+			}
 		?>
-		<div class="switcher__wrapper color_scheme color-option <?php echo ( $color == $current_scheme ) ? 'selected' : ''; ?>">
-			<input name="admin_color" id="admin_color_<?php echo esc_attr( $color ); ?>" type="radio" value="<?php echo esc_attr( $color ); ?>" class="tog screen-reader-text" <?php checked( $color, $current_scheme ); ?> />
-			<input type="hidden" class="css_url" value="<?php echo esc_url( $color_info->url ); ?>" />
-			<input type="hidden" class="icon_colors" value="<?php echo esc_attr( wp_json_encode( array( 'icons' => $color_info->icon_colors ) ) ); ?>" />
-			<label for="admin_color_<?php echo esc_attr( $color ); ?>"><?php echo esc_html( $color_info->name ); ?></label>
-			<table class="color-palette">
-				<tr>
-				<?php
-
-				foreach ( $color_info->colors as $html_color ) {
-					?>
-					<td style="background-color: <?php echo esc_attr( $html_color ); ?>">&nbsp;</td>
-					<?php
-				}
-
-				?>
-				</tr>
-			</table>
-		</div>
+			<div style="background-image: <?php echo $background; ?>" class="switcher__choice color_scheme color-option <?php echo ( $color == $current_scheme ) ? 'selected' : ''; ?>">
+				<input name="admin_color" id="admin_color_<?php echo esc_attr( $color ); ?>" type="radio" value="<?php echo esc_attr( $color ); ?>" class="tog screen-reader-text" <?php checked( $color, $current_scheme ); ?> />
+				<input type="hidden" class="css_url" value="<?php echo esc_url( $color_info->url ); ?>" />
+				<input type="hidden" class="icon_colors" value="<?php echo esc_attr( wp_json_encode( array( 'icons' => $color_info->icon_colors ) ) ); ?>" />
+				<label for="admin_color_<?php echo esc_attr( $color ); ?>"><?php echo esc_html( $color_info->name ); ?><span class="color-scheme__check"></span></label>
+			</div>
 		<?php endforeach; ?>
+		</div>
 	</fieldset>
 	<?php
 }
