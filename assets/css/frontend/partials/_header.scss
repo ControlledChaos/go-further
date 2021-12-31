@@ -8,6 +8,7 @@ $header_transition_timing: 0.15s;
 .header {
 	width: 100%;
 	position: relative;
+	background-color: var( --go-header--color--background, var( --go--color--background, 0, 0, 100% ) );
 
 	&:before {
 		content: '';
@@ -137,7 +138,7 @@ $header_transition_timing: 0.15s;
 		}
 
 		&.header-scrolled {
-			background-color: var( --go-header--color--background );
+			background-color: var( --go-header--color--background, var( --go--color--background, 0, 0, 100% ) );
 			box-shadow: -0.25rem 0 3rem -0.325rem rgba( $color: black, $alpha: 0.25 );
 		}
 	}
@@ -148,7 +149,7 @@ $header_transition_timing: 0.15s;
 			transition: background-color $header_transition_timing linear;
 
 			&.header-scrolled {
-				background-color: var( --go-header--color--background );
+				background-color: var( --go-header--color--background, var( --go--color--background, 0, 0, 100% ) );
 
 				.custom-logo-wrap {
 					a {

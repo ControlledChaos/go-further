@@ -57,6 +57,7 @@ textarea {
 .header {
   width: 100%;
   position: relative;
+  background-color: var(--go-header--color--background, var(--go--color--background, 0, 0, 100%));
 }
 
 .header:before {
@@ -190,7 +191,7 @@ textarea {
 }
 
 .template-cover-image .header.header-scrolled {
-  background-color: var(--go-header--color--background);
+  background-color: var(--go-header--color--background, var(--go--color--background, 0, 0, 100%));
   -webkit-box-shadow: -0.25rem 0 3rem -0.325rem rgba(0, 0, 0, 0.25);
           box-shadow: -0.25rem 0 3rem -0.325rem rgba(0, 0, 0, 0.25);
 }
@@ -202,7 +203,7 @@ textarea {
 }
 
 .template-cover-image.has-sticky-header .header.header-scrolled {
-  background-color: var(--go-header--color--background);
+  background-color: var(--go-header--color--background, var(--go--color--background, 0, 0, 100%));
 }
 
 .template-cover-image.has-sticky-header .header.header-scrolled .custom-logo-wrap a img:first-of-type {
