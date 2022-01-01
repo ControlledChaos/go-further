@@ -291,7 +291,7 @@ function admin_color_scheme_picker( $user_id ) {
 			}
 		?>
 			<div style="background-image: <?php echo $background; ?>" class="switcher__choice color_scheme color-option <?php echo ( $color == $current_scheme ) ? 'selected' : ''; ?>">
-				<input name="admin_color" id="admin_color_<?php echo esc_attr( $color ); ?>" type="radio" value="<?php echo esc_attr( $color ); ?>" class="tog screen-reader-text" <?php checked( $color, $current_scheme ); ?> />
+				<input name="admin_color" id="admin_color_<?php echo esc_attr( $color ); ?>" type="radio" value="<?php echo esc_attr( $color ); ?>" class="tog" <?php checked( $color, $current_scheme ); ?> />
 				<input type="hidden" class="css_url" value="<?php echo esc_url( $color_info->url ); ?>" />
 				<input type="hidden" class="icon_colors" value="<?php echo esc_attr( wp_json_encode( array( 'icons' => $color_info->icon_colors ) ) ); ?>" />
 				<label for="admin_color_<?php echo esc_attr( $color ); ?>"><?php echo esc_html( $color_info->name ); ?><span class="color-scheme__check"></span></label>

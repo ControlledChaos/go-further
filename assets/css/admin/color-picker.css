@@ -38,6 +38,7 @@
           box-sizing: border-box;
   margin: 0;
   padding: 5px 9px 6px;
+  line-height: 1.2em;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 0 0 3px 3px;
   color: #ffffff;
@@ -104,6 +105,21 @@
   height: 6px;
   -webkit-transform: translate3d(-3px, -1px, 0) rotate(-45deg);
           transform: translate3d(-3px, -1px, 0) rotate(-45deg);
+}
+
+.switcher__choice input {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  margin: 0 !important;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
 }
 
 .form-table td fieldset div label {
