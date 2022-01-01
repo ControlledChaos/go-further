@@ -7,6 +7,8 @@ $primary: #7f67a4;
 $secondary: #44355c;
 $tertiary: #eee9e2;
 $shared_dark: #343036;
+$shared_medium: #4c454e;
+$shared_light: #504754;
 
 :root {
 	--go--color--primary: #{$primary};
@@ -16,4 +18,5 @@ $shared_dark: #343036;
 	--gf-admin--menu-current--background-color: var( --go--color--primary );
 
 	--gf-admin--menu--background-color: #{$shared_dark};
+	--gf-admin--submenu--background-color: #{$shared_medium};
 }

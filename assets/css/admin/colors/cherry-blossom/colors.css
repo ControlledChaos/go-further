@@ -5,4 +5,5 @@
   --go--color--background: #ffffff;
   --gf-admin--menu-current--background-color: var( --go--color--primary );
   --gf-admin--menu--background-color: #343036;
+  --gf-admin--submenu--background-color: #4c454e;
 }

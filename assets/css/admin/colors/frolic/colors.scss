@@ -15,4 +15,5 @@ $shared_dark: #323648;
 	--go--color--background: #ffffff;
 
 	--gf-admin--menu--background-color: #{$shared_dark};
+	--gf-admin--submenu--background-color: #{lighten( $color: $shared_dark, $amount: 10% )};
 }

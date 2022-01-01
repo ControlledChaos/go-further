@@ -13,7 +13,8 @@ $shared_dark: #000000;
 	--go--color--secondary: #{$secondary};
 	--go--color--tertiary: #{$tertiary};
 	--go--color--background: #ffffff;
-	--gf-admin--menu-current--background-color: var( --go--color--secondary );
 
 	--gf-admin--menu--background-color: #{$shared_dark};
+	--gf-admin--submenu--background-color: #{lighten( $color: $shared_dark, $amount: 15% )};
+	--gf-admin--menu-current--background-color: #{$secondary};
 }

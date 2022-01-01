@@ -3,6 +3,7 @@
   --go--color--secondary: #26a69a;
   --go--color--tertiary: #e0f2f1;
   --go--color--background: #ffffff;
-  --gf-admin--menu-current--background-color: var( --go--color--secondary );
   --gf-admin--menu--background-color: #000000;
+  --gf-admin--submenu--background-color: #262626;
+  --gf-admin--menu-current--background-color: #26a69a;
 }

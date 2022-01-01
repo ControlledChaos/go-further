@@ -14,4 +14,5 @@ $tertiary: #c9c9c9;
 	--go--color--background: #eeeeee;
 
 	--gf-admin--menu--background-color: #{darken( $color: $secondary, $amount: 7.5% )};
+	--gf-admin--submenu--background-color: #{darken( $color: $primary, $amount: 10% )};
 }
