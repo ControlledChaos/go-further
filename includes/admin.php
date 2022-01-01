@@ -32,7 +32,9 @@ function setup() {
 	};
 
 	// Enqueue admin stylesheets.
-	add_action( 'admin_enqueue_scripts', $n( 'admin_styles' ) );
+	if ( ! is_customize_preview() ) {
+		add_action( 'admin_enqueue_scripts', $n( 'admin_styles' ) );
+	}
 
 	/**
 	 * Unregister core color schemes and color schemes from the
