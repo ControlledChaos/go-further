@@ -3,12 +3,17 @@
 /// Color scheme: Avocado
 ///
 
+$primary: #000000;
+$secondary: #02493b;
+$tertiary: #b4c6af;
+$shared_dark: #000000;
+
 :root {
-	--go--color--primary: #000000;
-	--go--color--secondary: #02493b;
-	--go--color--tertiary: #b4c6af;
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
 	--go--color--background: #ffffff;
 	--gf-admin--menu-current--background-color: var( --go--color--secondary );
 
-	--gf-admin--menu--background-color: #000000;
+	--gf-admin--menu--background-color: #{$shared_dark};
 }

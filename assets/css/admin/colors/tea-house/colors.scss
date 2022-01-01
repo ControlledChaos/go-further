@@ -3,11 +3,17 @@
 /// Color scheme: Tea House
 ///
 
-:root {
-	--go--color--primary: #734c33;
-	--go--color--secondary: #493628;
-	--go--color--tertiary: #f8f3dd;
-	--go--color--background: #ffffff;
+$primary: #734c33;
+$secondary: #493628;
+$tertiary: #f8f3dd;
+$shared_dark: #343036;
 
-	--gf-admin--menu--background-color: #343036;
+:root {
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
+	--go--color--background: #ffffff;
+	--gf-admin--menu-current--background-color: var( --go--color--primary );
+
+	--gf-admin--menu--background-color: #{$shared_dark};
 }

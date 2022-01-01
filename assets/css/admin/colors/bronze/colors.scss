@@ -3,10 +3,14 @@
 /// Color scheme: Bronze
 ///
 
+$primary: #a88548;
+$secondary: #05212d;
+$tertiary: #f9f4ef;
+
 :root {
-	--go--color--primary: #a88548;
-	--go--color--secondary: #05212d;
-	--go--color--tertiary: #f9f4ef;
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
 	--go--color--background: #ffffff;
 
 	--gf-admin--menu--background-color: var( --go--color--secondary );

@@ -3,10 +3,14 @@
 /// Color scheme: Emerald
 ///
 
+$primary: #165153;
+$secondary: #212121;
+$tertiary: #f3f1f0;
+
 :root {
-	--go--color--primary: #165153;
-	--go--color--secondary: #212121;
-	--go--color--tertiary: #f3f1f0;
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
 	--go--color--background: #ffffff;
 
 	--gf-admin--menu--background-color: var( --go--color--secondary );

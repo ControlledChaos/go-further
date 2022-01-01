@@ -3,11 +3,16 @@
 /// Color scheme: Berry
 ///
 
+$primary: #117495;
+$secondary: #d691c1;
+$tertiary: #f7feff;
+$shared_dark: #323648;
+
 :root {
-	--go--color--primary: #117495;
-	--go--color--secondary: #d691c1;
-	--go--color--tertiary: #f7feff;
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
 	--go--color--background: #ffffff;
 
-	--gf-admin--menu--background-color: #323648;
+	--gf-admin--menu--background-color: #{$shared_dark};
 }

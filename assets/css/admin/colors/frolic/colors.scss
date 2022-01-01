@@ -3,11 +3,16 @@
 /// Color scheme: Frolic
 ///
 
+$primary: #3f46ae;
+$secondary: #ecb43d;
+$tertiary: #f7fbff;
+$shared_dark: #323648;
+
 :root {
-	--go--color--primary: #3f46ae;
-	--go--color--secondary: #ecb43d;
-	--go--color--tertiary: #f7fbff;
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
 	--go--color--background: #ffffff;
 
-	--gf-admin--menu--background-color: #323648;
+	--gf-admin--menu--background-color: #{$shared_dark};
 }

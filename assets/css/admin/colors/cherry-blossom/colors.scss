@@ -3,11 +3,17 @@
 /// Color scheme: Cherry Blossom
 ///
 
-:root {
-	--go--color--primary: #cd6691;
-	--go--color--secondary: #65334b;
-	--go--color--tertiary: #f9edf1;
-	--go--color--background: #ffffff;
+$primary: #cd6691;
+$secondary: #65334b;
+$tertiary: #f9edf1;
+$shared_dark: #343036;
 
-	--gf-admin--menu--background-color: #343036;
+:root {
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
+	--go--color--background: #ffffff;
+	--gf-admin--menu-current--background-color: var( --go--color--primary );
+
+	--gf-admin--menu--background-color: #{$shared_dark};
 }

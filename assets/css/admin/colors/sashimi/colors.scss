@@ -3,11 +3,17 @@
 /// Color scheme: Sashimi
 ///
 
-:root {
-	--go--color--primary: #e36116;
-	--go--color--secondary: #7b262a;
-	--go--color--tertiary: #eceef1;
-	--go--color--background: #ffffff;
+$primary: #e36116;
+$secondary: #7b262a;
+$tertiary: #eceef1;
+$shared_dark: #343036;
 
-	--gf-admin--menu--background-color: #343036;
+:root {
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
+	--go--color--background: #ffffff;
+	--gf-admin--menu-current--background-color: var( --go--color--primary );
+
+	--gf-admin--menu--background-color: #{$shared_dark};
 }

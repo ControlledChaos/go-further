@@ -1,1 +1,1 @@
-:root{--go--color--primary: #e36116;--go--color--secondary: #7b262a;--go--color--tertiary: #eceef1;--go--color--background: #ffffff;--gf-admin--menu--background-color: #343036}
+:root{--go--color--primary: #e36116;--go--color--secondary: #7b262a;--go--color--tertiary: #eceef1;--go--color--background: #ffffff;--gf-admin--menu-current--background-color: var( --go--color--primary );--gf-admin--menu--background-color: #343036}

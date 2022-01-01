@@ -3,11 +3,15 @@
 /// Color scheme: Spruce
 ///
 
+$primary: #233a6b;
+$secondary: #01133d;
+$tertiary: #c9c9c9;
+
 :root {
-	--go--color--primary: #233a6b;
-	--go--color--secondary: #01133d;
-	--go--color--tertiary: #c9c9c9;
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
 	--go--color--background: #eeeeee;
 
-	--gf-admin--menu--background-color: var( --go--color--secondary );
+	--gf-admin--menu--background-color: #{darken( $color: $secondary, $amount: 3.25% )};
 }

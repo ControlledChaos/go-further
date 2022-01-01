@@ -3,11 +3,15 @@
 /// Color scheme: Forest
 ///
 
+$primary: #165144;
+$secondary: #01332e;
+$tertiary: #c9c9c9;
+
 :root {
-	--go--color--primary: #165144;
-	--go--color--secondary: #01332e;
-	--go--color--tertiary: #c9c9c9;
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
 	--go--color--background: #eeeeee;
 
-	--gf-admin--menu--background-color: var( --go--color--secondary );
+	--gf-admin--menu--background-color: #{darken( $color: $secondary, $amount: 3.25% )};
 }

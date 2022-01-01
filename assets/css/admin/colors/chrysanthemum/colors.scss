@@ -3,11 +3,17 @@
 /// Color scheme: Chrysanthemum
 ///
 
-:root {
-	--go--color--primary: #efa700;
-	--go--color--secondary: #d27112;
-	--go--color--tertiary: #fffae0;
-	--go--color--background: #ffffff;
+$primary: #efa700;
+$secondary: #d27112;
+$tertiary: #fffae0;
+$shared_dark: #343036;
 
-	--gf-admin--menu--background-color: #343036;
+:root {
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
+	--go--color--background: #ffffff;
+	--gf-admin--menu-current--background-color: var( --go--color--primary );
+
+	--gf-admin--menu--background-color: #{$shared_dark};
 }

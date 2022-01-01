@@ -3,10 +3,14 @@
 /// Color scheme: Apricot
 ///
 
+$primary: #c76919;
+$secondary: #122538;
+$tertiary: #f8f8f8;
+
 :root {
-	--go--color--primary: #c76919;
-	--go--color--secondary: #122538;
-	--go--color--tertiary: #f8f8f8;
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
 	--go--color--background: #ffffff;
 
 	--gf-admin--menu--background-color: var( --go--color--secondary );

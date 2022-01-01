@@ -3,11 +3,17 @@
 /// Color scheme: Koi Pond
 ///
 
-:root {
-	--go--color--primary: #d46408;
-	--go--color--secondary: #364c78;
-	--go--color--tertiary: #edf2fb;
-	--go--color--background: #ffffff;
+$primary: #d46408;
+$secondary: #364c78;
+$tertiary: #edf2fb;
+$shared_dark: #343036;
 
-	--gf-admin--menu--background-color: #343036;
+:root {
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
+	--go--color--background: #ffffff;
+	--gf-admin--menu-current--background-color: var( --go--color--primary );
+
+	--gf-admin--menu--background-color: #{$shared_dark};
 }

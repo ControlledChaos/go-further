@@ -3,12 +3,17 @@
 /// Color scheme: Indigo
 ///
 
+$primary: #303f9f;
+$secondary: #5c6bc0;
+$tertiary: #e8eaf6;
+$shared_dark: #000000;
+
 :root {
-	--go--color--primary: #303f9f;
-	--go--color--secondary: #5c6bc0;
-	--go--color--tertiary: #e8eaf6;
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
 	--go--color--background: #ffffff;
 	--gf-admin--menu-current--background-color: var( --go--color--secondary );
 
-	--gf-admin--menu--background-color: #000000;
+	--gf-admin--menu--background-color: #{$shared_dark};
 }

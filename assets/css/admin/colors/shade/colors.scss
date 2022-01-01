@@ -3,12 +3,17 @@
 /// Color scheme: Shade
 ///
 
+$primary: #455a64;
+$secondary: #455a64;
+$tertiary: #eceff1;
+$shared_dark: #000000;
+
 :root {
-	--go--color--primary: #000000;
-	--go--color--secondary: #455a64;
-	--go--color--tertiary: #eceff1;
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
 	--go--color--background: #ffffff;
 	--gf-admin--menu-current--background-color: var( --go--color--secondary );
 
-	--gf-admin--menu--background-color: #000000;
+	--gf-admin--menu--background-color: #{$shared_dark};
 }
