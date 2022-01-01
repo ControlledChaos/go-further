@@ -2,6 +2,18 @@
 /// Color styles shared between all color schemes.
 ///
 
+body {
+    background-color: 0, 0, 100%;
+    background-color: var( --go--color--background, 0, 0, 100% );
+}
+
+#adminmenu,
+#adminmenu .wp-submenu,
+#adminmenuback,
+#adminmenuwrap {
+    background-color: var( --gf-admin--menu--background-color, var( --go-submenu--color--background, var( --go-heading--color--text ) ) );
+}
+
 #adminmenu {
 
 	.wp-has-current-submenu .wp-submenu .wp-submenu-head,

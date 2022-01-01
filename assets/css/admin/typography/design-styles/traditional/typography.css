@@ -1,0 +1,17 @@
+:root {
+  --go--font-size: 1.05rem;
+  --go--type-ratio: 1.275;
+  --go--font-family: 'Nunito Sans', sans-serif;
+  --go--letter-spacing--small: .015em;
+  --go--line-height: 1.85;
+  --gf-admin--page-heading--font-family: 'Crimson Text', serif;
+  --gf-admin--page-heading--font-weight: 400;
+  --gf-admin--heading--font-size: 1rem;
+  --gf-admin--heading--font-weight: 700;
+  --go-heading--letter-spacing: -0.02em;
+  --go-heading--line-height: 1.15;
+  --gf-admin--page-heading--color--text: var( --go--color--secondary );
+  --go-heading--color--text: var( --go--color--secondary );
+  --gf-admin--menu--top--font-size: 0.9375rem;
+  --gf-admin--menu--collapse-button--font-size: 0.8125rem;
+}

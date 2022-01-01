@@ -1,0 +1,17 @@
+:root {
+  --go--font-size: 1rem;
+  --go--type-ratio: 1.235;
+  --go--font-family: 'Karla', sans-serif;
+  --go--letter-spacing--small: 90%;
+  --go--line-height: 1.8;
+  --gf-admin--page-heading--font-family: 'Work Sans', sans-serif;
+  --gf-admin--page-heading--font-weight: 400;
+  --gf-admin--heading--font-size: 1rem;
+  --gf-admin--heading--font-weight: 300;
+  --go-heading--letter-spacing: normal;
+  --go-heading--line-height: 1.35;
+  --gf-admin--page-heading--color--text: var( --go--color--primary );
+  --go-heading--color--text: var( --go--color--primary );
+  --gf-admin--menu--top--font-size: 0.9375rem;
+  --gf-admin--menu--collapse-button--font-size: 0.8125rem;
+}

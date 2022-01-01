@@ -1,1 +1,1 @@
-:root{--go--color--primary: #87200e;--go--color--secondary: #242611;--go--color--tertiary: #f9f2ef;--go--color--background: #ffffff}
+:root{--go--color--primary: #87200e;--go--color--secondary: #242611;--go--color--tertiary: #f9f2ef;--go--color--background: #ffffff;--gf-admin--menu--background-color: var( --go--color--secondary )}
