@@ -1,3 +1,7 @@
 ///
 /// User toolbar styles
 ///
+
+#wpadminbar {
+	background-color: var( --gf-toolbar--background-color, var( --gf-admin--menu--background-color, var( --go-submenu--color--background ) ) );
+}

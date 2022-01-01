@@ -10,7 +10,8 @@
 namespace GoFurther\Assets;
 
 // Alias namespaces.
-use GoFurther\Front as Front;
+use GoFurther\Front     as Front,
+	GoFurther\Customize as Customize;
 
 /**
  * Apply functions
@@ -149,8 +150,14 @@ function print_scripts() {
  */
 function toolbar_styles() {
 
-	$suffix = suffix();
-	if ( is_user_logged_in() && is_admin_bar_showing() ) {
+	$admin_theme = Customize\use_admin_theme( get_theme_mod( 'gf_use_admin_theme' ) );
+	$suffix      = suffix();
+
+	if (
+		true == $admin_theme &&
+		is_user_logged_in() &&
+		is_admin_bar_showing()
+	) {
 		wp_enqueue_style( 'gf-toolbar', get_theme_file_uri( "/assets/css/shared/toolbar$suffix.css" ), [], GF_VERSION, 'screen' );
 	}
 }

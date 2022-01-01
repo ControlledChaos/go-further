@@ -359,6 +359,7 @@
   --wp-block-coblocks-gallery-carousel--overlay--opacity: .5;
   --wp-block-coblocks-services--heading--margin-bottom: 1.25rem;
   --wp-block-coblocks-services--heading--margin-top: 2rem;
+  --gf-toolbar--background-color: #343036;
 }
 
 @media only screen and (min-width: 600px) {
