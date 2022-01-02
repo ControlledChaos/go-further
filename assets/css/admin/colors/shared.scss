@@ -17,6 +17,11 @@ body {
 	background-color: var( --gf-admin--submenu--background-color, var( --go-submenu--color--background, var( --go-heading--color--text ) ) );
 }
 
+#adminmenu li.wp-has-submenu.wp-not-current-submenu:focus-within:after,
+#adminmenu li.wp-has-submenu.wp-not-current-submenu.opensub:hover:after {
+	border-right-color: var( --gf-admin--submenu--background-color, var( --go-submenu--color--background, var( --go-heading--color--text ) ) );
+}
+
 #adminmenu {
 
 	.wp-has-current-submenu .wp-submenu .wp-submenu-head,
