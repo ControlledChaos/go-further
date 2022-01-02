@@ -12,7 +12,6 @@
 
 namespace GoFurther\Options;
 
-// Alias namespaces.
 use GoFurther\Customize as Customize;
 
 /**

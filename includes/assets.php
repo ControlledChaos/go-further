@@ -9,7 +9,6 @@
 
 namespace GoFurther\Assets;
 
-// Alias namespaces.
 use GoFurther\Front     as Front,
 	GoFurther\Customize as Customize;
 

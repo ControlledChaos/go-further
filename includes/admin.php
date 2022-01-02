@@ -10,7 +10,6 @@
 
 namespace GoFurther\Admin;
 
-// Alias namespaces.
 use GoFurther\Core      as Core,
 	GoFurther\Front     as Front,
 	GoFurther\Customize as Customize,

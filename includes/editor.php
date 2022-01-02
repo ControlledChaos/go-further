@@ -12,7 +12,6 @@
 
 namespace GoFurther\Editor;
 
-// Alias namespaces.
 use GoFurther\Assets as Assets;
 
 /**

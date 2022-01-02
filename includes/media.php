@@ -10,7 +10,6 @@
 
 namespace GoFurther\Media;
 
-// Alias namespaces.
 use GoFurther\Front as Front;
 
 /**

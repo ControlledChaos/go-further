@@ -10,7 +10,6 @@
 
 namespace GoFurther;
 
-// Alias namespaces.
 use GoFurther\Front as Front;
 
 ?>

@@ -10,7 +10,6 @@
 
 namespace GoFurther\Front;
 
-// Alias namespaces.
 use GoFurther\Customize as Customize;
 
 use function \Go\hex_to_hsl;

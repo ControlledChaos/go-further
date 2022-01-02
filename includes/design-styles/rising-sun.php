@@ -10,7 +10,6 @@
 
 namespace GoFurther\Styles;
 
-// Alias namespaces.
 use GoFurther\Assets as Assets;
 
 /**
