@@ -111,70 +111,42 @@ function widgets() {
 		'after_title'   => '</h3>'
 	] );
 
-	if ( Front\has_classic_widgets() ) :
+	/**
+	 * Number of sidebars to register
+	 *
+	 * By default, unless filtered, the `footer_sidebars_count`
+	 * function returns `1` if block widgets are used and `4`
+	 * if classic widgets are used.
+	 */
+	$count = Front\footer_sidebars_count();
+	$areas = range( 1, $count );
+	$id    = 0;
 
-		// Footer #1.
-		register_sidebar(
-			array_merge(
-				$shared_args,
-				[
-					'name'        => __( 'Footer #1', 'go-further' ),
-					'id'          => 'footer-1',
-					'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'go-further' ),
-				]
-			)
-		);
+	if ( $count >= 1 ) {
+		foreach ( $areas as $area ) {
 
-		// Footer #2.
-		register_sidebar(
-			array_merge(
-				$shared_args,
-				[
-					'name'        => __( 'Footer #2', 'go-further' ),
-					'id'          => 'footer-2',
-					'description' => __( 'Widgets in this area will be displayed in the second column in the footer.', 'go-further' ),
-				]
-			)
-		);
+			$id = $id + 1;
 
-		// Footer #3.
-		register_sidebar(
-			array_merge(
-				$shared_args,
-				[
-					'name'        => __( 'Footer #3', 'go-further' ),
-					'id'          => 'footer-3',
-					'description' => __( 'Widgets in this area will be displayed in the third column in the footer.', 'go-further' ),
-				]
-			)
-		);
-
-		// Footer #4.
-		register_sidebar(
-			array_merge(
-				$shared_args,
-				[
-					'name'        => __( 'Footer #4', 'go-further' ),
-					'id'          => 'footer-4',
-					'description' => __( 'Widgets in this area will be displayed in the fourth column in the footer.', 'go-further' ),
-				]
-			)
-		);
-
-	else :
-
-		// Register footer widget area.
-		register_sidebar(
-			array_merge(
-				$shared_args,
-				[
-					'name'        => __( 'Footer Widgets', 'go-further' ),
-					'id'          => 'footer',
-					'description' => __( 'Displays below the main content.', 'go-further' ),
-				]
-			)
-		);
-	endif;
+			register_sidebar(
+				array_merge(
+					$shared_args,
+					[
+						'name'        => sprintf(
+							'%s %s',
+							__( 'Footer', 'go-further' ),
+							$id
+						),
+						'id'          => 'footer-' . $id,
+						'description' => sprintf(
+							'%s %s',
+							__( 'Widgets here will be displayed in footer widget area', 'go-further' ),
+							$id
+						),
+					]
+				)
+			);
+		}
+	}
 }
 
 /**

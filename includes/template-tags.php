@@ -467,12 +467,14 @@ function blog_has_image() {
  */
 function has_classic_widgets() {
 
+	$classic = false;
+
 	// Get the classic widgets setting from the Customizer.
-	$classic = Customize\classic_widgets( get_theme_mod( 'gf_classic_widgets' ) );
+	$theme_mod = Customize\classic_widgets( get_theme_mod( 'gf_classic_widgets' ) );
 
 	// Return true if theme mod set to classic widgets or ClassicPress is running.
-	if ( $classic || function_exists( 'classicpress_version' ) ) {
-		return true;
+	if ( $theme_mod || function_exists( 'classicpress_version' ) ) {
+		$classic = true;
 	}
 
 	// Get plugins file if necessary.
@@ -489,11 +491,30 @@ function has_classic_widgets() {
 			! empty( $widget_options['classic_widgets_screen'] ) &&
 			'activate' == $widget_options['classic_widgets_screen']
 		) {
-			return true;
+			$classic = true;
 		}
 	}
 
-	return false;
+	return apply_filters( 'gf_has_classic_widgets', $classic );
+}
+
+/**
+ * Sidebars count
+ *
+ * Determines the number of sidebars to register.
+ *
+ * @since  1.0.0
+ * @return integer Returns the number of sidebars registered.
+ */
+function footer_sidebars_count() {
+
+	if ( has_classic_widgets() ) {
+		$count = 4;
+	} else {
+		$count = 1;
+	}
+
+	return apply_filters( 'gf_footer_sidebars_count', $count );
 }
 
 /**
@@ -502,7 +523,6 @@ function has_classic_widgets() {
  * Check if any of the footer sidebars are active.
  *
  * @since  1.0.0
- * @access public
  * @return boolean Returns true if any of the footer sidebars are active.
  */
 function has_active_footer_sidebars() {

@@ -357,7 +357,7 @@ function customize( $wp_customize ) {
 				'settings'    => 'gf_classic_widgets',
 				'priority'    => 11,
 				'label'       => __( 'Classic Widgets', 'go-further' ),
-				'description' => __( 'Check to use the classic widgets interfaces rather than block widgets.', 'go-further' ),
+				'description' => __( 'Check to use the classic widgets interfaces rather than block widgets. Requires this Customizer screen to be refreshed if adding widgets here.', 'go-further' ),
 				'type'        => 'checkbox',
 			]
 		) );
