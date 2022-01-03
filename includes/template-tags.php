@@ -474,6 +474,25 @@ function has_classic_widgets() {
 	if ( $classic || function_exists( 'classicpress_version' ) ) {
 		return true;
 	}
+
+	// Get plugins file if necessary.
+	if ( ! function_exists( 'is_plugin_active' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}
+
+	// Return true if the Widget Options plugin is set to use classic widgets.
+	if ( is_plugin_active( 'widget-options/plugin.php' ) ) {
+
+		global $widget_options;
+
+		if (
+			! empty( $widget_options['classic_widgets_screen'] ) &&
+			$widget_options['classic_widgets_screen'] == 'activate'
+		) {
+			return true;
+		}
+	}
+
 	return false;
 }
 
