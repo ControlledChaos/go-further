@@ -470,7 +470,7 @@ function has_classic_widgets() {
 	// Get the classic widgets setting from the Customizer.
 	$classic = Customize\classic_widgets( get_theme_mod( 'gf_classic_widgets' ) );
 
-	// Return true if ClassicPress is running.
+	// Return true if theme mod set to classic widgets or ClassicPress is running.
 	if ( $classic || function_exists( 'classicpress_version' ) ) {
 		return true;
 	}
