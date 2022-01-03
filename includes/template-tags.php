@@ -487,7 +487,7 @@ function has_classic_widgets() {
 
 		if (
 			! empty( $widget_options['classic_widgets_screen'] ) &&
-			$widget_options['classic_widgets_screen'] == 'activate'
+			'activate' == $widget_options['classic_widgets_screen']
 		) {
 			return true;
 		}
