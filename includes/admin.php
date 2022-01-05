@@ -11,6 +11,7 @@
 namespace GoFurther\Admin;
 
 use function \GoFurther\Assets\suffix;
+use function \Go\Core\get_design_style;
 
 /**
  * Execute functions
@@ -52,7 +53,7 @@ function setup() {
  */
 function get_active_color_schemes() {
 
-	$design_style  = \Go\Core\get_design_style();
+	$design_style  = get_design_style();
 	$style_schemes = $design_style['color_schemes'];
 	$color_schemes = [];
 
@@ -144,7 +145,7 @@ function style_loader_src( $src, $handle ) {
  */
 function register_admin_color_schemes() {
 
-	$get_design_style = \Go\Core\get_design_style();
+	$get_design_style = get_design_style();
 	$color_schemes    = $get_design_style['color_schemes'];
 
 	// Sort color scheme alphabetically.
@@ -167,11 +168,6 @@ function register_admin_color_schemes() {
 				$scheme['primary'],
 				$scheme['secondary'],
 				$scheme['tertiary']
-			],
-			[
-				'base'    => '',
-				'focus'   => '',
-				'current' => ''
 			]
 		);
 	}
@@ -197,7 +193,7 @@ function admin_color_scheme_picker( $user_id ) {
 	global $_wp_admin_css_colors;
 
 	$current_scheme   = get_user_option( 'admin_color', $user_id );
-	$get_design_style = \Go\Core\get_design_style();
+	$get_design_style = get_design_style();
 
 	if ( empty( $current_scheme ) || ! isset( $_wp_admin_css_colors[ $current_scheme ] ) ) {
 		$current_scheme = default_color_scheme();
