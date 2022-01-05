@@ -216,12 +216,12 @@ function get_palette_color( $color, $format = 'RGB' ) {
 
 	$color_override = get_theme_mod( $override_colors[ $color ] );
 
-	$avaliable_color_schemes = get_available_color_schemes();
+	$available_color_schemes = get_available_color_schemes();
 
 	$the_color = '';
 
-	if ( $color_scheme && isset( $avaliable_color_schemes[ $color_scheme ] ) && isset( $avaliable_color_schemes[ $color_scheme ][ $color ] ) ) {
-		$the_color = $avaliable_color_schemes[ $color_scheme ][ $color ];
+	if ( $color_scheme && isset( $available_color_schemes[ $color_scheme ] ) && isset( $available_color_schemes[ $color_scheme ][ $color ] ) ) {
+		$the_color = $available_color_schemes[ $color_scheme ][ $color ];
 	}
 
 	if ( $color_override ) {
