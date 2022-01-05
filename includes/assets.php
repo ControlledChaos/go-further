@@ -14,6 +14,7 @@ use GoFurther\Core      as Core,
 	GoFurther\Customize as Customize;
 
 use function \Go\Core\fonts_url;
+use function \Go\Core\get_design_style;
 
 /**
  * Apply functions
@@ -180,7 +181,7 @@ function admin_styles() {
 
 	$suffix       = suffix();
 	$fonts_url    = fonts_url();
-	$get_design   = \Go\Core\get_design_style();
+	$get_design   = get_design_style();
 	$design_style = $get_design['slug'];
 
 	// Enqueue Google fonts if available & customizer is set to use.
