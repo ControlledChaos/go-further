@@ -73,7 +73,7 @@ function get_active_color_schemes() {
  * Provides a slug/ID for the first color scheme
  * of the active design style.
  *
- * Used when the current user has not yet selected
+ * Used when the current user has not selected
  * a color scheme as their preference.
  *
  * @since  1.0.0
