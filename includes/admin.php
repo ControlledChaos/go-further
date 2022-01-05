@@ -10,11 +10,7 @@
 
 namespace GoFurther\Admin;
 
-use GoFurther\Core      as Core,
-	GoFurther\Front     as Front,
-	GoFurther\Customize as Customize,
-	GoFurther\Styles    as Styles,
-	GoFurther\Assets    as Assets;
+use function \GoFurther\Assets\suffix;
 
 /**
  * Apply functions
@@ -91,7 +87,7 @@ function default_color_scheme() {
  */
 function get_color_scheme_url( $scheme ) {
 
-	$suffix  = Assets\suffix();
+	$suffix = suffix();
 
 	return apply_filters(
 		'gf_get_color_scheme_url',
@@ -123,7 +119,7 @@ function style_loader_src( $src, $handle ) {
 	$default = default_color_scheme();
 	$user    = get_user_option( 'admin_color', get_current_user_id() );
 	$active  = get_active_color_schemes();
-	$suffix  = Assets\suffix();
+	$suffix  = suffix();
 
 	if ( $user && in_array( $user, $active ) ) {
 		$slug = $user;
