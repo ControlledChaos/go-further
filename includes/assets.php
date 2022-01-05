@@ -9,8 +9,11 @@
 
 namespace GoFurther\Assets;
 
-use GoFurther\Front     as Front,
+use GoFurther\Core      as Core,
+	GoFurther\Front     as Front,
 	GoFurther\Customize as Customize;
+
+use function \Go\Core\fonts_url;
 
 /**
  * Apply functions
@@ -26,9 +29,12 @@ function setup() {
 
 	add_action( 'enqueue_block_editor_assets', $n( 'parent_block_editor_assets' ), 11 );
 	add_action( 'wp_enqueue_scripts', $n( 'frontend_styles' ) );
-	add_action( 'wp_footer', $n( 'print_scripts' ) );
+	add_action( 'wp_footer', $n( 'frontend_print_scripts' ) );
 	add_action( 'wp_enqueue_scripts', $n( 'toolbar_styles' ) );
 	add_action( 'admin_enqueue_scripts', $n( 'toolbar_styles' ), 99 );
+	if ( ! is_customize_preview() ) {
+		add_action( 'admin_enqueue_scripts', $n( 'admin_styles' ) );
+	}
 	add_action( 'login_enqueue_scripts', $n( 'login_styles' ) );
 	add_action( 'wp_head', $n( 'embed_styles' ) );
 }
@@ -112,7 +118,7 @@ function frontend_styles() {
  * @since  1.0.0
  * @return void
  */
-function print_scripts() {
+function frontend_print_scripts() {
 
 	/**
 	 * Add class to header on scroll
@@ -159,6 +165,40 @@ function toolbar_styles() {
 	) {
 		wp_enqueue_style( 'gf-toolbar', get_theme_file_uri( "/assets/css/shared/toolbar$suffix.css" ), [], GF_VERSION, 'screen' );
 	}
+}
+
+/**
+ * Admin styles
+ *
+ * @since  1.0.0
+ * @global $pagenow Access the current admin screen.
+ * @return void
+ */
+function admin_styles() {
+
+	global $pagenow;
+
+	$suffix       = suffix();
+	$fonts_url    = fonts_url();
+	$get_design   = \Go\Core\get_design_style();
+	$design_style = $get_design['slug'];
+
+	// Enqueue Google fonts if available & customizer is set to use.
+	if ( ! empty( $fonts_url && Core\use_google_fonts() ) ) {
+		wp_enqueue_style( 'go-fonts', $fonts_url, [], GF_VERSION );
+	}
+
+	// Styles for the replacement color picker.
+	if ( 'profile.php' == $pagenow || 'user-edit.php' == $pagenow ) {
+		wp_enqueue_style( 'gf-color-picker', get_theme_file_uri( "/assets/css/admin/color-picker$suffix.css" ), [], GF_VERSION, 'all' );
+	}
+
+	// Global styles for all design styles & color schemes.
+	wp_enqueue_style( 'gf-colors-shared', get_theme_file_uri( "/assets/css/admin/colors/shared$suffix.css" ), [], GF_VERSION, 'all' );
+	wp_enqueue_style( 'gf-typography-shared', get_theme_file_uri( "/assets/css/admin/typography/shared$suffix.css" ), [], GF_VERSION, 'all' );
+
+	// Typography stylesheet for the active design style.
+	wp_enqueue_style( 'gf-typography', get_theme_file_uri( "/assets/css/admin/typography/design-styles/$design_style/typography$suffix.css" ), [], GF_VERSION, 'all' );
 }
 
 /**

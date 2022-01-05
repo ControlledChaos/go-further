@@ -16,8 +16,6 @@ use GoFurther\Core      as Core,
 	GoFurther\Styles    as Styles,
 	GoFurther\Assets    as Assets;
 
-use function \Go\Core\fonts_url;
-
 /**
  * Apply functions
  *
@@ -29,11 +27,6 @@ function setup() {
 	$n = function( $function ) {
 		return __NAMESPACE__ . "\\$function";
 	};
-
-	// Enqueue admin stylesheets.
-	if ( ! is_customize_preview() ) {
-		add_action( 'admin_enqueue_scripts', $n( 'admin_styles' ) );
-	}
 
 	/**
 	 * Unregister core color schemes and color schemes from the
@@ -50,40 +43,6 @@ function setup() {
 	// Disable the default color picker & enable a new one to match the customizer.
 	remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
 	add_action( 'admin_color_scheme_picker', $n( 'admin_color_scheme_picker' ) );
-}
-
-/**
- * Admin styles
- *
- * @since  1.0.0
- * @global $pagenow Access the current admin screen.
- * @return void
- */
-function admin_styles() {
-
-	global $pagenow;
-
-	$suffix       = Assets\suffix();
-	$fonts_url    = fonts_url();
-	$get_design   = \Go\Core\get_design_style();
-	$design_style = $get_design['slug'];
-
-	// Enqueue Google fonts if available & customizer is set to use.
-	if ( ! empty( $fonts_url && Core\use_google_fonts() ) ) {
-		wp_enqueue_style( 'go-fonts', $fonts_url, [], GF_VERSION );
-	}
-
-	// Styles for the replacement color picker.
-	if ( 'profile.php' == $pagenow || 'user-edit.php' == $pagenow ) {
-		wp_enqueue_style( 'gf-color-picker', get_theme_file_uri( "/assets/css/admin/color-picker$suffix.css" ), [], GF_VERSION, 'all' );
-	}
-
-	// Global styles for all design styles & color schemes.
-	wp_enqueue_style( 'gf-colors-shared', get_theme_file_uri( "/assets/css/admin/colors/shared$suffix.css" ), [], GF_VERSION, 'all' );
-	wp_enqueue_style( 'gf-typography-shared', get_theme_file_uri( "/assets/css/admin/typography/shared$suffix.css" ), [], GF_VERSION, 'all' );
-
-	// Typography stylesheet for the active design style.
-	wp_enqueue_style( 'gf-typography', get_theme_file_uri( "/assets/css/admin/typography/design-styles/$design_style/typography$suffix.css" ), [], GF_VERSION, 'all' );
 }
 
 /**
