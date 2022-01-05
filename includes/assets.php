@@ -33,9 +33,6 @@ function setup() {
 	add_action( 'wp_footer', $n( 'frontend_print_scripts' ) );
 	add_action( 'wp_enqueue_scripts', $n( 'toolbar_styles' ) );
 	add_action( 'admin_enqueue_scripts', $n( 'toolbar_styles' ), 99 );
-	if ( ! is_customize_preview() ) {
-		add_action( 'admin_enqueue_scripts', $n( 'admin_styles' ) );
-	}
 	add_action( 'login_enqueue_scripts', $n( 'login_styles' ) );
 	add_action( 'wp_head', $n( 'embed_styles' ) );
 }

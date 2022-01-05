@@ -40,6 +40,10 @@ function setup() {
 	// Disable the default color picker & enable a new one to match the customizer.
 	remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
 	add_action( 'admin_color_scheme_picker', $n( 'admin_color_scheme_picker' ) );
+
+	if ( ! is_customize_preview() ) {
+		add_action( 'admin_enqueue_scripts', 'GoFurther\Assets\admin_styles' );
+	}
 }
 
 /**
