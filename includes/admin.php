@@ -162,7 +162,7 @@ function register_admin_color_schemes() {
 
 		wp_admin_css_color(
 			$slug,
-			_x( $label, 'admin color scheme' ),
+			_x( $label, 'admin color scheme', 'go-further' ),
 			get_color_scheme_url( $slug ),
 			[
 				$scheme['primary'],
