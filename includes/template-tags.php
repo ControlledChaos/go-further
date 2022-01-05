@@ -13,6 +13,9 @@ namespace GoFurther\Front;
 use GoFurther\Customize as Customize;
 
 use function \Go\hex_to_hsl;
+use function \Go\hex_to_rgb;
+use function \Go\Core\get_default_color_scheme;
+use function \Go\Core\get_available_color_schemes;
 
 /**
  * Page title
@@ -199,7 +202,7 @@ function page_subtitle( $before = '', $after = '', $echo = true ) {
  * @return string|array|bool A string with the RGB value or an array containing the HSL values.
  */
 function get_palette_color( $color, $format = 'RGB' ) {
-	$default         = \Go\Core\get_default_color_scheme();
+	$default         = get_default_color_scheme();
 	$color_scheme    = get_theme_mod( 'color_scheme', $default );
 	$override_colors = [
 		'primary'                   => 'primary_color',
@@ -213,7 +216,7 @@ function get_palette_color( $color, $format = 'RGB' ) {
 
 	$color_override = get_theme_mod( $override_colors[ $color ] );
 
-	$avaliable_color_schemes = \Go\Core\get_available_color_schemes();
+	$avaliable_color_schemes = get_available_color_schemes();
 
 	$the_color = '';
 
@@ -231,11 +234,11 @@ function get_palette_color( $color, $format = 'RGB' ) {
 		$the_color = '#' . ltrim( $the_color, '#' );
 
 		if ( 'HSL' === $format ) {
-			return \Go\hex_to_hsl( $the_color );
+			return hex_to_hsl( $the_color );
 		}
 
 		if ( 'RGB' === $format ) {
-			return \Go\hex_to_rgb( $the_color );
+			return hex_to_rgb( $the_color );
 		}
 
 		if ( 'HEX' === $format ) {
