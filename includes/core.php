@@ -16,7 +16,7 @@ use GoFurther\Front     as Front,
 	GoFurther\Assets    as Assets;
 
 /**
- * Apply functions
+ * Execute functions
  *
  * @since  1.0.0
  * @return void

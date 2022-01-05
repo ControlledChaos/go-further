@@ -13,7 +13,7 @@ namespace GoFurther\Media;
 use GoFurther\Front as Front;
 
 /**
- * Apply functions
+ * Execute functions
  *
  * @since  1.0.0
  * @return void

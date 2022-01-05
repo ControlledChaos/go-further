@@ -15,7 +15,7 @@ namespace GoFurther\Options;
 use GoFurther\Customize as Customize;
 
 /**
- * Apply functions
+ * Execute functions
  *
  * @since  1.0.0
  * @return void

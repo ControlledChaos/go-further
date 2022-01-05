@@ -13,7 +13,7 @@ namespace GoFurther\Admin;
 use function \GoFurther\Assets\suffix;
 
 /**
- * Apply functions
+ * Execute functions
  *
  * @since  1.0.0
  * @return void

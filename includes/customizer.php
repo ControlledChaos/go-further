@@ -16,7 +16,7 @@ use \Go\Customizer   as Go,
 use function \Go\hex_to_hsl;
 
 /**
- * Apply functions
+ * Execute functions
  *
  * @since  1.0.0
  * @return void

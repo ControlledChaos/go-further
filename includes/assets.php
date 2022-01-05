@@ -17,7 +17,7 @@ use function \Go\Core\fonts_url;
 use function \Go\Core\get_design_style;
 
 /**
- * Apply functions
+ * Execute functions
  *
  * @since  1.0.0
  * @return void
