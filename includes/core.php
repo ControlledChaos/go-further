@@ -12,8 +12,9 @@ namespace GoFurther\Core;
 
 use GoFurther\Front     as Front,
 	GoFurther\Customize as Customize,
-	GoFurther\Styles    as Styles,
-	GoFurther\Assets    as Assets;
+	GoFurther\Styles    as Styles;
+
+use function \Go\Core\get_design_style;
 
 /**
  * Execute functions
@@ -104,7 +105,7 @@ function body_classes( $classes ) {
 function widgets() {
 
 	// Arguments used in all register_sidebar() calls.
-	$shared_args = apply_filters( 'gf_footer_widget_args', [
+	$args = apply_filters( 'gf_footer_widget_args', [
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h3 class="widget-title">',
@@ -129,7 +130,7 @@ function widgets() {
 
 			register_sidebar(
 				array_merge(
-					$shared_args,
+					$args,
 					[
 						'name'        => sprintf(
 							'%s %s',
@@ -139,7 +140,7 @@ function widgets() {
 						'id'          => 'footer-' . $id,
 						'description' => sprintf(
 							'%s %s',
-							__( 'Widgets here will be displayed in footer widget area', 'go-further' ),
+							__( 'Widgets here will be displayed in footer widgets area', 'go-further' ),
 							$id
 						),
 					]
@@ -174,7 +175,7 @@ function get_available_social_icons( $social_icons ) {
 		'codepen' => [
 			'label'       => esc_html__( 'CodePen', 'go-further' ),
 			'icon'        => get_theme_file_path( 'assets/images/social/codepen.svg' ),
-			'placeholder' => 'https://codepen.com/user',
+			'placeholder' => 'https://codepen.com/user'
 		],
 	];
 	return array_merge( $social_icons, $added_icons );
@@ -348,7 +349,7 @@ function default_design_style() {
 function use_google_fonts() {
 
 	$setting = Customize\use_google_fonts( get_theme_mod( 'gf_use_google_fonts' ) );
-	$style   = \Go\Core\get_design_style();
+	$style   = get_design_style();
 	$slug    = $style['slug'];
 
 	// Design styles with local fonts.
