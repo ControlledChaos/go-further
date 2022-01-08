@@ -14,7 +14,7 @@ namespace GoFurther;
 
 	</main>
 
-	<?php get_sidebar( 'footer' ); ?>
+	<?php get_sidebar(); ?>
 
 	<?php \Go\footer_variation(); ?>
 
