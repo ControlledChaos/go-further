@@ -74,7 +74,7 @@ function parent_block_editor_assets() {
 
 	global $pagenow;
 
-	if ( $pagenow === 'widgets.php' ) {
+	if ( 'widgets.php' === $pagenow ) {
 		wp_dequeue_script( 'go-block-filters' );
     	wp_deregister_script( 'go-block-filters' );
 	}
