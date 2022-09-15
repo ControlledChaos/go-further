@@ -29,16 +29,15 @@ function setup() {
 	 * Unregister core color schemes and color schemes from the
 	 * Admin Color Schemes plugin. Then register theme color schemes.
 	 */
-	remove_action( 'admin_init', 'register_admin_color_schemes', 1 );
+	add_action( 'admin_init', $n( 'remove_admin_color_scheme_picker' ), 9 );
 	remove_action( 'admin_init', 'ACS_Color_Schemes\add_colors' );
-	add_action( 'admin_init', $n( 'register_admin_color_schemes' ), 1 );
+	add_action( 'admin_init', $n( 'register_admin_color_schemes' ) );
 
 	// Remove the default "Fresh" color scheme & add new stylesheet URIs.
 	remove_filter( 'style_loader_src', 'wp_style_loader_src' );
 	add_filter( 'style_loader_src', $n( 'style_loader_src' ), 11, 2 );
 
-	// Disable the default color picker & enable a new one to match the customizer.
-	remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
+	// Enable a new color picker to match the customizer.
 	add_action( 'admin_color_scheme_picker', $n( 'admin_color_scheme_picker' ) );
 
 	if ( ! is_customize_preview() ) {
@@ -175,6 +174,17 @@ function register_admin_color_schemes() {
 			]
 		);
 	}
+}
+
+/**
+ * Remove admin color scheme picker
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function remove_admin_color_scheme_picker() {
+	remove_action( 'admin_init', 'register_admin_color_schemes' );
+	remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
 }
 
 /**
