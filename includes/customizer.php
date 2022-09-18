@@ -176,7 +176,7 @@ function customize( $wp_customize ) {
 			'settings'    => 'gf_blog_title',
 			'priority'    => 20,
 			'label'       => __( 'Blog Title', 'go-further' ),
-			'description' => __( 'If a static front page and a blog page is set then the title of the blog page will supersede this setting.', 'go-further' ),
+			'description' => __( 'If a static front page and a blog page are set then the title of the blog page will supersede this setting.', 'go-further' ),
 			'type'        => 'text'
 		]
 	) );
@@ -193,7 +193,7 @@ function customize( $wp_customize ) {
 			'settings'    => 'gf_blog_subtitle',
 			'priority'    => 25,
 			'label'       => __( 'Blog Subtitle', 'go-further' ),
-			'description' => __( 'If a static front page and a blog page is set then the manual excerpt of the blog page will supersede this text.', 'go-further' ),
+			'description' => __( 'If a static front page and a blog page are set then the manual excerpt of the blog page will supersede this text.', 'go-further' ),
 			'type'        => 'textarea'
 		]
 	) );
@@ -222,7 +222,7 @@ function customize( $wp_customize ) {
 			'section'       => 'static_front_page',
 			'settings'      => 'gf_blog_image',
 			'label'         => __( 'Blog Image', 'go-further' ),
-			'description'   => __( 'Displays in the header of blog pages according to display settings. If a static front page and a blog page is set then the featured image of the blog page will supersede this image.', 'go-further' ),
+			'description'   => __( 'Displays in the header of blog pages according to display settings. If a static front page and a blog page are set then the featured image of the blog page will supersede this image.', 'go-further' ),
 			'priority'      => 30,
 			'width'         => $image_sizes['post-thumbnail']['width'],
 			'height'        => $image_sizes['post-thumbnail']['height'],
@@ -247,7 +247,7 @@ function customize( $wp_customize ) {
 			'settings'    => 'gf_blog_image_display',
 			'priority'    => 35,
 			'label'       => __( 'Blog Image Display', 'go-further' ),
-			'description' => __( 'Choose where to display a featured image on blog pages. If a static front page and a blog page is set then the template & settings of the blog page will supersede this text.', 'go-further' ),
+			'description' => __( 'Choose where to display a featured image on blog pages. If a static front page and a blog page are set then the template & settings of the blog page will supersede this text.', 'go-further' ),
 			'type'        => 'select',
 			'choices'     => [
 				'never'  => __( 'Do Not Display', 'go-further' ),
