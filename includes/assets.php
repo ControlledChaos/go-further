@@ -32,6 +32,7 @@ function setup() {
 	add_action( 'wp_enqueue_scripts', $n( 'frontend_styles' ) );
 	add_action( 'wp_enqueue_scripts', $n( 'frontend_scripts' ) );
 	add_action( 'wp_footer', $n( 'frontend_print_scripts' ) );
+	add_action( 'customize_preview_init', $n( 'customizer_styles' ) );
 	add_action( 'wp_enqueue_scripts', $n( 'toolbar_styles' ) );
 	add_action( 'admin_enqueue_scripts', $n( 'toolbar_styles' ), 99 );
 	add_action( 'login_enqueue_scripts', $n( 'login_styles' ) );
@@ -154,6 +155,23 @@ function frontend_print_scripts() {
 	</script>
 	<?php
 	endif;
+}
+
+/**
+ * Customizer styles
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function customizer_styles() {
+
+	// Customizer only.
+	if ( ! is_customize_preview() ) {
+		return;
+	}
+
+	$suffix = suffix();
+	wp_enqueue_style( 'gf-customize', get_theme_file_uri( "/assets/css/customize$suffix.css" ),	[ 'go-customize-style' ], GF_VERSION );
 }
 
 /**
