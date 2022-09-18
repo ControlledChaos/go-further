@@ -132,68 +132,72 @@ textarea {
   }
 }
 
-.template-cover-image .header {
+body.template-cover-image.has-sticky-header .site-header:not(.has-background):not(.header-scrolled) {
+  background-color: transparent;
+}
+
+.template-cover-image .site-header {
   position: absolute;
 }
 
-.template-cover-image .header:not(.header-scrolled) {
+.template-cover-image .site-header:not(.header-scrolled) {
   background-color: transparent;
 }
 
 @media not screen and (max-width: 600px) {
-  .template-cover-image .header:not(.header-scrolled) .site-title,
-  .template-cover-image .header:not(.header-scrolled) .site-description {
+  .template-cover-image .site-header:not(.header-scrolled) .site-title,
+  .template-cover-image .site-header:not(.header-scrolled) .site-description {
     color: white;
   }
 }
 
 @media screen and (min-width: 960px) {
-  .template-cover-image .header:not(.header-scrolled) .header__navigation a {
+  .template-cover-image .site-header:not(.header-scrolled) .header__navigation a {
     color: white;
   }
 }
 
-.template-cover-image .header.header-scrolled {
+.template-cover-image .site-header.header-scrolled {
   background-color: var(--go-header--color--background, var(--go--color--background, 0, 0, 100%));
   -webkit-box-shadow: -0.25rem 0 3rem -0.325rem rgba(0, 0, 0, 0.25);
           box-shadow: -0.25rem 0 3rem -0.325rem rgba(0, 0, 0, 0.25);
 }
 
-.template-cover-image.has-sticky-header .header {
+.template-cover-image.has-sticky-header .site-header {
   position: absolute;
   -webkit-transition: background-color 0.15s linear;
   transition: background-color 0.15s linear;
 }
 
-.template-cover-image.has-sticky-header .header.header-scrolled {
+.template-cover-image.has-sticky-header .site-header.header-scrolled {
   background-color: var(--go-header--color--background, var(--go--color--background, 0, 0, 100%));
 }
 
-.template-cover-image.has-sticky-header .header.header-scrolled .custom-logo-wrap a img:first-of-type {
+.template-cover-image.has-sticky-header .site-header.header-scrolled .custom-logo-wrap a img:first-of-type {
   opacity: 1;
 }
 
-.template-cover-image.has-sticky-header .header.header-scrolled .custom-logo-wrap a img + img {
+.template-cover-image.has-sticky-header .site-header.header-scrolled .custom-logo-wrap a img + img {
   opacity: 0;
 }
 
 @media screen and (max-width: 600px) {
-  .template-cover-image.has-sticky-header .header .custom-logo-wrap a img:first-of-type {
+  .template-cover-image.has-sticky-header .site-header .custom-logo-wrap a img:first-of-type {
     opacity: 1;
   }
-  .template-cover-image.has-sticky-header .header .custom-logo-wrap a img + img {
+  .template-cover-image.has-sticky-header .site-header .custom-logo-wrap a img + img {
     opacity: 0;
   }
 }
 
 @media not screen and (max-width: 600px) {
-  .template-cover-image:not(.menu-is-open) .header:not(.header-scrolled) button:focus {
+  .template-cover-image:not(.menu-is-open) .site-header:not(.header-scrolled) button:focus {
     outline-color: white;
   }
 }
 
 @media not screen and (max-width: 600px) {
-  .template-cover-image:not(.menu-is-open) .header:not(.header-scrolled) svg {
+  .template-cover-image:not(.menu-is-open) .site-header:not(.header-scrolled) svg {
     fill: white;
   }
 }
@@ -202,23 +206,23 @@ textarea {
   margin: 0;
 }
 
-.js .has-sticky-header .header {
+.js .has-sticky-header .site-header {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
 
-.js .has-sticky-header .header .header__inner {
+.js .has-sticky-header .site-header .header__inner {
   -webkit-transition: padding 0.15s linear;
   transition: padding 0.15s linear;
 }
 
-.js .has-sticky-header .header.header-scrolled .header__inner {
+.js .has-sticky-header .site-header.header-scrolled .header__inner {
   padding-top: calc( var( --go-header--padding--y ) / 3);
   padding-bottom: calc( var( --go-header--padding--y ) / 3);
 }
 
-.js .has-sticky-header.logged-in.admin-bar .header {
+.js .has-sticky-header.logged-in.admin-bar .site-header {
   top: 32px;
 }
 
@@ -235,7 +239,7 @@ textarea {
   }
 }
 
-.js .template-cover-image.has-sticky-header .header {
+.js .template-cover-image.has-sticky-header .site-header {
   position: fixed;
 }
 
