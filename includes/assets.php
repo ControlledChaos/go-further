@@ -30,6 +30,7 @@ function setup() {
 
 	add_action( 'enqueue_block_editor_assets', $n( 'parent_block_editor_assets' ), 11 );
 	add_action( 'wp_enqueue_scripts', $n( 'frontend_styles' ) );
+	add_action( 'wp_enqueue_scripts', $n( 'frontend_scripts' ) );
 	add_action( 'wp_footer', $n( 'frontend_print_scripts' ) );
 	add_action( 'wp_enqueue_scripts', $n( 'toolbar_styles' ) );
 	add_action( 'admin_enqueue_scripts', $n( 'toolbar_styles' ), 99 );
@@ -108,6 +109,18 @@ function frontend_styles() {
 	if ( is_rtl() ) {
 		wp_enqueue_style( 'go-further-rtl', get_theme_file_uri( "assets/css/style-rtl$suffix.css" ), [ 'go-further' ], GF_VERSION, 'all' );
 	}
+}
+
+/**
+ * Frontend scripts
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function frontend_scripts() {
+
+	// Enqueue jQuery.
+	wp_enqueue_script( 'jquery' );
 }
 
 /**
