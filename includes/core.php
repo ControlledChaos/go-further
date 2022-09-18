@@ -35,8 +35,6 @@ function setup() {
 	add_action( 'init', $n( 'add_page_excerpts' ) );
 	add_filter( 'go_avaliable_social_icons', $n( 'get_available_social_icons' ) );
 	add_action( 'wp_head', $n( 'display_social' ) );
-	add_filter( 'go_header_variations', $n( 'add_header_variations' ) );
-	add_filter( 'go_default_header', $n( 'default_header_variation' ) );
 	add_action( 'init', $n( 'classic_widgets' ) );
 	add_filter( 'login_headertext', $n( 'login_title' ) );
 	add_filter( 'login_headerurl', $n( 'login_url' ) );
@@ -201,42 +199,6 @@ function display_social() {
 		$style = '';
 	}
 	echo $style . "\n";
-}
-
-/**
- * Available header variations
- *
- * @since  1.0.0
- * @param  array $default_header_variations
- * @return array Returns the filtered array of headers.
- */
-function add_header_variations( $default_header_variations ) {
-
-	$add_header_variations = [
-		'header-8' => [
-			'label'         => esc_html_x( 'Header 8', 'name of the eighth header variation option', 'go-further' ),
-			'preview_image' => get_theme_file_uri( 'assets/images/admin/header-8.svg' ),
-		],
-		'header-9' => [
-			'label'         => esc_html_x( 'Header 9', 'name of the ninth header variation option', 'go-further' ),
-			'preview_image' => get_theme_file_uri( 'assets/images/admin/header-9.svg' ),
-		]
-	];
-	return array_merge( $add_header_variations, $default_header_variations );
-}
-
-/**
- * Default header variation
- *
- * Because this child theme adds a widget area to
- * the parent, the default header does not display
- * the search toggle icon.
- *
- * @since  1.0.0
- * @return string Returns the default header variation.
- */
-function default_header_variation() {
-	return (string) 'header-8';
 }
 
 /**
