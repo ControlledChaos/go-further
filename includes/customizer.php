@@ -293,28 +293,6 @@ function customize( $wp_customize ) {
 	) );
 
 	/**
-	 * Sticky header
-	 *
-	 * Allow the page header to stick to the top of the viewport.
-	 */
-	$wp_customize->add_setting( 'gf_sticky_header', [
-		'default'	        => false,
-		'sanitize_callback' => __NAMESPACE__ . '\sticky_header'
-	] );
-	$wp_customize->add_control( new \WP_Customize_Control(
-		$wp_customize,
-		'gf_sticky_header',
-		[
-			'section'     => 'go_header_settings',
-			'settings'    => 'gf_sticky_header',
-			'priority'    => 100,
-			'label'       => __( 'Sticky Header', 'go-further' ),
-			'description' => __( 'Check to make the header stick to the top of the page.', 'go-further' ),
-			'type'        => 'checkbox',
-		]
-	) );
-
-	/**
 	 * Social media menu
 	 *
 	 * Determines whether to display the social media links
