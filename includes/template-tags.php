@@ -277,7 +277,7 @@ function has_footer_widgets_background() {
 function has_sticky_header() {
 
 	// Get the navigation location setting from the Customizer.
-	$sticky = Customize\sticky_header( get_theme_mod( 'gf_sticky_header' ) );
+	$sticky = Customize\sticky_header( get_theme_mod( 'sticky_header' ) );
 
 	if ( $sticky ) {
 		return true;
