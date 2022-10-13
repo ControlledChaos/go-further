@@ -48,7 +48,7 @@ body {
 }
 
 #adminmenu #collapse-button {
-  font-size: var(--gf-admin--menu--collapse-button--font-size, 1em);
+  font-size: var(--gf-admin--menu--collapse-button--font-size, 13px);
 }
 
 #adminmenu .wp-submenu-head,

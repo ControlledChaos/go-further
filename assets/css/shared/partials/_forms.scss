@@ -7,6 +7,7 @@
 	--gf-fieldset--padding--x: calc( var( --go-block--padding--x ) / 2 );
 	--gf-fieldset--border: var( --go-input--border );
 	--gf-fieldset--border-radius: var( --go-input--border-radius, var( --go-button--border-radius ) );
+	--gf-button--border-radius: 0px;
 }
 
 fieldset {
