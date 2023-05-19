@@ -11,6 +11,7 @@
 namespace GoFurther\Admin;
 
 use function \GoFurther\Assets\suffix;
+use function \Go\Core\get_available_design_styles;
 use function \Go\Core\get_design_style;
 
 /**
@@ -30,8 +31,6 @@ function setup() {
 	 * Admin Color Schemes plugin. Then register theme color schemes.
 	 */
 	add_action( 'admin_init', $n( 'remove_admin_color_scheme_picker' ), 9 );
-	remove_action( 'admin_init', 'ACS_Color_Schemes\add_colors' );
-	add_action( 'admin_init', $n( 'register_admin_color_schemes' ) );
 
 	// Remove the default "Fresh" color scheme & add new stylesheet URIs.
 	remove_filter( 'style_loader_src', 'wp_style_loader_src' );
@@ -104,16 +103,7 @@ function get_color_scheme_url( $scheme ) {
  *
  * If installing the 'wp-admin/' directory will be replaced with './'.
  *
- * The $_wp_admin_css_colors global manages the Administration Screens CSS
- * stylesheet that is loaded. The option that is set is 'admin_color' and is the
- * color and key for the array. The value for the color key is an object with
- * a 'url' parameter that has the URL path to the CSS file.
- *
- * The query from $src parameter will be appended to the URL that is given from
- * the $_wp_admin_css_colors array value URL.
- *
  * @since  1.0.0
- * @global array $_wp_admin_css_colors
  * @param  string $src    Source URL.
  * @param  string $handle Either 'colors' or 'colors-rtl'.
  * @return string|false URL path to CSS stylesheet for Administration Screens.
@@ -138,45 +128,6 @@ function style_loader_src( $src, $handle ) {
 }
 
 /**
- * Register color schemes
- *
- * Adds an admin color scheme for each option
- * in the active design style.
- *
- * @since  1.0.0
- * @return void
- */
-function register_admin_color_schemes() {
-
-	$get_design_style = get_design_style();
-	$color_schemes    = $get_design_style['color_schemes'];
-
-	// Sort color scheme alphabetically.
-	asort( $color_schemes );
-
-	/**
-	 * Add an admin color scheme for each option
-	 * in the active design style.
-	 */
-	foreach ( $color_schemes as $scheme ) {
-
-		$label = $scheme['label'];
-		$slug  = strtolower( str_replace( ' ', '-', $label ) );
-
-		wp_admin_css_color(
-			$slug,
-			_x( $label, 'admin color scheme', 'go-further' ),
-			get_color_scheme_url( $slug ),
-			[
-				$scheme['primary'],
-				$scheme['secondary'],
-				$scheme['tertiary']
-			]
-		);
-	}
-}
-
-/**
  * Remove admin color scheme picker
  *
  * @since  1.0.0
@@ -198,18 +149,23 @@ function remove_admin_color_scheme_picker() {
  * the picker will not be displayed.
  *
  * @since  1.0.0
- * @global array $_wp_admin_css_colors
  * @param  int $user_id User ID.
  * @return void
  */
 function admin_color_scheme_picker( $user_id ) {
 
-	global $_wp_admin_css_colors;
-
 	$current_scheme   = get_user_option( 'admin_color', $user_id );
 	$get_design_style = get_design_style();
+	$color_schemes    = $get_design_style['color_schemes'];
 
-	if ( empty( $current_scheme ) || ! isset( $_wp_admin_css_colors[ $current_scheme ] ) ) {
+	// Sort color scheme alphabetically.
+	asort( $color_schemes );
+
+	if (
+		empty( $current_scheme ) ||
+		! isset( $current_scheme ) ||
+		! in_array( $current_scheme, $color_schemes )
+	) {
 		$current_scheme = default_color_scheme();
 	}
 
@@ -229,36 +185,26 @@ function admin_color_scheme_picker( $user_id ) {
 
 		wp_nonce_field( 'save-color-scheme', 'color-nonce', false );
 
-		foreach ( $_wp_admin_css_colors as $color => $color_info ) :
+		foreach ( $color_schemes as $scheme ) :
 
-			// Set up an array of colors.
-			$colors = [];
-			foreach ( $color_info->colors as $html_color ) {
-				$colors[] = $html_color;
-			}
+			$label = $scheme['label'];
+			$slug  = strtolower( str_replace( ' ', '-', $label ) );
 
-			// Shouldn't need to count the colors array but just in case...
-			if ( 3 >= count( $colors ) ) {
-				$background = sprintf(
-					'linear-gradient( to right, %s 0&#37;, %s 33.33325&#37;, %s 33.33325&#37;, %s 66.66675&#37;, %s 66.66675&#37;, %s 100&#37; )',
-					$colors[0],
-					$colors[0],
-					$colors[1],
-					$colors[1],
-					$colors[2],
-					$colors[2]
-				);
-
-			// Some tolerable background if color count is less than three.
-			} else {
-				$background = 'linear-gradient( to bottom, #888888 0%, #000000 100% )';
-			}
+			$background = sprintf(
+				'linear-gradient( to right, %s 0&#37;, %s 33.33325&#37;, %s 33.33325&#37;, %s 66.66675&#37;, %s 66.66675&#37;, %s 100&#37; )',
+				$scheme['primary'],
+				$scheme['primary'],
+				$scheme['secondary'],
+				$scheme['secondary'],
+				$scheme['tertiary'],
+				$scheme['tertiary']
+			);
 		?>
-			<div style="background-image: <?php echo $background; ?>" class="switcher__choice color_scheme color-option <?php echo ( $color == $current_scheme ) ? 'selected' : ''; ?>">
-				<input name="admin_color" id="admin_color_<?php echo esc_attr( $color ); ?>" type="radio" value="<?php echo esc_attr( $color ); ?>" class="tog" <?php checked( $color, $current_scheme ); ?> />
-				<input type="hidden" class="css_url" value="<?php echo esc_url( $color_info->url ); ?>" />
-				<input type="hidden" class="icon_colors" value="<?php echo esc_attr( wp_json_encode( array( 'icons' => $color_info->icon_colors ) ) ); ?>" />
-				<label for="admin_color_<?php echo esc_attr( $color ); ?>"><?php echo esc_html( $color_info->name ); ?><span class="color-scheme__check"></span></label>
+			<div style="background-image: <?php echo $background; ?>" class="switcher__choice color_scheme color-option <?php echo ( $slug == $current_scheme ) ? 'selected' : ''; ?>">
+				<input name="admin_color" id="admin_color_<?php echo esc_attr( $slug ); ?>" type="radio" value="<?php echo esc_attr( $slug ); ?>" class="tog" <?php checked( $slug, $current_scheme ); ?> />
+				<input type="hidden" class="css_url" value="<?php echo esc_attr( esc_url( get_color_scheme_url( $slug ) ) ); ?>" />
+				<input type="hidden" class="icon_colors" value="<?php echo esc_attr( $slug ); ?>" />
+				<label for="admin_color_<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $label ); ?><span class="color-scheme__check"></span></label>
 			</div>
 		<?php endforeach; ?>
 		</div>
