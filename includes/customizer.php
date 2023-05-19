@@ -879,7 +879,9 @@ function use_google_fonts( $input ) {
  * @param  $input
  * @return boolean Returns false by default.
  */
-function use_admin_theme( $input ) {
+function use_admin_theme() {
+
+	$input = get_theme_mod( 'gf_use_admin_theme', true );
 
 	if ( true == $input ) {
 		return true;
