@@ -18,6 +18,7 @@ get_header();
 
 // Start the Loop.
 while ( have_posts() ) :
+
 	the_post();
 
 	// Only get the cover image partial if the post has a featured image attached.

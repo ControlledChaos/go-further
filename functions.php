@@ -40,7 +40,9 @@ Options\setup();
 Assets\setup();
 
 if ( is_admin() ) {
+
 	$admin_theme = Customize\use_admin_theme( get_theme_mod( 'gf_use_admin_theme' ) );
+
 	if ( true == $admin_theme ) {
 		Admin\setup();
 	}

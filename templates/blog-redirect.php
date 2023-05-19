@@ -15,14 +15,22 @@
  */
 
 $front = (string) get_option( 'show_on_front' );
-if ( 'posts' == $front && ! is_user_logged_in() && ! current_user_can( 'edit_pages' ) ) :
+
+if (
+	'posts' == $front &&
+	! is_user_logged_in() &&
+	! current_user_can( 'edit_pages' )
+) :
+
 	wp_safe_redirect( site_url( '/' ), '302', get_bloginfo( 'name' ) );
+
 else :
 
 get_header();
 
 // Start the Loop.
 while ( have_posts() ) :
+
 	the_post();
 	get_template_part( 'partials/content', 'page' );
 
