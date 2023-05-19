@@ -554,7 +554,7 @@ function customize( $wp_customize ) {
 			'section'     => 'gf_admin',
 			'settings'    => 'gf_use_admin_theme',
 			'label'       => __( 'Use Admin Theme', 'go-further' ),
-			'description' => __( 'Check to apply the active design style to the system\'s administration screens, including user color options.', 'go-further' ),
+			'description' => __( 'Check to apply the active design style to the system\'s administration screens, including user color scheme options.', 'go-further' ),
 			'type'        => 'checkbox',
 		]
 	) );
