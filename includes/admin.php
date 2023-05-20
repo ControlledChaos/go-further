@@ -31,6 +31,7 @@ function setup() {
 	 * Admin Color Schemes plugin. Then register theme color schemes.
 	 */
 	add_action( 'admin_init', $n( 'remove_admin_color_scheme_picker' ), 9 );
+	add_action( 'admin_init', $n( 'register_admin_color_schemes' ) );
 
 	// Remove the default "Fresh" color scheme & add new stylesheet URIs.
 	remove_filter( 'style_loader_src', 'wp_style_loader_src' );
@@ -125,6 +126,45 @@ function style_loader_src( $src, $handle ) {
 		return get_color_scheme_url( $slug );
 	}
 	return $src;
+}
+
+/**
+ * Register color schemes
+ *
+ * Adds an admin color scheme for each option
+ * in the active design style.
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function register_admin_color_schemes() {
+
+	$get_design_style = get_design_style();
+	$color_schemes    = $get_design_style['color_schemes'];
+
+	// Sort color scheme alphabetically.
+	asort( $color_schemes );
+
+	/**
+	 * Add an admin color scheme for each option
+	 * in the active design style.
+	 */
+	foreach ( $color_schemes as $scheme ) {
+
+		$label = $scheme['label'];
+		$slug  = strtolower( str_replace( ' ', '-', $label ) );
+
+		wp_admin_css_color(
+			$slug,
+			_x( $label, 'admin color scheme', 'go-further' ),
+			get_color_scheme_url( $slug ),
+			[
+				$scheme['primary'],
+				$scheme['secondary'],
+				$scheme['tertiary']
+			]
+		);
+	}
 }
 
 /**
