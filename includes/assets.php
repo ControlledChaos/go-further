@@ -228,7 +228,7 @@ function admin_styles() {
 	wp_enqueue_style( 'gf-typography-shared', get_theme_file_uri( "/assets/css/admin/typography/shared$suffix.css" ), [], GF_VERSION, 'all' );
 
 	// Typography stylesheet for the active design style.
-	wp_enqueue_style( 'gf-typography', get_theme_file_uri( "/assets/css/admin/typography/design-styles/$design_style/typography$suffix.css" ), [], GF_VERSION, 'all' );
+	wp_enqueue_style( 'gf-typography', get_theme_file_uri( "/assets/css/admin/design-styles/$design_style/typography$suffix.css" ), [], GF_VERSION, 'all' );
 }
 
 /**
