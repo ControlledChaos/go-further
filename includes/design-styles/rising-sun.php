@@ -31,8 +31,8 @@ function rising_sun() {
 			'color_schemes' => [
 				'one' => [
 					'label'      => _x( 'Zen Garden', 'color palette name', 'go-further' ),
-					'primary'    => '#667133',
-					'secondary'  => '#909b31',
+					'primary'    => '#909b31',
+					'secondary'  => '#667133',
 					'tertiary'   => '#eeebef',
 					'background' => '#ffffff',
 					'text'       => '#333333',

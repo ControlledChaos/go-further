@@ -1,6 +1,6 @@
 :root {
-  --go--color--primary: #667133;
-  --go--color--secondary: #909b31;
+  --go--color--primary: #909b31;
+  --go--color--secondary: #667133;
   --go--color--tertiary: #eeebef;
   --go--color--background: #ffffff;
   --gf-admin--menu-current--background-color: var( --go--color--primary );
