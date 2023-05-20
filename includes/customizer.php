@@ -100,20 +100,6 @@ function customize( $wp_customize ) {
 		'description'    => __( '', 'go-further' )
 	] );
 
-	/**
-	 * Admin Settings section
-	 *
-	 * Displays in the Site Settings panel.
-	 */
-	$wp_customize->add_section( 'gf_admin', [
-		'panel'          => 'gf_settings',
-		'priority'       => 60,
-		'capability'     => 'edit_theme_options',
-		'type'           => 'admin-settings',
-		'title'          => __( 'Admin Settings', 'go-further' ),
-		'description'    => __( '', 'go-further' )
-	] );
-
 
 
 	/* --------------------------- Add Theme Settings --------------------------- */
@@ -543,7 +529,7 @@ function customize( $wp_customize ) {
 	 * Choose to use admin theme & color schemes.
 	 */
 	$wp_customize->add_setting( 'gf_use_admin_theme', [
-		'default'	        => false,
+		'default'	        => true,
 		'transport'         => false,
 		'sanitize_callback' => __NAMESPACE__ . '\use_admin_theme'
 	] );
@@ -551,7 +537,7 @@ function customize( $wp_customize ) {
 		$wp_customize,
 		'gf_use_admin_theme',
 		[
-			'section'     => 'gf_admin',
+			'section'     => 'colors',
 			'settings'    => 'gf_use_admin_theme',
 			'label'       => __( 'Use Admin Theme', 'go-further' ),
 			'description' => __( 'Check to apply the active design style to the system\'s administration screens, including user color scheme options.', 'go-further' ),
@@ -693,8 +679,7 @@ function customize( $wp_customize ) {
 	$wp_customize->get_control( 'title_site_titles'        )->priority = 60;
 	$wp_customize->get_control( 'show_page_title_checkbox' )->priority = 62;
 	$wp_customize->get_control( 'gf_use_google_fonts'      )->priority = 70;
-
-	$wp_customize->get_control( 'gf_use_admin_theme' )->priority = 10;
+	$wp_customize->get_control( 'gf_use_admin_theme'       )->priority = 80;
 }
 
 /**
