@@ -485,6 +485,11 @@ function has_classic_widgets() {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
 
+	// Return true if the Classic Widgets plugin is active.
+	if ( is_plugin_active( 'classic-widgets/classic-widgets.php' ) ) {
+		$classic = true;
+	}
+
 	// Return true if the Widget Options plugin is set to use classic widgets.
 	if ( is_plugin_active( 'widget-options/plugin.php' ) ) {
 
