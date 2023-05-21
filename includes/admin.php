@@ -91,10 +91,12 @@ function default_color_scheme() {
 function get_color_scheme_url( $scheme ) {
 
 	$suffix = suffix();
+	$design = get_design_style();
+	$style  = $design['slug'];
 
 	return apply_filters(
 		'gf_get_color_scheme_url',
-		get_stylesheet_directory_uri() . "/assets/css/admin/colors/$scheme/colors$suffix.css"
+		get_stylesheet_directory_uri() . "/assets/css/admin/design-styles/$style/colors/$scheme/colors$suffix.css"
 	);
 }
 

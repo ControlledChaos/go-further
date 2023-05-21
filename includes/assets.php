@@ -224,7 +224,7 @@ function admin_styles() {
 
 	// Global styles for all design styles & color schemes.
 	wp_enqueue_style( 'gf-admin-shared', get_theme_file_uri( "/assets/css/admin/admin$suffix.css" ), [], GF_VERSION, 'all' );
-	wp_enqueue_style( 'gf-colors-shared', get_theme_file_uri( "/assets/css/admin/colors/shared$suffix.css" ), [], GF_VERSION, 'all' );
+	wp_enqueue_style( 'gf-colors-shared', get_theme_file_uri( "/assets/css/admin/design-styles/shared$suffix.css" ), [], GF_VERSION, 'all' );
 	wp_enqueue_style( 'gf-typography-shared', get_theme_file_uri( "/assets/css/admin/typography/shared$suffix.css" ), [], GF_VERSION, 'all' );
 
 	// Typography stylesheet for the active design style.
