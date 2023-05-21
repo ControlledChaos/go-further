@@ -11,7 +11,6 @@
 namespace GoFurther\Admin;
 
 use function \GoFurther\Assets\suffix;
-use function \Go\Core\get_available_design_styles;
 use function \Go\Core\get_design_style;
 
 /**
@@ -189,31 +188,26 @@ function remove_admin_color_scheme_picker() {
  * the picker will not be displayed.
  *
  * @since  1.0.0
- * @param  int $user_id User ID.
  * @return void
  */
-function admin_color_scheme_picker( $user_id ) {
+function admin_color_scheme_picker() {
 
-	$current_scheme   = get_user_option( 'admin_color', $user_id );
 	$get_design_style = get_design_style();
 	$color_schemes    = $get_design_style['color_schemes'];
 
 	// Sort color scheme alphabetically.
 	asort( $color_schemes );
 
-	if (
-		empty( $current_scheme ) ||
-		! isset( $current_scheme ) ||
-		! in_array( $current_scheme, $color_schemes )
-	) {
-		$current_scheme = default_color_scheme();
-	}
-
 	$legend = sprintf(
 		'%1s %2s',
 		$get_design_style['label'],
 		__( 'Color Schemes', 'go-further' )
 	);
+
+	$current = get_user_option( 'admin_color', get_current_user_id() );
+	if ( ! in_array( $current, get_active_color_schemes() ) ) {
+		$current = default_color_scheme();
+	}
 
 	?>
 	<fieldset id="color-picker" class="scheme-list">
@@ -227,8 +221,8 @@ function admin_color_scheme_picker( $user_id ) {
 
 		foreach ( $color_schemes as $scheme ) :
 
-			$label = $scheme['label'];
-			$slug  = strtolower( str_replace( ' ', '-', $label ) );
+			$label   = $scheme['label'];
+			$slug    = strtolower( str_replace( ' ', '-', $label ) );
 
 			$background = sprintf(
 				'linear-gradient( to right, %s 0&#37;, %s 33.33325&#37;, %s 33.33325&#37;, %s 66.66675&#37;, %s 66.66675&#37;, %s 100&#37; )',
@@ -239,9 +233,10 @@ function admin_color_scheme_picker( $user_id ) {
 				$scheme['tertiary'],
 				$scheme['tertiary']
 			);
+
 		?>
-			<div style="background-image: <?php echo $background; ?>" class="switcher__choice color_scheme color-option <?php echo ( $slug == $current_scheme ) ? 'selected' : ''; ?>">
-				<input name="admin_color" id="admin_color_<?php echo esc_attr( $slug ); ?>" type="radio" value="<?php echo esc_attr( $slug ); ?>" class="tog" <?php checked( $slug, $current_scheme ); ?> />
+			<div style="background-image: <?php echo $background; ?>" class="switcher__choice color_scheme color-option <?php echo ( $slug == $current ) ? 'selected' : ''; ?>">
+				<input name="admin_color" id="admin_color_<?php echo esc_attr( $slug ); ?>" type="radio" value="<?php echo esc_attr( $slug ); ?>" class="tog" <?php checked( $slug, $current ); ?> />
 				<input type="hidden" class="css_url" value="<?php echo esc_attr( esc_url( get_color_scheme_url( $slug ) ) ); ?>" />
 				<input type="hidden" class="icon_colors" value="<?php echo esc_attr( $slug ); ?>" />
 				<label for="admin_color_<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $label ); ?><span class="color-scheme__check"></span></label>
