@@ -704,6 +704,10 @@ function customize( $wp_customize ) {
  */
 function update_color_scheme() {
 
+	if ( is_customize_preview() ) {
+		return;
+	}
+
 	$design_style = get_theme_mod( 'design_style' );
 	$color_scheme = get_theme_mod( 'color_scheme' );
 
