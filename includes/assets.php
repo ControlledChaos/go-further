@@ -219,16 +219,16 @@ function admin_styles() {
 
 	// Styles for the replacement color picker.
 	if ( 'profile.php' == $pagenow || 'user-edit.php' == $pagenow ) {
-		wp_enqueue_style( 'gf-color-picker', get_theme_file_uri( "/assets/css/admin/color-picker$suffix.css" ), [], GF_VERSION, 'all' );
+		wp_enqueue_style( 'gf-color-picker', get_theme_file_uri( "/assets/css/backend/color-picker$suffix.css" ), [], GF_VERSION, 'all' );
 	}
 
 	// Global styles for all design styles & color schemes.
-	wp_enqueue_style( 'gf-admin-shared', get_theme_file_uri( "/assets/css/admin/admin$suffix.css" ), [], GF_VERSION, 'all' );
-	wp_enqueue_style( 'gf-colors-shared', get_theme_file_uri( "/assets/css/admin/design-styles/shared$suffix.css" ), [], GF_VERSION, 'all' );
-	wp_enqueue_style( 'gf-typography-shared', get_theme_file_uri( "/assets/css/admin/typography/shared$suffix.css" ), [], GF_VERSION, 'all' );
+	wp_enqueue_style( 'gf-admin-shared', get_theme_file_uri( "/assets/css/backend/admin$suffix.css" ), [], GF_VERSION, 'all' );
+	wp_enqueue_style( 'gf-colors-shared', get_theme_file_uri( "/assets/css/backend/design-styles/shared$suffix.css" ), [], GF_VERSION, 'all' );
+	wp_enqueue_style( 'gf-typography-shared', get_theme_file_uri( "/assets/css/backend/typography/shared$suffix.css" ), [], GF_VERSION, 'all' );
 
 	// Typography stylesheet for the active design style.
-	wp_enqueue_style( 'gf-typography', get_theme_file_uri( "/assets/css/admin/design-styles/$design_style/typography$suffix.css" ), [], GF_VERSION, 'all' );
+	wp_enqueue_style( 'gf-typography', get_theme_file_uri( "/assets/css/backend/design-styles/$design_style/typography$suffix.css" ), [], GF_VERSION, 'all' );
 }
 
 /**

@@ -96,7 +96,7 @@ function get_color_scheme_url( $scheme ) {
 
 	return apply_filters(
 		'gf_get_color_scheme_url',
-		get_stylesheet_directory_uri() . "/assets/css/admin/design-styles/$style/colors/$scheme/colors$suffix.css"
+		get_stylesheet_directory_uri() . "/assets/css/backend/design-styles/$style/colors/$scheme/colors$suffix.css"
 	);
 }
 
