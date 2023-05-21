@@ -126,7 +126,6 @@ body {
   font-weight: var(--go-button--font-weight);
   letter-spacing: var(--go-button--letter-spacing, normal);
   line-height: 1;
-  padding: var(--go-button--padding--y) var(--go-button--padding--x);
   background: var(--gf-button--background-color, var(--go--color--primary));
   border-color: var(--gf-button--border-color, var(--go--color--primary));
   color: var(--gf-button--color, var(--go--color--white, white));

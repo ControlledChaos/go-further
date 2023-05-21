@@ -26,8 +26,8 @@ function rising_sun() {
 		[
 			'slug'          => $slug,
 			'label'         => _x( 'Rising Sun', 'design style name', 'go-further' ),
-			'url'           => get_theme_file_uri( "assets/css/design-styles/{$slug}/style{$suffix}.css" ),
-			'editor_style'  => "assets/css/design-styles/{$slug}/style-editor{$suffix}.css",
+			'url'           => get_theme_file_uri( "assets/css/frontend/design-styles/{$slug}/style{$suffix}.css" ),
+			'editor_style'  => "assets/css/frontend/design-styles/{$slug}/style-editor{$suffix}.css",
 			'color_schemes' => [
 				'one' => [
 					'label'      => _x( 'Zen Garden', 'color palette name', 'go-further' ),
