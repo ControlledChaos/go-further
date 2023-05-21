@@ -30,6 +30,7 @@ function setup() {
 	add_action( 'customize_register', $n( 'customize' ), 11 );
 	add_action( 'customize_preview_init', $n( 'customize_preview_init' ), 11 );
 	add_action( 'customize_controls_enqueue_scripts', $n( 'customize_preview_init' ), 11 );
+	add_action( 'init', $n( 'update_color_scheme' ) );
 	add_action( 'wp_head', $n( 'inline_css' ), 11 );
 }
 
@@ -680,6 +681,35 @@ function customize( $wp_customize ) {
 	$wp_customize->get_control( 'show_page_title_checkbox' )->priority = 62;
 	$wp_customize->get_control( 'gf_use_google_fonts'      )->priority = 70;
 	$wp_customize->get_control( 'gf_use_admin_theme'       )->priority = 80;
+}
+
+/**
+ * Update color scheme
+ *
+ * This fixes a specific scenario from the
+ * parent theme.
+ *
+ * When a design style is set in the customizer,
+ * and a color scheme set that is not the default
+ * for that style, then another design style is set
+ * without setting a color scheme other than the default,
+ * the `color_scheme` theme mod will contain the previously
+ * set design style.
+ *
+ * This function resets the `color_scheme` theme mod to the
+ * default in this scenario, which is `one` for all design styles.
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function update_color_scheme() {
+
+	$design_style = get_theme_mod( 'design_style' );
+	$color_scheme = get_theme_mod( 'color_scheme' );
+
+	if ( ! str_contains( $color_scheme, $design_style ) ) {
+		set_theme_mod( 'color_scheme', \Go\Core\get_default_color_scheme() );
+	}
 }
 
 /**
