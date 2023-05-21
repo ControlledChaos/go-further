@@ -1,0 +1,18 @@
+///
+/// Design style: Traditional
+/// Color scheme: Brick
+///
+
+$primary: #87200e;
+$secondary: #242611;
+$tertiary: #f9f2ef;
+
+:root {
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
+	--go--color--background: #ffffff;
+
+	--gf-admin--menu--background-color: #{$secondary};
+	--gf-admin--submenu--background-color: #{lighten( $color: $secondary, $amount: 7.5% )};
+}

@@ -15,6 +15,7 @@ use GoFurther\Core      as Core,
 
 use function \Go\Core\fonts_url;
 use function \Go\Core\get_design_style;
+use function \Go\Core\get_available_color_schemes;
 
 /**
  * Execute functions
@@ -95,7 +96,10 @@ function frontend_styles() {
 		return;
 	}
 
-	$suffix = suffix();
+	$suffix        = suffix();
+	$design_style  = get_design_style();
+	$design_slug   = $design_style['slug'];
+	$color_schemes = $design_style['color_schemes'];
 
 	/**
 	 * Theme stylesheet
@@ -109,6 +113,14 @@ function frontend_styles() {
 	// Right-to-left languages.
 	if ( is_rtl() ) {
 		wp_enqueue_style( 'go-further-rtl', get_theme_file_uri( "assets/css/style-rtl$suffix.css" ), [ 'go-further' ], GF_VERSION, 'all' );
+	}
+
+	foreach ( $color_schemes as $scheme ) {
+
+		$label  = $scheme['label'];
+		$colors = strtolower( str_replace( ' ', '-', $label ) );
+
+		wp_enqueue_style( "gf-frontend-style-$colors", get_theme_file_uri( "/assets/css/frontend/design-styles/$design_slug/colors/$colors/colors$suffix.css" ), [ 'go-further' ], GF_VERSION, 'all' );
 	}
 }
 

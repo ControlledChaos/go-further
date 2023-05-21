@@ -1,0 +1,18 @@
+///
+/// Design style: Traditional
+/// Color scheme: Emerald
+///
+
+$primary: #165153;
+$secondary: #212121;
+$tertiary: #f3f1f0;
+
+:root {
+	--go--color--primary: #{$primary};
+	--go--color--secondary: #{$secondary};
+	--go--color--tertiary: #{$tertiary};
+	--go--color--background: #ffffff;
+
+	--gf-admin--menu--background-color: #{$secondary};
+	--gf-admin--submenu--background-color: #{lighten( $color: $secondary, $amount: 7.5% )};
+}
